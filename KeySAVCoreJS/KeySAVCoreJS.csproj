@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{732661B6-2A27-488A-B5B1-EA2F2D575139}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KeySAVCoreJS</RootNamespace>
+    <AssemblyName>KeySAVCoreJS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>5cd79dc7</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>scripts\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>scripts\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ArrayTypes.cs" />
+    <Compile Include="BattleVideoBreaker.cs" />
+    <Compile Include="BattleVideoBreakResult.cs" />
+    <Compile Include="BattleVideoReader.cs" />
+    <Compile Include="JS.cs" />
+    <Compile Include="Polyfill.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="ISaveReader.cs" />
+    <Compile Include="PKX.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveBreaker.cs" />
+    <Compile Include="SaveBreakResult.cs" />
+    <Compile Include="SaveKey.cs" />
+    <Compile Include="SaveKeyStore.cs" />
+    <Compile Include="SaveReaderDecrypted.cs" />
+    <Compile Include="SaveReaderEncrypted.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DuoCodeModuleKind>none</DuoCodeModuleKind>
+    <DuoCodeDtsMode>es5</DuoCodeDtsMode>
+    <DuoCodeNoSourceMaps>false</DuoCodeNoSourceMaps>
+    <DuoCodeSourceCodeRoot>source</DuoCodeSourceCodeRoot>
+  </PropertyGroup>
+  <Import Project="..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets" Condition="Exists('..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "source"
+del *.dll
+cd ..
+copy *.cs "$(OutDir)source\"
+copy "package\*" "$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,5 +1,3 @@
-/// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/lodash/lodash.d.ts" />
 var vm = require('vm');
 var fs = require('fs');
 var _ = require('lodash');
@@ -7,10 +5,8 @@ function loadKeySAVCore() {
     var sandbox = {
         KeySAVCore: {},
         console: console,
-        require: _.noop,
         module: module,
-        process: process,
-        global: undefined
+        process: process
     };
     sandbox.global = sandbox;
     _.extend(sandbox, require("./jsextensions"));

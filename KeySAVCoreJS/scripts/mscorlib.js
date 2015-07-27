@@ -226,11 +226,11 @@ $d.typeIsAssignableFrom = function typeIsAssignableFrom(dstType, srcType) {
         if ((dstTypeKind == 1) || (srcTypeKind == 4 && dstTypeKind == 65))
             return true;
         if ((dstType.$typeKind & 32) != 0) {
-            return (srcTypeKind == 61 && dstTypeKind >= 40 && dstTypeKind <= 51) || (dstTypeKind == 56 && $d.typeIsAssignableFrom(dstType.$underlyingType,
+            return (srcTypeKind == 61 && dstTypeKind >= 40 && dstTypeKind <= 51) || (dstTypeKind == 56 && $d.typeIsAssignableFrom(dstType.$underlyingType, 
                 srcType));
         }
         if (dstTypeKind == 64) {
-            return (srcTypeKind == 64) && (srcType.$arrayRank == dstType.$arrayRank) && (dstType.$elementType.$typeKind & 32) == 0 && (srcType.$elementType.$typeKind & 32) == 0 && $d.typeIsAssignableFrom(dstType.$elementType,
+            return (srcTypeKind == 64) && (srcType.$arrayRank == dstType.$arrayRank) && (dstType.$elementType.$typeKind & 32) == 0 && (srcType.$elementType.$typeKind & 32) == 0 && $d.typeIsAssignableFrom(dstType.$elementType, 
                 srcType.$elementType);
         }
         var srcBaseType = (srcTypeKind & 32) != 0 ? System.ValueType : (srcTypeKind == 64) ? Array : null;
@@ -336,7 +336,7 @@ $d.arrayType = function arrayType(elementType, rank) {
     if (result == null || !elementType.hasOwnProperty(arrayTypeKey)) {
         var typeName = (rank == 1) ? "" : (rank == 2) ? "," : (rank == 3) ? ",," : new Array(rank).join(",");
         typeName = elementType.$typeName + "[" + typeName + "]";
-        var arrayType = $d.declare(typeName, System.Array$1.$baseType, 64, null, System.Array$1.$typeInit,
+        var arrayType = $d.declare(typeName, System.Array$1.$baseType, 64, null, System.Array$1.$typeInit, 
             [elementType]);
         arrayType.$arrayRank = rank;
         arrayType.$elementType = elementType;
@@ -374,8 +374,8 @@ $d.genericType = function genericType(unconstructedType, typeArgs) {
             }
     var result = cache[keyString];
     if (result == null) {
-        var generic = $d.declare(unconstructedType.$typeName, unconstructedType.$baseTypeU || unconstructedType.$baseType,
-            unconstructedType.$typeKind & ~256 | 1024, unconstructedType.$declaringType || unconstructedType.$assembly,
+        var generic = $d.declare(unconstructedType.$typeName, unconstructedType.$baseTypeU || unconstructedType.$baseType, 
+            unconstructedType.$typeKind & ~256 | 1024, unconstructedType.$declaringType || unconstructedType.$assembly, 
             unconstructedType.$typeInit, typeArgs, unconstructedType.$baseTypeArgs);
         generic.$typeName = unconstructedType.$typeName + "<" + keyString + ">";
         generic.$unconstructedType = unconstructedType;
@@ -453,8 +453,8 @@ $d.retype = function retype(obj, typeFunc) {
 $d.typeOf = function typeOf(typeFunc) {
     if (typeFunc.$type == null || (typeFunc.$typeKind == 68 && !typeFunc.hasOwnProperty("$type"))) {
         typeFunc = $d.resolveTypeFunc(typeFunc);
-        typeFunc.$type = typeFunc.$typeInfo ? System.Type.Create(typeFunc, typeFunc.$typeInfo(typeFunc,
-            typeFunc.prototype)) : (typeFunc.$typeKind == 63) ? System.Type.CreateEnum(typeFunc) : new System.Type.ctor(typeFunc,
+        typeFunc.$type = typeFunc.$typeInfo ? System.Type.Create(typeFunc, typeFunc.$typeInfo(typeFunc, 
+            typeFunc.prototype)) : (typeFunc.$typeKind == 63) ? System.Type.CreateEnum(typeFunc) : new System.Type.ctor(typeFunc, 
             2097152, null, null, null, null, null, null);
     }
     return typeFunc.$type;
@@ -773,7 +773,7 @@ System.MulticastDelegate = $d.declare("System.MulticastDelegate", System.Delegat
             if (System.Delegate.op_Equality(src.invocations[i], value)) {
                 var newInvocations = src.invocations.slice();
                 newInvocations.splice(i, 1);
-                result = (newInvocations.length == 0) ? null : (newInvocations.length == 1) ? newInvocations[0] : $t.Create(src.get_Target(),
+                result = (newInvocations.length == 0) ? null : (newInvocations.length == 1) ? newInvocations[0] : $t.Create(src.get_Target(), 
                     newInvocations);
                 break;
             }
@@ -936,7 +936,7 @@ System.Exception = $d.declare("System.Exception", System.Object, 28, $asm, funct
                 if (error instanceof Error)
                     result = new System.Exception.ctor$1(error.message);
                 else
-                    result = new System.Runtime.CompilerServices.RuntimeWrappedException.ctor(error.toString(),
+                    result = new System.Runtime.CompilerServices.RuntimeWrappedException.ctor(error.toString(), 
                         error);
         result.stack = error.stack;
         return result;
@@ -949,13 +949,13 @@ System.AggregateException = $d.declare("System.AggregateException", System.Excep
     };
     $t.ctor = function AggregateException() {
         $t.$baseType.ctor$1.call(this, "AggregateException_ctor_DefaultMessage");
-        this.m_innerExceptions = new (System.Collections.Generic.List$1(System.Exception).ctor$1)($d.array(System.Exception,
+        this.m_innerExceptions = new (System.Collections.Generic.List$1(System.Exception).ctor$1)($d.array(System.Exception, 
             0));
     };
     $t.ctor.prototype = $p;
     $t.ctor$3 = function AggregateException(message) {
         $t.$baseType.ctor$1.call(this, message);
-        this.m_innerExceptions = new (System.Collections.Generic.List$1(System.Exception).ctor$1)($d.array(System.Exception,
+        this.m_innerExceptions = new (System.Collections.Generic.List$1(System.Exception).ctor$1)($d.array(System.Exception, 
             0));
     };
     $t.ctor$3.prototype = $p;
@@ -964,7 +964,7 @@ System.AggregateException = $d.declare("System.AggregateException", System.Excep
         if (innerException == null) {
             throw new System.ArgumentNullException.ctor$1("innerException");
         }
-        this.m_innerExceptions = new (System.Collections.Generic.List$1(System.Exception).ctor$1)($d.array(System.Exception,
+        this.m_innerExceptions = new (System.Collections.Generic.List$1(System.Exception).ctor$1)($d.array(System.Exception, 
             [innerException]));
     };
     $t.ctor$5.prototype = $p;
@@ -1124,7 +1124,7 @@ System.ArgumentException = $d.declare("System.ArgumentException", System.SystemE
     $p.get_Message = function ArgumentException_get_Message() {
         var s = $t.$baseType.prototype.get_Message.call(this);
         if (!String.IsNullOrEmpty(this.m_paramName)) {
-            var resourceString = System.Environment.GetResourceString$1("Arg_ParamName_Name", $d.array(System.Object,
+            var resourceString = System.Environment.GetResourceString$1("Arg_ParamName_Name", $d.array(System.Object, 
                 [this.m_paramName]));
             s += System.Environment().NewLine + resourceString;
         }
@@ -1141,7 +1141,7 @@ System.ArgumentNullException = $d.declare("System.ArgumentNullException", System
     };
     $t.ctor.prototype = $p;
     $t.ctor$1 = function ArgumentNullException(paramName) {
-        $t.$baseType.ctor$3.call(this, System.Environment.GetResourceString("ArgumentNull_Generic"),
+        $t.$baseType.ctor$3.call(this, System.Environment.GetResourceString("ArgumentNull_Generic"), 
             paramName);
     };
     $t.ctor$1.prototype = $p;
@@ -1186,7 +1186,7 @@ System.ArgumentOutOfRangeException = $d.declare("System.ArgumentOutOfRangeExcept
     $p.get_Message = function ArgumentOutOfRangeException_get_Message() {
         var s = $t.$baseType.prototype.get_Message.call(this);
         if (this.m_actualValue != null) {
-            var valueMessage = System.Environment.GetResourceString$1("ArgumentOutOfRange_ActualValue",
+            var valueMessage = System.Environment.GetResourceString$1("ArgumentOutOfRange_ActualValue", 
                 $d.array(System.Object, [this.m_actualValue.toString()]));
             s += System.Environment().NewLine + valueMessage;
         }
@@ -1281,7 +1281,7 @@ System.Array = $d.declare("System.Array", System.Object, 23, $asm, function($t, 
         return ~lo;
     };
     $t.Copy = function Array_Copy(sourceArray, destinationArray, length) {
-        $t.Copy$2(sourceArray, sourceArray.GetLowerBound(0), destinationArray, destinationArray.GetLowerBound(0),
+        $t.Copy$2(sourceArray, sourceArray.GetLowerBound(0), destinationArray, destinationArray.GetLowerBound(0), 
             length);
     };
     $t.Copy$2 = function Array_Copy(sourceArray, sourceIndex, destinationArray, destinationIndex, length) {
@@ -1529,7 +1529,7 @@ System.Array = $d.declare("System.Array", System.Object, 23, $asm, function($t, 
             throw new System.ArgumentOutOfRangeException.ctor$3("startIndex", System.Environment.GetResourceString("ArgumentOutOfRange_Index"));
         if (count < 0 || count > array.length - startIndex)
             throw new System.ArgumentOutOfRangeException.ctor$3("count", System.Environment.GetResourceString("ArgumentOutOfRange_Count"));
-        return System.Collections.Generic.EqualityComparer$1(System.Object).get_Default().IndexOf(array,
+        return System.Collections.Generic.EqualityComparer$1(System.Object).get_Default().IndexOf(array, 
             value, startIndex, count);
     };
     $t.IndexOf$3 = function Array_IndexOf(T, array, value) {
@@ -1554,7 +1554,7 @@ System.Array = $d.declare("System.Array", System.Object, 23, $asm, function($t, 
         if (count < 0 || count > array.length - startIndex) {
             throw new System.ArgumentOutOfRangeException.ctor$3("count", "out of range");
         }
-        return System.Collections.Generic.EqualityComparer$1(T).get_Default().IndexOf(array, value, startIndex,
+        return System.Collections.Generic.EqualityComparer$1(T).get_Default().IndexOf(array, value, startIndex, 
             count);
     };
     $t.LastIndexOf = function Array_LastIndexOf(array, value) {
@@ -1578,7 +1578,7 @@ System.Array = $d.declare("System.Array", System.Object, 23, $asm, function($t, 
             throw new System.ArgumentOutOfRangeException.ctor$3("count", System.Environment.GetResourceString("ArgumentOutOfRange_Count"));
         if (array.get_Rank() != 1)
             throw new System.Exception.ctor$1(System.Environment.GetResourceString("Rank_MultiDimNotSupported"));
-        return System.Collections.Generic.EqualityComparer$1(System.Object).get_Default().LastIndexOf(array,
+        return System.Collections.Generic.EqualityComparer$1(System.Object).get_Default().LastIndexOf(array, 
             value, startIndex, count);
     };
     $t.LastIndexOf$3 = function Array_LastIndexOf(T, array, value) {
@@ -1603,7 +1603,7 @@ System.Array = $d.declare("System.Array", System.Object, 23, $asm, function($t, 
         if (count < 0 || startIndex - count + 1 < 0) {
             throw new System.ArgumentOutOfRangeException.ctor$3("count", "out of range");
         }
-        return System.Collections.Generic.EqualityComparer$1(T).get_Default().LastIndexOf(array, value,
+        return System.Collections.Generic.EqualityComparer$1(T).get_Default().LastIndexOf(array, value, 
             startIndex, count);
     };
     $t.Resize = function Array_Resize(T, array, newSize) {
@@ -2054,7 +2054,7 @@ System.Attribute = $d.declare("System.Attribute", System.Object, 0, $asm, functi
             throw new System.ArgumentNullException.ctor$1("attributeType");
         if (!$d.typeOf(System.Attribute).IsAssignableFrom(attributeType))
             throw new System.ArgumentException.ctor$1("Argument must subclass Attribute");
-        return System.Linq.Enumerable.Any(System.Object, element.GetCustomAttributes$1(attributeType,
+        return System.Linq.Enumerable.Any(System.Object, element.GetCustomAttributes$1(attributeType, 
             inherit));
     };
 });
@@ -2170,7 +2170,7 @@ System.Enum = $d.declare("System.Enum", System.ValueType, 2, $asm, function($t, 
         if (enumType == null)
             throw new System.ArgumentNullException.ctor$1("enumType");
         if (!enumType.get_IsEnum())
-            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"),
+            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"), 
                 "enumType");
         if (value == null)
             return -1;
@@ -2207,7 +2207,7 @@ System.Enum = $d.declare("System.Enum", System.ValueType, 2, $asm, function($t, 
         if (enumType == null)
             throw new System.ArgumentNullException.ctor$1("enumType");
         if (!enumType.get_IsEnum())
-            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"),
+            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"), 
                 "enumType");
         return $d.boxEnum(enumType.self, value);
     };
@@ -2215,7 +2215,7 @@ System.Enum = $d.declare("System.Enum", System.ValueType, 2, $asm, function($t, 
         if (enumType == null)
             throw new System.ArgumentNullException.ctor$1("enumType");
         if (!enumType.get_IsEnum())
-            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"),
+            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"), 
                 "enumType");
         return $d.array(String, enumType.self.$enumNames.slice());
     };
@@ -2223,7 +2223,7 @@ System.Enum = $d.declare("System.Enum", System.ValueType, 2, $asm, function($t, 
         if (enumType == null)
             throw new System.ArgumentNullException.ctor$1("enumType");
         if (!enumType.get_IsEnum())
-            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"),
+            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"), 
                 "enumType");
         var typeFunc = enumType.self;
         var underlyingType = $d.tryDecodeTypeFunc(typeFunc.$underlyingType);
@@ -2684,11 +2684,11 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
     };
     $t.ctor$1.prototype = $p;
     $t.ctor$4 = function Dictionary$2(dictionary, comparer) {
-        $t.ctor$5.call(this, dictionary != null ? dictionary.System$Collections$Generic$ICollection$1$get_Count() : 0,
+        $t.ctor$5.call(this, dictionary != null ? dictionary.System$Collections$Generic$ICollection$1$get_Count() : 0, 
             comparer);
         if (dictionary == null)
             throw new System.ArgumentNullException.ctor$1("dictionary");
-        var $iter = $d.cast(dictionary, System.Collections.Generic.IEnumerable$1(System.Collections.Generic.KeyValuePair$2(TKey,
+        var $iter = $d.cast(dictionary, System.Collections.Generic.IEnumerable$1(System.Collections.Generic.KeyValuePair$2(TKey, 
             TValue)));
         var $enumerator = $iter.System$Collections$IEnumerable$GetEnumerator();
         while ($enumerator.System$Collections$IEnumerator$MoveNext()) {
@@ -2711,7 +2711,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
         }
         else {
             for (var i = 0; i < bucket.length; ++i) {
-                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key,
+                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key, 
                     key)) {
                     if (add)
                         throw new System.ArgumentException.ctor$1("An item with the same key has already been added.");
@@ -2728,7 +2728,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
         var bucket = this.storage[hashCode];
         if (bucket != null) {
             for (var i = 0; i < bucket.length; ++i) {
-                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key,
+                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key, 
                     key)) {
                     bucket.splice(i, 1);
                     if (bucket.length == 0)
@@ -2745,7 +2745,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
         var bucket = this.storage[hashCode];
         if (bucket != null)
             for (var i = 0; i < bucket.length; ++i) {
-                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key,
+                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key, 
                     key))
                     return true;
             }
@@ -2773,7 +2773,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
         var bucket = this.storage[hashCode];
         if (bucket != null)
             for (var i = 0; i < bucket.length; ++i) {
-                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key,
+                if (this.comparer.System$Collections$Generic$IEqualityComparer$1$Equals(bucket[i].Key, 
                     key)) {
                     value.value = bucket[i].Value;
                     return true;
@@ -2796,7 +2796,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
         return this.keys;
     };
     $p.get_Values = function Dictionary$2_get_Values() {
-        this.values = this.values || new (System.Collections.Generic.Dictionary$2.ValueCollection(TKey,
+        this.values = this.values || new (System.Collections.Generic.Dictionary$2.ValueCollection(TKey, 
             TValue).ctor)(this);
         return this.values;
     };
@@ -2819,7 +2819,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
         var $stateMachineFunc = function() {
             var $this = this;
             var $state = 0;
-            var $stateMachine = new (System.YieldIterator$1(System.Collections.Generic.KeyValuePair$2(TKey,
+            var $stateMachine = new (System.YieldIterator$1(System.Collections.Generic.KeyValuePair$2(TKey, 
                 TValue)).ctor)();
             var hashes = null;
             var i = null;
@@ -2866,7 +2866,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
                         case 7:
                             item = bucket[j];
                             $state = 9;
-                            $stateMachine.set_Current(new (System.Collections.Generic.KeyValuePair$2(TKey,
+                            $stateMachine.set_Current(new (System.Collections.Generic.KeyValuePair$2(TKey, 
                                 TValue).ctor$1)(item.Key, item.Value));
                             return true;
                         case 8:
@@ -3047,7 +3047,7 @@ System.Collections.Generic.Dictionary$2 = $d.declare("System.Collections.Generic
             var bucket = this.storage[hashes[i]];
             for (var j = 0; j < bucket.length; ++j) {
                 var item = bucket[j];
-                array[arrayIndex++] = new (System.Collections.Generic.KeyValuePair$2(TKey, TValue).ctor$1)(item.Key,
+                array[arrayIndex++] = new (System.Collections.Generic.KeyValuePair$2(TKey, TValue).ctor$1)(item.Key, 
                     item.Value);
             }
         }
@@ -3975,13 +3975,13 @@ System.Collections.Generic.SortedList$2 = $d.declare("System.Collections.Generic
     };
     $t.ctor$2.prototype = $p;
     $t.ctor$4 = function SortedList$2(dictionary, comparer) {
-        $t.ctor$5.call(this, (dictionary != null ? dictionary.System$Collections$Generic$ICollection$1$get_Count() : 0),
+        $t.ctor$5.call(this, (dictionary != null ? dictionary.System$Collections$Generic$ICollection$1$get_Count() : 0), 
             comparer);
         if (dictionary == null)
             throw new System.ArgumentNullException.ctor$1("dictionary");
-        dictionary.System$Collections$Generic$IDictionary$2$get_Keys().System$Collections$Generic$ICollection$1$CopyTo(this.keys,
+        dictionary.System$Collections$Generic$IDictionary$2$get_Keys().System$Collections$Generic$ICollection$1$CopyTo(this.keys, 
             0);
-        dictionary.System$Collections$Generic$IDictionary$2$get_Values().System$Collections$Generic$ICollection$1$CopyTo(this.values,
+        dictionary.System$Collections$Generic$IDictionary$2$get_Values().System$Collections$Generic$ICollection$1$CopyTo(this.values, 
             0);
         Array.Sort$14(TKey, TValue, this.keys, this.values, comparer);
         this._size = dictionary.System$Collections$Generic$ICollection$1$get_Count();
@@ -4000,14 +4000,14 @@ System.Collections.Generic.SortedList$2 = $d.declare("System.Collections.Generic
     };
     $p.System$Collections$Generic$ICollection$1$Contains = function SortedList$2_System_Collections_Generic_ICollection$System_Collections_Generic_KeyValuePair$TKey$TValue$$_Contains(keyValuePair) {
         var index = this.IndexOfKey(keyValuePair.get_Key());
-        if (index >= 0 && System.Collections.Generic.EqualityComparer$1(TValue).get_Default().Equals$1(this.values[index],
+        if (index >= 0 && System.Collections.Generic.EqualityComparer$1(TValue).get_Default().Equals$1(this.values[index], 
             keyValuePair.get_Value()))
             return true;
         return false;
     };
     $p.System$Collections$Generic$ICollection$1$Remove = function SortedList$2_System_Collections_Generic_ICollection$System_Collections_Generic_KeyValuePair$TKey$TValue$$_Remove(keyValuePair) {
         var index = this.IndexOfKey(keyValuePair.get_Key());
-        if (index >= 0 && System.Collections.Generic.EqualityComparer$1(TValue).get_Default().Equals$1(this.values[index],
+        if (index >= 0 && System.Collections.Generic.EqualityComparer$1(TValue).get_Default().Equals$1(this.values[index], 
             keyValuePair.get_Value())) {
             this.RemoveAt(index);
             return true;
@@ -4136,7 +4136,7 @@ System.Collections.Generic.SortedList$2 = $d.declare("System.Collections.Generic
         if (array.length - arrayIndex < this.get_Count())
             throw new System.ArgumentOutOfRangeException.ctor$1("arrayIndex");
         for (var i = 0; i < this.get_Count(); i++) {
-            var entry = new (System.Collections.Generic.KeyValuePair$2(TKey, TValue).ctor$1)(this.keys[i],
+            var entry = new (System.Collections.Generic.KeyValuePair$2(TKey, TValue).ctor$1)(this.keys[i], 
                 this.values[i]);
             array[arrayIndex + i] = entry;
         }
@@ -4152,11 +4152,11 @@ System.Collections.Generic.SortedList$2 = $d.declare("System.Collections.Generic
             throw new System.ArgumentOutOfRangeException.ctor$1("arrayIndex");
         if (array.length - arrayIndex < this.get_Count())
             throw new System.ArgumentOutOfRangeException.ctor$1("arrayIndex");
-        var keyValuePairArray = $d.as(array, $d.arrayType(System.Collections.Generic.KeyValuePair$2(TKey,
+        var keyValuePairArray = $d.as(array, $d.arrayType(System.Collections.Generic.KeyValuePair$2(TKey, 
             TValue)));
         if (keyValuePairArray != null) {
             for (var i = 0; i < this.get_Count(); i++) {
-                keyValuePairArray[i + arrayIndex] = new (System.Collections.Generic.KeyValuePair$2(TKey,
+                keyValuePairArray[i + arrayIndex] = new (System.Collections.Generic.KeyValuePair$2(TKey, 
                     TValue).ctor$1)(this.keys[i], this.values[i]);
             }
         }
@@ -4165,7 +4165,7 @@ System.Collections.Generic.SortedList$2 = $d.declare("System.Collections.Generic
             if (objects == null)
                 throw new System.ArgumentException.ctor$1("Argument_InvalidArrayType");
             for (var i = 0; i < this.get_Count(); i++) {
-                objects[i + arrayIndex] = new (System.Collections.Generic.KeyValuePair$2(TKey, TValue).ctor$1)(this.keys[i],
+                objects[i + arrayIndex] = new (System.Collections.Generic.KeyValuePair$2(TKey, TValue).ctor$1)(this.keys[i], 
                     this.values[i]);
             }
         }
@@ -5463,7 +5463,7 @@ System.DateTime = $d.declare("System.DateTime", null, 57, $asm, function($t, $p)
     };
     $t.get_UtcNow = function DateTime_get_UtcNow() {
         var now = new Date();
-        var utcNow = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+        var utcNow = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), 
             now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
         return new System.DateTime.ctor$1(utcNow, 1);
     };
@@ -5785,7 +5785,7 @@ System.Linq.Expressions.ExpressionVisitor = $d.declare("System.Linq.Expressions.
         return new (System.Collections.Generic.List$1(T).ctor$1)(newNodes);
     };
     $p.VisitBinary = function ExpressionVisitor_VisitBinary(node) {
-        return $t.ValidateBinary(node, node.Update(this.Visit$1(node.get_Left()), this.VisitAndConvert$1(System.Linq.Expressions.LambdaExpression,
+        return $t.ValidateBinary(node, node.Update(this.Visit$1(node.get_Left()), this.VisitAndConvert$1(System.Linq.Expressions.LambdaExpression, 
             node.get_Conversion(), "VisitBinary"), this.Visit$1(node.get_Right())));
     };
     $p.VisitConditional = function ExpressionVisitor_VisitConditional(node) {
@@ -5806,7 +5806,7 @@ System.Linq.Expressions.ExpressionVisitor = $d.declare("System.Linq.Expressions.
         return node.Rewrite(e, a);
     };
     $p.VisitLambda = function ExpressionVisitor_VisitLambda(T, node) {
-        return node.Update(this.Visit$1(node.get_Body()), this.VisitAndConvert(System.Linq.Expressions.ParameterExpression,
+        return node.Update(this.Visit$1(node.get_Body()), this.VisitAndConvert(System.Linq.Expressions.ParameterExpression, 
             node.get_Parameters(), "VisitLambda"));
     };
     $p.VisitMember = function ExpressionVisitor_VisitMember(node) {
@@ -5844,13 +5844,13 @@ System.Linq.Expressions.ExpressionVisitor = $d.declare("System.Linq.Expressions.
         return $t.ValidateUnary(node, node.Update(this.Visit$1(node.get_Operand())));
     };
     $p.VisitMemberInit = function ExpressionVisitor_VisitMemberInit(node) {
-        return node.Update(this.VisitAndConvert$1(System.Linq.Expressions.NewExpression, node.get_NewExpression(),
-            "VisitMemberInit"), $t.Visit(System.Linq.Expressions.MemberBinding, node.get_Bindings(),
+        return node.Update(this.VisitAndConvert$1(System.Linq.Expressions.NewExpression, node.get_NewExpression(), 
+            "VisitMemberInit"), $t.Visit(System.Linq.Expressions.MemberBinding, node.get_Bindings(), 
             $d.delegate(this.VisitMemberBinding, this)));
     };
     $p.VisitListInit = function ExpressionVisitor_VisitListInit(node) {
-        return node.Update(this.VisitAndConvert$1(System.Linq.Expressions.NewExpression, node.get_NewExpression(),
-            "VisitListInit"), $t.Visit(System.Linq.Expressions.ElementInit, node.get_Initializers(),
+        return node.Update(this.VisitAndConvert$1(System.Linq.Expressions.NewExpression, node.get_NewExpression(), 
+            "VisitListInit"), $t.Visit(System.Linq.Expressions.ElementInit, node.get_Initializers(), 
             $d.delegate(this.VisitElementInit, this)));
     };
     $p.VisitElementInit = function ExpressionVisitor_VisitElementInit(node) {
@@ -5872,11 +5872,11 @@ System.Linq.Expressions.ExpressionVisitor = $d.declare("System.Linq.Expressions.
         return node.Update(this.Visit$1(node.get_Expression()));
     };
     $p.VisitMemberMemberBinding = function ExpressionVisitor_VisitMemberMemberBinding(node) {
-        return node.Update($t.Visit(System.Linq.Expressions.MemberBinding, node.get_Bindings(), $d.delegate(this.VisitMemberBinding,
+        return node.Update($t.Visit(System.Linq.Expressions.MemberBinding, node.get_Bindings(), $d.delegate(this.VisitMemberBinding, 
             this)));
     };
     $p.VisitMemberListBinding = function ExpressionVisitor_VisitMemberListBinding(node) {
-        return node.Update($t.Visit(System.Linq.Expressions.ElementInit, node.get_Initializers(), $d.delegate(this.VisitElementInit,
+        return node.Update($t.Visit(System.Linq.Expressions.ElementInit, node.get_Initializers(), $d.delegate(this.VisitElementInit, 
             this)));
     };
     $t.ValidateUnary = function ExpressionVisitor_ValidateUnary(before, after) {
@@ -5885,7 +5885,7 @@ System.Linq.Expressions.ExpressionVisitor = $d.declare("System.Linq.Expressions.
                 throw new System.Exception.ctor$1("MustRewriteWithoutMethod");
             }
             if (before.get_Operand() != null && after.get_Operand() != null) {
-                $t.ValidateChildType(before.get_Operand().get_Type(), after.get_Operand().get_Type(),
+                $t.ValidateChildType(before.get_Operand().get_Type(), after.get_Operand().get_Type(), 
                     "VisitUnary");
             }
         }
@@ -5919,7 +5919,7 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     $t.$ator = function() {
         this.expression = null;
         this.stack = new (System.Collections.Generic.Stack$1(System.Object).ctor)();
-        this.arguments = new (System.Collections.Generic.Dictionary$2(System.Linq.Expressions.ParameterExpression,
+        this.arguments = new (System.Collections.Generic.Dictionary$2(System.Linq.Expressions.ParameterExpression, 
             System.Object).ctor)();
     };
     $t.ctor = function Evaluator(expression) {
@@ -5994,8 +5994,8 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     };
     $p.VisitMethodCall = function Evaluator_VisitMethodCall(node) {
         $t.$baseType.prototype.VisitMethodCall.call(this, node);
-        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object,
-            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Arguments(),
+        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object, 
+            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Arguments(), 
                 $d.delegate(function(_) {
                     return this.stack.Pop();
                 }, this))));
@@ -6006,8 +6006,8 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     };
     $p.VisitNew = function Evaluator_VisitNew(node) {
         $t.$baseType.prototype.VisitNew.call(this, node);
-        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object,
-            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Arguments(),
+        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object, 
+            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Arguments(), 
                 $d.delegate(function(_) {
                     return this.stack.Pop();
                 }, this))));
@@ -6017,8 +6017,8 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     };
     $p.VisitMemberInit = function Evaluator_VisitMemberInit(node) {
         $t.$baseType.prototype.VisitMemberInit.call(this, node);
-        var bindings = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object,
-            System.Linq.Enumerable.Select(System.Linq.Expressions.MemberBinding, System.Object, node.get_Bindings(),
+        var bindings = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object, 
+            System.Linq.Enumerable.Select(System.Linq.Expressions.MemberBinding, System.Object, node.get_Bindings(), 
                 $d.delegate(function(_) {
                     return this.stack.Pop();
                 }, this))));
@@ -6041,11 +6041,11 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     };
     $p.VisitListInit = function Evaluator_VisitListInit(node) {
         $t.$baseType.prototype.VisitListInit.call(this, node);
-        var args = System.Linq.Enumerable.ToArray($d.arrayType(System.Object), System.Linq.Enumerable.Reverse($d.arrayType(System.Object),
-            System.Linq.Enumerable.Select(System.Linq.Expressions.ElementInit, $d.arrayType(System.Object),
+        var args = System.Linq.Enumerable.ToArray($d.arrayType(System.Object), System.Linq.Enumerable.Reverse($d.arrayType(System.Object), 
+            System.Linq.Enumerable.Select(System.Linq.Expressions.ElementInit, $d.arrayType(System.Object), 
                 node.get_Initializers(), $d.delegate(function(init) {
-                    return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object,
-                        System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object,
+                    return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object, 
+                        System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, 
                             init.get_Arguments(), $d.delegate(function(_) {
                                 return this.stack.Pop();
                             }, this))));
@@ -6077,8 +6077,8 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     };
     $p.VisitInvocation = function Evaluator_VisitInvocation(node) {
         $t.$baseType.prototype.VisitInvocation.call(this, node);
-        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object,
-            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Arguments(),
+        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object, 
+            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Arguments(), 
                 $d.delegate(function(_) {
                     return this.stack.Pop();
                 }, this))));
@@ -6096,12 +6096,12 @@ DuoCode.Runtime.Evaluator = $d.declare("DuoCode.Runtime.Evaluator", System.Linq.
     };
     $p.VisitNewArray = function Evaluator_VisitNewArray(node) {
         $t.$baseType.prototype.VisitNewArray.call(this, node);
-        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object,
-            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Expressions(),
+        var args = System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Reverse(System.Object, 
+            System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, System.Object, node.get_Expressions(), 
                 $d.delegate(function(_) {
                     return this.stack.Pop();
                 }, this))));
-        var array = Array.CreateInstance(node.get_Type().GetElementType(), node.get_Expressions().get_Count(),
+        var array = Array.CreateInstance(node.get_Type().GetElementType(), node.get_Expressions().get_Count(), 
             false);
         for (var i = 0; i < array.length; i++) {
             array.SetValue(args[i], i);
@@ -6125,14 +6125,14 @@ DuoCode.Runtime.EvaluatorExtensions = $d.declare("DuoCode.Runtime.EvaluatorExten
         return new DuoCode.Runtime.Evaluator.ctor(expression).Evaluate();
     };
     $t.ExtractArguments = function EvaluatorExtensions_ExtractArguments(expression) {
-        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Select(System.Linq.Expressions.Expression,
+        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, 
             System.Object, expression.get_Arguments(), $d.delegate(function(x) {
                 return DuoCode.Runtime.EvaluatorExtensions.Evaluate(x);
             }, this)));
     };
     $t.ExtractArguments$1 = function EvaluatorExtensions_ExtractArguments(expression) {
         var parameters = expression.get_Method().parameters;
-        return System.Linq.Enumerable.ToDictionary$1($asm.anonymousTypes[0], String, System.Object, System.Linq.Enumerable.Select$1(System.Linq.Expressions.Expression,
+        return System.Linq.Enumerable.ToDictionary$1($asm.anonymousTypes[0], String, System.Object, System.Linq.Enumerable.Select$1(System.Linq.Expressions.Expression, 
             $asm.anonymousTypes[0], expression.get_Arguments(), $d.delegate(function(x, i) {
                 return new $asm.anonymousTypes[0].ctor(parameters[i].get_Name(), DuoCode.Runtime.EvaluatorExtensions.Evaluate(x));
             }, this)), $d.delegate(function(x) {
@@ -6380,14 +6380,14 @@ System.Globalization.CompareInfo = $d.declare("System.Globalization.CompareInfo"
         return this.Compare$5(string1, offset1, length1, string2, offset2, length2, 0);
     };
     $p.Compare$3 = function CompareInfo_Compare(string1, offset1, string2, offset2, options) {
-        return this.Compare$5(string1, offset1, string1 == null ? 0 : string1.length - offset1, string2,
+        return this.Compare$5(string1, offset1, string1 == null ? 0 : string1.length - offset1, string2, 
             offset2, string2 == null ? 0 : string2.length - offset2, options);
     };
     $p.Compare$2 = function CompareInfo_Compare(string1, offset1, string2, offset2) {
         return this.Compare$3(string1, offset1, string2, offset2, 0);
     };
     $p.Compare$5 = function CompareInfo_Compare(string1, offset1, length1, string2, offset2, length2, options) {
-        return String.Compare$1(string1.Substring$1(offset1, length1), string2.Substring$1(offset2, length2),
+        return String.Compare$1(string1.Substring$1(offset1, length1), string2.Substring$1(offset2, length2), 
             5);
     };
 });
@@ -7247,13 +7247,13 @@ System.IO.Path = $d.declare("System.IO.Path", System.Object, 0, $asm, function($
         return (c == 92 /*'\\'*/ || c == 47 /*'/'*/);
     };
     $t.GetInvalidPathChars = function Path_GetInvalidPathChars() {
-        return $d.array(System.Char, [34 /*'"'*/, 60 /*'<'*/, 62 /*'>'*/, 124 /*'|'*/, 0, 1, 2, 3, 4,
-            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+        return $d.array(System.Char, [34 /*'"'*/, 60 /*'<'*/, 62 /*'>'*/, 124 /*'|'*/, 0, 1, 2, 3, 4, 
+            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 
             29, 30, 31]);
     };
     $t.GetInvalidFileNameChars = function Path_GetInvalidFileNameChars() {
-        return $d.array(System.Char, [34 /*'"'*/, 60 /*'<'*/, 62 /*'>'*/, 124 /*'|'*/, 0, 1, 2, 3, 4,
-            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+        return $d.array(System.Char, [34 /*'"'*/, 60 /*'<'*/, 62 /*'>'*/, 124 /*'|'*/, 0, 1, 2, 3, 4, 
+            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 
             29, 30, 31, 58 /*':'*/, 42 /*'*'*/, 63 /*'?'*/, 92 /*'\\'*/, 47 /*'/'*/]);
     };
     $t.GetExtension = function Path_GetExtension(path) {
@@ -7773,7 +7773,7 @@ System.Lazy$1 = $d.declare("System.Lazy`1", System.Object, 256, $asm, function($
             }
         }
         else {
-            boxed = new (System.Lazy$1.Boxed(T).ctor)($d.cast(System.Activator.CreateInstance($d.typeOf(T)),
+            boxed = new (System.Lazy$1.Boxed(T).ctor)($d.cast(System.Activator.CreateInstance($d.typeOf(T)), 
                 T));
         }
         return boxed;
@@ -8030,7 +8030,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return System.Linq.Enumerable.First(TSource, System.Linq.Enumerable.Where(TSource, source, predicate));
     };
     $t.FirstOrDefault$1 = function Enumerable_FirstOrDefault(TSource, source, predicate) {
-        return System.Linq.Enumerable.FirstOrDefault(TSource, System.Linq.Enumerable.Where(TSource, source,
+        return System.Linq.Enumerable.FirstOrDefault(TSource, System.Linq.Enumerable.Where(TSource, source, 
             predicate));
     };
     $t.First = function Enumerable_First(TSource, source) {
@@ -8057,7 +8057,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return System.Linq.Enumerable.Last(TSource, System.Linq.Enumerable.Where(TSource, source, predicate));
     };
     $t.LastOrDefault$1 = function Enumerable_LastOrDefault(TSource, source, predicate) {
-        return System.Linq.Enumerable.LastOrDefault(TSource, System.Linq.Enumerable.Where(TSource, source,
+        return System.Linq.Enumerable.LastOrDefault(TSource, System.Linq.Enumerable.Where(TSource, source, 
             predicate));
     };
     $t.Last = function Enumerable_Last(TSource, source) {
@@ -8087,7 +8087,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return System.Linq.Enumerable.Single(TSource, System.Linq.Enumerable.Where(TSource, source, predicate));
     };
     $t.SingleOrDefault$1 = function Enumerable_SingleOrDefault(TSource, source, predicate) {
-        return System.Linq.Enumerable.SingleOrDefault(TSource, System.Linq.Enumerable.Where(TSource,
+        return System.Linq.Enumerable.SingleOrDefault(TSource, System.Linq.Enumerable.Where(TSource, 
             source, predicate));
     };
     $t.Single = function Enumerable_Single(TSource, source) {
@@ -9156,7 +9156,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
                             $state = 7;
                             continue $top;
                         case 9:
-                            dictionary = new (System.Collections.Generic.Dictionary$2(TKey, System.Tuple$2(System.Collections.Generic.List$1(TOuter),
+                            dictionary = new (System.Collections.Generic.Dictionary$2(TKey, System.Tuple$2(System.Collections.Generic.List$1(TOuter), 
                                 System.Collections.Generic.List$1(TInner))).ctor)();
                             item$enumerator = outers.System$Collections$IEnumerable$GetEnumerator();
                             $state = 11;
@@ -9195,7 +9195,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
                             $state = 11;
                             continue $top;
                         case 15:
-                            lists = new (System.Tuple$2(System.Collections.Generic.List$1(TOuter), System.Collections.Generic.List$1(TInner)).ctor)(new (System.Collections.Generic.List$1(TOuter).ctor)(),
+                            lists = new (System.Tuple$2(System.Collections.Generic.List$1(TOuter), System.Collections.Generic.List$1(TInner)).ctor)(new (System.Collections.Generic.List$1(TOuter).ctor)(), 
                                 new (System.Collections.Generic.List$1(TInner).ctor)());
                             dictionary.set_Item(key, lists);
                             $state = 14;
@@ -9406,7 +9406,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return sum;
     };
     $t.Sum$1 = function Enumerable_Sum(TSource, source, selector) {
-        return System.Linq.Enumerable.Sum(System.Linq.Enumerable.Select(TSource, System.Nullable$1(System.Double),
+        return System.Linq.Enumerable.Sum(System.Linq.Enumerable.Select(TSource, System.Nullable$1(System.Double), 
             source, selector));
     };
     $t.Repeat = function Enumerable_Repeat(TResult, element, count) {
@@ -9574,14 +9574,14 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return $stateMachineFunc.call(this);
     };
     $t.OrderBy = function Enumerable_OrderBy(TSource, TKey, source, keySelector) {
-        return System.Linq.OrderedEnumerable$1(TSource).Create(TKey, source, keySelector, System.Collections.Generic.Comparer$1(TKey).get_Default(),
+        return System.Linq.OrderedEnumerable$1(TSource).Create(TKey, source, keySelector, System.Collections.Generic.Comparer$1(TKey).get_Default(), 
             false);
     };
     $t.OrderBy$1 = function Enumerable_OrderBy(TSource, TKey, source, keySelector, comparer) {
         return System.Linq.OrderedEnumerable$1(TSource).Create(TKey, source, keySelector, comparer, false);
     };
     $t.OrderByDescending = function Enumerable_OrderByDescending(TSource, TKey, source, keySelector) {
-        return System.Linq.OrderedEnumerable$1(TSource).Create(TKey, source, keySelector, System.Collections.Generic.Comparer$1(TKey).get_Default(),
+        return System.Linq.OrderedEnumerable$1(TSource).Create(TKey, source, keySelector, System.Collections.Generic.Comparer$1(TKey).get_Default(), 
             true);
     };
     $t.OrderByDescending$1 = function Enumerable_OrderByDescending(TSource, TKey, source, keySelector, comparer) {
@@ -9591,28 +9591,28 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         if (source == null)
             throw new System.ArgumentNullException.ctor$1("source");
         else
-            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector,
+            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector, 
                 System.Collections.Generic.Comparer$1(TKey).get_Default(), false);
     };
     $t.ThenBy$1 = function Enumerable_ThenBy(TSource, TKey, source, keySelector, comparer) {
         if (source == null)
             throw new System.ArgumentNullException.ctor$1("source");
         else
-            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector,
+            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector, 
                 comparer, false);
     };
     $t.ThenByDescending = function Enumerable_ThenByDescending(TSource, TKey, source, keySelector) {
         if (source == null)
             throw new System.ArgumentNullException.ctor$1("source");
         else
-            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector,
+            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector, 
                 System.Collections.Generic.Comparer$1(TKey).get_Default(), true);
     };
     $t.ThenByDescending$1 = function Enumerable_ThenByDescending(TSource, TKey, source, keySelector, comparer) {
         if (source == null)
             throw new System.ArgumentNullException.ctor$1("source");
         else
-            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector,
+            return source.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable(TKey, keySelector, 
                 comparer, true);
     };
     $t.OfType = function Enumerable_OfType(TResult, source) {
@@ -9775,35 +9775,35 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return $stateMachineFunc.call(this);
     };
     $t.GroupBy = function Enumerable_GroupBy(TSource, TKey, source, keySelector) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, System.Linq.IGrouping$2(TKey,
-            TSource), source, keySelector, System.IdentityFunction$1(TSource).Default, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, System.Linq.IGrouping$2(TKey, 
+            TSource), source, keySelector, System.IdentityFunction$1(TSource).Default, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey, 
             TSource).Create), System.Collections.Generic.EqualityComparer$1(TKey).get_Default());
     };
     $t.GroupBy$1 = function Enumerable_GroupBy(TSource, TKey, source, keySelector, comparer) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, System.Linq.IGrouping$2(TKey,
-            TSource), source, keySelector, System.IdentityFunction$1(TSource).Default, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, System.Linq.IGrouping$2(TKey, 
+            TSource), source, keySelector, System.IdentityFunction$1(TSource).Default, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey, 
             TSource).Create), comparer);
     };
     $t.GroupBy$3 = function Enumerable_GroupBy(TSource, TKey, TElement, source, keySelector, elementSelector) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TElement, System.Linq.IGrouping$2(TKey,
-            TElement), source, keySelector, elementSelector, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TElement, System.Linq.IGrouping$2(TKey, 
+            TElement), source, keySelector, elementSelector, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey, 
             TElement).Create), System.Collections.Generic.EqualityComparer$1(TKey).get_Default());
     };
     $t.GroupBy$5 = function Enumerable_GroupBy(TSource, TKey, TElement, source, keySelector, elementSelector, comparer) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TElement, System.Linq.IGrouping$2(TKey,
-            TElement), source, keySelector, elementSelector, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TElement, System.Linq.IGrouping$2(TKey, 
+            TElement), source, keySelector, elementSelector, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey, 
             TElement).Create), System.Collections.Generic.EqualityComparer$1(TKey).get_Default());
     };
     $t.GroupBy$2 = function Enumerable_GroupBy(TSource, TKey, TResult, source, keySelector, resultSelector) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, TResult, source, keySelector,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, TResult, source, keySelector, 
             System.IdentityFunction$1(TSource).Default, resultSelector, System.Collections.Generic.EqualityComparer$1(TKey).get_Default());
     };
     $t.GroupBy$6 = function Enumerable_GroupBy(TSource, TKey, TElement, TResult, source, keySelector, elementSelector, resultSelector) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TElement, TResult, source, keySelector,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TElement, TResult, source, keySelector, 
             elementSelector, resultSelector, System.Collections.Generic.EqualityComparer$1(TKey).get_Default());
     };
     $t.GroupBy$4 = function Enumerable_GroupBy(TSource, TKey, TResult, source, keySelector, resultSelector, comparer) {
-        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, TResult, source, keySelector,
+        return System.Linq.Enumerable.GroupBy$7(TSource, TKey, TSource, TResult, source, keySelector, 
             System.IdentityFunction$1(TSource).Default, resultSelector, comparer);
     };
     $t.GroupBy$7 = function Enumerable_GroupBy(TSource, TKey, TElement, TResult, source, keySelector, elementSelector, resultSelector, comparer) {
@@ -9895,20 +9895,20 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return $stateMachineFunc.call(this);
     };
     $t.ToLookup = function Enumerable_ToLookup(TSource, TKey, source, keySelector) {
-        return new (System.Linq.Lookup$2(TKey, TSource).ctor)(System.Linq.Enumerable.GroupBy(TSource,
+        return new (System.Linq.Lookup$2(TKey, TSource).ctor)(System.Linq.Enumerable.GroupBy(TSource, 
             TKey, source, keySelector));
     };
     $t.ToLookup$1 = function Enumerable_ToLookup(TSource, TKey, source, keySelector, comparer) {
-        return new (System.Linq.Lookup$2(TKey, TSource).ctor)(System.Linq.Enumerable.GroupBy$4(TSource,
-            TKey, System.Linq.IGrouping$2(TKey, TSource), source, keySelector, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey,
+        return new (System.Linq.Lookup$2(TKey, TSource).ctor)(System.Linq.Enumerable.GroupBy$4(TSource, 
+            TKey, System.Linq.IGrouping$2(TKey, TSource), source, keySelector, $d.delegate(System.Linq.Enumerable.GroupingCreator$2(TKey, 
                 TSource).Create), comparer));
     };
     $t.ToLookup$2 = function Enumerable_ToLookup(TSource, TKey, TElement, source, keySelector, elementSelector) {
-        return new (System.Linq.Lookup$2(TKey, TElement).ctor)(System.Linq.Enumerable.GroupBy$3(TSource,
+        return new (System.Linq.Lookup$2(TKey, TElement).ctor)(System.Linq.Enumerable.GroupBy$3(TSource, 
             TKey, TElement, source, keySelector, elementSelector));
     };
     $t.ToLookup$3 = function Enumerable_ToLookup(TSource, TKey, TElement, source, keySelector, elementSelector, comparer) {
-        return new (System.Linq.Lookup$2(TKey, TElement).ctor)(System.Linq.Enumerable.GroupBy$5(TSource,
+        return new (System.Linq.Lookup$2(TKey, TElement).ctor)(System.Linq.Enumerable.GroupBy$5(TSource, 
             TKey, TElement, source, keySelector, elementSelector, comparer));
     };
     $t.Distinct = function Enumerable_Distinct(TSource, source) {
@@ -10152,7 +10152,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
                             return false;
                         case 9:
                             $state = 10;
-                            $stateMachine.set_Current(resultSelector(firstEnumerator.System$Collections$Generic$IEnumerator$1$get_Current(),
+                            $stateMachine.set_Current(resultSelector(firstEnumerator.System$Collections$Generic$IEnumerator$1$get_Current(), 
                                 secondEnumerator.System$Collections$Generic$IEnumerator$1$get_Current()));
                             return true;
                         case 10:
@@ -10349,7 +10349,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         return $stateMachineFunc.call(this);
     };
     $t.Average$6 = function Enumerable_Average(TSource, source, selector) {
-        return System.Linq.Enumerable.Average(System.Linq.Enumerable.Select(TSource, System.Double, source,
+        return System.Linq.Enumerable.Average(System.Linq.Enumerable.Select(TSource, System.Double, source, 
             selector));
     };
     $t.Average$1 = function Enumerable_Average(source) {
@@ -10358,7 +10358,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
         }, this));
     };
     $t.Average = function Enumerable_Average(source) {
-        return $d.nv(System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double),
+        return $d.nv(System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double), 
             source), $d.delegate(function() {
             throw new System.InvalidOperationException.ctor$1("No Elements to Average");
         }, this)));
@@ -10381,29 +10381,29 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
             return onEmpty();
     };
     $t.Average$7 = function Enumerable_Average(TSource, source, selector) {
-        return System.Linq.Enumerable.Average$4(System.Linq.Enumerable.Select(TSource, System.Int64,
+        return System.Linq.Enumerable.Average$4(System.Linq.Enumerable.Select(TSource, System.Int64, 
             source, selector));
     };
     $t.Average$5 = function Enumerable_Average(source) {
-        return System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double),
+        return System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double), 
             source), $d.delegate(function() {
             return null;
         }, this));
     };
     $t.Average$4 = function Enumerable_Average(source) {
-        return $d.nv(System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double),
+        return $d.nv(System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double), 
             source), $d.delegate(function() {
             throw new System.InvalidOperationException.ctor$1("No Elements to Average");
         }, this)));
     };
     $t.Average$3 = function Enumerable_Average(source) {
-        return System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double),
+        return System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double), 
             source), $d.delegate(function() {
             return null;
         }, this));
     };
     $t.Average$2 = function Enumerable_Average(source) {
-        return $d.nv(System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double),
+        return $d.nv(System.Linq.Enumerable.Average$8(System.Linq.Enumerable.Cast(System.Nullable$1(System.Double), 
             source), $d.delegate(function() {
             throw new System.InvalidOperationException.ctor$1("No Elements to Average");
         }, this)));
@@ -10533,7 +10533,7 @@ System.Linq.Enumerable = $d.declare("System.Linq.Enumerable", System.Object, 0, 
                             $state = 1;
                             continue $top;
                         case 3:
-                            set = new (System.Collections.Generic.HashSet$1(TSource).ctor$3)(second,
+                            set = new (System.Collections.Generic.HashSet$1(TSource).ctor$3)(second, 
                                 comparer);
                             item$enumerator = first.System$Collections$IEnumerable$GetEnumerator();
                             $state = 5;
@@ -10620,7 +10620,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return $t.Property$3(instance, indexer, $d.cast(args, System.Collections.Generic.IEnumerable$1(System.Linq.Expressions.Expression)));
     };
     $t.Property$3 = function Expression_Property(instance, indexer, args) {
-        return new System.Linq.Expressions.IndexExpression.ctor(instance, indexer, null, System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression,
+        return new System.Linq.Expressions.IndexExpression.ctor(instance, indexer, null, System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression, 
             args));
     };
     $t.Property$2 = function Expression_Property(expression, propertyName) {
@@ -10687,7 +10687,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return new System.Linq.Expressions.ConstantExpression.ctor$1(value, type);
     };
     $t.MakeBinary$1 = function Expression_MakeBinary(nodeType, left, right, liftToNull, method) {
-        return new System.Linq.Expressions.BinaryExpression.ctor$1(left, right, nodeType, liftToNull,
+        return new System.Linq.Expressions.BinaryExpression.ctor$1(left, right, nodeType, liftToNull, 
             method);
     };
     $t.MakeBinary = function Expression_MakeBinary(binaryType, left, right) {
@@ -10700,15 +10700,15 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return new System.Linq.Expressions.UnaryExpression.ctor(unaryType, operand, method, type);
     };
     $t.New$1 = function Expression_New(type) {
-        var constructor = System.Linq.Enumerable.Single$1(System.Reflection.ConstructorInfo, type.GetConstructors(),
+        var constructor = System.Linq.Enumerable.Single$1(System.Reflection.ConstructorInfo, type.GetConstructors(), 
             $d.delegate(function(x) {
                 return x.parameters.length == 0;
             }, this));
-        return new System.Linq.Expressions.NewExpression.ctor(constructor, $d.array(System.Linq.Expressions.Expression,
+        return new System.Linq.Expressions.NewExpression.ctor(constructor, $d.array(System.Linq.Expressions.Expression, 
             0));
     };
     $t.New = function Expression_New(constructor) {
-        return new System.Linq.Expressions.NewExpression.ctor(constructor, $d.array(System.Linq.Expressions.Expression,
+        return new System.Linq.Expressions.NewExpression.ctor(constructor, $d.array(System.Linq.Expressions.Expression, 
             0));
     };
     $t.New$3 = function Expression_New(constructor, args) {
@@ -10728,7 +10728,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return $t.MemberInit(newExpression, $d.cast(bindings, System.Collections.Generic.IEnumerable$1(System.Linq.Expressions.MemberBinding)));
     };
     $t.MemberInit = function Expression_MemberInit(newExpression, bindings) {
-        return new System.Linq.Expressions.MemberInitExpression.ctor(newExpression, System.Linq.Enumerable.ToList(System.Linq.Expressions.MemberBinding,
+        return new System.Linq.Expressions.MemberInitExpression.ctor(newExpression, System.Linq.Enumerable.ToList(System.Linq.Expressions.MemberBinding, 
             bindings));
     };
     $t.GetProperty = function Expression_GetProperty(mi) {
@@ -10752,7 +10752,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
     $t.ListInit$4 = function Expression_ListInit(newExpression, addMethod, initializers) {
         if (addMethod == null)
             return $t.ListInit$1(newExpression, initializers);
-        var list = System.Linq.Enumerable.ToArray(System.Linq.Expressions.ElementInit, System.Linq.Enumerable.Select(System.Linq.Expressions.Expression,
+        var list = System.Linq.Enumerable.ToArray(System.Linq.Expressions.ElementInit, System.Linq.Enumerable.Select(System.Linq.Expressions.Expression, 
             System.Linq.Expressions.ElementInit, initializers, $d.delegate(function(x) {
                 return $t.ElementInit(addMethod, (function() {
                     var $obj = new (System.Collections.Generic.List$1(System.Linq.Expressions.Expression).ctor)();
@@ -10766,14 +10766,14 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return $t.ListInit(newExpression, $d.cast(initializers, System.Collections.Generic.IEnumerable$1(System.Linq.Expressions.ElementInit)));
     };
     $t.ListInit = function Expression_ListInit(newExpression, initializers) {
-        return new System.Linq.Expressions.ListInitExpression.ctor(newExpression, System.Linq.Enumerable.ToList(System.Linq.Expressions.ElementInit,
+        return new System.Linq.Expressions.ListInitExpression.ctor(newExpression, System.Linq.Enumerable.ToList(System.Linq.Expressions.ElementInit, 
             initializers));
     };
     $t.ElementInit$1 = function Expression_ElementInit(addMethod, args) {
         return $t.ElementInit(addMethod, $d.cast(args, System.Collections.Generic.IEnumerable$1(System.Linq.Expressions.Expression)));
     };
     $t.ElementInit = function Expression_ElementInit(addMethod, args) {
-        return new System.Linq.Expressions.ElementInit.ctor(addMethod, System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression,
+        return new System.Linq.Expressions.ElementInit.ctor(addMethod, System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression, 
             args));
     };
     $t.NewArrayInit$1 = function Expression_NewArrayInit(type, initializers) {
@@ -10785,7 +10785,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         var list = null;
         if (list != null)
             expressions = list;
-        return new System.Linq.Expressions.NewArrayExpression.ctor(32, type.MakeArrayType(), System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression,
+        return new System.Linq.Expressions.NewArrayExpression.ctor(32, type.MakeArrayType(), System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression, 
             expressions));
     };
     $t.NewArrayBounds$1 = function Expression_NewArrayBounds(type, bounds) {
@@ -10794,7 +10794,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
     $t.NewArrayBounds = function Expression_NewArrayBounds(type, bounds) {
         var expressions = System.Linq.Enumerable.ToArray(System.Linq.Expressions.Expression, bounds);
         var count = expressions.length;
-        return new System.Linq.Expressions.NewArrayExpression.ctor(33, count != 1 ? type.MakeArrayType$1(count) : type.MakeArrayType(),
+        return new System.Linq.Expressions.NewArrayExpression.ctor(33, count != 1 ? type.MakeArrayType$1(count) : type.MakeArrayType(), 
             System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression, expressions));
     };
     $t.TypeAs = function Expression_TypeAs(expression, type) {
@@ -10807,7 +10807,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return new System.Linq.Expressions.DefaultExpression.ctor(type);
     };
     $t.MakeIndex = function Expression_MakeIndex(target, indexer, args) {
-        return new System.Linq.Expressions.IndexExpression.ctor(target, indexer, indexer != null ? indexer.get_PropertyType() : null,
+        return new System.Linq.Expressions.IndexExpression.ctor(target, indexer, indexer != null ? indexer.get_PropertyType() : null, 
             System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression, args));
     };
     $t.ArrayIndex$2 = function Expression_ArrayIndex(array, indexes) {
@@ -10815,7 +10815,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
     };
     $t.ArrayIndex = function Expression_ArrayIndex(array, indexes) {
         var method = $d.typeOf(Array).GetMethod("Get");
-        return $t.Call$1(array, method, System.Linq.Enumerable.ToArray(System.Linq.Expressions.Expression,
+        return $t.Call$1(array, method, System.Linq.Enumerable.ToArray(System.Linq.Expressions.Expression, 
             indexes));
     };
     $t.ArrayIndex$1 = function Expression_ArrayIndex(array, index) {
@@ -10831,7 +10831,7 @@ System.Linq.Expressions.Expression = $d.declare("System.Linq.Expressions.Express
         return $t.Invoke(expression, $d.cast(args, System.Collections.Generic.IEnumerable$1(System.Linq.Expressions.Expression)));
     };
     $t.Invoke = function Expression_Invoke(expression, args) {
-        return new System.Linq.Expressions.InvocationExpression.ctor(expression, System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression,
+        return new System.Linq.Expressions.InvocationExpression.ctor(expression, System.Linq.Enumerable.ToList(System.Linq.Expressions.Expression, 
             args), $d.typeOf(System.Object));
     };
     $t.Field = function Expression_Field(expression, field) {
@@ -10946,7 +10946,7 @@ System.Linq.Expressions.BinaryExpression = $d.declare("System.Linq.Expressions.B
             case 5:
                 return $d.typeOf(System.Object);
             default:
-                throw new System.Exception.ctor$1("Unexpected node type: " + $d.toString($d.boxEnum(System.Linq.Expressions.ExpressionType,
+                throw new System.Exception.ctor$1("Unexpected node type: " + $d.toString($d.boxEnum(System.Linq.Expressions.ExpressionType, 
                     this.get_NodeType())));
         }
     };
@@ -11093,7 +11093,7 @@ System.Linq.Expressions.LambdaExpression = $d.declare("System.Linq.Expressions.L
         $t.$baseType.ctor.call(this, 18);
         this.name = name;
         this.body = body;
-        this.parameters = System.Linq.Enumerable.ToList(System.Linq.Expressions.ParameterExpression,
+        this.parameters = System.Linq.Enumerable.ToList(System.Linq.Expressions.ParameterExpression, 
             parameters);
         this.delegateType = delegateType;
         this.tailCall = tailCall;
@@ -11509,7 +11509,7 @@ System.Linq.Expressions.TypeBinaryExpression = $d.declare("System.Linq.Expressio
             case 45:
                 return $d.typeOf(Boolean);
             default:
-                throw new System.Exception.ctor$1("Unexpected NodeType: " + $d.toString($d.boxEnum(System.Linq.Expressions.ExpressionType,
+                throw new System.Exception.ctor$1("Unexpected NodeType: " + $d.toString($d.boxEnum(System.Linq.Expressions.ExpressionType, 
                     this.get_NodeType())));
         }
     };
@@ -11586,7 +11586,7 @@ System.Linq.Lookup$2 = $d.declare("System.Linq.Lookup`2", System.Object, 256, $a
     $t.$intfs = function() { return [System.Linq.ILookup$2(TKey, TElement), System.Collections.Generic.IEnumerable$1(System.Linq.IGrouping$2(TKey, TElement)), System.Collections.IEnumerable]; };
     $t.$typeInfo = function(t, p) { return [1, null, [["GetEnumerator", p.GetEnumerator, 6], ["get_Count", p.get_Count, 6], ["get_Item", p.get_Item, 6], ["Contains", p.Contains, 6]], [["ctor", t.ctor, 6]], [["Count", 45, 1], ["this[]", System.Collections.Generic.IEnumerable$1(TElement), 2, null, [["key", TKey, 0]]]]]; };
     $t.$ator = function() {
-        this.dictionary = new (System.Collections.Generic.Dictionary$2(TKey, System.Linq.IGrouping$2(TKey,
+        this.dictionary = new (System.Collections.Generic.Dictionary$2(TKey, System.Linq.IGrouping$2(TKey, 
             TElement)).ctor)();
     };
     $t.ctor = function Lookup$2(elements) {
@@ -11634,8 +11634,8 @@ System.Linq.OrderedEnumerable$1 = $d.declare("System.Linq.OrderedEnumerable`1", 
     };
     $t.ctor.prototype = $p;
     $t.Create = function OrderedEnumerable$1_Create(TKey, source, keySelector, comparer, isDescending) {
-        return new (System.Linq.OrderedEnumerable$1(TElement).ctor)(source, $d.array(System.Collections.IComparer,
-            [new (System.Linq.OrderedEnumerable$1.KeyComparer$2(TElement, TElement, TKey).ctor)(keySelector,
+        return new (System.Linq.OrderedEnumerable$1(TElement).ctor)(source, $d.array(System.Collections.IComparer, 
+            [new (System.Linq.OrderedEnumerable$1.KeyComparer$2(TElement, TElement, TKey).ctor)(keySelector, 
                 comparer, isDescending)]));
     };
     $p.System$Collections$IEnumerable$GetEnumerator = function OrderedEnumerable$1_System_Collections_IEnumerable_GetEnumerator() {
@@ -11657,9 +11657,9 @@ System.Linq.OrderedEnumerable$1 = $d.declare("System.Linq.OrderedEnumerable`1", 
         return this.storage.GetEnumerator();
     };
     $p.CreateOrderedEnumerable = function OrderedEnumerable$1_CreateOrderedEnumerable(TKey, keySelector, comparer, descending) {
-        return new (System.Linq.OrderedEnumerable$1(TElement).ctor)(this.source, System.Linq.Enumerable.ToArray(System.Collections.IComparer,
-            System.Linq.Enumerable.Concat(System.Collections.IComparer, this.comparers, $d.array(System.Collections.IComparer,
-                [new (System.Linq.OrderedEnumerable$1.KeyComparer$2(TElement, TElement, TKey).ctor)(keySelector,
+        return new (System.Linq.OrderedEnumerable$1(TElement).ctor)(this.source, System.Linq.Enumerable.ToArray(System.Collections.IComparer, 
+            System.Linq.Enumerable.Concat(System.Collections.IComparer, this.comparers, $d.array(System.Collections.IComparer, 
+                [new (System.Linq.OrderedEnumerable$1.KeyComparer$2(TElement, TElement, TKey).ctor)(keySelector, 
                     comparer, descending)]))));
     };
     $p.System$Linq$IOrderedEnumerable$1$CreateOrderedEnumerable = $p.CreateOrderedEnumerable;
@@ -12076,7 +12076,7 @@ System.Activator = $d.declare("System.Activator", System.Object, 0, $asm, functi
     $t.$typeInfo = function(t, p) { return [1, null, [["CreateInstance", t.CreateInstance$3, 22], ["CreateInstance", t.CreateInstance$2, 22], ["CreateInstance", t.CreateInstance, 22], ["CreateInstance", t.CreateInstance$1, 22], ["CreateInstance", t.CreateInstance$4, 22]]]; };
     $t.CreateInstance$3 = function Activator_CreateInstance(type, bindingAttr, binder, args, culture) {
         var actualCount = (args != null) ? args.length : 0;
-        return System.Linq.Enumerable.Single$1(System.Reflection.ConstructorInfo, type.GetConstructors(),
+        return System.Linq.Enumerable.Single$1(System.Reflection.ConstructorInfo, type.GetConstructors(), 
             $d.delegate(function(x) {
                 return x.parameters.length == actualCount;
             }, this)).Invoke$2(args);
@@ -12088,7 +12088,7 @@ System.Activator = $d.declare("System.Activator", System.Object, 0, $asm, functi
         return $t.CreateInstance$1(type, false);
     };
     $t.CreateInstance$1 = function Activator_CreateInstance(type, nonPublic) {
-        return System.Linq.Enumerable.Single$1(System.Reflection.ConstructorInfo, type.GetConstructors(),
+        return System.Linq.Enumerable.Single$1(System.Reflection.ConstructorInfo, type.GetConstructors(), 
             $d.delegate(function(x) {
                 return x.parameters.length == 0;
             }, this)).Invoke$2(null);
@@ -12212,7 +12212,7 @@ System.Reflection.Assembly = $d.declare("System.Reflection.Assembly", System.Obj
         return System.Linq.Enumerable.ToArray(System.Attribute, this.attributes);
     };
     $p.GetCustomAttributes$1 = function Assembly_GetCustomAttributes(attributeType, inherit) {
-        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Where(System.Object,
+        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Where(System.Object, 
             this.GetCustomAttributes(inherit), $d.delegate(function(x) {
                 return attributeType.IsInstanceOfType(x);
             }, this)));
@@ -12233,7 +12233,7 @@ System.Reflection.Assembly = $d.declare("System.Reflection.Assembly", System.Obj
         if (type == null)
             return null;
         else
-            return System.Activator.CreateInstance$2(type, $d.array(System.Object, [$d.boxEnum(System.Reflection.BindingFlags,
+            return System.Activator.CreateInstance$2(type, $d.array(System.Object, [$d.boxEnum(System.Reflection.BindingFlags, 
                 bindingAttr), binder, args, culture, activationAttributes]));
     };
     $p.GetReferencedAssemblies = function Assembly_GetReferencedAssemblies() {
@@ -12465,7 +12465,7 @@ System.Reflection.MemberInfo = $d.declare("System.Reflection.MemberInfo", System
         return System.Linq.Enumerable.ToArray(System.Attribute, this.attributes);
     };
     $p.GetCustomAttributes$1 = function MemberInfo_GetCustomAttributes(attributeType, inherit) {
-        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Where(System.Object,
+        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Where(System.Object, 
             this.GetCustomAttributes(inherit), $d.delegate(function(x) {
                 return attributeType.IsInstanceOfType(x);
             }, this)));
@@ -12632,7 +12632,7 @@ System.Reflection.EventInfo = $d.declare("System.Reflection.EventInfo", System.R
     };
     $t.ctor.prototype = $p;
     $t.Create = function EventInfo_Create(methods, args) {
-        return new System.Reflection.EventInfo.ctor(args[0], args[1], args[2] != null ? methods[args[2]] : null,
+        return new System.Reflection.EventInfo.ctor(args[0], args[1], args[2] != null ? methods[args[2]] : null, 
             args[3] != null ? methods[args[3]] : null, args[4]);
     };
     $p.get_MemberType = function EventInfo_get_MemberType() {
@@ -12780,7 +12780,7 @@ System.Reflection.MethodInfo = $d.declare("System.Reflection.MethodInfo", System
     };
     $t.ctor.prototype = $p;
     $t.Create = function MethodInfo_Create(args) {
-        return new System.Reflection.MethodInfo.ctor(args[0], args[1], args[2], args[3], args[4], args[5],
+        return new System.Reflection.MethodInfo.ctor(args[0], args[1], args[2], args[3], args[4], args[5], 
             args[6]);
     };
     $p.get_MemberType = function MethodInfo_get_MemberType() {
@@ -12822,7 +12822,7 @@ System.Reflection.MethodInfo = $d.declare("System.Reflection.MethodInfo", System
             });
             var newReturnType = this.returnType;
             var newParameters = this.GetParameters();
-            result = new System.Reflection.MethodInfo.ctor(this.name, this.jsMethod, this.methodAttributes,
+            result = new System.Reflection.MethodInfo.ctor(this.name, this.jsMethod, this.methodAttributes, 
                 newReturnType, newParameters, this.attributes, typeArgumentsFuncs);
             result.declaringType = this.declaringType;
             this.constructedMethods[keyString] = result;
@@ -12883,7 +12883,7 @@ System.Reflection.ParameterInfo = $d.declare("System.Reflection.ParameterInfo", 
     };
     $t.ctor.prototype = $p;
     $t.Create = function ParameterInfo_Create(args) {
-        return new System.Reflection.ParameterInfo.ctor(args[0], args[1], args[2], args[3], args[4],
+        return new System.Reflection.ParameterInfo.ctor(args[0], args[1], args[2], args[3], args[4], 
             args[5]);
     };
     $p.get_ParameterType = function ParameterInfo_get_ParameterType() {
@@ -12932,7 +12932,7 @@ System.Reflection.ParameterInfo = $d.declare("System.Reflection.ParameterInfo", 
         return System.Linq.Enumerable.ToArray(System.Attribute, this.attributes);
     };
     $p.GetCustomAttributes$1 = function ParameterInfo_GetCustomAttributes(attributeType, inherit) {
-        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Where(System.Object,
+        return System.Linq.Enumerable.ToArray(System.Object, System.Linq.Enumerable.Where(System.Object, 
             this.GetCustomAttributes(inherit), $d.delegate(function(x) {
                 return attributeType.IsInstanceOfType(x);
             }, this)));
@@ -12983,12 +12983,12 @@ System.Reflection.PropertyInfo = $d.declare("System.Reflection.PropertyInfo", Sy
         this.propertyType = $d.tryDecodeTypeFunc(propertyType);
         this.getMethod = Array.isArray(getMethod) ? System.Reflection.MethodInfo.Create(getMethod) : getMethod || null;
         this.setMethod = Array.isArray(setMethod) ? System.Reflection.MethodInfo.Create(setMethod) : setMethod || null;
-        this.indexParameters = (indexParameters != null) ? $d.array(System.Reflection.ParameterInfo,
+        this.indexParameters = (indexParameters != null) ? $d.array(System.Reflection.ParameterInfo, 
             indexParameters) : System.Reflection.ParameterInfo().EmptyParameters;
     };
     $t.ctor.prototype = $p;
     $t.Create = function PropertyInfo_Create(methods, args) {
-        return new System.Reflection.PropertyInfo.ctor(args[0], args[1], args[2] != null ? methods[args[2]] : null,
+        return new System.Reflection.PropertyInfo.ctor(args[0], args[1], args[2] != null ? methods[args[2]] : null, 
             args[3] != null ? methods[args[3]] : null, args[4], args[5]);
     };
     $p.get_MemberType = function PropertyInfo_get_MemberType() {
@@ -13128,7 +13128,7 @@ System.Runtime.CompilerServices.AsyncMethodBuilderCore = $d.declare("System.Runt
             this.m_stateMachine = stateMachine;
             this.m_stateMachine.System$Runtime$CompilerServices$IAsyncStateMachine$SetStateMachine(this.m_stateMachine);
         }
-        var action = $d.delegate(this.m_stateMachine.System$Runtime$CompilerServices$IAsyncStateMachine$MoveNext,
+        var action = $d.delegate(this.m_stateMachine.System$Runtime$CompilerServices$IAsyncStateMachine$MoveNext, 
             this.m_stateMachine);
         return action;
     };
@@ -13204,7 +13204,7 @@ System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1 = $d.declare("System.Ru
     };
     $p.AwaitOnCompleted = function AsyncTaskMethodBuilder$1_AwaitOnCompleted(TAwaiter, TStateMachine, awaiter, stateMachine) {
         try {
-            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1(TResult),
+            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1(TResult), 
                 TStateMachine, this, stateMachine);
             awaiter.System$Runtime$CompilerServices$INotifyCompletion$OnCompleted(completionAction);
         }
@@ -13232,7 +13232,7 @@ System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1 = $d.declare("System.Ru
             throw new System.ArgumentNullException.ctor$1("exception");
         var task = this.get_Task();
         var canceledException = $d.as(exception, System.Runtime.CompilerServices.OperationCanceledException);
-        if (!(canceledException != null ? task.TrySetCanceled$1(canceledException.get_CancellationToken(),
+        if (!(canceledException != null ? task.TrySetCanceled$1(canceledException.get_CancellationToken(), 
             canceledException) : task.TrySetException(exception)))
             throw new System.InvalidOperationException.ctor$1("TaskT_TransitionToFinal_AlreadyCompleted");
     };
@@ -13241,7 +13241,7 @@ System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1 = $d.declare("System.Ru
     };
     $p.AwaitOnCompleted$1 = function AsyncTaskMethodBuilder$1_AwaitOnCompleted(TAwaiter, TStateMachine, awaiter, stateMachine) {
         try {
-            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1(TResult),
+            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1(TResult), 
                 TStateMachine, this, stateMachine.value);
             awaiter.value.System$Runtime$CompilerServices$INotifyCompletion$OnCompleted(completionAction);
         }
@@ -13252,7 +13252,7 @@ System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1 = $d.declare("System.Ru
     };
     $p.AwaitUnsafeOnCompleted = function AsyncTaskMethodBuilder$1_AwaitUnsafeOnCompleted(TAwaiter, TStateMachine, awaiter, stateMachine) {
         try {
-            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1(TResult),
+            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncTaskMethodBuilder$1(TResult), 
                 TStateMachine, this, stateMachine.value);
             awaiter.value.System$Runtime$CompilerServices$ICriticalNotifyCompletion$UnsafeOnCompleted(completionAction);
         }
@@ -13282,7 +13282,7 @@ System.Runtime.CompilerServices.AsyncVoidMethodBuilder = $d.declare("System.Runt
     };
     $p.AwaitOnCompleted = function AsyncVoidMethodBuilder_AwaitOnCompleted(TAwaiter, TStateMachine, awaiter, stateMachine) {
         try {
-            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncVoidMethodBuilder,
+            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncVoidMethodBuilder, 
                 TStateMachine, this, stateMachine);
             awaiter.System$Runtime$CompilerServices$INotifyCompletion$OnCompleted(completionAction);
         }
@@ -13293,7 +13293,7 @@ System.Runtime.CompilerServices.AsyncVoidMethodBuilder = $d.declare("System.Runt
     };
     $p.AwaitOnCompleted$1 = function AsyncVoidMethodBuilder_AwaitOnCompleted(TAwaiter, TStateMachine, awaiter, stateMachine) {
         try {
-            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncVoidMethodBuilder,
+            var completionAction = this.m_coreState.GetCompletionAction(System.Runtime.CompilerServices.AsyncVoidMethodBuilder, 
                 TStateMachine, this, stateMachine.value);
             awaiter.value.System$Runtime$CompilerServices$INotifyCompletion$OnCompleted(completionAction);
         }
@@ -13636,16 +13636,16 @@ System.String = $d.declare("System.String", System.Object, 20, $asm, function($t
             return 1;
         switch (comparisonType) {
             case 0:
-                return System.Globalization.CultureInfo().CurrentCulture.get_CompareInfo().Compare$1(strA,
+                return System.Globalization.CultureInfo().CurrentCulture.get_CompareInfo().Compare$1(strA, 
                     strB, 0);
             case 1:
-                return System.Globalization.CultureInfo().CurrentCulture.get_CompareInfo().Compare$1(strA,
+                return System.Globalization.CultureInfo().CurrentCulture.get_CompareInfo().Compare$1(strA, 
                     strB, 1);
             case 2:
-                return System.Globalization.CultureInfo().InvariantCulture.get_CompareInfo().Compare$1(strA,
+                return System.Globalization.CultureInfo().InvariantCulture.get_CompareInfo().Compare$1(strA, 
                     strB, 0);
             case 3:
-                return System.Globalization.CultureInfo().InvariantCulture.get_CompareInfo().Compare$1(strA,
+                return System.Globalization.CultureInfo().InvariantCulture.get_CompareInfo().Compare$1(strA, 
                     strB, 1);
             case 4:
                 return $t.CompareOrdinal(strA, strB, false);
@@ -13674,7 +13674,7 @@ System.String = $d.declare("System.String", System.Object, 20, $asm, function($t
         for (var i = 0; i < separator.length; i++) {
             stringSeparator[i] = separator[i];
         }
-        var array = s.split(new RegExp($t.Join$1(String, "|", System.Linq.Enumerable.Select(System.Char,
+        var array = s.split(new RegExp($t.Join$1(String, "|", System.Linq.Enumerable.Select(System.Char, 
             String, stringSeparator, $d.delegate(function(x) {
                 return this.EscapeRegex(x);
             }, this)))));
@@ -13686,7 +13686,7 @@ System.String = $d.declare("System.String", System.Object, 20, $asm, function($t
         for (var i = 0; i < separator.length; i++) {
             stringSeparator[i] = separator[i];
         }
-        var array = s.split(new RegExp($t.Join$1(String, "|", System.Linq.Enumerable.Select(System.Char,
+        var array = s.split(new RegExp($t.Join$1(String, "|", System.Linq.Enumerable.Select(System.Char, 
             String, stringSeparator, $d.delegate(function(x) {
                 return this.EscapeRegex(x);
             }, this)))), count);
@@ -13717,7 +13717,7 @@ System.String = $d.declare("System.String", System.Object, 20, $asm, function($t
         return $t.InternalJoin(separator, value);
     };
     $t.Join$1 = function String_Join(T, separator, values) {
-        return $t.InternalJoin(separator, System.Linq.Enumerable.ToArray(String, System.Linq.Enumerable.Select(T,
+        return $t.InternalJoin(separator, System.Linq.Enumerable.ToArray(String, System.Linq.Enumerable.Select(T, 
             String, values, $d.delegate(function(x) {
                 return x.toString();
             }, this))));
@@ -14190,7 +14190,7 @@ System.Text.StringBuilder = $d.declare("System.Text.StringBuilder", System.Objec
         var ch = 0;
         var cf = null;
         if (provider != null) {
-            cf = $d.cast(provider.System$IFormatProvider$GetFormat($d.typeOf(System.ICustomFormatter)),
+            cf = $d.cast(provider.System$IFormatProvider$GetFormat($d.typeOf(System.ICustomFormatter)), 
                 System.ICustomFormatter);
         }
         while (true) {
@@ -14367,7 +14367,7 @@ System.Threading.Interlocked = $d.declare("System.Threading.Interlocked", System
     $t.ctor.prototype = $p;
     $t.CompareExchange = function Interlocked_CompareExchange(T, location1, value, comparand) {
         var oldValue = location1.value;
-        if (System.Collections.Generic.EqualityComparer$1(T).get_Default().Equals$1(location1.value,
+        if (System.Collections.Generic.EqualityComparer$1(T).get_Default().Equals$1(location1.value, 
             comparand))
             location1.value = value;
         return oldValue;
@@ -14834,11 +14834,11 @@ System.Tuple = $d.declare("System.Tuple", System.Object, 0, $asm, function($t, $
         return new (System.Tuple$6(T1, T2, T3, T4, T5, T6).ctor)(item1, item2, item3, item4, item5, item6);
     };
     $t.Create$6 = function Tuple_Create(T1, T2, T3, T4, T5, T6, T7, item1, item2, item3, item4, item5, item6, item7) {
-        return new (System.Tuple$7(T1, T2, T3, T4, T5, T6, T7).ctor)(item1, item2, item3, item4, item5,
+        return new (System.Tuple$7(T1, T2, T3, T4, T5, T6, T7).ctor)(item1, item2, item3, item4, item5, 
             item6, item7);
     };
     $t.Create$7 = function Tuple_Create(T1, T2, T3, T4, T5, T6, T7, T8, item1, item2, item3, item4, item5, item6, item7, item8) {
-        return new (System.Tuple$8(T1, T2, T3, T4, T5, T6, T7, System.Tuple$1(T8)).ctor)(item1, item2,
+        return new (System.Tuple$8(T1, T2, T3, T4, T5, T6, T7, System.Tuple$1(T8)).ctor)(item1, item2, 
             item3, item4, item5, item6, item7, new (System.Tuple$1(T8).ctor)(item8));
     };
     $t.CombineHashCodes = function Tuple_CombineHashCodes(h1, h2) {
@@ -14857,11 +14857,11 @@ System.Tuple = $d.declare("System.Tuple", System.Object, 0, $asm, function($t, $
         return $t.CombineHashCodes($t.CombineHashCodes$2(h1, h2, h3, h4), $t.CombineHashCodes(h5, h6));
     };
     $t.CombineHashCodes$5 = function Tuple_CombineHashCodes(h1, h2, h3, h4, h5, h6, h7) {
-        return $t.CombineHashCodes($t.CombineHashCodes$2(h1, h2, h3, h4), $t.CombineHashCodes$1(h5, h6,
+        return $t.CombineHashCodes($t.CombineHashCodes$2(h1, h2, h3, h4), $t.CombineHashCodes$1(h5, h6, 
             h7));
     };
     $t.CombineHashCodes$6 = function Tuple_CombineHashCodes(h1, h2, h3, h4, h5, h6, h7, h8) {
-        return $t.CombineHashCodes($t.CombineHashCodes$2(h1, h2, h3, h4), $t.CombineHashCodes$2(h5, h6,
+        return $t.CombineHashCodes($t.CombineHashCodes$2(h1, h2, h3, h4), $t.CombineHashCodes$2(h5, h6, 
             h7, h8));
     };
 });
@@ -14886,7 +14886,7 @@ System.Tuple$1 = $d.declare("System.Tuple`1", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$1_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             System.Collections.Generic.EqualityComparer$1(System.Object).get_Default());
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$1_System_Collections_IStructuralEquatable_Equals(other, comparer) {
@@ -14899,7 +14899,7 @@ System.Tuple$1 = $d.declare("System.Tuple`1", System.Object, 256, $asm, function
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1);
     };
     $p.System$IComparable$CompareTo = function Tuple$1_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$1_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -14911,7 +14911,7 @@ System.Tuple$1 = $d.declare("System.Tuple`1", System.Object, 256, $asm, function
         throw new System.ArgumentException.ctor$1("ArgumentException_TupleIncorrectType");
     };
     $p.GetHashCode = function Tuple$1_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$1_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
@@ -14954,7 +14954,7 @@ System.Tuple$2 = $d.declare("System.Tuple`2", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$2_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$2_System_Collections_IStructuralEquatable_Equals(other, comparer) {
@@ -14967,7 +14967,7 @@ System.Tuple$2 = $d.declare("System.Tuple`2", System.Object, 256, $asm, function
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, tuple.m_Item2);
     };
     $p.System$IComparable$CompareTo = function Tuple$2_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$2_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -14986,11 +14986,11 @@ System.Tuple$2 = $d.declare("System.Tuple`2", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$2_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$2_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
-        return System.Tuple.CombineHashCodes(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
+        return System.Tuple.CombineHashCodes(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
             comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2));
     };
     $p.System$ITuple$GetHashCode = function Tuple$2_System_ITuple_GetHashCode(comparer) {
@@ -15037,21 +15037,21 @@ System.Tuple$3 = $d.declare("System.Tuple`3", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$3_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$3_System_Collections_IStructuralEquatable_Equals(other, comparer) {
         if (other == null)
             return false;
         var tuple = $d.as(other, System.Tuple$3(T1, T2, T3));
-        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2,
+        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, 
             tuple.m_Item2))
             return false;
         else
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3);
     };
     $p.System$IComparable$CompareTo = function Tuple$3_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$3_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -15073,11 +15073,11 @@ System.Tuple$3 = $d.declare("System.Tuple`3", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$3_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$3_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
-        return System.Tuple.CombineHashCodes$1(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
+        return System.Tuple.CombineHashCodes$1(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
             comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3));
     };
     $p.System$ITuple$GetHashCode = function Tuple$3_System_ITuple_GetHashCode(comparer) {
@@ -15131,21 +15131,21 @@ System.Tuple$4 = $d.declare("System.Tuple`4", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$4_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$4_System_Collections_IStructuralEquatable_Equals(other, comparer) {
         if (other == null)
             return false;
         var tuple = $d.as(other, System.Tuple$4(T1, T2, T3, T4));
-        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2,
+        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, 
             tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)))
             return false;
         else
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4, tuple.m_Item4);
     };
     $p.System$IComparable$CompareTo = function Tuple$4_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$4_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -15170,12 +15170,12 @@ System.Tuple$4 = $d.declare("System.Tuple`4", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$4_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$4_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
-        return System.Tuple.CombineHashCodes$2(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
-            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3),
+        return System.Tuple.CombineHashCodes$2(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
+            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), 
             comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4));
     };
     $p.System$ITuple$GetHashCode = function Tuple$4_System_ITuple_GetHashCode(comparer) {
@@ -15236,22 +15236,22 @@ System.Tuple$5 = $d.declare("System.Tuple`5", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$5_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$5_System_Collections_IStructuralEquatable_Equals(other, comparer) {
         if (other == null)
             return false;
         var tuple = $d.as(other, System.Tuple$5(T1, T2, T3, T4, T5));
-        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2,
-            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4,
+        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, 
+            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4, 
             tuple.m_Item4))
             return false;
         else
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item5, tuple.m_Item5);
     };
     $p.System$IComparable$CompareTo = function Tuple$5_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$5_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -15279,12 +15279,12 @@ System.Tuple$5 = $d.declare("System.Tuple`5", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$5_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$5_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
-        return System.Tuple.CombineHashCodes$3(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
-            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3),
+        return System.Tuple.CombineHashCodes$3(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
+            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), 
             comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5));
     };
     $p.System$ITuple$GetHashCode = function Tuple$5_System_ITuple_GetHashCode(comparer) {
@@ -15352,22 +15352,22 @@ System.Tuple$6 = $d.declare("System.Tuple`6", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$6_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$6_System_Collections_IStructuralEquatable_Equals(other, comparer) {
         if (other == null)
             return false;
         var tuple = $d.as(other, System.Tuple$6(T1, T2, T3, T4, T5, T6));
-        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2,
-            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4,
+        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, 
+            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4, 
             tuple.m_Item4) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item5, tuple.m_Item5)))
             return false;
         else
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item6, tuple.m_Item6);
     };
     $p.System$IComparable$CompareTo = function Tuple$6_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$6_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -15398,13 +15398,13 @@ System.Tuple$6 = $d.declare("System.Tuple`6", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$6_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$6_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
-        return System.Tuple.CombineHashCodes$4(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
-            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3),
-            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5),
+        return System.Tuple.CombineHashCodes$4(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
+            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), 
+            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), 
             comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6));
     };
     $p.System$ITuple$GetHashCode = function Tuple$6_System_ITuple_GetHashCode(comparer) {
@@ -15479,23 +15479,23 @@ System.Tuple$7 = $d.declare("System.Tuple`7", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$7_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$7_System_Collections_IStructuralEquatable_Equals(other, comparer) {
         if (other == null)
             return false;
         var tuple = $d.as(other, System.Tuple$7(T1, T2, T3, T4, T5, T6, T7));
-        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2,
-            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4,
-            tuple.m_Item4) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item5, tuple.m_Item5) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item6,
+        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, 
+            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4, 
+            tuple.m_Item4) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item5, tuple.m_Item5) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item6, 
             tuple.m_Item6)))
             return false;
         else
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Item7, tuple.m_Item7);
     };
     $p.System$IComparable$CompareTo = function Tuple$7_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$7_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -15529,13 +15529,13 @@ System.Tuple$7 = $d.declare("System.Tuple`7", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$7_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$7_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
-        return System.Tuple.CombineHashCodes$5(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
-            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3),
-            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5),
+        return System.Tuple.CombineHashCodes$5(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
+            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), 
+            comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), 
             comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7));
     };
     $p.System$ITuple$GetHashCode = function Tuple$7_System_ITuple_GetHashCode(comparer) {
@@ -15619,23 +15619,23 @@ System.Tuple$8 = $d.declare("System.Tuple`8", System.Object, 256, $asm, function
     };
     $t.ctor.prototype = $p;
     $p.Equals = function Tuple$8_Equals(obj) {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj,
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$Equals(obj, 
             $d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$Equals = function Tuple$8_System_Collections_IStructuralEquatable_Equals(other, comparer) {
         if (other == null)
             return false;
         var tuple = $d.as(other, System.Tuple$8(T1, T2, T3, T4, T5, T6, T7, TRest));
-        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2,
-            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4,
-            tuple.m_Item4) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item5, tuple.m_Item5) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item6,
+        if (tuple == null || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item1, tuple.m_Item1) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item2, 
+            tuple.m_Item2) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item3, tuple.m_Item3)) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item4, 
+            tuple.m_Item4) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item5, tuple.m_Item5) || (!comparer.System$Collections$IEqualityComparer$Equals(this.m_Item6, 
             tuple.m_Item6) || !comparer.System$Collections$IEqualityComparer$Equals(this.m_Item7, tuple.m_Item7))))
             return false;
         else
             return comparer.System$Collections$IEqualityComparer$Equals(this.m_Rest, tuple.m_Rest);
     };
     $p.System$IComparable$CompareTo = function Tuple$8_System_IComparable_CompareTo(obj) {
-        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj,
+        return ($d.cast(this, System.Collections.IStructuralComparable)).System$Collections$IStructuralComparable$CompareTo(obj, 
             $d.cast(System.Collections.Generic.Comparer$1(System.Object).get_Default(), System.Collections.IComparer));
     };
     $p.System$Collections$IStructuralComparable$CompareTo = function Tuple$8_System_Collections_IStructuralComparable_CompareTo(other, comparer) {
@@ -15672,7 +15672,7 @@ System.Tuple$8 = $d.declare("System.Tuple`8", System.Object, 256, $asm, function
         }
     };
     $p.GetHashCode = function Tuple$8_GetHashCode() {
-        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(),
+        return ($d.cast(this, System.Collections.IStructuralEquatable)).System$Collections$IStructuralEquatable$GetHashCode($d.cast(System.Collections.Generic.EqualityComparer$1(System.Object).get_Default(), 
             System.Collections.IEqualityComparer));
     };
     $p.System$Collections$IStructuralEquatable$GetHashCode = function Tuple$8_System_Collections_IStructuralEquatable_GetHashCode(comparer) {
@@ -15681,34 +15681,34 @@ System.Tuple$8 = $d.declare("System.Tuple`8", System.Object, 256, $asm, function
             return tuple.System$ITuple$GetHashCode(comparer);
         switch (8 - tuple.System$ITuple$get_Size()) {
             case 1:
-                return System.Tuple.CombineHashCodes(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7),
+                return System.Tuple.CombineHashCodes(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), 
                     tuple.System$ITuple$GetHashCode(comparer));
             case 2:
-                return System.Tuple.CombineHashCodes$1(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6),
+                return System.Tuple.CombineHashCodes$1(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), 
                     comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), tuple.System$ITuple$GetHashCode(comparer));
             case 3:
-                return System.Tuple.CombineHashCodes$2(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7),
+                return System.Tuple.CombineHashCodes$2(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), 
                     tuple.System$ITuple$GetHashCode(comparer));
             case 4:
-                return System.Tuple.CombineHashCodes$3(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6),
+                return System.Tuple.CombineHashCodes$3(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), 
                     comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), tuple.System$ITuple$GetHashCode(comparer));
             case 5:
-                return System.Tuple.CombineHashCodes$4(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7),
+                return System.Tuple.CombineHashCodes$4(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), 
                     tuple.System$ITuple$GetHashCode(comparer));
             case 6:
-                return System.Tuple.CombineHashCodes$5(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6),
+                return System.Tuple.CombineHashCodes$5(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), 
                     comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), tuple.System$ITuple$GetHashCode(comparer));
             case 7:
-                return System.Tuple.CombineHashCodes$6(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5),
-                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7),
+                return System.Tuple.CombineHashCodes$6(comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item1), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item2), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item3), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item4), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item5), 
+                    comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item6), comparer.System$Collections$IEqualityComparer$GetHashCode(this.m_Item7), 
                     tuple.System$ITuple$GetHashCode(comparer));
             default:
                 return -1;
@@ -15752,10 +15752,10 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
         $t.EmptyConstructors = $d.array(System.Reflection.ConstructorInfo, 0);
         $t.EmptyProperties = $d.array(System.Reflection.PropertyInfo, 0);
         $t.EmptyEvents = $d.array(System.Reflection.EventInfo, 0);
-        $t.EncodedTypes = [null, System.Object, System.Enum, System.MulticastDelegate, System.Delegate,
-            System.ValueType, System.Void, Boolean, System.Char, System.SByte, System.Byte, System.Int16,
-            System.UInt16, System.Int32, System.UInt32, System.Int64, System.UInt64, System.Decimal,
-            System.Single, System.Double, String, System.IntPtr, System.UIntPtr, Array, System.Nullable$1,
+        $t.EncodedTypes = [null, System.Object, System.Enum, System.MulticastDelegate, System.Delegate, 
+            System.ValueType, System.Void, Boolean, System.Char, System.SByte, System.Byte, System.Int16, 
+            System.UInt16, System.Int32, System.UInt32, System.Int64, System.UInt64, System.Decimal, 
+            System.Single, System.Double, String, System.IntPtr, System.UIntPtr, Array, System.Nullable$1, 
             System.DateTime, System.TimeSpan, System.Type, System.Exception, Number];
     };
     $t.$ator = function() {
@@ -15819,7 +15819,7 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
     };
     $t.ctor.prototype = $p;
     $t.Create = function Type_Create(typeFunc, a) {
-        return (a.constructor === System.Type) ? a : new System.Type.ctor(typeFunc, a[0], a[1], a[2],
+        return (a.constructor === System.Type) ? a : new System.Type.ctor(typeFunc, a[0], a[1], a[2], 
             a[3], a[4], a[5], a[6]);
     };
     $t.CreateEnum = function Type_CreateEnum(enumType) {
@@ -15835,11 +15835,11 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
         }
         var fields = $d.array(System.Reflection.FieldInfo, enumNames.length);
         for (var i = 0; i < enumNames.length; i++) {
-            fields[i] = new System.Reflection.FieldInfo.ctor(enumNames[i], underlyingType, 32854, enumValues[i],
+            fields[i] = new System.Reflection.FieldInfo.ctor(enumNames[i], underlyingType, 32854, enumValues[i], 
                 enumAttrs ? enumAttrs[i] : null);
         }
         var methods = $d.typeOf(System.Enum).methods;
-        return new System.Type.ctor(enumType, enumType.$enumTypeAttrs, fields, methods, null, null, null,
+        return new System.Type.ctor(enumType, enumType.$enumTypeAttrs, fields, methods, null, null, null, 
             attributes);
     };
     $t.TryConstruct = function Type_TryConstruct(array, creator) {
@@ -15852,7 +15852,7 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
         var k = fullName.indexOf("<");
         if (k == -1)
             k = undefined;
-        return fullName.substring(Math.max(fullName.lastIndexOf(".", k), fullName.lastIndexOf("+", k)) + 1,
+        return fullName.substring(Math.max(fullName.lastIndexOf(".", k), fullName.lastIndexOf("+", k)) + 1, 
             k);
     };
     $p.get_MemberType = function Type_get_MemberType() {
@@ -15896,7 +15896,7 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
     };
     $p.GetProperties = function Type_GetProperties() {
         this.HasReflection();
-        return System.Linq.Enumerable.ToArray(System.Reflection.PropertyInfo, System.Linq.Enumerable.Where(System.Reflection.PropertyInfo,
+        return System.Linq.Enumerable.ToArray(System.Reflection.PropertyInfo, System.Linq.Enumerable.Where(System.Reflection.PropertyInfo, 
             this.properties, $d.delegate(function(x) {
                 return (x.GetGetMethod() != null && x.GetGetMethod().get_IsPublic()) || (x.GetSetMethod() != null && x.GetSetMethod().get_IsPublic());
             }, this)));
@@ -16130,7 +16130,7 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
         if (this.get_IsEnum() && this.self.$underlyingType != null)
             return $d.typeOf($d.tryDecodeTypeFunc(this.self.$underlyingType));
         else
-            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"),
+            throw new System.ArgumentException.ctor$3(System.Environment.GetResourceString("Arg_MustBeEnum"), 
                 "enumType");
     };
     $p.MakeArrayType = function Type_MakeArrayType() {
@@ -16239,7 +16239,7 @@ System.Type = $d.declare("System.Type", System.Reflection.MemberInfo, 27, $asm, 
     };
     $p.HasReflection = function Type_HasReflection() {
         if (this.self.$typeKind != 68 && this.self.$typeKind != 63 && this.self.$typeInfo == null)
-            throw new System.InvalidOperationException.ctor$1(String.Format("Type '{0}' compiled with no reflection data.\r\nRecompile with '[assembly: CompilerOptions(ReflectionLevel = <level>)]' or '[Js(ReflectionLevel = <level>)]' to include reflection data.",
+            throw new System.InvalidOperationException.ctor$1(String.Format("Type '{0}' compiled with no reflection data.\r\nRecompile with '[assembly: CompilerOptions(ReflectionLevel = <level>)]' or '[Js(ReflectionLevel = <level>)]' to include reflection data.", 
                 $d.array(System.Object, [this.name])));
     };
 });
