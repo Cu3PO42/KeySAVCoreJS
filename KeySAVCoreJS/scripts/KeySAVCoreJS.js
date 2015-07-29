@@ -617,6 +617,11 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
                 null, null);
         }
 
+        if (KeySAVCore.Utility.SequenceEqual(break1, break2)) {
+            return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are identical.\nPlease follow the instructions.", 
+                null, null);
+        }
+
         // TODO readd upgrade logic
         if (KeySAVCore.Utility.SequenceEqual$2(break1, 524288, break2, 524288, 520192)) {
             save1Save = break2;

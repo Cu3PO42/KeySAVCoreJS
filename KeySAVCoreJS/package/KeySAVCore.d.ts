@@ -1,5 +1,24 @@
 /// <reference path="./KeySAVCoreJS.d.ts"/>
 
+interface LocalizationLanguage {
+    abilities: string[];
+    forms: string[];
+    items: string[];
+    moves: string[];
+    natures: string[];
+    species: string[];
+}
+
+interface Localization {
+    de: LocalizationLanguage;
+    en: LocalizationLanguage;
+    es: LocalizationLanguage;
+    fr: LocalizationLanguage;
+    it: LocalizationLanguage;
+    ja: LocalizationLanguage;
+    ko: LocalizationLanguage;
+}
+
 declare module "keysavcore" {
     export var Core: typeof KeySAVCore;
     export module Extensions {
@@ -10,5 +29,12 @@ declare module "keysavcore" {
             setKey(name: string, data: Uint8Array, key?: KeySAVCore.Structures.SaveKey);
             close();
         }
+
+        export var Localization: Localization;
     }
+}
+
+declare module "keysavcore/Localization" {
+    var _: Localization;
+    export = _;
 }

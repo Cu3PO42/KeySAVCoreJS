@@ -64,6 +64,11 @@ namespace KeySAVCore
                 return new SaveBreakResult(false, "Saves are not from the same game!\nPlease follow the instructions.", null, null);
             }
 
+            if(Utility.SequenceEqual(break1, break2))
+            {
+                return new SaveBreakResult(false, "The saves are identical.\nPlease follow the instructions.", null, null);
+            }
+
             // TODO readd upgrade logic
             if (Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000))
             {
