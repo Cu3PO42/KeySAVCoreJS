@@ -168,6 +168,8 @@ declare module KeySAVCore {
             eggMove2: ushort;
             eggMove3: ushort;
             eggMove4: ushort;
+            ribbonSet1: ushort;
+            ribbonSet2: ushort;
             chk: ushort;
             otFriendship: ushort;
             otAffection: ushort;
@@ -182,6 +184,8 @@ declare module KeySAVCore {
             otLang: ushort;
             box: short;
             slot: short;
+            ribbonSet3: byte;
+            ribbonSet4: byte;
             form: byte;
             gender: byte;
         }

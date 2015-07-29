@@ -29,6 +29,7 @@ namespace KeySAVCore.Structures
             move1Pp, move2Pp, move3Pp, move4Pp,
             move1Ppu, move2Ppu, move3Ppu, move4Ppu,
             eggMove1, eggMove2, eggMove3, eggMove4,
+            ribbonSet1, ribbonSet2,
             chk,
 
             otFriendship, otAffection,
@@ -40,6 +41,7 @@ namespace KeySAVCore.Structures
             box, slot;
 
         public readonly byte
+            ribbonSet3, ribbonSet4,
             form, gender;
 
         public readonly Date
@@ -85,6 +87,10 @@ namespace KeySAVCore.Structures
             markings = pkx[0x2A];
             pkrsStrain = pkx[0x2B] >> 4;
             pkrsDuration = pkx[0x2B] % 0x10;
+            ribbonSet1 = BitConverter.ToUInt16(pkx, 0x30);
+            ribbonSet2 = BitConverter.ToUInt16(pkx, 0x32);
+            ribbonSet3 = pkx[0x34];
+            ribbonSet4 = pkx[0x35];
 
             // Block B
             nickname = Encoding.Unicode.GetString(pkx, 0x40, 24).TrimCString();
@@ -148,7 +154,7 @@ namespace KeySAVCore.Structures
             hpType = (15 * ((ivHp & 1) + 2 * (ivAtk & 1) + 4 * (ivDef & 1) + 8 * (ivSpe & 1) + 16 * (ivSpAtk & 1) + 32 * (ivSpDef & 1))) / 63 + 1;
 
             tsv = (ushort)((tid ^ sid) >> 4);
-            esv = (ushort)(((pid >> 16) ^ (pid & 0xFFFF)) >> 4);
+            esv = (ushort)((((pid >> 16) & 0xFFFF) ^ (pid & 0xFFFF)) >> 4);
 
             isShiny = (tsv == esv);
         }

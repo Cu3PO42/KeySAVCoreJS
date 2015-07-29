@@ -330,6 +330,8 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.eggMove2 = 0;
         this.eggMove3 = 0;
         this.eggMove4 = 0;
+        this.ribbonSet1 = 0;
+        this.ribbonSet2 = 0;
         this.chk = 0;
         this.otFriendship = 0;
         this.otAffection = 0;
@@ -344,6 +346,8 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.otLang = 0;
         this.box = 0;
         this.slot = 0;
+        this.ribbonSet3 = 0;
+        this.ribbonSet4 = 0;
         this.form = 0;
         this.gender = 0;
         this.metDate = null;
@@ -389,6 +393,10 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.markings = pkx[42];
         this.pkrsStrain = pkx[43] >> 4;
         this.pkrsDuration = pkx[43] % 16;
+        this.ribbonSet1 = KeySAVCore.BitConverter.ToUInt16(pkx, 48);
+        this.ribbonSet2 = KeySAVCore.BitConverter.ToUInt16(pkx, 50);
+        this.ribbonSet3 = pkx[52];
+        this.ribbonSet4 = pkx[53];
 
         // Block B
         this.nickname = KeySAVCore.Utility.TrimCString(Unicode16LE.GetString(pkx, 64, 24));
@@ -452,7 +460,7 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.hpType = ((15 * ((this.ivHp & 1) + 2 * (this.ivAtk & 1) + 4 * (this.ivDef & 1) + 8 * (this.ivSpe & 1) + 16 * (this.ivSpAtk & 1) + 32 * (this.ivSpDef & 1))) / 63 | 0) + 1;
 
         this.tsv = (((this.tid ^ this.sid) >> 4) & 0xFFFF);
-        this.esv = ((((this.pid >> 16) ^ (this.pid & 65535)) >> 4) & 0xFFFF);
+        this.esv = (((((this.pid >> 16) & 65535) ^ (this.pid & 65535)) >> 4) & 0xFFFF);
 
         this.isShiny = (this.tsv == this.esv);
     };
@@ -675,6 +683,8 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
         if ((offset[0] == 0) || (offset[1] == 0)) {
             // We have a problem. Don't continue.
             result = "Unable to Find Box.\n";
+            result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
+            return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, result, null, null);
         }
         else {
             // Let's go deeper. We have the two box offsets.

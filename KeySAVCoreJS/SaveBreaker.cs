@@ -127,6 +127,8 @@ namespace KeySAVCore
             {
                 // We have a problem. Don't continue.
                 result = "Unable to Find Box.\n";
+                result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
+                return new SaveBreakResult(false, result, null, null);
             }
             else
             {
