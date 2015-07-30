@@ -4,9 +4,11 @@ interface LocalizationLanguage {
     abilities: string[];
     forms: string[];
     items: string[];
+    languageTags: string[];
     moves: string[];
     natures: string[];
     species: string[];
+    types: string[];
 }
 
 interface Localization {

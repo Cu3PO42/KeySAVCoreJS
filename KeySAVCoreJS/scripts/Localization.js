@@ -2,7 +2,7 @@ var fs = require('fs'),
     names = {};
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
-var files = ["abilities", "forms", "items", "moves", "natures", "species", "types"];
+var files = ["abilities", "forms", "items", "languageTags", "moves", "natures", "species", "types"];
 
 for (var i = 0; i < langs.length; ++i) {
     var lang = names[langs[i]] = {};
