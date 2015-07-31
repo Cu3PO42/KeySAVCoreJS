@@ -59,20 +59,27 @@
     <DuoCodeNoSourceMaps>false</DuoCodeNoSourceMaps>
     <DuoCodeSourceCodeRoot>source</DuoCodeSourceCodeRoot>
   </PropertyGroup>
-  <Import Project="..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets" Condition="Exists('..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets')" />
+  <Import Project="..\packages\DuoCode.1.1.1423.0\build\DuoCode.targets" Condition="Exists('..\packages\DuoCode.1.1.1423.0\build\DuoCode.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets'))" />
+    <Error Condition="!Exists('..\packages\DuoCode.1.1.1423.0\build\DuoCode.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\DuoCode.1.0.1355.0\build\DuoCode.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>mkdir "source"
+    <PostBuildEvent Condition=" '$(OS)' != 'Unix' ">mkdir "source"
 del *.dll
+del *.min.js
 cd ..
 copy *.cs "$(OutDir)source\"
 robocopy "package" "$(OutDir)\" * /s
 exit 0</PostBuildEvent>
+    <PostBuildEvent Condition=" '$(OS)' == 'Unix' ">mkdir -p "source"
+rm *.dll
+rm *.min.js
+cd ..
+cp *.cs "$(OutDir)source" 
+cp -r package/* "$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
