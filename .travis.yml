@@ -3,3 +3,13 @@ solution: KeySAVCoreJS.sln
 before_install:
 - openssl aes-256-cbc -K $encrypted_a02c42a85227_key -iv $encrypted_a02c42a85227_iv
   -in DuoCode.lic.enc -out KeySAVCoreJS/DuoCode.lic -d
+before_deploy:
+- cd KeySAVCoreJS/scripts
+deploy:
+  provider: npm
+  email: cu3po42@gmail.com
+  api_key:
+    secure: VcIEejrqirsNDg88t+dUGVte+rzZ515ETHFdAWqfhJ5ABy+3ULfKUr9vcUjKcuSutqqi3nIVS/S57HPzLWP3KIVIgB3cWBN7a58HuRIw7SD8BxdixQIR5GHmrePfe6nFe9hKgmK0QPv2gWfzbSwdVpnZ6RocVkvde2DLd5MfnwMmOlW75EaoDjvmHIeRY9myhX0wjo0HaerMfLckeMBMf1XO8wc/bkUCgzVD7glwb4KWFsdRQq+/QwmOIdygB/ruQI+9sPHBAi9NZ0nDCLQR+qVXmnid/6lb5Z98bnzlhWdn79d2DVwysZCVlclYiT2EE62OYoFTmqqSUBb7mRkjPbiiruZDnOp8Q249v1W7JP9UXu6Siy486Ji9FU/zKrIP9iGV4HqFxjWxKzEf4Z7AO38k1niJTtubw+PXOc7MiS8y3LzwLxeID5YwEooE+CBdodq5Ga9tHGO0xGzhWcjKgxBHNTASvQ0KVVYISuL9j1TAq8MqHCWOqH7CsyyDLy1xpmJYIv5Z2f9gFauPI7hgWCI1G9kmhq/DECayuEgdTHZjv2Uwyr1RuyIBpjRfdhSeB1wOwJJddupj2FyxY8wgQFuzjZW6/YcoYskKDQMf0HCQYTuxnJHHYf74khQi+Z67tx63AtA9RBQiQnuAgVytQB4bTmjH7aRcUJ0rY+w85mk=
+  on:
+    tags: true
+    repo: Cu3PO42/KeySAVCoreJS
