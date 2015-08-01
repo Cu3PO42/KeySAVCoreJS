@@ -7,4 +7,5 @@ after_success:
 - cd KeySAVCoreJS/scripts
 - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
 - npm install
+- unset TRAVIS
 - npm run publish
