@@ -22,10 +22,10 @@ module.exports = (function() {
         var self = this;
         return readdirAsync(path)
         .map(function(fileName) {
-            statAsync(join(path, fileName))
+            return statAsync(join(path, fileName))
             .then(function (stats) {
                 if (stats.size === 0xB4AD4 || stats.size === 0x1000) {
-                    openAsync(join(path, fileName), 'r+')
+                    return openAsync(join(path, fileName), 'r+')
                     .then(function(fd) {
                         var buf = new Buffer(8);
                         return readAsync(fd, buf, 0, 8, 0)
