@@ -5,5 +5,6 @@ before_install:
   -in DuoCode.lic.enc -out KeySAVCoreJS/DuoCode.lic -d
 after_success:
 - cd KeySAVCoreJS/scripts
+- echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
 - npm install
 - npm run publish
