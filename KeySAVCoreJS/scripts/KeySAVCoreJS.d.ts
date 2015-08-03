@@ -184,7 +184,7 @@ declare module KeySAVCore {
             metLocation: ushort;
             ball: ushort;
             encounterType: ushort;
-            gamevers: ushort;
+            gameVersion: ushort;
             countryID: ushort;
             regionID: ushort;
             dsregID: ushort;

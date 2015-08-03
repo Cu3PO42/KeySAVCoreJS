@@ -5,8 +5,8 @@ namespace KeySAVCore.Structures
 {
     public struct PKX
     {
-        public readonly uint 
-            ec, pid, exp, 
+        public readonly uint
+            ec, pid, exp,
             evHp, evAtk, evDef, evSpAtk, evSpDef, evSpe,
             ivHp, ivAtk, ivDef, ivSpe, ivSpAtk, ivSpDef,
             contestStatCool, contestStatBeauty, contestStatCute, contestStatSmart, contestStatTough, contestStatSheen,
@@ -35,9 +35,9 @@ namespace KeySAVCore.Structures
             otFriendship, otAffection,
             eggLocation, metLocation,
             ball, encounterType,
-            gamevers, countryID, regionID, dsregID, otLang;
+            gameVersion, countryID, regionID, dsregID, otLang;
 
-        public readonly short 
+        public readonly short
             box, slot;
 
         public readonly byte
@@ -145,7 +145,7 @@ namespace KeySAVCore.Structures
             levelMet = pkx[0xDD] & 0x7F;
             otGender = (pkx[0xDD]) >> 7;
             encounterType = pkx[0xDE];
-            gamevers = pkx[0xDF];
+            gameVersion = pkx[0xDF];
             countryID = pkx[0xE0];
             regionID = pkx[0xE1];
             dsregID = pkx[0xE2];
