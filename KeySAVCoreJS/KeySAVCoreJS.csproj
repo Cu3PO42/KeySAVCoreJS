@@ -77,6 +77,7 @@ exit 0</PostBuildEvent>
     <PostBuildEvent Condition=" '$(OS)' == 'Unix' ">mkdir -p "source"
 rm *.dll
 rm *.min.js
+dos2unix mscorlib.*
 cd ..
 cp *.cs "$(OutDir)source" 
 cp -R package/. "$(OutDir)"</PostBuildEvent>
