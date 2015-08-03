@@ -3,6 +3,7 @@
 interface LocalizationLanguage {
     abilities: string[];
     forms: string[];
+    games: string[];
     items: string[];
     languageTags: string[];
     moves: string[];
