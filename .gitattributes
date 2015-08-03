@@ -3,6 +3,16 @@
 ###############################################################################
 * text=auto
 
+*.cs text
+*.js text
+*.ts text
+*.txt text
+*.xml text
+*.json text
+
+*.sln text eol=crlf
+*.csproj text eol=crlf
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
