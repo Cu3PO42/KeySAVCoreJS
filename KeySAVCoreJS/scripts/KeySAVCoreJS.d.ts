@@ -195,6 +195,8 @@ declare module KeySAVCore {
             ribbonSet4: byte;
             form: byte;
             gender: byte;
+            metDate: long;
+            eggDate: long;
         }
         export interface PKXTypeFunc extends TypeFunction {
             (): PKXTypeFunc;

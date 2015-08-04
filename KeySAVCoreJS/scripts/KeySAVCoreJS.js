@@ -350,8 +350,8 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.ribbonSet4 = 0;
         this.form = 0;
         this.gender = 0;
-        this.metDate = null;
-        this.eggDate = null;
+        this.metDate = 0;
+        this.eggDate = 0;
     };
     $t.ctor.prototype = $p;
     $t.ctor$1 = function PKX(pkx, box, slot, isghost) {
@@ -442,8 +442,8 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.otFriendship = pkx[202];
         this.otAffection = pkx[203]; // Handled by Memory Editor
         // 0xCC, 0xCD, 0xCE, 0xCF, 0xD0
-        this.eggDate = new Date(pkx[209], pkx[210], pkx[211]);
-        this.metDate = new Date(pkx[212], pkx[213], pkx[214]);
+        this.eggDate = new Date(pkx[209] + 2000, pkx[210], pkx[211], 0, 0, 0, 0).getTime();
+        this.metDate = new Date(pkx[212] + 2000, pkx[213], pkx[214], 0, 0, 0, 0).getTime();
         // 0xD7 - unused
         this.eggLocation = KeySAVCore.BitConverter.ToUInt16(pkx, 216);
         this.metLocation = KeySAVCore.BitConverter.ToUInt16(pkx, 218);

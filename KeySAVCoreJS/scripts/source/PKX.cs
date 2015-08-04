@@ -1,5 +1,6 @@
 ﻿using System;
 using JS;
+using DuoCode.Runtime;
 
 namespace KeySAVCore.Structures
 {
@@ -44,7 +45,7 @@ namespace KeySAVCore.Structures
             ribbonSet3, ribbonSet4,
             form, gender;
 
-        public readonly Date
+        public readonly long
             metDate, eggDate;
 
         public PKX(Uint8Array pkx, short box, short slot, bool isghost)
@@ -136,8 +137,8 @@ namespace KeySAVCore.Structures
             otFriendship = pkx[0xCA];
             otAffection = pkx[0xCB]; // Handled by Memory Editor
             // 0xCC, 0xCD, 0xCE, 0xCF, 0xD0
-            eggDate = new Date(pkx[0xD1], pkx[0xD2], pkx[0xD3]);
-            metDate = new Date(pkx[0xD4], pkx[0xD5], pkx[0xD6]);
+            eggDate = new JsDate(pkx[0xD1] + 2000, pkx[0xD2], pkx[0xD3], 0, 0, 0, 0).getTime();
+            metDate = new JsDate(pkx[0xD4] + 2000, pkx[0xD5], pkx[0xD6], 0, 0, 0, 0).getTime();
             // 0xD7 - unused
             eggLocation = BitConverter.ToUInt16(pkx, 0xD8);
             metLocation = BitConverter.ToUInt16(pkx, 0xDA);
