@@ -2,12 +2,14 @@
 
 interface LocalizationLanguage {
     abilities: string[];
+    countries: string[];
     forms: string[];
     games: string[];
     items: string[];
     languageTags: string[];
     moves: string[];
     natures: string[];
+    regions: string[];
     species: string[];
     types: string[];
 }
