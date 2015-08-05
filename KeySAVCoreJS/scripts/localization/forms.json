@@ -1,0 +1,2461 @@
+{
+    "fr": {
+        "3": {
+            "2": "Méga-Florizarre"
+        },
+        "6": {
+            "2": "Méga-Dracaufeu X",
+            "3": "Méga-Dracaufeu Y"
+        },
+        "9": {
+            "2": "Méga-Tortank"
+        },
+        "65": {
+            "2": "Méga-Alakazam"
+        },
+        "94": {
+            "2": "Méga-Ectoplasma"
+        },
+        "115": {
+            "2": "Méga-Kangourex"
+        },
+        "127": {
+            "2": "Méga-Scarabrute"
+        },
+        "130": {
+            "2": "Méga-Léviator"
+        },
+        "142": {
+            "2": "Méga-Ptéra"
+        },
+        "150": {
+            "2": "Méga-Mewtwo X",
+            "3": "Méga-Mewtwo Y"
+        },
+        "172": {
+            "2": "Troizépi"
+        },
+        "181": {
+            "2": "Méga-Pharamp"
+        },
+        "201": {
+            "1": "A",
+            "2": "B",
+            "3": "C",
+            "4": "D",
+            "5": "E",
+            "6": "F",
+            "7": "G",
+            "8": "H",
+            "9": "I",
+            "10": "J",
+            "11": "K",
+            "12": "L",
+            "13": "M",
+            "14": "N",
+            "15": "O",
+            "16": "P",
+            "17": "Q",
+            "18": "R",
+            "19": "S",
+            "20": "T",
+            "21": "U",
+            "22": "V",
+            "23": "W",
+            "24": "X",
+            "25": "Y",
+            "26": "Z",
+            "27": "!"
+        },
+        "212": {
+            "2": "Méga-Cizayox"
+        },
+        "214": {
+            "2": "Méga-Scarhino"
+        },
+        "229": {
+            "2": "Méga-Démolosse"
+        },
+        "248": {
+            "2": "Méga-Tyranocif"
+        },
+        "257": {
+            "2": "Méga-Braségali"
+        },
+        "282": {
+            "2": "Méga-Gardevoir"
+        },
+        "303": {
+            "2": "Méga-Mysdibule"
+        },
+        "306": {
+            "2": "Méga-Galeking"
+        },
+        "308": {
+            "2": "Méga-Charmina"
+        },
+        "310": {
+            "2": "Méga-Élecsprint"
+        },
+        "351": {
+            "2": "Forme Solaire",
+            "3": "Forme Eau de Pluie",
+            "4": "Forme Blizzard"
+        },
+        "354": {
+            "2": "Méga-Branette"
+        },
+        "359": {
+            "2": "Méga-Absol"
+        },
+        "380": {
+            "2": "Méga-Latias"
+        },
+        "381": {
+            "2": "Méga-Latios"
+        },
+        "386": {
+            "1": "Forme Normale",
+            "2": "Forme Attaque",
+            "3": "Forme Défense",
+            "4": "Forme Vitesse"
+        },
+        "412": {
+            "1": "Cape Plante",
+            "2": "Cape Sable",
+            "3": "Cape Déchet"
+        },
+        "413": {
+            "1": "Cape Plante",
+            "2": "Cape Sable",
+            "3": "Cape Déchet"
+        },
+        "421": {
+            "1": "Temps Couvert",
+            "2": "Temps Ensoleillé"
+        },
+        "422": {
+            "1": "Mer Occident",
+            "2": "Mer Orient"
+        },
+        "423": {
+            "1": "Mer Occident",
+            "2": "Mer Orient"
+        },
+        "445": {
+            "2": "Méga-Carchacrok"
+        },
+        "448": {
+            "2": "Méga-Lucario"
+        },
+        "460": {
+            "2": "Méga-Blizzaroi"
+        },
+        "479": {
+            "2": "Motisma Chaleur",
+            "3": "Motisma Lavage",
+            "4": "Motisma Froid",
+            "5": "Motisma Hélice",
+            "6": "Motisma Tonte"
+        },
+        "487": {
+            "1": "Forme Alternative",
+            "2": "Forme Originelle"
+        },
+        "492": {
+            "1": "Forme Terrestre",
+            "2": "Forme Céleste"
+        },
+        "493": {
+            "1": "Normal",
+            "2": "Insecte",
+            "3": "???"
+        },
+        "550": {
+            "1": "Motif Rouge",
+            "2": "Motif Bleu"
+        },
+        "555": {
+            "1": "Mode Normal",
+            "2": "Mode Transe"
+        },
+        "585": {
+            "1": "Forme Printemps",
+            "2": "Forme Été",
+            "3": "Forme Automne",
+            "4": "Forme Hiver"
+        },
+        "586": {
+            "1": "Forme Printemps",
+            "2": "Forme Été",
+            "3": "Forme Automne",
+            "4": "Forme Hiver"
+        },
+        "641": {
+            "1": "Forme Avatar",
+            "2": "Forme Totémique"
+        },
+        "642": {
+            "1": "Forme Avatar",
+            "2": "Forme Totémique"
+        },
+        "645": {
+            "1": "Forme Avatar",
+            "2": "Forme Totémique"
+        },
+        "646": {
+            "2": "Kyurem Noir",
+            "3": "Kyurem Blanc"
+        },
+        "647": {
+            "1": "Aspect Normal",
+            "2": "Aspect Décidé"
+        },
+        "648": {
+            "1": "Forme Chant",
+            "2": "Forme Danse"
+        },
+        "649": {
+            "2": "Module Aqua"
+        },
+        "664": {
+            "1": "Motif Blizzard",
+            "2": "Motif Banquise",
+            "3": "Motif Glace",
+            "4": "Motif Continent",
+            "5": "Motif Verdure",
+            "6": "Motif Monarchie",
+            "7": "Motif Floraison",
+            "8": "Motif Métropole",
+            "9": "Motif Rivage",
+            "10": "Motif Archipel",
+            "11": "Motif Sécheresse",
+            "12": "Motif Sable",
+            "13": "Motif Delta",
+            "14": "Motif Cyclone",
+            "15": "Motif Mangrove",
+            "16": "Motif Zénith",
+            "17": "Motif Soleil Levant",
+            "18": "Motif Jungle",
+            "19": "Motif Fantaisie",
+            "20": "Motif Poké Ball"
+        },
+        "665": {
+            "1": "Motif Blizzard",
+            "2": "Motif Banquise",
+            "3": "Motif Glace",
+            "4": "Motif Continent",
+            "5": "Motif Verdure",
+            "6": "Motif Monarchie",
+            "7": "Motif Floraison",
+            "8": "Motif Métropole",
+            "9": "Motif Rivage",
+            "10": "Motif Archipel",
+            "11": "Motif Sécheresse",
+            "12": "Motif Sable",
+            "13": "Motif Delta",
+            "14": "Motif Cyclone",
+            "15": "Motif Mangrove",
+            "16": "Motif Zénith",
+            "17": "Motif Soleil Levant",
+            "18": "Motif Jungle",
+            "19": "Motif Fantaisie",
+            "20": "Motif Poké Ball"
+        },
+        "666": {
+            "1": "Motif Blizzard",
+            "2": "Motif Banquise",
+            "3": "Motif Glace",
+            "4": "Motif Continent",
+            "5": "Motif Verdure",
+            "6": "Motif Monarchie",
+            "7": "Motif Floraison",
+            "8": "Motif Métropole",
+            "9": "Motif Rivage",
+            "10": "Motif Archipel",
+            "11": "Motif Sécheresse",
+            "12": "Motif Sable",
+            "13": "Motif Delta",
+            "14": "Motif Cyclone",
+            "15": "Motif Mangrove",
+            "16": "Motif Zénith",
+            "17": "Motif Soleil Levant",
+            "18": "Motif Jungle",
+            "19": "Motif Fantaisie",
+            "20": "Motif Poké Ball"
+        },
+        "669": {
+            "1": "Fleur Rouge",
+            "2": "Fleur Jaune",
+            "3": "Fleur Orange",
+            "4": "Fleur Bleue",
+            "5": "Fleur Blanche"
+        },
+        "670": {
+            "1": "Fleur Rouge",
+            "2": "Fleur Jaune",
+            "3": "Fleur Orange",
+            "4": "Fleur Bleue",
+            "5": "Fleur Blanche",
+            "6": "Fleur Éternelle"
+        },
+        "671": {
+            "1": "Fleur Rouge",
+            "2": "Fleur Jaune",
+            "3": "Fleur Orange",
+            "4": "Fleur Bleue",
+            "5": "Fleur Blanche"
+        },
+        "676": {
+            "1": "Forme Sauvage",
+            "2": "Coupe Cœur",
+            "3": "Coupe Étoile",
+            "4": "Coupe Diamant",
+            "5": "Coupe Reine",
+            "6": "Coupe Kabuki",
+            "7": "Coupe Pharaon",
+            "8": "Coupe Demoiselle",
+            "9": "Coupe Madame",
+            "10": "Coupe Monsieur"
+        },
+        "678": {
+            "1": "Mâle",
+            "2": "Femelle"
+        },
+        "681": {
+            "1": "Forme Parade",
+            "2": "Forme Assaut"
+        },
+        "710": {
+            "1": "Taille Mini",
+            "2": "Taille Normale",
+            "3": "Taille Maxi",
+            "4": "Taille Ultra"
+        },
+        "711": {
+            "1": "Taille Mini",
+            "2": "Taille Normale",
+            "3": "Taille Maxi",
+            "4": "Taille Ultra"
+        },
+        "716": {
+            "1": "Mode Paisible",
+            "2": "Mode Déchaîné"
+        }
+    },
+    "en": {
+        "3": {
+            "2": "Mega Venusaur"
+        },
+        "6": {
+            "2": "Mega Charizard X",
+            "3": "Mega Charizard Y"
+        },
+        "9": {
+            "2": "Mega Blastoise"
+        },
+        "15": {
+            "2": "Mega Beedrill"
+        },
+        "18": {
+            "2": "Mega Pidgeot"
+        },
+        "25": {
+            "2": "Cosplay Pikachu",
+            "3": "Pikachu Rock Star",
+            "4": "Pikachu Belle",
+            "5": "Pikachu Pop Star",
+            "6": "Pikachu, Ph.D.",
+            "7": "Pikachu Libre"
+        },
+        "65": {
+            "2": "Mega Alakazam"
+        },
+        "80": {
+            "2": "Mega Slowbro"
+        },
+        "94": {
+            "2": "Mega Gengar"
+        },
+        "115": {
+            "2": "Mega Kangaskhan"
+        },
+        "127": {
+            "2": "Mega Pinsir"
+        },
+        "130": {
+            "2": "Mega Gyarados"
+        },
+        "142": {
+            "2": "Mega Aerodactyl"
+        },
+        "150": {
+            "2": "Mega Mewtwo X",
+            "3": "Mega Mewtwo Y"
+        },
+        "172": {
+            "2": "Spiky-eared"
+        },
+        "181": {
+            "2": "Mega Ampharos"
+        },
+        "201": {
+            "1": "A",
+            "2": "B",
+            "3": "C",
+            "4": "D",
+            "5": "E",
+            "6": "F",
+            "7": "G",
+            "8": "H",
+            "9": "I",
+            "10": "J",
+            "11": "K",
+            "12": "L",
+            "13": "M",
+            "14": "N",
+            "15": "O",
+            "16": "P",
+            "17": "Q",
+            "18": "R",
+            "19": "S",
+            "20": "T",
+            "21": "U",
+            "22": "V",
+            "23": "W",
+            "24": "X",
+            "25": "Y",
+            "26": "Z",
+            "27": "!"
+        },
+        "208": {
+            "2": "Mega Steelix"
+        },
+        "212": {
+            "2": "Mega Scizor"
+        },
+        "214": {
+            "2": "Mega Heracross"
+        },
+        "229": {
+            "2": "Mega Houndoom"
+        },
+        "248": {
+            "2": "Mega Tyranitar"
+        },
+        "254": {
+            "2": "Mega Sceptile"
+        },
+        "257": {
+            "2": "Mega Blaziken"
+        },
+        "260": {
+            "2": "Mega Swampert"
+        },
+        "282": {
+            "2": "Mega Gardevoir"
+        },
+        "302": {
+            "2": "Mega Sableye"
+        },
+        "303": {
+            "2": "Mega Mawile"
+        },
+        "306": {
+            "2": "Mega Aggron"
+        },
+        "308": {
+            "2": "Mega Medicham"
+        },
+        "310": {
+            "2": "Mega Manectric"
+        },
+        "319": {
+            "2": "Mega Sharpedo"
+        },
+        "323": {
+            "2": "Mega Camerupt"
+        },
+        "334": {
+            "2": "Mega Altaria"
+        },
+        "351": {
+            "2": "Sunny Form",
+            "3": "Rainy Form",
+            "4": "Snowy Form"
+        },
+        "354": {
+            "2": "Mega Banette"
+        },
+        "359": {
+            "2": "Mega Absol"
+        },
+        "362": {
+            "2": "Mega Glalie"
+        },
+        "373": {
+            "2": "Mega Salamence"
+        },
+        "376": {
+            "2": "Mega Metagross"
+        },
+        "380": {
+            "2": "Mega Latias"
+        },
+        "381": {
+            "2": "Mega Latios"
+        },
+        "382": {
+            "2": "Primal Reversion"
+        },
+        "383": {
+            "2": "Primal Reversion"
+        },
+        "384": {
+            "2": "Mega Rayquaza"
+        },
+        "386": {
+            "1": "Normal Forme",
+            "2": "Attack Forme",
+            "3": "Defense Forme",
+            "4": "Speed Forme"
+        },
+        "412": {
+            "1": "Plant Cloak",
+            "2": "Sandy Cloak",
+            "3": "Trash Cloak"
+        },
+        "413": {
+            "1": "Plant Cloak",
+            "2": "Sandy Cloak",
+            "3": "Trash Cloak"
+        },
+        "421": {
+            "1": "Overcast Form",
+            "2": "Sunshine Form"
+        },
+        "422": {
+            "1": "West Sea",
+            "2": "East Sea"
+        },
+        "423": {
+            "1": "West Sea",
+            "2": "East Sea"
+        },
+        "428": {
+            "2": "Mega Lopunny"
+        },
+        "445": {
+            "2": "Mega Garchomp"
+        },
+        "448": {
+            "2": "Mega Lucario"
+        },
+        "460": {
+            "2": "Mega Abomasnow"
+        },
+        "475": {
+            "2": "Mega Gallade"
+        },
+        "479": {
+            "2": "Heat Rotom",
+            "3": "Wash Rotom",
+            "4": "Frost Rotom",
+            "5": "Fan Rotom",
+            "6": "Mow Rotom"
+        },
+        "487": {
+            "1": "Altered Forme",
+            "2": "Origin Forme"
+        },
+        "492": {
+            "1": "Land Forme",
+            "2": "Sky Forme"
+        },
+        "493": {
+            "1": "Normal Type",
+            "2": "Bug Type",
+            "3": "??? Type"
+        },
+        "531": {
+            "2": "Mega Audino"
+        },
+        "550": {
+            "1": "Red-Striped Form",
+            "2": "Blue-Striped Form"
+        },
+        "555": {
+            "1": "Standard Mode",
+            "2": "Zen Mode"
+        },
+        "585": {
+            "1": "Spring Form",
+            "2": "Summer Form",
+            "3": "Autumn Form",
+            "4": "Winter Form"
+        },
+        "586": {
+            "1": "Spring Form",
+            "2": "Summer Form",
+            "3": "Autumn Form",
+            "4": "Winter Form"
+        },
+        "641": {
+            "1": "Incarnate Forme",
+            "2": "Therian Forme"
+        },
+        "642": {
+            "1": "Incarnate Forme",
+            "2": "Therian Forme"
+        },
+        "645": {
+            "1": "Incarnate Forme",
+            "2": "Therian Forme"
+        },
+        "646": {
+            "2": "Black Kyurem",
+            "3": "White Kyurem"
+        },
+        "647": {
+            "1": "Ordinary Form",
+            "2": "Resolute Form"
+        },
+        "648": {
+            "1": "Aria Forme",
+            "2": "Pirouette Forme"
+        },
+        "649": {
+            "2": "Douse Drive"
+        },
+        "664": {
+            "1": "Icy Snow Pattern",
+            "2": "Polar Pattern",
+            "3": "Tundra Pattern",
+            "4": "Continental Pattern",
+            "5": "Garden Pattern",
+            "6": "Elegant Pattern",
+            "7": "Meadow Pattern",
+            "8": "Modern Pattern",
+            "9": "Marine Pattern",
+            "10": "Archipelago Pattern",
+            "11": "High Plains Pattern",
+            "12": "Sandstorm Pattern",
+            "13": "River Pattern",
+            "14": "Monsoon Pattern",
+            "15": "Savanna Pattern",
+            "16": "Sun Pattern",
+            "17": "Ocean Pattern",
+            "18": "Jungle Pattern",
+            "19": "Fancy Pattern",
+            "20": "Poké Ball Pattern"
+        },
+        "665": {
+            "1": "Icy Snow Pattern",
+            "2": "Polar Pattern",
+            "3": "Tundra Pattern",
+            "4": "Continental Pattern",
+            "5": "Garden Pattern",
+            "6": "Elegant Pattern",
+            "7": "Meadow Pattern",
+            "8": "Modern Pattern",
+            "9": "Marine Pattern",
+            "10": "Archipelago Pattern",
+            "11": "High Plains Pattern",
+            "12": "Sandstorm Pattern",
+            "13": "River Pattern",
+            "14": "Monsoon Pattern",
+            "15": "Savanna Pattern",
+            "16": "Sun Pattern",
+            "17": "Ocean Pattern",
+            "18": "Jungle Pattern",
+            "19": "Fancy Pattern",
+            "20": "Poké Ball Pattern"
+        },
+        "666": {
+            "1": "Icy Snow Pattern",
+            "2": "Polar Pattern",
+            "3": "Tundra Pattern",
+            "4": "Continental Pattern",
+            "5": "Garden Pattern",
+            "6": "Elegant Pattern",
+            "7": "Meadow Pattern",
+            "8": "Modern Pattern",
+            "9": "Marine Pattern",
+            "10": "Archipelago Pattern",
+            "11": "High Plains Pattern",
+            "12": "Sandstorm Pattern",
+            "13": "River Pattern",
+            "14": "Monsoon Pattern",
+            "15": "Savanna Pattern",
+            "16": "Sun Pattern",
+            "17": "Ocean Pattern",
+            "18": "Jungle Pattern",
+            "19": "Fancy Pattern",
+            "20": "Poké Ball Pattern"
+        },
+        "669": {
+            "1": "Red Flower",
+            "2": "Yellow Flower",
+            "3": "Orange Flower",
+            "4": "Blue Flower",
+            "5": "White Flower"
+        },
+        "670": {
+            "1": "Red Flower",
+            "2": "Yellow Flower",
+            "3": "Orange Flower",
+            "4": "Blue Flower",
+            "5": "White Flower",
+            "6": "Eternal Flower"
+        },
+        "671": {
+            "1": "Red Flower",
+            "2": "Yellow Flower",
+            "3": "Orange Flower",
+            "4": "Blue Flower",
+            "5": "White Flower"
+        },
+        "676": {
+            "1": "Natural Form",
+            "2": "Heart Trim",
+            "3": "Star Trim",
+            "4": "Diamond Trim",
+            "5": "La Reine Trim",
+            "6": "Kabuki Trim",
+            "7": "Pharaoh Trim",
+            "8": "Debutante Trim",
+            "9": "Matron Trim",
+            "10": "Dandy Trim"
+        },
+        "678": {
+            "1": "Male",
+            "2": "Female"
+        },
+        "681": {
+            "1": "Shield Forme",
+            "2": "Blade Forme"
+        },
+        "710": {
+            "1": "Small Size",
+            "2": "Average Size",
+            "3": "Large Size",
+            "4": "Super Size"
+        },
+        "711": {
+            "1": "Small Size",
+            "2": "Average Size",
+            "3": "Large Size",
+            "4": "Super Size"
+        },
+        "716": {
+            "1": "Neutral Mode",
+            "2": "Active Mode"
+        },
+        "719": {
+            "2": "Mega Diancie"
+        },
+        "720": {
+            "2": "Hoopa Unbound"
+        }
+    },
+    "de": {
+        "3": {
+            "2": "Mega-Bisaflor"
+        },
+        "6": {
+            "2": "Mega-Glurak X",
+            "3": "Mega-Glurak Y"
+        },
+        "9": {
+            "2": "Mega-Turtok"
+        },
+        "65": {
+            "2": "Mega-Simsala"
+        },
+        "94": {
+            "2": "Mega-Gengar"
+        },
+        "115": {
+            "2": "Mega-Kangama"
+        },
+        "127": {
+            "2": "Mega-Pinsir"
+        },
+        "130": {
+            "2": "Mega-Garados"
+        },
+        "142": {
+            "2": "Mega-Aerodactyl"
+        },
+        "150": {
+            "2": "Mega-Mewtu X",
+            "3": "Mega-Mewtu Y"
+        },
+        "181": {
+            "2": "Mega-Ampharos"
+        },
+        "201": {
+            "1": "A",
+            "2": "B",
+            "3": "C",
+            "4": "D",
+            "5": "E",
+            "6": "F",
+            "7": "G",
+            "8": "H",
+            "9": "I",
+            "10": "J",
+            "11": "K",
+            "12": "L",
+            "13": "M",
+            "14": "N",
+            "15": "O",
+            "16": "P",
+            "17": "Q",
+            "18": "R",
+            "19": "S",
+            "20": "T",
+            "21": "U",
+            "22": "V",
+            "23": "W",
+            "24": "X",
+            "25": "Y",
+            "26": "Z",
+            "27": "!"
+        },
+        "212": {
+            "2": "Mega-Scherox"
+        },
+        "214": {
+            "2": "Mega-Skaraborn"
+        },
+        "229": {
+            "2": "Mega-Hundemon"
+        },
+        "248": {
+            "2": "Mega-Despotar"
+        },
+        "257": {
+            "2": "Mega-Lohgock"
+        },
+        "282": {
+            "2": "Mega-Guardevoir"
+        },
+        "303": {
+            "2": "Mega-Flunkifer"
+        },
+        "306": {
+            "2": "Mega-Stolloss"
+        },
+        "308": {
+            "2": "Mega-Meditalis"
+        },
+        "310": {
+            "2": "Mega-Voltenso"
+        },
+        "351": {
+            "2": "Sonnenform",
+            "3": "Regenform",
+            "4": "Schneeform"
+        },
+        "354": {
+            "2": "Mega-Banette"
+        },
+        "359": {
+            "2": "Mega-Absol"
+        },
+        "380": {
+            "2": "Mega-Latias"
+        },
+        "381": {
+            "2": "Mega-Latios"
+        },
+        "386": {
+            "1": "Normalform",
+            "2": "Angriffsform",
+            "3": "Verteidigungsform",
+            "4": "Initiativeform"
+        },
+        "412": {
+            "1": "Pflanzenumhang",
+            "2": "Sandumhang",
+            "3": "Lumpenumhang"
+        },
+        "413": {
+            "1": "Pflanzenumhang",
+            "2": "Sandumhang",
+            "3": "Lumpenumhang"
+        },
+        "421": {
+            "1": "Wolkenform",
+            "2": "Sonnenform"
+        },
+        "422": {
+            "1": "Westliches Meer",
+            "2": "Östliches Meer"
+        },
+        "423": {
+            "1": "Westliches Meer",
+            "2": "Östliches Meer"
+        },
+        "445": {
+            "2": "Mega-Knakrack"
+        },
+        "448": {
+            "2": "Mega-Lucario"
+        },
+        "460": {
+            "2": "Mega-Rexblisar"
+        },
+        "479": {
+            "2": "Hitze-Rotom",
+            "3": "Wasch-Rotom",
+            "4": "Frost-Rotom",
+            "5": "Wirbel-Rotom",
+            "6": "Schneid-Rotom"
+        },
+        "487": {
+            "1": "Wandelform",
+            "2": "Urform"
+        },
+        "492": {
+            "1": "Landform",
+            "2": "Zenitform"
+        },
+        "493": {
+            "1": "Normal",
+            "2": "Käfer",
+            "3": "???"
+        },
+        "550": {
+            "1": "Rotlinige Form",
+            "2": "Blaulinige Form"
+        },
+        "555": {
+            "1": "Normalmodus",
+            "2": "Trance-Modus"
+        },
+        "585": {
+            "1": "Frühlingsform",
+            "2": "Sommerform",
+            "3": "Herbstform",
+            "4": "Winterform"
+        },
+        "586": {
+            "1": "Frühlingsform",
+            "2": "Sommerform",
+            "3": "Herbstform",
+            "4": "Winterform"
+        },
+        "641": {
+            "1": "Inkarnationsform",
+            "2": "Tiergeistform"
+        },
+        "642": {
+            "1": "Inkarnationsform",
+            "2": "Tiergeistform"
+        },
+        "645": {
+            "1": "Inkarnationsform",
+            "2": "Tiergeistform"
+        },
+        "646": {
+            "2": "Schwarzes Kyurem",
+            "3": "Weißes Kyurem"
+        },
+        "647": {
+            "1": "Standardform",
+            "2": "Resolutform"
+        },
+        "648": {
+            "1": "Gesangsform",
+            "2": "Tanzform"
+        },
+        "649": {
+            "2": "Aquamodul"
+        },
+        "664": {
+            "1": "Frostmuster",
+            "2": "Schneefeldmuster",
+            "3": "Flockenmuster",
+            "4": "Kontinentalmuster",
+            "5": "Ziergartenmuster",
+            "6": "Prunkmuster",
+            "7": "Blumenmeermuster",
+            "8": "Innovationsmuster",
+            "9": "Aquamarinmuster",
+            "10": "Archipelmuster",
+            "11": "Dürremuster",
+            "12": "Sandmuster",
+            "13": "Flussdeltamuster",
+            "14": "Monsunmuster",
+            "15": "Savannenmuster",
+            "16": "Sonnenmuster",
+            "17": "Ozeanmuster",
+            "18": "Dschungelmuster",
+            "19": "Fantasiemuster",
+            "20": "Pokéball-Muster"
+        },
+        "665": {
+            "1": "Frostmuster",
+            "2": "Schneefeldmuster",
+            "3": "Flockenmuster",
+            "4": "Kontinentalmuster",
+            "5": "Ziergartenmuster",
+            "6": "Prunkmuster",
+            "7": "Blumenmeermuster",
+            "8": "Innovationsmuster",
+            "9": "Aquamarinmuster",
+            "10": "Archipelmuster",
+            "11": "Dürremuster",
+            "12": "Sandmuster",
+            "13": "Flussdeltamuster",
+            "14": "Monsunmuster",
+            "15": "Savannenmuster",
+            "16": "Sonnenmuster",
+            "17": "Ozeanmuster",
+            "18": "Dschungelmuster",
+            "19": "Fantasiemuster",
+            "20": "Pokéball-Muster"
+        },
+        "666": {
+            "1": "Frostmuster",
+            "2": "Schneefeldmuster",
+            "3": "Flockenmuster",
+            "4": "Kontinentalmuster",
+            "5": "Ziergartenmuster",
+            "6": "Prunkmuster",
+            "7": "Blumenmeermuster",
+            "8": "Innovationsmuster",
+            "9": "Aquamarinmuster",
+            "10": "Archipelmuster",
+            "11": "Dürremuster",
+            "12": "Sandmuster",
+            "13": "Flussdeltamuster",
+            "14": "Monsunmuster",
+            "15": "Savannenmuster",
+            "16": "Sonnenmuster",
+            "17": "Ozeanmuster",
+            "18": "Dschungelmuster",
+            "19": "Fantasiemuster",
+            "20": "Pokéball-Muster"
+        },
+        "669": {
+            "1": "Rotblütler",
+            "2": "Gelbblütler",
+            "3": "Orangeblütler",
+            "4": "Blaublütler",
+            "5": "Weißblütler"
+        },
+        "670": {
+            "1": "Rotblütler",
+            "2": "Gelbblütler",
+            "3": "Orangeblütler",
+            "4": "Blaublütler",
+            "5": "Weißblütler",
+            "6": "Ewigblütler"
+        },
+        "671": {
+            "1": "Rotblütler",
+            "2": "Gelbblütler",
+            "3": "Orangeblütler",
+            "4": "Blaublütler",
+            "5": "Weißblütler"
+        },
+        "676": {
+            "1": "Zottelform",
+            "2": "Herzchenschnitt",
+            "3": "Sternchenschnitt",
+            "4": "Diamantenschnitt",
+            "5": "Königinnenschnitt",
+            "6": "Kabuki-Schnitt",
+            "7": "Herrscherschnitt",
+            "8": "Fräuleinschnitt",
+            "9": "Damenschnitt",
+            "10": "Kavaliersschnitt"
+        },
+        "678": {
+            "1": "Männlich",
+            "2": "Weiblich"
+        },
+        "681": {
+            "1": "Schildform",
+            "2": "Klingenform"
+        },
+        "710": {
+            "1": "Größe S",
+            "2": "Größe M",
+            "3": "Größe L",
+            "4": "Größe XL"
+        },
+        "711": {
+            "1": "Größe S",
+            "2": "Größe M",
+            "3": "Größe L",
+            "4": "Größe XL"
+        },
+        "716": {
+            "1": "Ruhe-Modus",
+            "2": "Aktiv-Modus"
+        }
+    },
+    "ko": {
+        "3": {
+            "2": "메가이상해꽃"
+        },
+        "6": {
+            "2": "메가리자몽X",
+            "3": "메가리자몽Y"
+        },
+        "9": {
+            "2": "메가거북왕"
+        },
+        "65": {
+            "2": "메가후딘"
+        },
+        "94": {
+            "2": "메가팬텀"
+        },
+        "115": {
+            "2": "메가캥카"
+        },
+        "127": {
+            "2": "메가쁘사이저"
+        },
+        "130": {
+            "2": "메가갸라도스"
+        },
+        "142": {
+            "2": "메가프테라"
+        },
+        "150": {
+            "2": "메가뮤츠X",
+            "3": "메가뮤츠Y"
+        },
+        "181": {
+            "2": "메가전룡"
+        },
+        "201": {
+            "1": "A",
+            "2": "B",
+            "3": "C",
+            "4": "D",
+            "5": "E",
+            "6": "F",
+            "7": "G",
+            "8": "H",
+            "9": "I",
+            "10": "J",
+            "11": "K",
+            "12": "L",
+            "13": "M",
+            "14": "N",
+            "15": "O",
+            "16": "P",
+            "17": "Q",
+            "18": "R",
+            "19": "S",
+            "20": "T",
+            "21": "U",
+            "22": "V",
+            "23": "W",
+            "24": "X",
+            "25": "Y",
+            "26": "Z",
+            "27": "!"
+        },
+        "212": {
+            "2": "메가핫삼"
+        },
+        "214": {
+            "2": "메가헤라크로스"
+        },
+        "229": {
+            "2": "메가헬가"
+        },
+        "248": {
+            "2": "메가마기라스"
+        },
+        "257": {
+            "2": "메가번치코"
+        },
+        "282": {
+            "2": "메가가디안"
+        },
+        "303": {
+            "2": "메가입치트"
+        },
+        "306": {
+            "2": "메가보스로라"
+        },
+        "308": {
+            "2": "메가요가램"
+        },
+        "310": {
+            "2": "메가썬더볼트"
+        },
+        "351": {
+            "2": "태양의 모습",
+            "3": "빗방울의 모습",
+            "4": "설운의 모습"
+        },
+        "354": {
+            "2": "메가다크펫"
+        },
+        "359": {
+            "2": "메가앱솔"
+        },
+        "380": {
+            "2": "메가라티아스"
+        },
+        "381": {
+            "2": "메가라티오스"
+        },
+        "386": {
+            "1": "노말폼",
+            "2": "어택폼",
+            "3": "디펜스폼",
+            "4": "스피드폼"
+        },
+        "412": {
+            "1": "초목도롱",
+            "2": "모래땅도롱",
+            "3": "슈레도롱"
+        },
+        "413": {
+            "1": "초목도롱",
+            "2": "모래땅도롱",
+            "3": "슈레도롱"
+        },
+        "421": {
+            "1": "네거폼",
+            "2": "포지폼"
+        },
+        "422": {
+            "1": "서쪽바다",
+            "2": "동쪽바다"
+        },
+        "423": {
+            "1": "서쪽바다",
+            "2": "동쪽바다"
+        },
+        "445": {
+            "2": "메가한카리아스"
+        },
+        "448": {
+            "2": "메가루카리오"
+        },
+        "460": {
+            "2": "메가눈설왕"
+        },
+        "479": {
+            "2": "히트로토무",
+            "3": "워시로토무",
+            "4": "프로스트로토무",
+            "5": "스핀로토무",
+            "6": "커트로토무"
+        },
+        "487": {
+            "1": "어나더폼",
+            "2": "오리진폼"
+        },
+        "492": {
+            "1": "랜드폼",
+            "2": "스카이폼"
+        },
+        "550": {
+            "1": "적색근의 모습",
+            "2": "청색근의 모습"
+        },
+        "555": {
+            "1": "노말모드",
+            "2": "달마모드"
+        },
+        "585": {
+            "1": "봄의 모습",
+            "2": "여름의 모습",
+            "3": "가을의 모습",
+            "4": "겨울의 모습"
+        },
+        "586": {
+            "1": "봄의 모습",
+            "2": "여름의 모습",
+            "3": "가을의 모습",
+            "4": "겨울의 모습"
+        },
+        "641": {
+            "1": "화신폼",
+            "2": "영물폼"
+        },
+        "642": {
+            "1": "화신폼",
+            "2": "영물폼"
+        },
+        "645": {
+            "1": "화신폼",
+            "2": "영물폼"
+        },
+        "646": {
+            "2": "블랙큐레무",
+            "3": "화이트큐레무"
+        },
+        "647": {
+            "1": "평상시 모습",
+            "2": "각오의 모습"
+        },
+        "648": {
+            "1": "보이스폼",
+            "2": "스텝폼"
+        },
+        "649": {
+            "2": "아쿠아카세트"
+        },
+        "664": {
+            "1": "빙설의 모양",
+            "2": "설국의 모양",
+            "3": "설원의 모양",
+            "4": "대륙의 모양",
+            "5": "정원의 모양",
+            "6": "우아한 모양",
+            "7": "화원의 모양",
+            "8": "모던한 모양",
+            "9": "마린의 모양",
+            "10": "군도의 모양",
+            "11": "황야의 모양",
+            "12": "사진의 모양",
+            "13": "대하의 모양",
+            "14": "스콜의 모양",
+            "15": "사바나의 모양",
+            "16": "태양의 모양",
+            "17": "오션의 모양",
+            "18": "정글의 모양",
+            "19": "팬시한 모양",
+            "20": "볼의 모양"
+        },
+        "665": {
+            "1": "빙설의 모양",
+            "2": "설국의 모양",
+            "3": "설원의 모양",
+            "4": "대륙의 모양",
+            "5": "정원의 모양",
+            "6": "우아한 모양",
+            "7": "화원의 모양",
+            "8": "모던한 모양",
+            "9": "마린의 모양",
+            "10": "군도의 모양",
+            "11": "황야의 모양",
+            "12": "사진의 모양",
+            "13": "대하의 모양",
+            "14": "스콜의 모양",
+            "15": "사바나의 모양",
+            "16": "태양의 모양",
+            "17": "오션의 모양",
+            "18": "정글의 모양",
+            "19": "팬시한 모양",
+            "20": "볼의 모양"
+        },
+        "666": {
+            "1": "빙설의 모양",
+            "2": "설국의 모양",
+            "3": "설원의 모양",
+            "4": "대륙의 모양",
+            "5": "정원의 모양",
+            "6": "우아한 모양",
+            "7": "화원의 모양",
+            "8": "모던한 모양",
+            "9": "마린의 모양",
+            "10": "군도의 모양",
+            "11": "황야의 모양",
+            "12": "사진의 모양",
+            "13": "대하의 모양",
+            "14": "스콜의 모양",
+            "15": "사바나의 모양",
+            "16": "태양의 모양",
+            "17": "오션의 모양",
+            "18": "정글의 모양",
+            "19": "팬시한 모양",
+            "20": "볼의 모양"
+        },
+        "669": {
+            "1": "빨간 꽃",
+            "2": "노란 꽃",
+            "3": "오렌지색 꽃",
+            "4": "파란 꽃",
+            "5": "하얀 꽃"
+        },
+        "670": {
+            "1": "빨간 꽃",
+            "2": "노란 꽃",
+            "3": "오렌지색 꽃",
+            "4": "파란 꽃",
+            "5": "하얀 꽃",
+            "6": "영원의 꽃"
+        },
+        "671": {
+            "1": "빨간 꽃",
+            "2": "노란 꽃",
+            "3": "오렌지색 꽃",
+            "4": "파란 꽃",
+            "5": "하얀 꽃"
+        },
+        "676": {
+            "1": "야생의 모습",
+            "2": "하트컷",
+            "3": "스타컷",
+            "4": "다이아컷",
+            "5": "퀸컷",
+            "6": "가부키컷",
+            "7": "킹덤컷",
+            "8": "레이디컷",
+            "9": "마담컷",
+            "10": "젠틀컷"
+        },
+        "678": {
+            "1": "수컷의 모습",
+            "2": "암컷의 모습"
+        },
+        "681": {
+            "1": "실드폼",
+            "2": "블레이드폼"
+        },
+        "710": {
+            "1": "작은 사이즈",
+            "2": "보통 사이즈",
+            "3": "큰 사이즈",
+            "4": "특대 사이즈"
+        },
+        "711": {
+            "1": "작은 사이즈",
+            "2": "보통 사이즈",
+            "3": "큰 사이즈",
+            "4": "특대 사이즈"
+        },
+        "716": {
+            "1": "릴랙스모드",
+            "2": "액티브모드"
+        }
+    },
+    "it": {
+        "3": {
+            "2": "MegaVenusaur"
+        },
+        "6": {
+            "2": "MegaCharizard X",
+            "3": "MegaCharizard Y"
+        },
+        "9": {
+            "2": "MegaBlastoise"
+        },
+        "65": {
+            "2": "MegaAlakazam"
+        },
+        "94": {
+            "2": "MegaGengar"
+        },
+        "115": {
+            "2": "MegaKangaskhan"
+        },
+        "127": {
+            "2": "MegaPinsir"
+        },
+        "130": {
+            "2": "MegaGyarados"
+        },
+        "142": {
+            "2": "MegaAerodactyl"
+        },
+        "150": {
+            "2": "MegaMewtwo X",
+            "3": "MegaMewtwo Y"
+        },
+        "181": {
+            "2": "MegaAmpharos"
+        },
+        "201": {
+            "1": "A",
+            "2": "B",
+            "3": "C",
+            "4": "D",
+            "5": "E",
+            "6": "F",
+            "7": "G",
+            "8": "H",
+            "9": "I",
+            "10": "J",
+            "11": "K",
+            "12": "L",
+            "13": "M",
+            "14": "N",
+            "15": "O",
+            "16": "P",
+            "17": "Q",
+            "18": "R",
+            "19": "S",
+            "20": "T",
+            "21": "U",
+            "22": "V",
+            "23": "W",
+            "24": "X",
+            "25": "Y",
+            "26": "Z",
+            "27": "!"
+        },
+        "212": {
+            "2": "MegaScizor"
+        },
+        "214": {
+            "2": "MegaHeracross"
+        },
+        "229": {
+            "2": "MegaHoundoom"
+        },
+        "248": {
+            "2": "MegaTyranitar"
+        },
+        "257": {
+            "2": "MegaBlaziken"
+        },
+        "282": {
+            "2": "MegaGardevoir"
+        },
+        "303": {
+            "2": "MegaMawile"
+        },
+        "306": {
+            "2": "MegaAggron"
+        },
+        "308": {
+            "2": "MegaMedicham"
+        },
+        "310": {
+            "2": "MegaManectric"
+        },
+        "351": {
+            "2": "Forma Sole",
+            "3": "Forma Pioggia",
+            "4": "Forma Nuvola di Neve"
+        },
+        "354": {
+            "2": "MegaBanette"
+        },
+        "359": {
+            "2": "MegaAbsol"
+        },
+        "380": {
+            "2": "MegaLatias"
+        },
+        "381": {
+            "2": "MegaLatios"
+        },
+        "386": {
+            "1": "Forma Normale",
+            "2": "Forma Attacco",
+            "3": "Forma Difesa",
+            "4": "Forma Velocità"
+        },
+        "412": {
+            "1": "Manto Pianta",
+            "2": "Manto Sabbia",
+            "3": "Manto Scarti"
+        },
+        "413": {
+            "1": "Manto Pianta",
+            "2": "Manto Sabbia",
+            "3": "Manto Scarti"
+        },
+        "421": {
+            "1": "Forma Nuvola",
+            "2": "Forma Splendore"
+        },
+        "422": {
+            "1": "Mare Ovest",
+            "2": "Mare Est"
+        },
+        "423": {
+            "1": "Mare Ovest",
+            "2": "Mare Est"
+        },
+        "445": {
+            "2": "MegaGarchomp"
+        },
+        "448": {
+            "2": "MegaLucario"
+        },
+        "460": {
+            "2": "MegaAbomasnow"
+        },
+        "479": {
+            "2": "Rotom Calore",
+            "3": "Rotom Lavaggio",
+            "4": "Rotom Gelo",
+            "5": "Rotom Vortice",
+            "6": "Rotom Taglio"
+        },
+        "487": {
+            "1": "Forma Alterata",
+            "2": "Forma Originale"
+        },
+        "492": {
+            "1": "Forma Terra",
+            "2": "Forma Cielo"
+        },
+        "493": {
+            "1": "Tipo Normale",
+            "2": "Tipo Coleottero",
+            "3": "Tipo ???"
+        },
+        "550": {
+            "1": "Forma Linearossa",
+            "2": "Forma Lineablu"
+        },
+        "555": {
+            "1": "Forma Normalità",
+            "2": "Stato Zen"
+        },
+        "585": {
+            "1": "Forma Primavera",
+            "2": "Forma Estate",
+            "3": "Forma Autunno",
+            "4": "Forma Inverno"
+        },
+        "586": {
+            "1": "Forma Primavera",
+            "2": "Forma Estate",
+            "3": "Forma Autunno",
+            "4": "Forma Inverno"
+        },
+        "641": {
+            "1": "Forma Incarnazione",
+            "2": "Forma Totem"
+        },
+        "642": {
+            "1": "Forma Incarnazione",
+            "2": "Forma Totem"
+        },
+        "645": {
+            "1": "Forma Incarnazione",
+            "2": "Forma Totem"
+        },
+        "646": {
+            "2": "Kyurem Nero",
+            "3": "Kyurem Bianco"
+        },
+        "647": {
+            "1": "Forma Normale",
+            "2": "Forma Risoluta"
+        },
+        "648": {
+            "1": "Forma Canto",
+            "2": "Forma Danza"
+        },
+        "649": {
+            "2": "Idromodulo"
+        },
+        "664": {
+            "1": "Motivo Nevi Perenni",
+            "2": "Motivo Nordico",
+            "3": "Motivo Manto di Neve",
+            "4": "Motivo Continentale",
+            "5": "Motivo Prato",
+            "6": "Motivo Eleganza",
+            "7": "Motivo Giardinfiore",
+            "8": "Motivo Trendy",
+            "9": "Motivo Marino",
+            "10": "Motivo Arcipelago",
+            "11": "Motivo Deserto",
+            "12": "Motivo Sabbia",
+            "13": "Motivo Fluviale",
+            "14": "Motivo Pluviale",
+            "15": "Motivo Savana",
+            "16": "Motivo Solare",
+            "17": "Motivo Oceanico",
+            "18": "Motivo Giungla",
+            "19": "Motivo Sbarazzino",
+            "20": "Motivo Poké Ball"
+        },
+        "665": {
+            "1": "Motivo Nevi Perenni",
+            "2": "Motivo Nordico",
+            "3": "Motivo Manto di Neve",
+            "4": "Motivo Continentale",
+            "5": "Motivo Prato",
+            "6": "Motivo Eleganza",
+            "7": "Motivo Giardinfiore",
+            "8": "Motivo Trendy",
+            "9": "Motivo Marino",
+            "10": "Motivo Arcipelago",
+            "11": "Motivo Deserto",
+            "12": "Motivo Sabbia",
+            "13": "Motivo Fluviale",
+            "14": "Motivo Pluviale",
+            "15": "Motivo Savana",
+            "16": "Motivo Solare",
+            "17": "Motivo Oceanico",
+            "18": "Motivo Giungla",
+            "19": "Motivo Sbarazzino",
+            "20": "Motivo Poké Ball"
+        },
+        "666": {
+            "1": "Motivo Nevi Perenni",
+            "2": "Motivo Nordico",
+            "3": "Motivo Manto di Neve",
+            "4": "Motivo Continentale",
+            "5": "Motivo Prato",
+            "6": "Motivo Eleganza",
+            "7": "Motivo Giardinfiore",
+            "8": "Motivo Trendy",
+            "9": "Motivo Marino",
+            "10": "Motivo Arcipelago",
+            "11": "Motivo Deserto",
+            "12": "Motivo Sabbia",
+            "13": "Motivo Fluviale",
+            "14": "Motivo Pluviale",
+            "15": "Motivo Savana",
+            "16": "Motivo Solare",
+            "17": "Motivo Oceanico",
+            "18": "Motivo Giungla",
+            "19": "Motivo Sbarazzino",
+            "20": "Motivo Poké Ball"
+        },
+        "669": {
+            "1": "Fiore Rosso",
+            "2": "Fiore Giallo",
+            "3": "Fiore Arancione",
+            "4": "Fiore Blu",
+            "5": "Fiore Bianco"
+        },
+        "670": {
+            "1": "Fiore Rosso",
+            "2": "Fiore Giallo",
+            "3": "Fiore Arancione",
+            "4": "Fiore Blu",
+            "5": "Fiore Bianco",
+            "6": "Fiore Eterno"
+        },
+        "671": {
+            "1": "Fiore Rosso",
+            "2": "Fiore Giallo",
+            "3": "Fiore Arancione",
+            "4": "Fiore Blu",
+            "5": "Fiore Bianco"
+        },
+        "676": {
+            "1": "Forma Selvatica",
+            "2": "Taglio Cuore",
+            "3": "Taglio Stella",
+            "4": "Taglio Diamante",
+            "5": "Taglio Regina",
+            "6": "Taglio Kabuki",
+            "7": "Taglio Faraone",
+            "8": "Taglio Signorina",
+            "9": "Taglio Gentildonna",
+            "10": "Taglio Gentiluomo"
+        },
+        "678": {
+            "1": "Maschio",
+            "2": "Femmina"
+        },
+        "681": {
+            "1": "Forma Scudo",
+            "2": "Forma Spada"
+        },
+        "710": {
+            "1": "Mini",
+            "2": "Normale",
+            "3": "Grande",
+            "4": "Maxi"
+        },
+        "711": {
+            "1": "Mini",
+            "2": "Normale",
+            "3": "Grande",
+            "4": "Maxi"
+        },
+        "716": {
+            "1": "Modo Relax",
+            "2": "Modo Attivo"
+        }
+    },
+    "ja": {
+        "3": {
+            "2": "メガフシギバナ"
+        },
+        "6": {
+            "2": "メガリザードンＸ",
+            "3": "メガリザードンＹ"
+        },
+        "9": {
+            "2": "メガカメックス"
+        },
+        "65": {
+            "2": "メガフーディン"
+        },
+        "94": {
+            "2": "メガゲンガー"
+        },
+        "115": {
+            "2": "メガガルーラ"
+        },
+        "127": {
+            "2": "メガカイロス"
+        },
+        "130": {
+            "2": "メガギャラドス"
+        },
+        "142": {
+            "2": "メガプテラ"
+        },
+        "150": {
+            "2": "メガミュウツーＸ",
+            "3": "メガミュウツーＹ"
+        },
+        "181": {
+            "2": "メガデンリュウ"
+        },
+        "201": {
+            "1": "Ａ",
+            "2": "Ｂ",
+            "3": "Ｃ",
+            "4": "Ｄ",
+            "5": "Ｅ",
+            "6": "Ｆ",
+            "7": "Ｇ",
+            "8": "Ｈ",
+            "9": "Ｉ",
+            "10": "Ｊ",
+            "11": "Ｋ",
+            "12": "Ｌ",
+            "13": "Ｍ",
+            "14": "Ｎ",
+            "15": "Ｏ",
+            "16": "Ｐ",
+            "17": "Ｑ",
+            "18": "Ｒ",
+            "19": "Ｓ",
+            "20": "Ｔ",
+            "21": "Ｕ",
+            "22": "Ｖ",
+            "23": "Ｗ",
+            "24": "Ｘ",
+            "25": "Ｙ",
+            "26": "Ｚ",
+            "27": "!"
+        },
+        "212": {
+            "2": "メガハッサム"
+        },
+        "214": {
+            "2": "メガヘラクロス"
+        },
+        "229": {
+            "2": "メガヘルガー"
+        },
+        "248": {
+            "2": "メガバンギラス"
+        },
+        "257": {
+            "2": "メガバシャーモ"
+        },
+        "282": {
+            "2": "メガサーナイト"
+        },
+        "303": {
+            "2": "メガクチート"
+        },
+        "306": {
+            "2": "メガボスゴドラ"
+        },
+        "308": {
+            "2": "メガチャーレム"
+        },
+        "310": {
+            "2": "メガライボルト"
+        },
+        "351": {
+            "2": "たいようのすがた",
+            "3": "あまみずのすがた",
+            "4": "ゆきぐものすがた"
+        },
+        "354": {
+            "2": "メガジュペッタ"
+        },
+        "359": {
+            "2": "メガアブソル"
+        },
+        "380": {
+            "2": "メガラティアス"
+        },
+        "381": {
+            "2": "メガラティオス"
+        },
+        "386": {
+            "1": "ノーマルフォルム",
+            "2": "アタックフォルム",
+            "3": "ディフェンスフォルム",
+            "4": "スピードフォルム"
+        },
+        "412": {
+            "1": "くさきのミノ",
+            "2": "すなちのミノ",
+            "3": "ゴミのミノ"
+        },
+        "413": {
+            "1": "くさきのミノ",
+            "2": "すなちのミノ",
+            "3": "ゴミのミノ"
+        },
+        "421": {
+            "1": "ネガフォルム",
+            "2": "ポジフォルム"
+        },
+        "422": {
+            "1": "にしのうみ",
+            "2": "ひがしのうみ"
+        },
+        "423": {
+            "1": "にしのうみ",
+            "2": "ひがしのうみ"
+        },
+        "445": {
+            "2": "メガガブリアス"
+        },
+        "448": {
+            "2": "メガルカリオ"
+        },
+        "460": {
+            "2": "メガユキノオー"
+        },
+        "479": {
+            "2": "ヒートロトム",
+            "3": "ウォッシュロトム",
+            "4": "フロストロトム",
+            "5": "スピンロトム",
+            "6": "カットロトム"
+        },
+        "487": {
+            "1": "アナザーフォルム",
+            "2": "オリジンフォルム"
+        },
+        "492": {
+            "1": "ランドフォルム",
+            "2": "スカイフォルム"
+        },
+        "493": {
+            "1": "ノーマルタイプ",
+            "2": "むしタイプ",
+            "3": "？？？タイプ"
+        },
+        "550": {
+            "1": "あかすじのすがた",
+            "2": "あおすじのすがた"
+        },
+        "555": {
+            "1": "ノーマルモード",
+            "2": "ダルマモード"
+        },
+        "585": {
+            "1": "はるのすがた",
+            "2": "なつのすがた",
+            "3": "あきのすがた",
+            "4": "ふゆのすがた"
+        },
+        "586": {
+            "1": "はるのすがた",
+            "2": "なつのすがた",
+            "3": "あきのすがた",
+            "4": "ふゆのすがた"
+        },
+        "641": {
+            "1": "けしんフォルム",
+            "2": "れいじゅうフォルム"
+        },
+        "642": {
+            "1": "けしんフォルム",
+            "2": "れいじゅうフォルム"
+        },
+        "645": {
+            "1": "けしんフォルム",
+            "2": "れいじゅうフォルム"
+        },
+        "646": {
+            "2": "ブラックキュレム",
+            "3": "ホワイトキュレム"
+        },
+        "647": {
+            "1": "いつものすがた",
+            "2": "かくごのすがた"
+        },
+        "648": {
+            "1": "ボイスフォルム",
+            "2": "ステップフォルム"
+        },
+        "649": {
+            "2": "アクアカセット"
+        },
+        "664": {
+            "1": "ひょうせつのもよう",
+            "2": "ゆきぐにのもよう",
+            "3": "せつげんのもよう",
+            "4": "たいりくのもよう",
+            "5": "ていえんのもよう",
+            "6": "みやびなもよう",
+            "7": "はなぞののもよう",
+            "8": "モダンなもよう",
+            "9": "マリンのもよう",
+            "10": "ぐんとうのもよう",
+            "11": "こうやのもよう",
+            "12": "さじんのもよう",
+            "13": "たいがのもよう",
+            "14": "スコールのもよう",
+            "15": "サバンナのもよう",
+            "16": "たいようのもよう",
+            "17": "オーシャンのもよう",
+            "18": "ジャングルのもよう",
+            "19": "ファンシーなもよう",
+            "20": "ボールのもよう"
+        },
+        "665": {
+            "1": "ひょうせつのもよう",
+            "2": "ゆきぐにのもよう",
+            "3": "せつげんのもよう",
+            "4": "たいりくのもよう",
+            "5": "ていえんのもよう",
+            "6": "みやびなもよう",
+            "7": "はなぞののもよう",
+            "8": "モダンなもよう",
+            "9": "マリンのもよう",
+            "10": "ぐんとうのもよう",
+            "11": "こうやのもよう",
+            "12": "さじんのもよう",
+            "13": "たいがのもよう",
+            "14": "スコールのもよう",
+            "15": "サバンナのもよう",
+            "16": "たいようのもよう",
+            "17": "オーシャンのもよう",
+            "18": "ジャングルのもよう",
+            "19": "ファンシーなもよう",
+            "20": "ボールのもよう"
+        },
+        "666": {
+            "1": "ひょうせつのもよう",
+            "2": "ゆきぐにのもよう",
+            "3": "せつげんのもよう",
+            "4": "たいりくのもよう",
+            "5": "ていえんのもよう",
+            "6": "みやびなもよう",
+            "7": "はなぞののもよう",
+            "8": "モダンなもよう",
+            "9": "マリンのもよう",
+            "10": "ぐんとうのもよう",
+            "11": "こうやのもよう",
+            "12": "さじんのもよう",
+            "13": "たいがのもよう",
+            "14": "スコールのもよう",
+            "15": "サバンナのもよう",
+            "16": "たいようのもよう",
+            "17": "オーシャンのもよう",
+            "18": "ジャングルのもよう",
+            "19": "ファンシーなもよう",
+            "20": "ボールのもよう"
+        },
+        "669": {
+            "1": "あかいはな",
+            "2": "きいろのはな",
+            "3": "オレンジいろのはな",
+            "4": "あおいはな",
+            "5": "しろいはな"
+        },
+        "670": {
+            "1": "あかいはな",
+            "2": "きいろのはな",
+            "3": "オレンジいろのはな",
+            "4": "あおいはな",
+            "5": "しろいはな",
+            "6": "えいえんのはな"
+        },
+        "671": {
+            "1": "あかいはな",
+            "2": "きいろのはな",
+            "3": "オレンジいろのはな",
+            "4": "あおいはな",
+            "5": "しろいはな"
+        },
+        "676": {
+            "1": "やせいのすがた",
+            "2": "ハートカット",
+            "3": "スターカット",
+            "4": "ダイヤカット",
+            "5": "クイーンカット",
+            "6": "カブキカット",
+            "7": "キングダムカット",
+            "8": "レディカット",
+            "9": "マダムカット",
+            "10": "ジェントルカット"
+        },
+        "678": {
+            "1": "オスのすがた",
+            "2": "メスのすがた"
+        },
+        "681": {
+            "1": "シールドフォルム",
+            "2": "ブレードフォルム"
+        },
+        "710": {
+            "1": "ちいさいサイズ",
+            "2": "ふつうのサイズ",
+            "3": "おおきいサイズ",
+            "4": "とくだいサイズ"
+        },
+        "711": {
+            "1": "ちいさいサイズ",
+            "2": "ふつうのサイズ",
+            "3": "おおきいサイズ",
+            "4": "とくだいサイズ"
+        },
+        "716": {
+            "1": "リラックスモード",
+            "2": "アクティブモード"
+        }
+    },
+    "es": {
+        "3": {
+            "2": "Mega-Venusaur"
+        },
+        "6": {
+            "2": "Mega-Charizard X",
+            "3": "Mega-Charizard Y"
+        },
+        "9": {
+            "2": "Mega-Blastoise"
+        },
+        "65": {
+            "2": "Mega-Alakazam"
+        },
+        "94": {
+            "2": "Mega-Gengar"
+        },
+        "115": {
+            "2": "Mega-Kangaskhan"
+        },
+        "127": {
+            "2": "Mega-Pinsir"
+        },
+        "130": {
+            "2": "Mega-Gyarados"
+        },
+        "142": {
+            "2": "Mega-Aerodactyl"
+        },
+        "150": {
+            "2": "Mega-Mewtwo X",
+            "3": "Mega-Mewtwo Y"
+        },
+        "181": {
+            "2": "Mega-Ampharos"
+        },
+        "201": {
+            "1": "A",
+            "2": "B",
+            "3": "C",
+            "4": "D",
+            "5": "E",
+            "6": "F",
+            "7": "G",
+            "8": "H",
+            "9": "I",
+            "10": "J",
+            "11": "K",
+            "12": "L",
+            "13": "M",
+            "14": "N",
+            "15": "O",
+            "16": "P",
+            "17": "Q",
+            "18": "R",
+            "19": "S",
+            "20": "T",
+            "21": "U",
+            "22": "V",
+            "23": "W",
+            "24": "X",
+            "25": "Y",
+            "26": "Z",
+            "27": "!"
+        },
+        "212": {
+            "2": "Mega-Scizor"
+        },
+        "214": {
+            "2": "Mega-Heracross"
+        },
+        "229": {
+            "2": "Mega-Houndoom"
+        },
+        "248": {
+            "2": "Mega-Tyranitar"
+        },
+        "257": {
+            "2": "Mega-Blaziken"
+        },
+        "282": {
+            "2": "Mega-Gardevoir"
+        },
+        "303": {
+            "2": "Mega-Mawile"
+        },
+        "306": {
+            "2": "Mega-Aggron"
+        },
+        "308": {
+            "2": "Mega-Medicham"
+        },
+        "310": {
+            "2": "Mega-Manectric"
+        },
+        "351": {
+            "2": "Forma Sol",
+            "3": "Forma Lluvia",
+            "4": "Forma Nieve"
+        },
+        "354": {
+            "2": "Mega-Banette"
+        },
+        "359": {
+            "2": "Mega-Absol"
+        },
+        "380": {
+            "2": "Mega-Latias"
+        },
+        "381": {
+            "2": "Mega-Latios"
+        },
+        "386": {
+            "1": "Forma Normal",
+            "2": "Forma Ataque",
+            "3": "Forma Defensa",
+            "4": "Forma Velocidad"
+        },
+        "412": {
+            "1": "Tronco Planta",
+            "2": "Tronco Arena",
+            "3": "Tronco Basura"
+        },
+        "413": {
+            "1": "Tronco Planta",
+            "2": "Tronco Arena",
+            "3": "Tronco Basura"
+        },
+        "421": {
+            "1": "Forma Encapotado",
+            "2": "Forma Soleado"
+        },
+        "422": {
+            "1": "Mar Oeste",
+            "2": "Mar Este"
+        },
+        "423": {
+            "1": "Mar Oeste",
+            "2": "Mar Este"
+        },
+        "445": {
+            "2": "Mega-Garchomp"
+        },
+        "448": {
+            "2": "Mega-Lucario"
+        },
+        "460": {
+            "2": "Mega-Abomasnow"
+        },
+        "479": {
+            "2": "Rotom Calor",
+            "3": "Rotom Lavado",
+            "4": "Rotom Frío",
+            "5": "Rotom Ventilador",
+            "6": "Rotom Corte"
+        },
+        "487": {
+            "1": "Forma Modificada",
+            "2": "Forma Origen"
+        },
+        "492": {
+            "1": "Forma Tierra",
+            "2": "Forma Cielo"
+        },
+        "493": {
+            "1": "Tipo Normal",
+            "2": "Tipo Bicho",
+            "3": "Tipo ???"
+        },
+        "550": {
+            "1": "Forma Raya Roja",
+            "2": "Forma Raya Azul"
+        },
+        "555": {
+            "1": "Modo Normal",
+            "2": "Modo Daruma"
+        },
+        "585": {
+            "1": "Forma Primavera",
+            "2": "Forma Verano",
+            "3": "Forma Otoño",
+            "4": "Forma Invierno"
+        },
+        "586": {
+            "1": "Forma Primavera",
+            "2": "Forma Verano",
+            "3": "Forma Otoño",
+            "4": "Forma Invierno"
+        },
+        "641": {
+            "1": "Forma Avatar",
+            "2": "Forma Tótem"
+        },
+        "642": {
+            "1": "Forma Avatar",
+            "2": "Forma Tótem"
+        },
+        "645": {
+            "1": "Forma Avatar",
+            "2": "Forma Tótem"
+        },
+        "646": {
+            "2": "Kyurem Negro",
+            "3": "Kyurem Blanco"
+        },
+        "647": {
+            "1": "Forma Habitual",
+            "2": "Forma Brío"
+        },
+        "648": {
+            "1": "Forma Lírica",
+            "2": "Forma Danza"
+        },
+        "649": {
+            "2": "HidroROM"
+        },
+        "664": {
+            "1": "Motivo Polar",
+            "2": "Motivo Taiga",
+            "3": "Motivo Tundra",
+            "4": "Motivo Continental",
+            "5": "Motivo Vergel",
+            "6": "Motivo Oriental",
+            "7": "Motivo Floral",
+            "8": "Motivo Moderno",
+            "9": "Motivo Marino",
+            "10": "Motivo Isleño",
+            "11": "Motivo Estepa",
+            "12": "Motivo Desierto",
+            "13": "Motivo Oasis",
+            "14": "Motivo Monzón",
+            "15": "Motivo Pantano",
+            "16": "Motivo Solar",
+            "17": "Motivo Océano",
+            "18": "Motivo Jungla",
+            "19": "Motivo Fantasía",
+            "20": "Motivo Poké Ball"
+        },
+        "665": {
+            "1": "Motivo Polar",
+            "2": "Motivo Taiga",
+            "3": "Motivo Tundra",
+            "4": "Motivo Continental",
+            "5": "Motivo Vergel",
+            "6": "Motivo Oriental",
+            "7": "Motivo Floral",
+            "8": "Motivo Moderno",
+            "9": "Motivo Marino",
+            "10": "Motivo Isleño",
+            "11": "Motivo Estepa",
+            "12": "Motivo Desierto",
+            "13": "Motivo Oasis",
+            "14": "Motivo Monzón",
+            "15": "Motivo Pantano",
+            "16": "Motivo Solar",
+            "17": "Motivo Océano",
+            "18": "Motivo Jungla",
+            "19": "Motivo Fantasía",
+            "20": "Motivo Poké Ball"
+        },
+        "666": {
+            "1": "Motivo Polar",
+            "2": "Motivo Taiga",
+            "3": "Motivo Tundra",
+            "4": "Motivo Continental",
+            "5": "Motivo Vergel",
+            "6": "Motivo Oriental",
+            "7": "Motivo Floral",
+            "8": "Motivo Moderno",
+            "9": "Motivo Marino",
+            "10": "Motivo Isleño",
+            "11": "Motivo Estepa",
+            "12": "Motivo Desierto",
+            "13": "Motivo Oasis",
+            "14": "Motivo Monzón",
+            "15": "Motivo Pantano",
+            "16": "Motivo Solar",
+            "17": "Motivo Océano",
+            "18": "Motivo Jungla",
+            "19": "Motivo Fantasía",
+            "20": "Motivo Poké Ball"
+        },
+        "669": {
+            "1": "Flor Roja",
+            "2": "Flor Amarilla",
+            "3": "Flor Naranja",
+            "4": "Flor Azul",
+            "5": "Flor Blanca"
+        },
+        "670": {
+            "1": "Flor Roja",
+            "2": "Flor Amarilla",
+            "3": "Flor Naranja",
+            "4": "Flor Azul",
+            "5": "Flor Blanca",
+            "6": "Flor Eterna"
+        },
+        "671": {
+            "1": "Flor Roja",
+            "2": "Flor Amarilla",
+            "3": "Flor Naranja",
+            "4": "Flor Azul",
+            "5": "Flor Blanca"
+        },
+        "676": {
+            "1": "Forma Salvaje",
+            "2": "Corte Corazón",
+            "3": "Corte Estrella",
+            "4": "Corte Rombo",
+            "5": "Corte Aristocrático",
+            "6": "Corte Kabuki",
+            "7": "Corte Faraónico",
+            "8": "Corte Señorita",
+            "9": "Corte Dama",
+            "10": "Corte Caballero"
+        },
+        "678": {
+            "1": "Macho",
+            "2": "Hembra"
+        },
+        "681": {
+            "1": "Forma Escudo",
+            "2": "Forma Filo"
+        },
+        "710": {
+            "1": "Tamaño Pequeño",
+            "2": "Tamaño Normal",
+            "3": "Tamaño Grande",
+            "4": "Tamaño Extragrande"
+        },
+        "711": {
+            "1": "Tamaño Pequeño",
+            "2": "Tamaño Normal",
+            "3": "Tamaño Grande",
+            "4": "Tamaño Extragrande"
+        },
+        "716": {
+            "1": "Modo Relajado",
+            "2": "Modo Activo"
+        }
+    }
+}
