@@ -352,9 +352,12 @@ KeySAVCore.Structures.PKX = $d.declare("KeySAVCore.Structures.PKX", null, 62, $a
         this.gender = 0;
         this.metDate = 0;
         this.eggDate = 0;
+        this.data = null;
     };
     $t.ctor.prototype = $p;
     $t.ctor$1 = function PKX(pkx, box, slot, isghost) {
+        this.data = ArrayConverter.ToArray(pkx);
+
         this.box = box;
         this.slot = slot;
 

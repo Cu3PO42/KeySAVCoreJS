@@ -48,8 +48,13 @@ namespace KeySAVCore.Structures
         public readonly long
             metDate, eggDate;
 
+        public readonly JsArray
+            data;
+
         public PKX(Uint8Array pkx, short box, short slot, bool isghost)
         {
+            data = ArrayConverter.ToArray(pkx);
+
             this.box = box;
             this.slot = slot;
 

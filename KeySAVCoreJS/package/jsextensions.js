@@ -22,5 +22,13 @@ module.exports = {
         next: function (seed) {
             return cuint.UINT32(seed).multiply(mul_const).add(add_const).toNumber() >>> 0;
         }
+    },
+    ArrayConverter: {
+        ToArray: function(arr) {
+            if (Array.from !== undefined)
+                return Array.from(arr);
+            else
+                return Array.prototype.slice.call(arr);
+        }
     }
 };

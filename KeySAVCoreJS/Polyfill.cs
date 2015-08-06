@@ -123,11 +123,20 @@ namespace KeySAVCore
     [Js(Extern=true, Name="LCRNG")]
     class LCRNG
     {
-
         [Js(Extern=true, Name="next")]
         public static uint next(uint seed)
         {
             return 0;
+        }
+    }
+
+    [Js(Extern=true, Name="ArrayConverter")]
+    class ArrayConverter
+    {
+        [Js(Extern=true, Name="ToArray")]
+        public static JsArray ToArray(Uint8Array arr)
+        {
+            return new JsArray();
         }
     }
 }
