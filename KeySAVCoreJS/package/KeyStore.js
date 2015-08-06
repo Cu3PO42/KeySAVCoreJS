@@ -88,7 +88,7 @@ module.exports = (function() {
         var promises = [];
         for (var key in this._keys) {
             var lazyKey = this._keys[key];
-            if (lazyKey.key.isSav && lazyKey.key.isInitialized()) {
+            if (lazyKey.isSav && lazyKey.key.isInitialized()) {
                 var buf = new Buffer(lazyKey.key.getSync().keyData);
                 writeAsync(lazyKey.fd, buf, 0, buf.length, 0)
                 .then(function() {
