@@ -1,9 +1,9 @@
 ???
-JPN
+JAP
 ENG
-FRE
+FRA
 ITA
-GER
+DEU
 ???
-ESP
+SPA
 KOR

@@ -1,9 +1,9 @@
 ???
-JPN
-ENG
-FRE
-ITA
-GER
+JAP.
+ANGL.
+FRA.
+ITA.
+ALL.
 ???
-ESP
-KOR
+ESP.
+CORÉ.

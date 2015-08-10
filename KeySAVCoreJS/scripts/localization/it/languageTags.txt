@@ -1,9 +1,9 @@
 ???
-JPN
-ENG
-FRE
+GPN
+ING
+FRA
 ITA
-GER
+TED
 ???
-ESP
-KOR
+SPA
+COR
