@@ -36,10 +36,17 @@ declare module "keysavcore" {
         }
 
         export var Localization: Localization;
+
+        export function calculateLevel(species: number, exp: number): number;
     }
 }
 
 declare module "keysavcore/Localization" {
     var _: Localization;
     export = _;
+}
+
+declare module "keysavcore/level" {
+    function calculateLevel(species: number, exp: number): number;
+    export = calculateLevel;
 }
