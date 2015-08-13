@@ -1,6 +1,6 @@
 {
   "name": "keysavcore",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A library for breaking the encryption of Generation 6 Pokémon games.",
   "main": "index.js",
   "scripts": {
