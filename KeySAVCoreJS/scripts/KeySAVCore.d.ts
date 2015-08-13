@@ -24,6 +24,16 @@ interface Localization {
     ko: LocalizationLanguage;
 }
 
+interface Calculator {
+    level(pkm: KeySAVCore.Structures.PKX): number;
+    hp(pkm: KeySAVCore.Structures.PKX): number;
+    atk(pkm: KeySAVCore.Structures.PKX): number;
+    def(pkm: KeySAVCore.Structures.PKX): number;
+    spAtk(pkm: KeySAVCore.Structures.PKX): number;
+    spDef(pkm: KeySAVCore.Structures.PKX): number;
+    spe(pkm: KeySAVCore.Structures.PKX): number;
+}
+
 declare module "keysavcore" {
     export var Core: typeof KeySAVCore;
     export module Extensions {
@@ -36,8 +46,7 @@ declare module "keysavcore" {
         }
 
         export var Localization: Localization;
-
-        export function calculateLevel(species: number, exp: number): number;
+        export var Calculator: Calculator;
     }
 }
 
@@ -46,7 +55,7 @@ declare module "keysavcore/Localization" {
     export = _;
 }
 
-declare module "keysavcore/level" {
-    function calculateLevel(species: number, exp: number): number;
-    export = calculateLevel;
+declare module "keysavcore/Calculator" {
+    var _: Calculator;
+    export = _;
 }
