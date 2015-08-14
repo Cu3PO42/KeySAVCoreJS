@@ -12,6 +12,10 @@ interface LocalizationLanguage {
     regions: string[];
     species: string[];
     types: string[];
+
+    getLocation(pkm: KeySAVCore.Structures.PKX): string;
+    getLocation(gameVersion: number, location: number): string;
+    getEggLocation(pkm: KeySAVCore.Structures.PKX): string;
 }
 
 interface Localization {
