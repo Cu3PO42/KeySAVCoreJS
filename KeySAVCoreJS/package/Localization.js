@@ -38,11 +38,13 @@ for (var i = 0; i < langs.length; ++i) {
         };
     })(langs[i]);
 
-    lang.getEggLocation = function(pkm) {
-        if (pkm.eggLocation === undefined || pkm.gameVersion === undefined)
-            return "";
-        return lang.getLocation(pkm.gameVersion, pkm.eggLocation);
-    }
+    lang.getEggLocation = (function(lang) {
+        return function(pkm) {
+            if (pkm.eggLocation === undefined || pkm.gameVersion === undefined)
+                return "";
+            return lang.getLocation(pkm.gameVersion, pkm.eggLocation);
+        }
+    })(lang);
 }
 
 module.exports = names;
