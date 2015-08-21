@@ -41,7 +41,22 @@ namespace KeySAVCore
             }
             if (input.length == 232 * 30 * 32)
             {
-                callback.invoke(null, new SaveReaderDecrypted(input, "RAW"));
+                callback.invoke(null, new SaveReaderDecrypted(input, "YABD"));
+                return;
+            }
+            if (input.length == 232 * 30 * 31)
+            {
+                callback.invoke(null, new SaveReaderDecrypted(input, "PCDATA"));
+                return;
+            }
+            if (input.length == 0x70000)
+            {
+                callback.invoke(null, new SaveReaderDecrypted(input, "XYRAM"));
+                return;
+            }
+            if (input.length == 0x80000)
+            {
+                callback.invoke(null, new SaveReaderDecrypted(input, "ORASRAM"));
                 return;
             }
             throw new NoSaveException();
@@ -95,7 +110,7 @@ namespace KeySAVCore
             for (int d = 0; d < 2; d++)
             {
                 // Do this twice to get both box offsets.
-                for (int i = fo; i <= 0xB8F30; i += 0x10A00) 
+                for (int i = fo; i <= 0xB8F30; i += 0x10A00)
                 {
                     int err = 0;
                     // Start at findoffset and see if it matches pattern
@@ -176,7 +191,7 @@ namespace KeySAVCore
                 }
 
                 // Cool. So we have a fairly decent keystream to roll with. We now need to find what the E0-E3 region is.
-                // 0x00000000 Encryption Constant has the D block last. 
+                // 0x00000000 Encryption Constant has the D block last.
                 // We need to make sure our Supplied Encryption Constant Pokemon have the D block somewhere else (Pref in 1 or 3).
 
                 // First, let's get out our polluted EKX's.
@@ -185,7 +200,7 @@ namespace KeySAVCore
                     for (int j = 0; j < 232; j++) // Save file 1 has them in the second box. XOR them out with the Box2 Polluted Stream
                         polekx[i, j] = (byte)(break1[offset[1] + 232 * i + j] ^ pstream2[i* 232 + j]);
 
-                uint[] encryptionconstants = new uint[6]; // Array for all 6 Encryption Constants. 
+                uint[] encryptionconstants = new uint[6]; // Array for all 6 Encryption Constants.
                 int valid = 0;
                 for (int i = 0; i < 6; i++)
                 {
@@ -321,7 +336,7 @@ namespace KeySAVCore
                     #endregion
                 }
             }
-            
+
             if (true)
             {
                 // Clear the keystream file...

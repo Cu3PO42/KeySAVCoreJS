@@ -600,7 +600,19 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
             return;
         }
         if (input.length == 222720 /* 232 * 30 * 32 */) {
-            callback(null, new KeySAVCore.SaveReaderDecrypted.ctor(input, "RAW"));
+            callback(null, new KeySAVCore.SaveReaderDecrypted.ctor(input, "YABD"));
+            return;
+        }
+        if (input.length == 215760 /* 232 * 30 * 31 */) {
+            callback(null, new KeySAVCore.SaveReaderDecrypted.ctor(input, "PCDATA"));
+            return;
+        }
+        if (input.length == 458752) {
+            callback(null, new KeySAVCore.SaveReaderDecrypted.ctor(input, "XYRAM"));
+            return;
+        }
+        if (input.length == 524288) {
+            callback(null, new KeySAVCore.SaveReaderDecrypted.ctor(input, "ORASRAM"));
             return;
         }
         throw new KeySAVCore.Exceptions.NoSaveException.ctor();
@@ -730,7 +742,7 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
             }
 
             // Cool. So we have a fairly decent keystream to roll with. We now need to find what the E0-E3 region is.
-            // 0x00000000 Encryption Constant has the D block last. 
+            // 0x00000000 Encryption Constant has the D block last.
             // We need to make sure our Supplied Encryption Constant Pokemon have the D block somewhere else (Pref in 1 or 3).
 
             // First, let's get out our polluted EKX's.
@@ -741,7 +753,7 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
                 }
             }
 
-            var encryptionconstants = $d.array(System.UInt32, 6); // Array for all 6 Encryption Constants. 
+            var encryptionconstants = $d.array(System.UInt32, 6); // Array for all 6 Encryption Constants.
             var valid = 0;
             for (var i = 0; i < 6; i++) {
                 encryptionconstants[i] = polekx[(i) * polekx.$ranks[1] + 0];
@@ -999,6 +1011,8 @@ KeySAVCore.SaveReaderDecrypted = $d.declare("KeySAVCore.SaveReaderDecrypted", Sy
     $t.cctor = function() {
         $t.orasOffset = 208896;
         $t.xyOffset = 140800;
+        $t.xyRamsavOffset = 126776;
+        $t.orasRamsavOffset = 194452;
     };
     $t.$ator = function() {
         this.sav = null;
@@ -1020,11 +1034,20 @@ KeySAVCore.SaveReaderDecrypted = $d.declare("KeySAVCore.SaveReaderDecrypted", Sy
             case "ORAS":
                 this.offset = 208896 /* SaveReaderDecrypted.orasOffset */;
                 break;
-            case "RAW":
+            case "YABD":
                 this.offset = 4;
                 var ekx = file.subarray(4, 236);
                 if (!KeySAVCore.Structures.PKX.verifyCHK(KeySAVCore.Structures.PKX.decrypt(ekx)))
                     this.offset = 8;
+                break;
+            case "PCDATA":
+                this.offset = 0;
+                break;
+            case "XYRAM":
+                this.offset = 126776 /* SaveReaderDecrypted.xyRamsavOffset */;
+                break;
+            case "ORASRAM":
+                this.offset = 194452 /* SaveReaderDecrypted.orasRamsavOffset */;
                 break;
         }
     };

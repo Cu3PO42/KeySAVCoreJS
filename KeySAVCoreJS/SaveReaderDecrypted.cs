@@ -8,6 +8,8 @@ namespace KeySAVCore
     {
         private const uint orasOffset = 0x33000;
         private const uint xyOffset = 0x22600;
+        private const uint xyRamsavOffset = 0x1EF38;
+        private const uint orasRamsavOffset = 0x2F794;
 
         private readonly Uint8Array sav;
         private readonly uint offset;
@@ -33,11 +35,20 @@ namespace KeySAVCore
                 case "ORAS":
                     offset = orasOffset;
                     break;
-                case "RAW":
+                case "YABD":
                     offset = 4;
                     Uint8Array ekx = file.subarray(4, 236);
                     if (!PKX.verifyCHK(PKX.decrypt(ekx)))
                         offset = 8;
+                    break;
+                case "PCDATA":
+                    offset = 0;
+                    break;
+                case "XYRAM":
+                    offset = xyRamsavOffset;
+                    break;
+                case "ORASRAM":
+                    offset = orasRamsavOffset;
                     break;
             }
         }
