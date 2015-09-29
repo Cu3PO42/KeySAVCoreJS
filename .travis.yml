@@ -9,3 +9,6 @@ after_success:
 - npm install
 - unset TRAVIS
 - npm run publish
+
+notifications:
+    email: false
