@@ -90,7 +90,20 @@ namespace KeySAVCore
             {
                 if (e == null)
                 {
-                    key.slot1Flag = BitConverter.ToUInt32(Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000) ? break2 : break1, 0x168);
+                    if (Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000))
+                    {
+                        key.slot1Flag = BitConverter.ToUInt32(break2, 0x168);
+                    }
+                    else if (Utility.SequenceEqual(break1, 0x1000, break2, 0x1000, 0x7F000))
+                    {
+                        key.slot1Flag = BitConverter.ToUInt32(break1, 0x168);
+                    }
+                    else
+                    {
+                        callback.invoke(new SaveBreakResult(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", null, null));
+                        return;
+                    }
+                    
                     Utility.xor(break1, (int)key.boxOffset, break1, (int)key.boxOffset-0x7F000, key.slot1Key, 0, 232*30*31);
 
                     SaveReaderEncrypted reader1, reader2;

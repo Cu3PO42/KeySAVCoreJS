@@ -642,8 +642,19 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
         keyGetter(KeySAVCore.BitConverter.ToUInt32(break1, 16), KeySAVCore.BitConverter.ToUInt32(break1, 
             20), $d.cast(($d.delegate(function(e, key) {
             if (e == null) {
-                key.set_slot1Flag(KeySAVCore.BitConverter.ToUInt32(KeySAVCore.Utility.SequenceEqual$2(break1, 
-                    524288, break2, 524288, 520192) ? break2 : break1, 360));
+                if (KeySAVCore.Utility.SequenceEqual$2(break1, 524288, break2, 524288, 520192)) {
+                    key.set_slot1Flag(KeySAVCore.BitConverter.ToUInt32(break2, 360));
+                }
+                else
+                    if (KeySAVCore.Utility.SequenceEqual$2(break1, 4096, break2, 4096, 520192)) {
+                        key.set_slot1Flag(KeySAVCore.BitConverter.ToUInt32(break1, 360));
+                    }
+                    else {
+                        callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", 
+                            null, null));
+                        return;
+                    }
+
                 KeySAVCore.Utility.xor$3(break1, (key.get_boxOffset() | 0), break1, (key.get_boxOffset() | 0) - 520192, 
                     key.slot1Key, 0, 215760 /* 232*30*31 */);
 
