@@ -24,6 +24,11 @@ namespace KeySAVCore
             get { return 930;  }
         }
 
+        public bool IsNewKey
+        {
+            get { return true; }
+        }
+
         internal SaveReaderDecrypted(Uint8Array file, string type)
         {
             sav = file;
