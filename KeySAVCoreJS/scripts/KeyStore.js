@@ -24,7 +24,7 @@ module.exports = (function() {
         .map(function(fileName) {
             return statAsync(join(path, fileName))
             .then(function (stats) {
-                if (stats.size === 0xB4AD4 || stats.size === 0x1000) {
+                if (stats.size === 0xB4AD4 || stats.size === 0x80000 || stats.size === 0x1000) {
                     return openAsync(join(path, fileName), 'r+')
                     .then(function(fd) {
                         var buf = new Buffer(8);
@@ -32,14 +32,15 @@ module.exports = (function() {
                         .then(function() {
                             var stamp = buf.toString('hex');
                             if (self._keys[stamp] === undefined) {
-                                self._keys[stamp] = {fd: fd, name: fileName, isSav: stats.size === 0xB4AD4, key: new Lazy(function(cb) {
+                                self._keys[stamp] = {fd: fd, name: fileName, isSav: stats.size !== 0x1000, key: new Lazy(function(cb) {
+                                    var size = stats.size === 0x1000 ? 0x1000 : 0xB4AD4;
                                     var buf = new Buffer(stats.size);
                                     readAsync(fd, buf, 0, stats.size, 0)
                                     .then(function() {
-                                        var arr = new Uint8Array(stats.size);
+                                        var arr = new Uint8Array(size);
                                         for (var i = 0; i < stats.size; ++i)
                                             arr[i] = buf.readUInt8(i);
-                                        var key = stats.size === 0xB4AD4 ? new KeySAVCore.Structures.SaveKey.ctor$1(arr) : arr;
+                                        var key = stats.size !== 0x1000 ? new KeySAVCore.Structures.SaveKey.ctor$1(arr) : arr;
                                         cb(null, key);
                                     })
                                     .catch(cb);

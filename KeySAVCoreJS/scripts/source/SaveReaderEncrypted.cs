@@ -29,6 +29,11 @@ namespace KeySAVCore
             }
         }
 
+        public bool IsNewKey
+        {
+            get { return key.isNewKey;  }
+        }
+
         // TODO unlocked slots kinda broken
 
         private readonly static Uint8Array zeros;
@@ -42,7 +47,7 @@ namespace KeySAVCore
 
             _KeyName = Path.GetFileName(_KeyName);
 
-            if (key.slot1Flag == BitConverter.ToUInt32(sav, 0x168))
+            if (key.slot1Flag == BitConverter.ToUInt32(sav, 0x168) && key.isNewKey)
                 activeSlot = 0;
             else
                 activeSlot = 1;
@@ -65,7 +70,7 @@ namespace KeySAVCore
 
             sav.XorInPlace((int)key.boxOffset-0x7F000, key.slot1Key, 0, 232*30*31);
         }
-        
+
         static SaveReaderEncrypted()
         {
             zeros = new Uint8Array(232);
@@ -195,7 +200,7 @@ namespace KeySAVCore
                     Utility.SequenceEqual(key.boxKey2, keyOffset, Utility.xor(ezeros, sav, savOffset), 0, 232))
                 {
                     // Data is changed only once to a dumpable, but we can still dump with the other key.
-                    ekx = Utility.xor(key.boxKey1, keyOffset, sav, savOffset, 232); 
+                    ekx = Utility.xor(key.boxKey1, keyOffset, sav, savOffset, 232);
                     if (!PKX.verifyCHK(PKX.decrypt(ekx)))
                     {
                         if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, key.blank))))
@@ -222,14 +227,14 @@ namespace KeySAVCore
                     Uint8Array data1 = Utility.xor(sav, savOffset, key.boxKey1, keyOffset, 232);
                     Uint8Array data2 = Utility.xor(sav, savOffset, key.boxKey2, keyOffset, 232);
 
-                    keydata1 = 
+                    keydata1 =
                         (PKX.verifyCHK(PKX.decrypt(data1))
                         ||
                         PKX.verifyCHK(PKX.decrypt(Utility.xor(data1, ezeros)))
                         ||
                         PKX.verifyCHK(PKX.decrypt(Utility.xor(data1, key.blank)))
                         );
-                    keydata2 = 
+                    keydata2 =
                         (PKX.verifyCHK(PKX.decrypt(data2))
                         ||
                         PKX.verifyCHK(PKX.decrypt(Utility.xor(data2, ezeros)))
@@ -288,7 +293,7 @@ namespace KeySAVCore
             {
                 return pkx;
             }
-            else 
+            else
                 return null; // Slot Decryption error?!
 
         }

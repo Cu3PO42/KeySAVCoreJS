@@ -36,6 +36,7 @@ declare module KeySAVCore {
     export interface ISaveReader {
         KeySAVCore$ISaveReader$get_KeyName(): string;
         KeySAVCore$ISaveReader$get_UnlockedSlots(): ushort;
+        KeySAVCore$ISaveReader$get_IsNewKey(): boolean;
         KeySAVCore$ISaveReader$scanSlots$2(from: ushort, to: ushort): void;
         KeySAVCore$ISaveReader$scanSlots(): void;
         KeySAVCore$ISaveReader$scanSlots$1(pos: ushort): void;
@@ -48,7 +49,7 @@ declare module KeySAVCore {
         (): SaveBreakerTypeFunc;
         eggnames: string[];
         Load(input: Uint8Array, keyGetter: Function, callback: Function): void;
-        Break(break1: Uint8Array, break2: Uint8Array): Structures.SaveBreakResult;
+        Break(break1: Uint8Array, break2: Uint8Array, keyGetter: Function, callback: Function): void;
     }
     var SaveBreaker: SaveBreakerTypeFunc;
 
@@ -56,6 +57,7 @@ declare module KeySAVCore {
     export interface SaveReaderDecrypted extends System.Object, ISaveReader {
         get_KeyName(): string;
         get_UnlockedSlots(): ushort;
+        get_IsNewKey(): boolean;
         scanSlots(): void;
         scanSlots$1(pos: ushort): void;
         scanSlots$2(from: ushort, to: ushort): void;
@@ -71,6 +73,7 @@ declare module KeySAVCore {
     export interface SaveReaderEncrypted extends System.Object, ISaveReader {
         get_KeyName(): string;
         get_UnlockedSlots(): ushort;
+        get_IsNewKey(): boolean;
         scanSlots(): void;
         scanSlots$1(pos: ushort): void;
         scanSlots$2(start: ushort, end: ushort): void;
@@ -226,10 +229,15 @@ declare module KeySAVCore {
 
         // KeySAVCore.Structures.SaveKey
         export interface SaveKey extends System.ValueType {
-            stamp1: uint;
-            stamp2: uint;
-            boxOffset: uint;
-            slot1Flag: uint;
+            get_stamp1(): uint;
+            set_stamp1(value: uint): void;
+            get_stamp2(): uint;
+            set_stamp2(value: uint): void;
+            get_boxOffset(): uint;
+            set_boxOffset(value: uint): void;
+            get_slot1Flag(): uint;
+            set_slot1Flag(value: uint): void;
+            get_isNewKey(): boolean;
         }
         export interface SaveKeyTypeFunc extends TypeFunction {
             (): SaveKeyTypeFunc;

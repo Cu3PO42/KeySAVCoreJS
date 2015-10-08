@@ -617,7 +617,7 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
         }
         throw new KeySAVCore.Exceptions.NoSaveException.ctor();
     };
-    $t.Break = function SaveBreaker_Break(break1, break2) {
+    $t.Break = function SaveBreaker_Break(break1, break2, keyGetter, callback) {
         var offset = $d.array(System.Int32, 2);
         var empty = new Uint8Array(232);
         var emptyekx = new Uint8Array(232);
@@ -628,311 +628,337 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
         var result;
 
         if (!KeySAVCore.Utility.SequenceEqual$2(break1, 16, break2, 16, 8)) {
-            return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "Saves are not from the same game!\nPlease follow the instructions.", 
-                null, null);
+            callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "Saves are not from the same game!\nPlease follow the instructions.", 
+                null, null));
+            return;
         }
 
         if (KeySAVCore.Utility.SequenceEqual(break1, break2)) {
-            return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are identical.\nPlease follow the instructions.", 
-                null, null);
+            callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are identical.\nPlease follow the instructions.", 
+                null, null));
+            return;
         }
 
-        // TODO readd upgrade logic
-        if (KeySAVCore.Utility.SequenceEqual$2(break1, 524288, break2, 524288, 520192)) {
-            save1Save = break2;
-            for (var i = 162304; i < 446160; ++i) {
-                break2[i + 520192] = ((break2[i] ^ break1[i] ^ break1[i + 520192]) & 0xFF);
+        keyGetter(KeySAVCore.BitConverter.ToUInt32(break1, 16), KeySAVCore.BitConverter.ToUInt32(break1, 
+            20), $d.cast(($d.delegate(function(e, key) {
+            if (e == null) {
+                key.set_slot1Flag(KeySAVCore.BitConverter.ToUInt32(KeySAVCore.Utility.SequenceEqual$2(break1, 
+                    524288, break2, 524288, 520192) ? break2 : break1, 360));
+                KeySAVCore.Utility.xor$3(break1, (key.get_boxOffset() | 0), break1, (key.get_boxOffset() | 0) - 520192, 
+                    key.slot1Key, 0, 215760 /* 232*30*31 */);
+
+                var reader1, reader2;
+                reader1 = new KeySAVCore.SaveReaderEncrypted.ctor$1(break1, key);
+                reader1.scanSlots();
+                reader2 = new KeySAVCore.SaveReaderEncrypted.ctor$1(break2, key);
+                reader2.scanSlots();
+
+                callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(true, "Found old key. Based new keystream on that.\n\nPlease save new Keystream.", 
+                    key, null));
+                return;
             }
-        }
-        else
-            if (KeySAVCore.Utility.SequenceEqual$2(break1, 4096, break2, 4096, 520192)) {
-                save1Save = break1;
+            if (KeySAVCore.Utility.SequenceEqual$2(break1, 524288, break2, 524288, 520192)) {
+                save1Save = break2;
+                for (var i = 162304; i < 446160; ++i) {
+                    break2[i + 520192] = ((break2[i] ^ break1[i] ^ break1[i + 520192]) & 0xFF);
+                }
             }
-            else {
-                return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", 
-                    null, null);
-            }
+            else
+                if (KeySAVCore.Utility.SequenceEqual$2(break1, 4096, break2, 4096, 520192)) {
+                    save1Save = break1;
+                }
+                else {
+                    callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", 
+                        null, null));
+                    return;
+                }
 
-        (function() {
-            var $ref = { value: break1 };
-            var $ref1 = { value: break2 };
-            var $result$ = KeySAVCore.Utility.Switch(Uint8Array, $ref, $ref1);
-            break1 = $ref.value;
-            break2 = $ref1.value;
-            return $result$;
-        }).call(this);
+            (function() {
+                var $ref2 = { value: break1 };
+                var $ref3 = { value: break2 };
+                var $result$ = KeySAVCore.Utility.Switch(Uint8Array, $ref2, $ref3);
+                break1 = $ref2.value;
+                break2 = $ref3.value;
+                return $result$;
+            }).call(this);
 
-        //#region Finding the User Specific Data: Using Valid to keep track of progress...
-        // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.
-        // Loop through save file to find
-        var fo = 682496; // Initial Offset, can tweak later.
+            //#region Finding the User Specific Data: Using Valid to keep track of progress...
+            // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.
+            // Loop through save file to find
+            var fo = 682496; // Initial Offset, can tweak later.
 
-        for (var d = 0; d < 2; d++) {
-            // Do this twice to get both box offsets.
-            for (var i = fo; i <= 757552; i += 68096) {
-                var err = 0;
-                // Start at findoffset and see if it matches pattern
-                if ((break1[i + 4] == break2[i + 4]) && (break1[i + 4 + 232] == break2[i + 4 + 232])) {
-                    // Sanity Placeholders are the same
-                    for (var j = 0; j < 4; j++) {
-                        if (break1[i + j] == break2[i + j])
-                            err++;
-                    }
-
-                    if (err < 4) {
-                        // Keystream ^ PID doesn't match entirely. Keep checking.
-                        for (var j = 8; j < 232; j++) {
+            for (var d = 0; d < 2; d++) {
+                // Do this twice to get both box offsets.
+                for (var i = fo; i <= 757552; i += 68096) {
+                    var err = 0;
+                    // Start at findoffset and see if it matches pattern
+                    if ((break1[i + 4] == break2[i + 4]) && (break1[i + 4 + 232] == break2[i + 4 + 232])) {
+                        // Sanity Placeholders are the same
+                        for (var j = 0; j < 4; j++) {
                             if (break1[i + j] == break2[i + j])
                                 err++;
                         }
 
-                        if (err < 20) {
-                            // Tolerable amount of difference between offsets. We have a result.
-                            offset[d] = i;
-                            break;
+                        if (err < 4) {
+                            // Keystream ^ PID doesn't match entirely. Keep checking.
+                            for (var j = 8; j < 232; j++) {
+                                if (break1[i + j] == break2[i + j])
+                                    err++;
+                            }
+
+                            if (err < 20) {
+                                // Tolerable amount of difference between offsets. We have a result.
+                                offset[d] = i;
+                                break;
+                            }
                         }
                     }
                 }
-            }
-            fo = offset[d] + 6960 /* 232 * 30 */; // Fast forward out of this box to find the next.
-        }
-
-        // Now that we have our two box offsets...
-        // Check to see if we actually have them.
-
-        if ((offset[0] == 0) || (offset[1] == 0)) {
-            // We have a problem. Don't continue.
-            result = "Unable to Find Box.\n";
-            result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
-            return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, result, null, null);
-        }
-        else {
-            // Let's go deeper. We have the two box offsets.
-            // Chunk up the base streams.
-            var estream1 = new Uint8Array(6960 /* 30 * 232 */);
-            var estream2 = new Uint8Array(6960 /* 30 * 232 */);
-            // Stuff 'em.
-            for (var i = 0; i < 30; i++) {
-                for (var j = 0; j < 232; j++) {
-                    estream1[i * 232 + j] = break1[offset[0] + 232 * i + j];
-                    estream2[i * 232 + j] = break2[offset[1] + 232 * i + j];
-                }
+                fo = offset[d] + 6960 /* 232 * 30 */; // Fast forward out of this box to find the next.
             }
 
-            // Okay, now that we have the encrypted streams, formulate our EKX.
-            var nick = $t().eggnames[1];
-            // Stuff in the nickname to our blank EKX.
-            var nicknamebytes = Unicode16LE.GetBytes(nick);
-            JS.Uint8ArrayHelper.Copy(nicknamebytes, 0, empty, 64, nicknamebytes.length);
+            // Now that we have our two box offsets...
+            // Check to see if we actually have them.
 
-            // Encrypt the Empty PKX to EKX.
-            JS.Uint8ArrayHelper.Copy(empty, 0, emptyekx, 0, 232);
-            emptyekx = KeySAVCore.Structures.PKX.decrypt(emptyekx);
-            // Not gonna bother with the checksum, as this empty file is temporary.
-
-            // Sweet. Now we just have to find the E0-E3 values. Let's get our polluted streams from each.
-            // Save file 1 has empty box 1. Save file 2 has empty box 2.
-            var pstream1 = new Uint8Array(6960 /* 30 * 232 */); // Polluted Keystream 1
-            var pstream2 = new Uint8Array(6960 /* 30 * 232 */); // Polluted Keystream 2
-            for (var i = 0; i < 30; i++) {
-                for (var j = 0; j < 232; j++) {
-                    pstream1[i * 232 + j] = ((estream1[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-                    pstream2[i * 232 + j] = ((estream2[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-                }
-            }
-
-            // Cool. So we have a fairly decent keystream to roll with. We now need to find what the E0-E3 region is.
-            // 0x00000000 Encryption Constant has the D block last.
-            // We need to make sure our Supplied Encryption Constant Pokemon have the D block somewhere else (Pref in 1 or 3).
-
-            // First, let's get out our polluted EKX's.
-            var polekx = $d.array(System.Byte, 6 * 232, [6, 232]);
-            for (var i = 0; i < 6; i++) {
-                for (var j = 0; j < 232; j++) {
-                    polekx[(i) * polekx.$ranks[1] + (j)] = ((break1[offset[1] + 232 * i + j] ^ pstream2[i * 232 + j]) & 0xFF);
-                }
-            }
-
-            var encryptionconstants = $d.array(System.UInt32, 6); // Array for all 6 Encryption Constants.
-            var valid = 0;
-            for (var i = 0; i < 6; i++) {
-                encryptionconstants[i] = polekx[(i) * polekx.$ranks[1] + 0];
-                encryptionconstants[i] += polekx[(i) * polekx.$ranks[1] + 1] * 256;
-                encryptionconstants[i] += polekx[(i) * polekx.$ranks[1] + 2] * 65536;
-                encryptionconstants[i] += polekx[(i) * polekx.$ranks[1] + 3] * 16777216;
-                // EC Obtained. Check to see if Block D is not last.
-                if (KeySAVCore.Structures.PKX.getDloc(encryptionconstants[i]) != 3) {
-                    valid++;
-                    // Find the Origin/Region data.
-                    var encryptedekx = new Uint8Array(232);
-                    var decryptedpkx = new Uint8Array(232);
-                    for (var z = 0; z < 232; z++) {
-                        encryptedekx[z] = polekx[(i) * polekx.$ranks[1] + (z)];
-                    }
-
-                    decryptedpkx = KeySAVCore.Structures.PKX.decrypt(encryptedekx);
-
-                    // finalize data
-
-                    // Okay, now that we have the encrypted streams, formulate our EKX.
-                    nick = $t().eggnames[decryptedpkx[227] - 1];
-                    // Stuff in the nickname to our blank EKX.
-                    nicknamebytes = Unicode16LE.GetBytes(nick);
-                    JS.Uint8ArrayHelper.Copy(nicknamebytes, 0, empty, 64, nicknamebytes.length);
-
-                    // Dump it into our Blank EKX. We have won!
-                    empty[224] = decryptedpkx[224];
-                    empty[225] = decryptedpkx[225];
-                    empty[226] = decryptedpkx[226];
-                    empty[227] = decryptedpkx[227];
-                    break;
-                }
-            }
-            //#endregion
-
-            if (valid == 0) { // We didn't get any valid EC's where D was not in last. Tell the user to try again with different specimens.
-                result = "The 6 supplied Pokemon are not suitable. \nRip new saves with 6 different ones that originated from your save file.\n";
+            if ((offset[0] == 0) || (offset[1] == 0)) {
+                // We have a problem. Don't continue.
+                result = "Unable to Find Box.\n";
                 result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
-                return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, result, null, null);
+                callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, result, null, null));
+                return;
             }
             else {
-                //#region Fix up our Empty File
-                // We can continue to get our actual keystream.
-                // Let's calculate the actual checksum of our empty pkx.
-                var empty16 = new Uint16Array(empty.buffer);
-                var chk = 0;
-                for (var i = 4; i < 116 /* 232 / 2 */; i++) {
-                    chk += empty16[i];
-                }
-
-                // Apply New Checksum
-                empty16[3] = chk;
-
-                // Okay. So we're now fixed with the proper blank PKX. Encrypt it!
-                JS.Uint8ArrayHelper.Copy(empty, 0, emptyekx, 0, 232);
-                emptyekx = KeySAVCore.Structures.PKX.encrypt(emptyekx);
-
-                // Copy over 0x10-0x1F (Save Encryption Unused Data so we can track data).
-                JS.Uint8ArrayHelper.Copy(break1, 16, savkey, 0, 8);
-                // Include empty data
-                savkey[16] = empty[224];
-                savkey[17] = empty[225];
-                savkey[18] = empty[226];
-                savkey[19] = empty[227];
-                // Copy over the scan offsets.
-                JS.Uint8ArrayHelper.Copy$1(KeySAVCore.BitConverter.GetBytes(offset[0]), 0, savkey, 28, 
-                    4);
-
+                // Let's go deeper. We have the two box offsets.
+                // Chunk up the base streams.
+                var estream1 = new Uint8Array(6960 /* 30 * 232 */);
+                var estream2 = new Uint8Array(6960 /* 30 * 232 */);
+                // Stuff 'em.
                 for (var i = 0; i < 30; i++) {
                     for (var j = 0; j < 232; j++) {
-                        savkey[256 + i * 232 + j] = ((estream1[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-                        savkey[7216 /* 0x100 + (30 * 232) */ + i * 232 + j] = ((estream2[i * 232 + j] ^ emptyekx[j]) & 0xFF);
+                        estream1[i * 232 + j] = break1[offset[0] + 232 * i + j];
+                        estream2[i * 232 + j] = break2[offset[1] + 232 * i + j];
+                    }
+                }
+
+                // Okay, now that we have the encrypted streams, formulate our EKX.
+                var nick = $t().eggnames[1];
+                // Stuff in the nickname to our blank EKX.
+                var nicknamebytes = Unicode16LE.GetBytes(nick);
+                JS.Uint8ArrayHelper.Copy(nicknamebytes, 0, empty, 64, nicknamebytes.length);
+
+                // Encrypt the Empty PKX to EKX.
+                JS.Uint8ArrayHelper.Copy(empty, 0, emptyekx, 0, 232);
+                emptyekx = KeySAVCore.Structures.PKX.decrypt(emptyekx);
+                // Not gonna bother with the checksum, as this empty file is temporary.
+
+                // Sweet. Now we just have to find the E0-E3 values. Let's get our polluted streams from each.
+                // Save file 1 has empty box 1. Save file 2 has empty box 2.
+                var pstream1 = new Uint8Array(6960 /* 30 * 232 */); // Polluted Keystream 1
+                var pstream2 = new Uint8Array(6960 /* 30 * 232 */); // Polluted Keystream 2
+                for (var i = 0; i < 30; i++) {
+                    for (var j = 0; j < 232; j++) {
+                        pstream1[i * 232 + j] = ((estream1[i * 232 + j] ^ emptyekx[j]) & 0xFF);
+                        pstream2[i * 232 + j] = ((estream2[i * 232 + j] ^ emptyekx[j]) & 0xFF);
+                    }
+                }
+
+                // Cool. So we have a fairly decent keystream to roll with. We now need to find what the E0-E3 region is.
+                // 0x00000000 Encryption Constant has the D block last.
+                // We need to make sure our Supplied Encryption Constant Pokemon have the D block somewhere else (Pref in 1 or 3).
+
+                // First, let's get out our polluted EKX's.
+                var polekx = $d.array(System.Byte, 6 * 232, [6, 232]);
+                for (var i = 0; i < 6; i++) {
+                    for (var j = 0; j < 232; j++) {
+                        polekx[(i) * polekx.$ranks[1] + (j)] = ((break1[offset[1] + 232 * i + j] ^ pstream2[i * 232 + j]) & 0xFF);
+                    }
+                }
+
+                var encryptionconstants = $d.array(System.UInt32, 6); // Array for all 6 Encryption Constants.
+                var valid = 0;
+                for (var i = 0; i < 6; i++) {
+                    encryptionconstants[i] = polekx[(i) * polekx.$ranks[1] + 0];
+                    encryptionconstants[i] += polekx[(i) * polekx.$ranks[1] + 1] * 256;
+                    encryptionconstants[i] += polekx[(i) * polekx.$ranks[1] + 2] * 65536;
+                    encryptionconstants[i] += polekx[(i) * polekx.$ranks[1] + 3] * 16777216;
+                    // EC Obtained. Check to see if Block D is not last.
+                    if (KeySAVCore.Structures.PKX.getDloc(encryptionconstants[i]) != 3) {
+                        valid++;
+                        // Find the Origin/Region data.
+                        var encryptedekx = new Uint8Array(232);
+                        var decryptedpkx = new Uint8Array(232);
+                        for (var z = 0; z < 232; z++) {
+                            encryptedekx[z] = polekx[(i) * polekx.$ranks[1] + (z)];
+                        }
+
+                        decryptedpkx = KeySAVCore.Structures.PKX.decrypt(encryptedekx);
+
+                        // finalize data
+
+                        // Okay, now that we have the encrypted streams, formulate our EKX.
+                        nick = $t().eggnames[decryptedpkx[227] - 1];
+                        // Stuff in the nickname to our blank EKX.
+                        nicknamebytes = Unicode16LE.GetBytes(nick);
+                        JS.Uint8ArrayHelper.Copy(nicknamebytes, 0, empty, 64, nicknamebytes.length);
+
+                        // Dump it into our Blank EKX. We have won!
+                        empty[224] = decryptedpkx[224];
+                        empty[225] = decryptedpkx[225];
+                        empty[226] = decryptedpkx[226];
+                        empty[227] = decryptedpkx[227];
+                        break;
                     }
                 }
                 //#endregion
-                // Let's extract some of the information now for when we set the Keystream filename.
-                //#region Keystream Naming
+
+                if (valid == 0) { // We didn't get any valid EC's where D was not in last. Tell the user to try again with different specimens.
+                    result = "The 6 supplied Pokemon are not suitable. \nRip new saves with 6 different ones that originated from your save file.\n";
+                    result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
+                    callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, result, null, null));
+                    return;
+                }
+                else {
+                    //#region Fix up our Empty File
+                    // We can continue to get our actual keystream.
+                    // Let's calculate the actual checksum of our empty pkx.
+                    var empty16 = new Uint16Array(empty.buffer);
+                    var chk = 0;
+                    for (var i = 4; i < 116 /* 232 / 2 */; i++) {
+                        chk += empty16[i];
+                    }
+
+                    // Apply New Checksum
+                    empty16[3] = chk;
+
+                    // Okay. So we're now fixed with the proper blank PKX. Encrypt it!
+                    JS.Uint8ArrayHelper.Copy(empty, 0, emptyekx, 0, 232);
+                    emptyekx = KeySAVCore.Structures.PKX.encrypt(emptyekx);
+
+                    // Copy over 0x10-0x1F (Save Encryption Unused Data so we can track data).
+                    JS.Uint8ArrayHelper.Copy(break1, 16, savkey, 0, 8);
+                    // Include empty data
+                    savkey[16] = empty[224];
+                    savkey[17] = empty[225];
+                    savkey[18] = empty[226];
+                    savkey[19] = empty[227];
+                    // Copy over the scan offsets.
+                    JS.Uint8ArrayHelper.Copy$1(KeySAVCore.BitConverter.GetBytes(offset[0]), 0, savkey, 
+                        28, 4);
+
+                    for (var i = 0; i < 30; i++) {
+                        for (var j = 0; j < 232; j++) {
+                            savkey[256 + i * 232 + j] = ((estream1[i * 232 + j] ^ emptyekx[j]) & 0xFF);
+                            savkey[7216 /* 0x100 + (30 * 232) */ + i * 232 + j] = ((estream2[i * 232 + j] ^ emptyekx[j]) & 0xFF);
+                        }
+                    }
+                    //#endregion
+                    // Let's extract some of the information now for when we set the Keystream filename.
+                    //#region Keystream Naming
+                    var data1 = new Uint8Array(232);
+                    var data2 = new Uint8Array(232);
+                    for (var i = 0; i < 232; i++) {
+                        data1[i] = ((savkey[256 + i] ^ break1[offset[0] + i]) & 0xFF);
+                        data2[i] = ((savkey[256 + i] ^ break2[offset[0] + i]) & 0xFF);
+                    }
+                    var data1a = new Uint8Array(232);
+                    var data2a = new Uint8Array(232);
+                    JS.Uint8ArrayHelper.Copy(data1, 0, data1a, 0, 232);
+                    JS.Uint8ArrayHelper.Copy(data2, 0, data2a, 0, 232);
+                    var pkx1 = KeySAVCore.Structures.PKX.decrypt(data1);
+                    var pkx2 = KeySAVCore.Structures.PKX.decrypt(data2);
+                    var chk1 = 0;
+                    var chk2 = 0;
+                    for (var i = 8; i < 232; i += 2) {
+                        chk1 += KeySAVCore.BitConverter.ToUInt16(pkx1, i);
+                        chk2 += KeySAVCore.BitConverter.ToUInt16(pkx2, i);
+                    }
+                    if (KeySAVCore.Structures.PKX.verifyCHK(pkx1) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx1, 
+                        8))) {
+                        // Save 1 has the box1 data
+                        pkx = pkx1;
+                    }
+                    else
+                        if (KeySAVCore.Structures.PKX.verifyCHK(pkx2) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx2, 
+                            8))) {
+                            // Save 2 has the box1 data
+                            pkx = pkx2;
+                        }
+                        else {
+                            // Data isn't decrypting right...
+                            for (var i = 0; i < 232; i++) {
+                                data1a[i] ^= empty[i];
+                                data2a[i] ^= empty[i];
+                            }
+                            pkx1 = KeySAVCore.Structures.PKX.decrypt(data1a);
+                            pkx2 = KeySAVCore.Structures.PKX.decrypt(data2a);
+                            if (KeySAVCore.Structures.PKX.verifyCHK(pkx1) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx1, 
+                                8))) {
+                                // Save 1 has the box1 data
+                                pkx = pkx1;
+                            }
+                            else
+                                if (KeySAVCore.Structures.PKX.verifyCHK(pkx2) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx2, 
+                                    8))) {
+                                    // Save 2 has the box1 data
+                                    pkx = pkx2;
+                                }
+                                else {
+                                    // Sigh...
+                                    callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, 
+                                        "", null, null));
+                                    return;
+                                }
+                        }
+                    //#endregion
+                }
+            }
+
+            if (true) {
+                // Clear the keystream file...
+                JS.Uint8ArrayHelper.fill$1(savkey, 0, 256, 216016 /* 0x100+232*30*31 */);
+                JS.Uint8ArrayHelper.fill$1(savkey, 0, 262144, 477904 /* 0x40000+232*30*31 */);
+
+                // Copy the key for the slot selector
+                JS.Uint8ArrayHelper.Copy(save1Save, 360, savkey, 524288, 4);
+
+                // Copy the key for the other save slot
+                KeySAVCore.Utility.xor$3(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 
+                    215760 /* 232*30*31 */);
+
+                // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
                 var data1 = new Uint8Array(232);
                 var data2 = new Uint8Array(232);
-                for (var i = 0; i < 232; i++) {
-                    data1[i] = ((savkey[256 + i] ^ break1[offset[0] + i]) & 0xFF);
-                    data2[i] = ((savkey[256 + i] ^ break2[offset[0] + i]) & 0xFF);
-                }
-                var data1a = new Uint8Array(232);
-                var data2a = new Uint8Array(232);
-                JS.Uint8ArrayHelper.Copy(data1, 0, data1a, 0, 232);
-                JS.Uint8ArrayHelper.Copy(data2, 0, data2a, 0, 232);
-                var pkx1 = KeySAVCore.Structures.PKX.decrypt(data1);
-                var pkx2 = KeySAVCore.Structures.PKX.decrypt(data2);
-                var chk1 = 0;
-                var chk2 = 0;
-                for (var i = 8; i < 232; i += 2) {
-                    chk1 += KeySAVCore.BitConverter.ToUInt16(pkx1, i);
-                    chk2 += KeySAVCore.BitConverter.ToUInt16(pkx2, i);
-                }
-                if (KeySAVCore.Structures.PKX.verifyCHK(pkx1) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx1, 
-                    8))) {
-                    // Save 1 has the box1 data
-                    pkx = pkx1;
-                }
-                else
-                    if (KeySAVCore.Structures.PKX.verifyCHK(pkx2) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx2, 
-                        8))) {
-                        // Save 2 has the box1 data
-                        pkx = pkx2;
-                    }
-                    else {
-                        // Data isn't decrypting right...
-                        for (var i = 0; i < 232; i++) {
-                            data1a[i] ^= empty[i];
-                            data2a[i] ^= empty[i];
+                for (var i = 0; i < 31; i++) {
+                    for (var j = 0; j < 30; j++) {
+                        JS.Uint8ArrayHelper.Copy(break1, offset[0] + i * 6960 /* 232 * 30 */ + j * 232, 
+                            data1, 0, 232);
+                        JS.Uint8ArrayHelper.Copy(break2, offset[0] + i * 6960 /* 232 * 30 */ + j * 232, 
+                            data2, 0, 232);
+                        if (KeySAVCore.Utility.SequenceEqual(data1, data2)) {
+                            // Just copy data1 into the key file.
+                            JS.Uint8ArrayHelper.Copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232, 
+                                232);
                         }
-                        pkx1 = KeySAVCore.Structures.PKX.decrypt(data1a);
-                        pkx2 = KeySAVCore.Structures.PKX.decrypt(data2a);
-                        if (KeySAVCore.Structures.PKX.verifyCHK(pkx1) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx1, 
-                            8))) {
-                            // Save 1 has the box1 data
-                            pkx = pkx1;
+                        else {
+                            // Copy both datas into their keystream spots.
+                            JS.Uint8ArrayHelper.Copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232, 
+                                232);
+                            JS.Uint8ArrayHelper.Copy(data2, 0, savkey, 262144 + i * 6960 /* 232 * 30 */ + j * 232, 
+                                232);
                         }
-                        else
-                            if (KeySAVCore.Structures.PKX.verifyCHK(pkx2) && KeySAVCore.Convert.ToBoolean(KeySAVCore.BitConverter.ToUInt16(pkx2, 
-                                8))) {
-                                // Save 2 has the box1 data
-                                pkx = pkx2;
-                            }
-                            else {
-                                // Sigh...
-                                return new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "", null, 
-                                    null);
-                            }
-                    }
-                //#endregion
-            }
-        }
-
-        if (true) {
-            // Clear the keystream file...
-            JS.Uint8ArrayHelper.fill$1(savkey, 0, 256, 216016 /* 0x100+232*30*31 */);
-            JS.Uint8ArrayHelper.fill$1(savkey, 0, 262144, 477904 /* 0x40000+232*30*31 */);
-
-            // Copy the key for the slot selector
-            JS.Uint8ArrayHelper.Copy(save1Save, 360, savkey, 524288, 4);
-
-            // Copy the key for the other save slot
-            KeySAVCore.Utility.xor$3(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 215760 /* 232*30*31 */);
-
-            // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
-            var data1 = new Uint8Array(232);
-            var data2 = new Uint8Array(232);
-            for (var i = 0; i < 31; i++) {
-                for (var j = 0; j < 30; j++) {
-                    JS.Uint8ArrayHelper.Copy(break1, offset[0] + i * 6960 /* 232 * 30 */ + j * 232, data1, 
-                        0, 232);
-                    JS.Uint8ArrayHelper.Copy(break2, offset[0] + i * 6960 /* 232 * 30 */ + j * 232, data2, 
-                        0, 232);
-                    if (KeySAVCore.Utility.SequenceEqual(data1, data2)) {
-                        // Just copy data1 into the key file.
-                        JS.Uint8ArrayHelper.Copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232, 
-                            232);
-                    }
-                    else {
-                        // Copy both datas into their keystream spots.
-                        JS.Uint8ArrayHelper.Copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232, 
-                            232);
-                        JS.Uint8ArrayHelper.Copy(data2, 0, savkey, 262144 + i * 6960 /* 232 * 30 */ + j * 232, 
-                            232);
                     }
                 }
+
+                // Save file diff is done, now we're essentially done. Save the keystream.
+
+                // Success
+                result = "Keystreams were successfully bruteforced!\n\n";
+                result += "Save your keystream now...";
+                var tmp = new KeySAVCore.Structures.SaveKey.ctor$1(savkey);
+                callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(true, result, tmp, pkx));
+                return;
             }
-
-            // Save file diff is done, now we're essentially done. Save the keystream.
-
-            // Success
-            result = "Keystreams were successfully bruteforced!\n\n";
-            result += "Save your keystream now...";
-            var tmp = new KeySAVCore.Structures.SaveKey.ctor$1(savkey);
-            return new KeySAVCore.Structures.SaveBreakResult.ctor$1(true, result, tmp, pkx);
-        }
+        }, this)), System.Action$2(System.Exception, KeySAVCore.Structures.SaveKey)));
     };
 });
 KeySAVCore.Structures.SaveBreakResult = $d.declare("KeySAVCore.Structures.SaveBreakResult", null, 62, $asm, function($t, $p) {
@@ -954,36 +980,64 @@ KeySAVCore.Structures.SaveBreakResult = $d.declare("KeySAVCore.Structures.SaveBr
 KeySAVCore.Structures.SaveKey = $d.declare("KeySAVCore.Structures.SaveKey", null, 62, $asm, function($t, $p) {
     $t.ctor = function SaveKey() {
         this.keyData = null;
-        this.stamp1 = 0;
-        this.stamp2 = 0;
         this.location = null;
-        this.boxOffset = 0;
         this.boxKey1 = null;
         this.blank = null;
         this.slotsUnlocked = null;
         this.boxKey2 = null;
-        this.slot1Flag = 0;
         this.slot1Key = null;
-        this.magic = 0;
+        this.key32 = null;
     };
     $t.ctor.prototype = $p;
+    $p.get_stamp1 = function SaveKey_get_stamp1() {
+        return this.key32[0];
+    };
+    $p.set_stamp1 = function SaveKey_set_stamp1(value) {
+        this.key32[0] = value;
+        return value;
+    };
+    $p.get_stamp2 = function SaveKey_get_stamp2() {
+        return this.key32[1];
+    };
+    $p.set_stamp2 = function SaveKey_set_stamp2(value) {
+        this.key32[1] = value;
+        return value;
+    };
+    $p.get_boxOffset = function SaveKey_get_boxOffset() {
+        return this.key32[7 /* 0x1C/4 */];
+    };
+    $p.set_boxOffset = function SaveKey_set_boxOffset(value) {
+        this.key32[7 /* 0x1C/4 */] = value;
+        return value;
+    };
+    $p.get_slot1Flag = function SaveKey_get_slot1Flag() {
+        return this.key32[131072 /* 0x80000/4 */];
+    };
+    $p.set_slot1Flag = function SaveKey_set_slot1Flag(value) {
+        this.key32[131072 /* 0x80000/4 */] = value;
+        return value;
+    };
+    $p.get_magic = function SaveKey_get_magic() {
+        return this.key32[2];
+    };
+    $p.set_magic = function SaveKey_set_magic(value) {
+        this.key32[2] = value;
+        return value;
+    };
+    $p.get_isNewKey = function SaveKey_get_isNewKey() {
+        return !JS.Uint8ArrayHelper.Empty(this.slot1Key);
+    };
     $t.ctor$1 = function SaveKey(key) {
         this.keyData = key;
-        var key32 = new Uint32Array(key.buffer, key.byteOffset, 185013);
-        this.stamp1 = key32[0];
-        this.stamp2 = key32[1];
-        this.magic = key32[2];
+        this.key32 = new Uint32Array(key.buffer, key.byteOffset, 185013);
         this.location = key.subarray(16, 20);
-        this.boxOffset = key32[7 /* 0x1C / 4 */];
         this.boxKey1 = key.subarray(256, 216016);
         this.blank = key.subarray(216016, 216248 /* 0x34BD0 + 0xE8 */);
         this.slotsUnlocked = key.subarray(216248, 217178 /* 0x34CB8 + 0x3A2 */);
         this.boxKey2 = key.subarray(262144, 477904 /* 0x40000 + 0x34AD0 */);
-        this.slot1Flag = key32[131072 /* 0x80000 / 4 */];
         this.slot1Key = key.subarray(524292, 740052 /* 0x80004 + 0x34AD0 */);
-        if (this.magic != 1111835974) {
-            this.magic = 1111835974;
-            key32[2] = this.magic;
+        if (this.get_magic() != 1111835974) {
+            this.set_magic(1111835974);
             JS.Uint8ArrayHelper.fill(this.blank, 0);
             JS.Uint8ArrayHelper.Copy(this.location, 0, this.blank, 224, 4);
             var nicknamebytes = Unicode16LE.GetBytes(KeySAVCore.SaveBreaker().eggnames[this.blank[227] - 1]);
@@ -1023,6 +1077,9 @@ KeySAVCore.SaveReaderDecrypted = $d.declare("KeySAVCore.SaveReaderDecrypted", Sy
     };
     $p.get_UnlockedSlots = function SaveReaderDecrypted_get_UnlockedSlots() {
         return 930;
+    };
+    $p.get_IsNewKey = function SaveReaderDecrypted_get_IsNewKey() {
+        return true;
     };
     $t.ctor = function SaveReaderDecrypted(file, type) {
         $t.$baseType.ctor.call(this);
@@ -1070,6 +1127,7 @@ KeySAVCore.SaveReaderDecrypted = $d.declare("KeySAVCore.SaveReaderDecrypted", Sy
     };
     $p.KeySAVCore$ISaveReader$get_KeyName = $p.get_KeyName;
     $p.KeySAVCore$ISaveReader$get_UnlockedSlots = $p.get_UnlockedSlots;
+    $p.KeySAVCore$ISaveReader$get_IsNewKey = $p.get_IsNewKey;
     $p.KeySAVCore$ISaveReader$scanSlots$2 = $p.scanSlots$2;
     $p.KeySAVCore$ISaveReader$scanSlots = $p.scanSlots;
     $p.KeySAVCore$ISaveReader$scanSlots$1 = $p.scanSlots$1;
@@ -1100,6 +1158,9 @@ KeySAVCore.SaveReaderEncrypted = $d.declare("KeySAVCore.SaveReaderEncrypted", Sy
         }
         return res;
     };
+    $p.get_IsNewKey = function SaveReaderEncrypted_get_IsNewKey() {
+        return this.key.get_isNewKey();
+    };
     $t.ctor = function SaveReaderEncrypted(file, key_) {
         $t.$baseType.ctor.call(this);
         this.sav = file;
@@ -1108,12 +1169,12 @@ KeySAVCore.SaveReaderEncrypted = $d.declare("KeySAVCore.SaveReaderEncrypted", Sy
 
         this._KeyName = System.IO.Path.GetFileName(this._KeyName);
 
-        if (this.key.slot1Flag == KeySAVCore.BitConverter.ToUInt32(this.sav, 360))
+        if (this.key.get_slot1Flag() == KeySAVCore.BitConverter.ToUInt32(this.sav, 360) && this.key.get_isNewKey())
             this.activeSlot = 0;
         else
             this.activeSlot = 1;
 
-        KeySAVCore.Utility.XorInPlace(this.sav, (this.key.boxOffset | 0) - 520192, this.key.slot1Key, 
+        KeySAVCore.Utility.XorInPlace(this.sav, (this.key.get_boxOffset() | 0) - 520192, this.key.slot1Key, 
             0, 215760 /* 232*30*31 */);
     };
     $t.ctor.prototype = $p;
@@ -1125,12 +1186,13 @@ KeySAVCore.SaveReaderEncrypted = $d.declare("KeySAVCore.SaveReaderEncrypted", Sy
 
         this._KeyName = "";
 
-        if (key.slot1Flag == KeySAVCore.BitConverter.ToUInt32(this.sav, 360))
+        if (key.get_slot1Flag() == KeySAVCore.BitConverter.ToUInt32(this.sav, 360))
             this.activeSlot = 0;
         else
             this.activeSlot = 1;
 
-        KeySAVCore.Utility.XorInPlace(this.sav, (key.boxOffset | 0) - 520192, key.slot1Key, 0, 215760 /* 232*30*31 */);
+        KeySAVCore.Utility.XorInPlace(this.sav, (key.get_boxOffset() | 0) - 520192, key.slot1Key, 0, 
+            215760 /* 232*30*31 */);
     };
     $t.ctor$1.prototype = $p;
     $p.scanSlots = function SaveReaderEncrypted_scanSlots() {
@@ -1168,7 +1230,7 @@ KeySAVCore.SaveReaderEncrypted = $d.declare("KeySAVCore.SaveReaderEncrypted", Sy
         ghost.value = true;
 
         var keyOffset = pos * 232;
-        var savOffset = ((keyOffset + this.key.boxOffset - (1 - slot) * 520192) | 0);
+        var savOffset = ((keyOffset + this.key.get_boxOffset() - (1 - slot) * 520192) | 0);
 
         if (KeySAVCore.Utility.SequenceEqual$1($t.zeros, this.key.boxKey1, keyOffset) && KeySAVCore.Utility.SequenceEqual$1($t.zeros, 
             this.key.boxKey2, keyOffset))
@@ -1353,6 +1415,7 @@ KeySAVCore.SaveReaderEncrypted = $d.declare("KeySAVCore.SaveReaderEncrypted", Sy
     };
     $p.KeySAVCore$ISaveReader$get_KeyName = $p.get_KeyName;
     $p.KeySAVCore$ISaveReader$get_UnlockedSlots = $p.get_UnlockedSlots;
+    $p.KeySAVCore$ISaveReader$get_IsNewKey = $p.get_IsNewKey;
     $p.KeySAVCore$ISaveReader$scanSlots$2 = $p.scanSlots$2;
     $p.KeySAVCore$ISaveReader$scanSlots = $p.scanSlots;
     $p.KeySAVCore$ISaveReader$scanSlots$1 = $p.scanSlots$1;
