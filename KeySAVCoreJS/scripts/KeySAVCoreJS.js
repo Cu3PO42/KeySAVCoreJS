@@ -623,7 +623,6 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
         var emptyekx = new Uint8Array(232);
         var pkx = new Uint8Array(232);
         var savkey;
-        var save1Save;
         savkey = new Uint8Array(740052);
         var result;
 
@@ -669,19 +668,25 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
                 return;
             }
             if (KeySAVCore.Utility.SequenceEqual$2(break1, 524288, break2, 524288, 520192)) {
-                save1Save = break2;
                 for (var i = 162304; i < 446160; ++i) {
                     break2[i + 520192] = ((break2[i] ^ break1[i] ^ break1[i + 520192]) & 0xFF);
                 }
+
+                // Copy the key for the slot selector
+                JS.Uint8ArrayHelper.Copy(break2, 360, savkey, 524288, 4);
+
+                // Copy the key for the other save slot
+                KeySAVCore.Utility.xor$3(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 
+                    215760 /* 232*30*31 */);
             }
             else
                 if (KeySAVCore.Utility.SequenceEqual$2(break1, 4096, break2, 4096, 520192)) {
-                    save1Save = break1;
-                }
-                else {
-                    callback(new KeySAVCore.Structures.SaveBreakResult.ctor$1(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", 
-                        null, null));
-                    return;
+                    // Copy the key for the slot selector
+                    JS.Uint8ArrayHelper.Copy(break1, 360, savkey, 524288, 4);
+
+                    // Copy the key for the other save slot
+                    KeySAVCore.Utility.xor$3(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 
+                        215760 /* 232*30*31 */);
                 }
 
             (function() {
@@ -928,13 +933,6 @@ KeySAVCore.SaveBreaker = $d.declare("KeySAVCore.SaveBreaker", System.Object, 0, 
                 // Clear the keystream file...
                 JS.Uint8ArrayHelper.fill$1(savkey, 0, 256, 216016 /* 0x100+232*30*31 */);
                 JS.Uint8ArrayHelper.fill$1(savkey, 0, 262144, 477904 /* 0x40000+232*30*31 */);
-
-                // Copy the key for the slot selector
-                JS.Uint8ArrayHelper.Copy(save1Save, 360, savkey, 524288, 4);
-
-                // Copy the key for the other save slot
-                KeySAVCore.Utility.xor$3(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 
-                    215760 /* 232*30*31 */);
 
                 // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
                 var data1 = new Uint8Array(232);

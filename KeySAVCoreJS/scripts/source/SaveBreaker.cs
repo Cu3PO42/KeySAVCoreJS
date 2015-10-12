@@ -70,7 +70,6 @@ namespace KeySAVCore
             Uint8Array emptyekx = new Uint8Array(232);
             Uint8Array pkx = new Uint8Array(232);
             Uint8Array savkey;
-            Uint8Array save1Save;
             savkey = new Uint8Array(0xB4AD4);
             string result;
 
@@ -103,7 +102,7 @@ namespace KeySAVCore
                         callback.invoke(new SaveBreakResult(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", null, null));
                         return;
                     }
-                    
+
                     Utility.xor(break1, (int)key.boxOffset, break1, (int)key.boxOffset-0x7F000, key.slot1Key, 0, 232*30*31);
 
                     SaveReaderEncrypted reader1, reader2;
@@ -117,18 +116,22 @@ namespace KeySAVCore
                 }
                 if (Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000))
                 {
-                    save1Save = break2;
                     for (int i = 0x27A00; i < 0x6CED0; ++i)
                         break2[i + 0x7F000] = (byte) (break2[i] ^ break1[i] ^ break1[i + 0x7F000]);
+
+                    // Copy the key for the slot selector
+                    Uint8ArrayHelper.Copy(break2, 0x168, savkey, 0x80000, 4);
+
+                    // Copy the key for the other save slot
+                    Utility.xor(break2, offset[0], break2, offset[0]-0x7F000, savkey, 0x80004, 232*30*31);
                 }
                 else if (Utility.SequenceEqual(break1, 0x1000, break2, 0x1000, 0x7F000))
                 {
-                    save1Save = break1;
-                }
-                else
-                {
-                    callback.invoke(new SaveBreakResult(false, "The saves are seperated by more than one save.\nPlease follow the instructions.", null, null));
-                    return;
+                    // Copy the key for the slot selector
+                    Uint8ArrayHelper.Copy(break1, 0x168, savkey, 0x80000, 4);
+
+                    // Copy the key for the other save slot
+                    Utility.xor(break2, offset[0], break2, offset[0]-0x7F000, savkey, 0x80004, 232*30*31);
                 }
 
                 Utility.Switch(ref break1, ref break2);
@@ -376,12 +379,6 @@ namespace KeySAVCore
                     // Clear the keystream file...
                     savkey.fill(0, 0x100, 0x100+232*30*31);
                     savkey.fill(0, 0x40000, 0x40000+232*30*31);
-
-                    // Copy the key for the slot selector
-                    Uint8ArrayHelper.Copy(save1Save, 0x168, savkey, 0x80000, 4);
-
-                    // Copy the key for the other save slot
-                    Utility.xor(break2, offset[0], break2, offset[0]-0x7F000, savkey, 0x80004, 232*30*31);
 
                     // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
                     Uint8Array data1 = new Uint8Array(232);
