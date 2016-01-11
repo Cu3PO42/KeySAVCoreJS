@@ -39,6 +39,14 @@ for (var i = 0; i < langs.length; ++i) {
         };
     })(langs[i]);
 
+    lang.getEggLocation = (function(lang) {
+        return function(pkm) {
+            if (pkm.eggLocation === undefined || pkm.gameVersion === undefined)
+                return "";
+            return lang.getLocation(pkm.gameVersion, pkm.eggLocation);
+        }
+    })(langs[i]);
+
     lang.getRibbons = (function(lang) {
         var ribbonNames = ribbons[lang];
         return function(pkx) {
@@ -59,13 +67,13 @@ for (var i = 0; i < langs.length; ++i) {
         }
     })(langs[i]);
 
-    lang.getEggLocation = (function(lang) {
-        return function(pkm) {
-            if (pkm.eggLocation === undefined || pkm.gameVersion === undefined)
-                return "";
-            return lang.getLocation(pkm.gameVersion, pkm.eggLocation);
-        }
-    })(lang);
+    lang.getBallName = (function(lang) {
+        return function(ball) {
+            var ballToItem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 492, 493, 494, 495, 496, 497, 498, 499, 576];
+
+            return lang.items[ballToItem[ball]];
+        };
+    })(langs[i]);
 }
 
 module.exports = names;

@@ -17,6 +17,7 @@ interface LocalizationLanguage {
     getLocation(gameVersion: number, location: number): string;
     getEggLocation(pkm: KeySAVCore.Structures.PKX): string;
     getRibbons(pkm: KeySAVCore.Structures.PKX): string[];
+    getBallName(ball: number): string;
 }
 
 interface Localization {
