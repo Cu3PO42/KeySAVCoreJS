@@ -1,6 +1,7 @@
 var fs = require("fs"),
     forms = require("./localization/forms.json"),
     locations = require("./localization/locations.json"),
+    ribbons = require("./localization/ribbons.json"),
     names = {};
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
@@ -36,6 +37,26 @@ for (var i = 0; i < langs.length; ++i) {
                 return locations[lang].xy[location];
             }
         };
+    })(langs[i]);
+
+    lang.getRibbons = (function(lang) {
+        var ribbonNames = ribbons[lang];
+        return function(pkx) {
+            var res = [];
+
+            for (var i = 0; i < 4; ++i) {
+                var names = ribbonNames[i];
+                var ribbonSet = [pkx.ribbonSet1, pkx.ribbonSet2, pkx.ribbonSet3, pkx.ribbonSet4][i];
+
+                for (var j = 0; ribbonSet > 0; ++j, ribbonSet >>= 1) {
+                    if (ribbonSet & 1) {
+                        res.push(names[j]);
+                    }
+                }
+            }
+
+            return res;
+        }
     })(langs[i]);
 
     lang.getEggLocation = (function(lang) {
