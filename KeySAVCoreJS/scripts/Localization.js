@@ -45,7 +45,7 @@ for (var i = 0; i < langs.length; ++i) {
                 return "";
             return lang.getLocation(pkm.gameVersion, pkm.eggLocation);
         }
-    })(langs[i]);
+    })(lang);
 
     lang.getRibbons = (function(lang) {
         var ribbonNames = ribbons[lang];
@@ -73,7 +73,7 @@ for (var i = 0; i < langs.length; ++i) {
 
             return lang.items[ballToItem[ball]];
         };
-    })(langs[i]);
+    })(lang);
 }
 
 module.exports = names;
