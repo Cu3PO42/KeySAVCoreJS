@@ -19,5 +19,6 @@
   },
   "typescript": {
     "definition": "./KeySAVCore.d.ts"
-  }
+  },
+  "typings": "./KeySAVCore.d.ts"
 }
