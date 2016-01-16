@@ -1,13 +1,11 @@
-var core = require('./KeySAVCore');
-var KeyStore = require('./KeyStore');
-var Localization = require("./Localization")
-var Calculator = require("./Calculator")
+var core = require('./core');
+var KeyStore = require('./key-store');
+var Localization = require("./localization")
+var Calculator = require("./calculator")
 
 module.exports = {
     Core: core,
-    Extensions: {
-        KeyStore: KeyStore,
-        Localization: Localization,
-        Calculator: Calculator
-    }
+    KeyStore: KeyStore,
+    Localization: Localization,
+    Calculator: Calculator
 };
