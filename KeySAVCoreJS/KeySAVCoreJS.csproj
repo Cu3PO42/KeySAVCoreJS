@@ -79,7 +79,7 @@ rm *.dll
 rm *.min.js
 rm mscorlib.xml
 dos2unix mscorlib.*
-sed -i '' 's/number [|] System[.][a-zA-Z0-9]*/number/g' mscorlib.d.ts
+sed -i 's/number [|] System[.][a-zA-Z0-9]*/number/g' mscorlib.d.ts
 sed '/ .reference path/d' KeySAVCoreJS.d.ts >> mscorlib.d.ts
 echo "export = KeySAVCore;" >> mscorlib.d.ts
 rm KeySAVCoreJS.d.ts
