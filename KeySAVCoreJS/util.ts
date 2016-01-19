@@ -22,7 +22,7 @@ export function encodeUnicode16LE(str: string) {
     return res;
 }
 
-export function createDataView(arr) {
+export function createDataView(arr): DataView {
     // TODO POSSIBLY FIX
     return new DataView(arr.buffer);
 }
@@ -50,6 +50,13 @@ export function empty(src: ArrayLike<number>, offset?: number, length?: number):
         }
     }
     return true;
+}
+
+export function sequenceEqual(src1: Uint8Array, src2: Uint8Array): boolean;
+export function sequenceEqual(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, length: number): boolean;
+export function sequenceEqual(a, b, c?, d?, e?): boolean {
+    return true;
+    // TODO IMPLEMENT
 }
 
 export function pad4(n: number) {

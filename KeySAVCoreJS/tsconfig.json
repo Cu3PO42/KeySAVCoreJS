@@ -19,8 +19,12 @@
     "files": [
         "battle-video-breaker.ts",
         "battle-video-reader.ts",
+        "key-store.ts",
         "pkx.ts",
-        "util.ts"
+        "util.ts",
+        "save-key.ts",
+        "save-reader.ts",
+        "save-breaker.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

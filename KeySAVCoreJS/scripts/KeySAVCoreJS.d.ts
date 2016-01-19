@@ -3987,18 +3987,18 @@ declare module KeySAVCore {
         export interface SaveBreakResult extends System.ValueType {
             success: boolean;
             result: string;
-            key: System.Nullable$1<SaveKey>;
+            key: SaveKey;
         }
         export interface SaveBreakResultTypeFunc extends TypeFunction {
             (): SaveBreakResultTypeFunc;
             prototype: SaveBreakResult;
-            ctor$1: { new (success: boolean, result: string, key: System.Nullable$1<SaveKey>, resPkx: Uint8Array): SaveBreakResult; };
+            ctor$1: { new (success: boolean, result: string, key: SaveKey, resPkx: Uint8Array): SaveBreakResult; };
             ctor: { new (): SaveBreakResult; };
         }
         var SaveBreakResult: SaveBreakResultTypeFunc;
 
         // KeySAVCore.Structures.SaveKey
-        export interface SaveKey extends System.ValueType {
+        export interface SaveKey extends System.Object {
             get_stamp1(): uint;
             set_stamp1(value: uint): void;
             get_stamp2(): uint;
@@ -4012,8 +4012,7 @@ declare module KeySAVCore {
         export interface SaveKeyTypeFunc extends TypeFunction {
             (): SaveKeyTypeFunc;
             prototype: SaveKey;
-            ctor$1: { new (key: Uint8Array): SaveKey; };
-            ctor: { new (): SaveKey; };
+            ctor: { new (key: Uint8Array): SaveKey; };
         }
         var SaveKey: SaveKeyTypeFunc;
     }
