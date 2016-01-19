@@ -49,7 +49,7 @@ export default class SaveKey {
         return !this.slot1Key.every(e => e == 0);
     }
 
-    constructor(private key: Uint8Array) {
+    constructor(private key: Uint8Array, public name?: string) {
         this.key32 = new Uint32Array(key.buffer, key.byteOffset, 0x2D2B5);
         this.location = key.subarray(0x10, 0x14);
         this.boxKey1 = key.subarray(0x100, 0x34BD0);

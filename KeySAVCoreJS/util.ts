@@ -31,9 +31,15 @@ export function copy(src, off1, dest, off2, len) {
     // TODO IMPLEMENT
 }
 
+export function xor(src1: Uint8Array, src2: Uint8Array): Uint8Array;
+export function xor(src1: Uint8Array, src2: Uint8Array, length: number): Uint8Array;
 export function xor(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, len: number): Uint8Array;
 export function xor(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, dest: Uint8Array, off3: number, len: number): void;
-export function xor(a, b, c, d, e, f?, g?): any {
+export function xor(a, b, c?, d?, e?, f?, g?): any {
+    // TODO IMPLEMENT
+}
+
+export function xorInPlace(dest: Uint8Array, off1: number, src: Uint8Array, off2: number, len: number): void {
     // TODO IMPLEMENT
 }
 
@@ -53,6 +59,7 @@ export function empty(src: ArrayLike<number>, offset?: number, length?: number):
 }
 
 export function sequenceEqual(src1: Uint8Array, src2: Uint8Array): boolean;
+export function sequenceEqual(src1: Uint8Array, src2: Uint8Array, offset: number): boolean;
 export function sequenceEqual(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, length: number): boolean;
 export function sequenceEqual(a, b, c?, d?, e?): boolean {
     return true;
