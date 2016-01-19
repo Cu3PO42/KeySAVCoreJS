@@ -1,7 +1,7 @@
-import * as util from "./utility";
+import * as util from "./util";
 import * as LCRNG from "./lcrng";
 
-class PKX {
+export default class Pkx {
     // Uints
     public ec: number;
     public pid: number;
@@ -87,6 +87,12 @@ class PKX {
     // Longs
     public metDate: number;
     public eggDate: number;
+
+    public isEgg: boolean;
+    public isNick: boolean;
+    public isShiny: boolean;
+    public isGhost: boolean;
+    public isFatefulEncounter: boolean;
 
     public data: number[];
 
@@ -176,7 +182,7 @@ class PKX {
         // Memory Editor edits everything else with pkx in a new form
 
         // Block D
-        this.ot = util.trimCString(util.decodeUnicode16Le(pkx, 176, 24));
+        this.ot = util.trimCString(util.decodeUnicode16LE(pkx, 176, 24));
         // 0xC8, 0xC9 - unused
         this.otFriendship = pkx[202];
         this.otAffection = pkx[203]; // Handled by Memory Editor
@@ -292,12 +298,12 @@ class PKX {
         }
 
         var actualsum = pkx16[6/2];
-        if (pkx16[8/2] > 750) || pkx16[144/2] != 0)
+        if (pkx16[8/2] > 750 || pkx16[144/2] != 0)
             return false;
         return (chk & 0xFFFF) == actualsum;
     }
 
-    static getDloc(uint ec) {
+    static getDloc(ec: number) {
         // Define Shuffle Order Structure
         var dloc = [ 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0 ];
         var sv = (((ec & 0x3E000) >> 0xD) % 24);
