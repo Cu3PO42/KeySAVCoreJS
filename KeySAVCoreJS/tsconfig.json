@@ -22,9 +22,10 @@
         "key-store.ts",
         "pkx.ts",
         "util.ts",
-        "save-key.ts",
         "save-reader.ts",
-        "save-breaker.ts"
+        "save-reader-decrypted.ts",
+        "save-breaker.ts",
+        "save-key.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
