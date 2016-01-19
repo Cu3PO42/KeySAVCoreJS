@@ -14,6 +14,7 @@ export function decodeUnicode16LE(arr: number[]|Uint8Array, offset: number, leng
 }
 
 export function encodeUnicode16LE(str: string) {
+    // TODO Uint8Array?
     var tmp = new Buffer(str, "ucs2"), res = [];
     for (var i = 0; i < tmp.length; ++i) {
         res.push(tmp.readUInt8(i));
@@ -21,6 +22,36 @@ export function encodeUnicode16LE(str: string) {
     return res;
 }
 
+export function createDataView(arr) {
+    // TODO POSSIBLY FIX
+    return new DataView(arr.buffer);
+}
+
 export function copy(src, off1, dest, off2, len) {
     // TODO IMPLEMENT
+}
+
+export function xor(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, len: number): Uint8Array;
+export function xor(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, dest: Uint8Array, off3: number, len: number): void;
+export function xor(a, b, c, d, e, f?, g?): any {
+    // TODO IMPLEMENT
+}
+
+export function empty(src: ArrayLike<number>, offset: number, length: number): boolean;
+export function empty(src: ArrayLike<number>): boolean;
+export function empty(src: ArrayLike<number>, offset?: number, length?: number): boolean {
+    if (!Number.isInteger(offset) || !Number.isInteger(length)) {
+        offset = 0;
+        length = src.length;
+    }
+    for (let i = offset; i < offset + length; ++i) {
+        if (src[i] != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+export function pad4(n: number) {
+    return ("0000" + n).slice(-4);
 }

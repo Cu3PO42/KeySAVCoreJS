@@ -14,18 +14,11 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true
     },
-    "filesGlob": [
-        "**/*.ts",
-        "!**/*.d.ts"
-        "**/*.tsx",
-        "!package/**/*",
-        "!scripts/**/*",
-        "!node_modules/**"
-    ],
     "compileOnSave": false,
     "buildOnSave": false,
     "files": [
-        "BattleVideoBreaker.ts",
+        "battle-video-breaker.ts",
+        "battle-video-reader.ts",
         "pkx.ts",
         "util.ts"
     ],
