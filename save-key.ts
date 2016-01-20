@@ -12,6 +12,10 @@ export default class SaveKey {
 
     private key32: Uint32Array;
 
+    get keyData() {
+        return this.key;
+    }
+
     get stamp1(): [number, number] {
         return [this.key32[0], this.key32[1]];
     }

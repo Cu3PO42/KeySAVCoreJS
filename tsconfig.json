@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "files": [
+        "battle-video-breaker.ts",
+        "battle-video-reader.ts",
+        "key-store.ts",
+        "key-store-filesystem.ts",
+        "pkx.ts",
+        "save-reader.ts",
+        "save-reader-decrypted.ts",
+        "save-breaker.ts",
+        "save-key.ts",
+        "util.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}
