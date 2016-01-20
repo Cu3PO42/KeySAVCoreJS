@@ -46,7 +46,7 @@ export interface SaveBreakResult {
     resPkx?: Uint8Array;
 }
 
-export async function break(break1: Uint8Array, break2: Uint8Array): SaveBreakResult {
+export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<SaveBreakResult> {
     var offset = [0, 0];
     var empty = new Uint8Array(232);
     var emptyekx = new Uint8Array(232);
