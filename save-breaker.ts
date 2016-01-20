@@ -15,9 +15,12 @@ export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "",
 export async function load(input: Uint8Array): Promise<SaveReader> {
     var view = util.createDataView(input);
     switch (input.length) {
+        case 0x10009C:
+        case 0x10019A:
         case 0x100000:
             var key = await currentKeyStore.getSaveKey(util.getStamp(input, 0x10));
-            return new SaveReaderEncrypted(input, key);
+            return new SaveReaderEncrypted(input.length === 0x100000 ? input
+                : input.subarray(input.length-0x100000), key);
         case 0x76000:
             if (view.getUint32(0x75E10, true) != magic)
                 throw new Error("No save.");
@@ -105,8 +108,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
             215760 /* 232*30*31 */);
     }
 
-    [break1, break2] = [break2, break1];
-    [dataView1, dataView2] = [dataView2, dataView1];
+    var tmpBreak = break1; break1 = break2; break2 = tmpBreak;
+    var dataViewBreak = dataView1; dataView1 = dataView2; dataView2 = dataView1;
 
     //#region Finding the User Specific Data: Using Valid to keep track of progress...
     // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.

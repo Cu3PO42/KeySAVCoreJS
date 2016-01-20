@@ -69,6 +69,9 @@ export function xor(src1: Uint8Array, b, c?, d?, e?, f?, g?): any {
     for (var i = 0; i < length; ++i) {
         dest[i+off3] = src1[i+off1] ^ src2[i+off2];
     }
+
+    if (g === undefined)
+        return dest;
 }
 
 export function xorInPlace(dest: Uint8Array, off1: number, src: Uint8Array, off2: number, len: number): void {
@@ -124,5 +127,5 @@ export function pad4(n: number) {
 }
 
 export function getStamp(arr: Uint8Array, off: number): string {
-    return btoa(String.fromCharCode.apply(null, arr.subarray(off, off+8)));
+    return String.fromCharCode.apply(null, arr.subarray(off, off+8));
 }

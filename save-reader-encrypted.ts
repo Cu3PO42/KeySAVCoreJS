@@ -50,7 +50,7 @@ export default class SaveReaderEncrypted implements SaveReader {
     }
 
     getPkx(pos: number) {
-        var [data, ghost] = this.getPkxRaw(pos, this.activeSlot);
+        var res = this.getPkxRaw(pos, this.activeSlot), data = res[0], ghost = res[1];
         if (data === undefined || (data[8] | data[9]) == 0)
             return undefined;
         return new Pkx(data, (pos / 30) | 0, pos % 30, ghost);
@@ -67,7 +67,7 @@ export default class SaveReaderEncrypted implements SaveReader {
         var savOffset = keyOffset + this.key.boxOffset - (1 - slot) * 520192;
 
         if (util.sequenceEqual(zeros, this.key.boxKey1, keyOffset) && util.sequenceEqual(zeros, this.key.boxKey2, keyOffset))
-            return undefined;
+            return [undefined, false];
         else if (util.sequenceEqual(zeros, this.key.boxKey1, keyOffset)) {
             // Key2 is confirmed to dump the data.
             ekx = util.xor(this.key.boxKey2, keyOffset, this.sav, savOffset, 232);
@@ -77,7 +77,7 @@ export default class SaveReaderEncrypted implements SaveReader {
             // Haven't dumped from this slot yet.
             if (util.sequenceEqual(this.key.boxKey1, keyOffset, this.sav, savOffset, 232)) {
                 // Slot hasn't changed.
-                return undefined;
+                return [undefined, false];
             } else {
                 // Try and decrypt the data...
                 ekx = util.xor(this.key.boxKey1, keyOffset, this.sav, savOffset, 232);
@@ -94,7 +94,7 @@ export default class SaveReaderEncrypted implements SaveReader {
                         ekx = util.xor(ekx, ezeros);
                         util.xor(ezeros, 0, this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
                     } else
-                        return undefined; // Not a failed decryption; we just haven't seen new data here yet.
+                        return [undefined, false]; // Not a failed decryption; we just haven't seen new data here yet.
                 }
             }
         }
@@ -120,7 +120,7 @@ export default class SaveReaderEncrypted implements SaveReader {
                         util.xor(ezeros, 0, this.key.boxKey2, keyOffset,
                             this.key.boxKey2, keyOffset, 232);
                     } else
-                        return undefined; // Decryption Error
+                        return [undefined, false]; // Decryption Error
                 }
             } else if (util.sequenceEqual(this.key.boxKey2, keyOffset, this.sav,
                 savOffset, 232) || util.sequenceEqual(this.key.boxKey2, keyOffset,
@@ -141,7 +141,7 @@ export default class SaveReaderEncrypted implements SaveReader {
                             this.key.boxKey1, keyOffset, 232);
                     }
                     else
-                        return undefined; // Decryption Error
+                        return [undefined, false]; // Decryption Error
                 }
             } else {
                 // Data has been observed to change twice! We can get our exact keystream now!
@@ -180,7 +180,7 @@ export default class SaveReaderEncrypted implements SaveReader {
                     emptyOffset = keyOffset;
                     emptyKeyData = data2;
                 } else
-                    return undefined; // All three are occupied
+                    return [undefined, false]; // All three are occupied
 
                 if (Pkx.verifyChk(Pkx.decrypt(emptyKeyData))) {
                     // No modifications necessary.
@@ -207,6 +207,6 @@ export default class SaveReaderEncrypted implements SaveReader {
         if (Pkx.verifyChk(pkx)) {
             return [pkx, ghost];
         } else
-            return undefined; // Slot Decryption error?!
+            return [undefined, false]; // Slot Decryption error?!
     }
 }

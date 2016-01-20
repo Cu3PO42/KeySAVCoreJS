@@ -22,9 +22,9 @@ export default class SaveKey {
         return [this.key32[0], this.key32[1]];
     }
 
-    set stamp1([val1, val2]: [number, number]) {
-        this.key32[0] = val1;
-        this.key32[1] = val2;
+    set stamp1(val: [number, number]) {
+        this.key32[0] = val[0];
+        this.key32[1] = val[1];
     }
 
     get boxOffset(): number {
