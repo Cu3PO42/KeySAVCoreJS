@@ -23,24 +23,56 @@ export function encodeUnicode16LE(str: string) {
 }
 
 export function createDataView(arr): DataView {
-    // TODO POSSIBLY FIX
-    return new DataView(arr.buffer);
+    return new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
 }
 
-export function copy(src, off1, dest, off2, len) {
-    // TODO IMPLEMENT
+export function copy<T>(src: ArrayLike<T>, off1: number, dest: ArrayLike<T>, off2: number, len: number) {
+    for (var i = 0; i < len; ++i) {
+        dest[i+off2] = src[i+off1];
+    }
 }
 
 export function xor(src1: Uint8Array, src2: Uint8Array): Uint8Array;
 export function xor(src1: Uint8Array, src2: Uint8Array, length: number): Uint8Array;
 export function xor(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, len: number): Uint8Array;
 export function xor(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, dest: Uint8Array, off3: number, len: number): void;
-export function xor(a, b, c?, d?, e?, f?, g?): any {
-    // TODO IMPLEMENT
+export function xor(src1: Uint8Array, b, c?, d?, e?, f?, g?): any {
+    var off1: number, src2: Uint8Array, off2: number, length: number, dest: Uint8Array, off3: number;
+    if (b instanceof Uint8Array) {
+        src2 = b;
+        off1 = 0;
+        if (Number.isInteger(c)) {
+            off2 = c;
+        } else {
+            off2 = 0;
+        }
+        length = src1.length;
+        dest = new Uint8Array(length);
+        off3 = 0;
+    } else {
+        off1 = b;
+        src2 = c;
+        off2 = d;
+        if (e instanceof Uint8Array) {
+            dest = e;
+            off3 = f;
+            length = g;
+        } else {
+            length = e;
+            dest = new Uint8Array(length);
+            off3 = 0;
+        }
+    }
+
+    for (var i = 0; i < length; ++i) {
+        dest[i+off3] = src1[i+off1] ^ src2[i+off2];
+    }
 }
 
 export function xorInPlace(dest: Uint8Array, off1: number, src: Uint8Array, off2: number, len: number): void {
-    // TODO IMPLEMENT
+    for (var i = 0; i < len; ++i) {
+        dest[i + off1] ^= src[i + off2];
+    }
 }
 
 export function empty(src: ArrayLike<number>, offset: number, length: number): boolean;
@@ -61,17 +93,34 @@ export function empty(src: ArrayLike<number>, offset?: number, length?: number):
 export function sequenceEqual(src1: Uint8Array, src2: Uint8Array): boolean;
 export function sequenceEqual(src1: Uint8Array, src2: Uint8Array, offset: number): boolean;
 export function sequenceEqual(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, length: number): boolean;
-export function sequenceEqual(a, b, c?, d?, e?): boolean {
+export function sequenceEqual(src1: Uint8Array, b, c?, d?, e?): boolean {
+    var off1: number, src2: Uint8Array, off2: number, length: number;
+    if (b instanceof Uint8Array) {
+        src2 = b;
+        off1 = 0;
+        if (Number.isInteger(c)) {
+            off2 = c;
+        } else {
+            off2 = 0;
+        }
+        length = src1.length;
+    } else {
+        off1 = b;
+        src2 = c;
+        off2 = d;
+        length = e;
+    }
+    for (var i = 0; i < length; ++i) {
+        if (src1[i+off1] != src2[i+off2])
+            return false;
+    }
     return true;
-    // TODO IMPLEMENT
 }
 
 export function pad4(n: number) {
     return ("0000" + n).slice(-4);
 }
 
-export function getStamp(arr: Uint8Array, off: number): string;
-export function getStamp(buf: ArrayBuffer, off: number): string;
-export function getStamp(el: any, off: number): string {
-    // TODO IMPLEMENT
+export function getStamp(arr: Uint8Array, off: number): string {
+    return btoa(String.fromCharCode.apply(null, arr.subarray(off, off+8)));
 }

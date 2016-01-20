@@ -62,7 +62,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     var dataView1 = util.createDataView(break1);
     var dataView2 = util.createDataView(break2);
 
-    var key = await curKeyStore.getSaveKey([dataView1.getUint32(0x10, true), dataView1.getUint32(0x14, true)]);
+    var key = await currentKeyStore.getSaveKey(util.getStamp(break1, 0x10));
     if (key !== undefined) {
         if (util.sequenceEqual(break1, 524288, break2, 524288, 520192)) {
             key.slot1Flag = dataView2.getUint32(360, true);
