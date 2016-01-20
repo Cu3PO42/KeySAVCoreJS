@@ -3,22 +3,18 @@ import SaveKey from "./save-key";
 import SaveReaderEncrypted from "./save-reader-encrypted";
 import SaveReaderDecrypted from "./save-reader-decrypted";
 import KeyStore from "./key-store";
+import { currentKeyStore } from "./key-store";
 import Pkx from "./pkx";
 import * as util from "./util";
 
 const magic = 0x42454546;
 export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알"];
 
-var curKeyStore: KeyStore;
-export function setKeyStore(keyStore: KeyStore) {
-    curKeyStore = keyStore;
-}
-
 export async function load(input: Uint8Array): Promise<SaveReader> {
     var view = util.createDataView(input);
     switch (input.length) {
         case 0x100000:
-            var key = await curKeyStore.getSaveKey([view.getUint32(0x10, true), view.getUint32(0x14, true)]);
+            var key = await currentKeyStore.getSaveKey(util.getStamp(input, 0x10));
             return new SaveReaderEncrypted(input, key);
         case 0x76000:
             if (view.getUint32(0x75E10, true) != magic)

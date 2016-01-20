@@ -24,6 +24,7 @@
         "pkx.ts",
         "save-reader.ts",
         "save-reader-decrypted.ts",
+        "save-reader-encrypted.ts",
         "save-breaker.ts",
         "save-key.ts",
         "util.ts"

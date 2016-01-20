@@ -69,3 +69,9 @@ export function sequenceEqual(a, b, c?, d?, e?): boolean {
 export function pad4(n: number) {
     return ("0000" + n).slice(-4);
 }
+
+export function getStamp(arr: Uint8Array, off: number): string;
+export function getStamp(buf: ArrayBuffer, off: number): string;
+export function getStamp(el: any, off: number): string {
+    // TODO IMPLEMENT
+}

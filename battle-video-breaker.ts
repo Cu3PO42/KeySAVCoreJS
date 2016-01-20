@@ -1,10 +1,11 @@
 import BattleVideoReader from "./battle-video-reader";
+import { currentKeyStore } from "./key-store";
 import * as util from "./util";
 import Pkx from "./pkx";
 
-export async function load(input: Uint8Array, keyGetter: (flag1: number, flag2: number) => Promise<Uint8Array>): Promise<BattleVideoReader> {
+export async function load(input: Uint8Array): Promise<BattleVideoReader> {
     var input32 = new Uint32Array(input.buffer);
-    var key = await keyGetter(input32[0x10/4], input32[0x14/4]);
+    var key = await currentKeyStore.getBvKey(util.getStamp(input, 0x10));
     return new BattleVideoReader(input, key);
 }
 

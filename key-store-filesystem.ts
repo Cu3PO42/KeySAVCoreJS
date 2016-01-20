@@ -3,6 +3,7 @@
 
 import * as Promise from "bluebird";
 import * as fs from "fs";
+import KeyStore from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
 import { getStamp } from "./util";
@@ -11,7 +12,7 @@ var readdirAsync = Promise.promisify(fs.readdir),
     statAsync = Promise.promisify(fs.stat),
     openAsync = Promise.promisify(fs.open),
     readAsync = Promise.promisify(fs.read),
-    writeAsync = Promise.promisify(fs.write),
+    writeAsync = <any>Promise.promisify(fs.write),
     closeAsync = Promise.promisify(fs.close);
 
 class LazyValue<T> {
@@ -32,7 +33,7 @@ class LazyValue<T> {
     }
 }
 
-export default class KeyStoreFileSystem {
+export default class KeyStoreFileSystem implements KeyStore {
     private scan: Promise<void>;
     private keys: { [stamp: string]: { fd: number,
                                        name: string,
@@ -100,7 +101,7 @@ export default class KeyStoreFileSystem {
         for (let key in this.keys) {
             let lazyKey = this.keys[key];
             if (lazyKey.isSav && lazyKey.key.isInitialized) {
-                let buf = toBuffer((<SaveKey>(await lazyKey.key.get())).keyData);
+                let buf = new Buffer((<SaveKey>(await lazyKey.key.get())).keyData);
                 await writeAsync(lazyKey.fd, buf, 0, buf.length, 0);
                 fs.close(lazyKey.fd);
             }
