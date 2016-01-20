@@ -1,5 +1,7 @@
 /// <reference path="typings/node/node.d.ts" />
 
+"use strict";
+
 import * as fs from "fs";
 import Pkx from "./pkx";
 var forms = require("./localization/forms.json"),

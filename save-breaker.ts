@@ -1,3 +1,5 @@
+"use strict";
+
 import SaveReader from "./save-reader";
 import SaveKey from "./save-key";
 import SaveReaderEncrypted from "./save-reader-encrypted";
@@ -30,7 +32,7 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
             return new SaveReaderDecrypted(input, "PCDATA");
         case 0x70000:
             return new SaveReaderDecrypted(input, "ORASRAM");
-        default: 
+        default:
             throw new Error("No save.");
     }
 }
@@ -92,14 +94,14 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         util.copy(break2, 360, savkey, 524288, 4);
 
         // Copy the key for the other save slot
-        util.xor(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 
+        util.xor(break2, offset[0], break2, offset[0] - 520192, savkey, 524292,
             215760 /* 232*30*31 */);
     } else if (util.sequenceEqual(break1, 4096, break2, 4096, 520192)) {
         // Copy the key for the slot selector
         util.copy(break1, 360, savkey, 524288, 4);
 
         // Copy the key for the other save slot
-        util.xor(break2, offset[0], break2, offset[0] - 520192, savkey, 524292, 
+        util.xor(break2, offset[0], break2, offset[0] - 520192, savkey, 524292,
             215760 /* 232*30*31 */);
     }
 
@@ -322,20 +324,20 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     var data2 = new Uint8Array(232);
     for (var i = 0; i < 31; i++) {
         for (var j = 0; j < 30; j++) {
-            util.copy(break1, offset[0] + i * 6960 /* 232 * 30 */ + j * 232, 
+            util.copy(break1, offset[0] + i * 6960 /* 232 * 30 */ + j * 232,
                 data1, 0, 232);
-            util.copy(break2, offset[0] + i * 6960 /* 232 * 30 */ + j * 232, 
+            util.copy(break2, offset[0] + i * 6960 /* 232 * 30 */ + j * 232,
                 data2, 0, 232);
             if (util.sequenceEqual(data1, data2)) {
                 // Just copy data1 into the key file.
-                util.copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232, 
+                util.copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232,
                     232);
             }
             else {
                 // Copy both datas into their keystream spots.
-                util.copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232, 
+                util.copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232,
                     232);
-                util.copy(data2, 0, savkey, 262144 + i * 6960 /* 232 * 30 */ + j * 232, 
+                util.copy(data2, 0, savkey, 262144 + i * 6960 /* 232 * 30 */ + j * 232,
                     232);
             }
         }

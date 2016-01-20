@@ -1,3 +1,5 @@
+"use strict";
+
 import BattleVideoReader from "./battle-video-reader";
 import { currentKeyStore } from "./key-store";
 import * as util from "./util";

@@ -1,3 +1,5 @@
+"use strict";
+
 import SaveReader from "./save-reader";
 import SaveKey from "./save-key";
 import Pkx from "./pkx";

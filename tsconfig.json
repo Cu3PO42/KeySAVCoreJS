@@ -19,8 +19,11 @@
     "files": [
         "battle-video-breaker.ts",
         "battle-video-reader.ts",
+        "calculator.ts",
+        "index.ts",
         "key-store.ts",
         "key-store-filesystem.ts",
+        "localization.ts",
         "pkx.ts",
         "save-reader.ts",
         "save-reader-decrypted.ts",

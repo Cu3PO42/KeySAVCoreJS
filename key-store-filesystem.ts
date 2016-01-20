@@ -1,6 +1,8 @@
 /// <reference path="typings/bluebird/bluebird.d.ts"/>
 /// <reference path="typings/node/node.d.ts"/>
 
+"use strict";
+
 import * as Promise from "bluebird";
 import * as fs from "fs";
 import KeyStore from "./key-store";
@@ -54,7 +56,7 @@ export default class KeyStoreFileSystem implements KeyStore {
             let fd = <number>(await openAsync(join(path, fileName), 'r+'));
             let buf = new Buffer(8);
             await readAsync(fd, buf, 0, 8, 0);
-            let stamp = getStamp(buf, 0);
+            let stamp = getStamp(new Uint8Array(buf.buffer, buf.byteOffset, 8), 0);
             if (this.keys[stamp] !== undefined) {
                 continue;
             }
@@ -66,7 +68,6 @@ export default class KeyStoreFileSystem implements KeyStore {
                     var size = stats.size === 0x1000 ? 0x1000 : 0xB4AD4;
                     var buf = new Buffer(stats.size);
                     await readAsync(fd, buf, 0, stats.size, 0);
-                    var ab = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
                     var ui8 = new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
                     return stats.size !== 0x1000 ? new SaveKey(ui8) : ui8;
                 })

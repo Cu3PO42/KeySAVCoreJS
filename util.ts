@@ -1,3 +1,5 @@
+"use strict";
+
 export function trimCString(str: string) {
     var index = str.indexOf('\0');
     if (index < 0)

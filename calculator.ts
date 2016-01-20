@@ -1,4 +1,7 @@
 /// <reference path="typings/node/node.d.ts"/>
+
+"use strict";
+
 var expData = require("./expData.json");
 var stats = require("./stats.json")
 import Pkx from "./pkx";

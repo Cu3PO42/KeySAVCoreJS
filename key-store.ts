@@ -1,3 +1,5 @@
+"use strict";
+
 import SaveKey from "./save-key";
 
 interface KeyStore {

@@ -1,3 +1,5 @@
+"use strict";
+
 import Pkx from "./pkx";
 import * as util from "./util";
 import { eggnames } from "./save-breaker";

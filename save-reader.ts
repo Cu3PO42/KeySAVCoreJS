@@ -1,3 +1,5 @@
+"use strict";
+
 import Pkx from "./pkx";
 
 interface SaveReader {

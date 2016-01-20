@@ -1,3 +1,5 @@
+"use strict";
+
 import SaveReader from "./save-reader";
 import Pkx from "./pkx";
 import * as util from "./util";
