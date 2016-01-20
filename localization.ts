@@ -1,14 +1,49 @@
-var fs = require("fs"),
-    forms = require("./localization/forms.json"),
+/// <reference path="typings/node/node.d.ts" />
+
+import * as fs from "fs";
+import Pkx from "./pkx";
+var forms = require("./localization/forms.json"),
     locations = require("./localization/locations.json"),
-    ribbons = require("./localization/ribbons.json"),
-    names = {};
+    ribbons = require("./localization/ribbons.json");
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
 var files = ["abilities", "countries", "forms", "games", "items", "languageTags", "moves", "natures", "regions", "species", "types"];
 
+interface Localization {
+    de: LocalizationLanguage;
+    en: LocalizationLanguage;
+    es: LocalizationLanguage;
+    fr: LocalizationLanguage;
+    it: LocalizationLanguage;
+    ja: LocalizationLanguage;
+    ko: LocalizationLanguage;
+}
+
+interface LocalizationLanguage {
+    abilities: string[];
+    countries: string[];
+    forms: string[][];
+    games: string[];
+    items: string[];
+    languageTags: string[];
+    moves: string[];
+    natures: string[];
+    regions: string[];
+    species: string[];
+    types: string[];
+
+    getLocation(pkm: Pkx): string;
+    getLocation(gameVersion: number, location: number): string;
+    getEggLocation(pkm: Pkx): string;
+    getRibbons(pkm: Pkx): string[];
+    getBallName(ball: number): string;
+}
+
+var names: Localization = <any>{};
+export default names;
+
 for (var i = 0; i < langs.length; ++i) {
-    var lang = names[langs[i]] = {};
+    var lang = names[langs[i]] = <any>{};
 
     for (var j = 0; j < files.length; ++j) {
         lang[files[j]] = fs.readFileSync(__dirname + "/localization/" + langs[i] + "/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
