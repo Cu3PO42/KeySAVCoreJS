@@ -11,10 +11,9 @@ export async function load(input: Uint8Array): Promise<BattleVideoReader> {
     return new BattleVideoReader(input, key);
 }
 
-interface BattleVideoBreakResult {
+export interface BattleVideoBreakResult {
     success: boolean;
     result: string;
-    key?: Uint8Array;
 }
 
 export function breakKey(video1: Uint8Array, video2: Uint8Array): BattleVideoBreakResult {
@@ -86,6 +85,7 @@ export function breakKey(video1: Uint8Array, video2: Uint8Array): BattleVideoBre
     // Finished, allow dumping of breakstream
     result += `Success!\nYour first Pokemon's TSV: ${util.pad4(tsv)}\nOT: ${ot}\n\nPlease save your keystream.`;
 
-    return { success: true, result: result, key: bvkey };
+    currentKeyStore.setBvKey(bvkey);
+    return { success: true, result: result };
 
 }

@@ -1,10 +1,13 @@
 "use strict";
 
 import SaveKey from "./save-key";
+import Pkx from "./pkx";
 
-interface KeyStore {
+export interface KeyStore {
     getSaveKey(stamp: string): Promise<SaveKey>;
     getBvKey(stamp: string): Promise<Uint8Array>;
+    setSaveKey(key: SaveKey, pkm: Pkx);
+    setBvKey(key: Uint8Array);
 }
 
 export var currentKeyStore: KeyStore = undefined;

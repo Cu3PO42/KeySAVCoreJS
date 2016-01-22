@@ -18,13 +18,17 @@ export default class SaveKey {
         return this.key;
     }
 
-    get stamp1(): [number, number] {
+    get stampRaw(): [number, number] {
         return [this.key32[0], this.key32[1]];
     }
 
-    set stamp1(val: [number, number]) {
+    set stampRaw(val: [number, number]) {
         this.key32[0] = val[0];
         this.key32[1] = val[1];
+    }
+
+    get stamp(): string {
+        return util.getStamp(this.key, 0);
     }
 
     get boxOffset(): number {

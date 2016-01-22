@@ -1,4 +1,7 @@
+/// <reference path="typings/base-64/base-64.d.ts"/>
 "use strict";
+
+import { encode as base64Encode } from "base-64";
 
 export function trimCString(str: string) {
     var index = str.indexOf('\0');
@@ -126,6 +129,10 @@ export function pad4(n: number) {
     return ("0000" + n).slice(-4);
 }
 
+export function pad5(n: number) {
+    return ("00000" + n).slice(-5);
+}
+
 export function getStamp(arr: Uint8Array, off: number): string {
-    return String.fromCharCode.apply(null, arr.subarray(off, off+8));
+    return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+8)));
 }

@@ -8,7 +8,8 @@ import * as fs from "fs";
 import KeyStore from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
-import { getStamp } from "./util";
+import Pkx from "./pkx";
+import { getStamp, pad4, pad5 } from "./util";
 
 var readdirAsync = Promise.promisify(fs.readdir),
     statAsync = Promise.promisify(fs.stat),
@@ -80,13 +81,13 @@ export default class KeyStoreFileSystem implements KeyStore {
             if (this.keys[stamp].isSav === isSav) {
                 return await this.keys[stamp].key.get();
             }
-            return undefined;
+            throw new Error("No key available.");
         } else {
             await (this.scan.isFulfilled() ? (this.scan = this.scanSaveDirectory(this.path)) : this.scan);
             if (this.keys[stamp] !== undefined && this.keys[stamp].isSav === isSav) {
                 return await this.keys[stamp].key.get();
             }
-            return undefined;
+            throw new Error("No key available.");
         }
     }
 
@@ -107,5 +108,29 @@ export default class KeyStoreFileSystem implements KeyStore {
                 fs.close(lazyKey.fd);
             }
         }
+    }
+
+    async setKey(name: string, data: Uint8Array, keyFn: () => Promise<Uint8Array|SaveKey>, stamp: string, isSav: boolean) {
+        if (this.keys[stamp] !== undefined) {
+            await closeAsync(this.keys[stamp].fd);
+        }
+        var buf = new Buffer(data);
+        var fd = <number>(await openAsync(name, "w+"));
+        await writeAsync(fd, buf, 0, buf.length, 0);
+        this.keys[stamp] = {
+            fd: fd,
+            name: name,
+            isSav: isSav,
+            key: new LazyValue(keyFn)
+        };
+    }
+
+    async setBvKey(key: Uint8Array) {
+        var stamp = getStamp(key, 0);
+        this.setKey(`BV Key - ${stamp}.bin`, key, async function() { return key; }, stamp, false);
+    }
+
+    async setSaveKey(key: SaveKey, pkx: Pkx) {
+        this.setKey(`SAV Key - ${pkx.ot} - (${pad5(pkx.tid)}.${pad5(pkx.sid)}) - TSV ${pad4(pkx.tsv)}.bin`, key.keyData, async function() { return key; }, key.stamp, true);
     }
 }

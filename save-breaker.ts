@@ -43,8 +43,6 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
 export interface SaveBreakResult {
     success: boolean;
     result: string;
-    res?: SaveKey;
-    resPkx?: Uint8Array;
 }
 
 export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<SaveBreakResult> {
@@ -348,10 +346,9 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
     // Save file diff is done, now we're essentially done. Save the keystream.
     // Success
+    currentKeyStore.setSaveKey(new SaveKey(savkey), new Pkx(pkx, 0, 1, false));
     return {
         success: true,
-        result: "Keystreams were successfully bruteforced!\n\nSave your keystream now...",
-        res: new SaveKey(savkey),
-        resPkx: pkx
+        result: "Keystreams were successfully bruteforced!\n\nSave your keystream now..."
     };
 }

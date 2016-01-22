@@ -10,6 +10,7 @@
   "author": "Cu3PO42",
   "license": "MIT",
   "dependencies": {
+    "base-64": "^0.1.0",
     "bluebird": "^2.9.34",
     "cuint": "^0.2.0",
     "lodash": "^3.10.0"
