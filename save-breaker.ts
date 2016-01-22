@@ -17,10 +17,10 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
     switch (input.length) {
         case 0x10009C:
         case 0x10019A:
+            input = input.subarray(input.length - 0x100000);
         case 0x100000:
             var key = await currentKeyStore.getSaveKey(util.getStamp(input, 0x10));
-            return new SaveReaderEncrypted(input.length === 0x100000 ? input
-                : input.subarray(input.length-0x100000), key);
+            return new SaveReaderEncrypted(input, key);
         case 0x76000:
             if (view.getUint32(0x75E10, true) != magic)
                 throw new Error("No save.");

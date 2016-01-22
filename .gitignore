@@ -192,3 +192,4 @@ ModelManifest.xml
 .DS_Store
 DuoCode.lic
 *.js
+*.d.ts

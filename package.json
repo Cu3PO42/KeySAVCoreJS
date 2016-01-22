@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && tsc --declaration && sed -i '' '/\\/\\/\\/ <reference path/d;/import \\* as Promise/d' *.d.ts",
     "publish": "publish"
   },
   "author": "Cu3PO42",
@@ -16,10 +17,7 @@
     "lodash": "^3.10.0"
   },
   "devDependencies": {
-    "publish": "^0.5.0"
-  },
-  "typescript": {
-    "definition": "./KeySAVCore.d.ts"
-  },
-  "typings": "./KeySAVCore.d.ts"
+    "publish": "^0.5.0",
+    "typescript": "^1.8.0-dev.20160121"
+  }
 }

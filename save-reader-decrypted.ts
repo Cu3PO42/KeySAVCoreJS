@@ -60,7 +60,7 @@ export default class SaveReaderDecrypted implements SaveReader {
             return null;
         pkx = Pkx.decrypt(pkx);
         if (Pkx.verifyChk(pkx) && (pkx[8] | pkx[9]) != 0) {
-            return new Pkx(pkx, pos / 30, pos % 30, false);
+            return new Pkx(pkx, Math.floor(pos / 30), pos % 30, false);
         }
         return undefined;
     }

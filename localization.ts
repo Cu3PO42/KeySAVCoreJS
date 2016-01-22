@@ -11,17 +11,8 @@ var forms = require("./localization/forms.json"),
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
 var files = ["abilities", "countries", "forms", "games", "items", "languageTags", "moves", "natures", "regions", "species", "types"];
 
-interface Localization {
-    de: LocalizationLanguage;
-    en: LocalizationLanguage;
-    es: LocalizationLanguage;
-    fr: LocalizationLanguage;
-    it: LocalizationLanguage;
-    ja: LocalizationLanguage;
-    ko: LocalizationLanguage;
-}
 
-interface LocalizationLanguage {
+export interface LocalizationLanguage {
     abilities: string[];
     countries: string[];
     forms: string[][];
@@ -41,8 +32,18 @@ interface LocalizationLanguage {
     getBallName(ball: number): string;
 }
 
+export interface Localization {
+    de: LocalizationLanguage;
+    en: LocalizationLanguage;
+    es: LocalizationLanguage;
+    fr: LocalizationLanguage;
+    it: LocalizationLanguage;
+    ja: LocalizationLanguage;
+    ko: LocalizationLanguage;
+    [lang: string]: LocalizationLanguage;
+}
+
 var names: Localization = <any>{};
-export default names;
 
 for (var i = 0; i < langs.length; ++i) {
     var lang = names[langs[i]] = <any>{};
@@ -113,4 +114,11 @@ for (var i = 0; i < langs.length; ++i) {
     })(lang);
 }
 
-module.exports = names;
+export var de = names["de"];
+export var en = names["en"];
+export var es = names["es"];
+export var fr = names["fr"];
+export var it = names["it"];
+export var ja = names["ja"];
+export var ko = names["ko"];
+export default names;
