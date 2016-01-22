@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && tsc --declaration && sed -i '' '/\\/\\/\\/ <reference path/d;/import \\* as Promise/d' *.d.ts",
+    "build": "tsc && tsc --declaration && if [[ \"$(uname -s)\" == \"Darwin\" ]]; then  sed -i '' '/\\/\\/\\/ <reference path/d;/import \\* as Promise/d' *.d.ts; else sed -i '/\\/\\/\\/ <reference path/d;/import \\* as Promise/d'; fi",
     "publish": "publish"
   },
   "author": "Cu3PO42",
