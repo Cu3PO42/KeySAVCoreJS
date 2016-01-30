@@ -115,7 +115,7 @@ export default class KeyStoreFileSystem implements KeyStore {
             await closeAsync(this.keys[stamp].fd);
         }
         var buf = new Buffer(data);
-        var fd = <number>(await openAsync(name, "w+"));
+        var fd = <number>(await openAsync(join(this.path, name), "w+"));
         await writeAsync(fd, buf, 0, buf.length, 0);
         this.keys[stamp] = {
             fd: fd,
