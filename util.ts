@@ -10,17 +10,55 @@ export function trimCString(str: string) {
     return str.substr(0, index);
 }
 
+var specialCharMap: { [char: string]: string } = {
+    "\ue095": "⊙",
+    "\ue096": "○",
+    "\ue097": "□",
+    "\ue098": "△",
+    "\ue099": "♢",
+    "\ue090": "♠",
+    "\ue092": "♥",
+    "\ue093": "♦",
+    "\ue091": "♣",
+    "\ue094": "★",
+    "\ue09a": "♪",
+    "\ue09b": "☀",
+    "\ue09c": "⛅",
+    "\ue09d": "☂",
+    "\ue09e": "⛄",
+    "\ue09f": "😐",
+    "\ue0a0": "😊",
+    "\ue0a1": "😫",
+    "\ue0a2": "😤",
+    "\ue0a5": "💤",
+    "\ue0a3": "⤴",
+    "\ue0a4": "⤵",
+    "\ue08e": "♂",
+    "\ue08f": "♀",
+    "\ue08d": "…"
+}
+
+var specialCharMapReverse: { [char: string]: string } = {};
+
+for (let key in specialCharMap) {
+    specialCharMapReverse[specialCharMap[key]] = key;
+}
+
 export function decodeUnicode16LE(arr: number[]|Uint8Array, offset: number, length: number) {
     var buf = new Buffer(length);
     for (var i = 0; i < length; ++i) {
         buf.writeUInt8(arr[offset + i], i);
     }
-    return buf.toString("ucs2");
+    return buf.toString("ucs2").replace(/./g, function(m) {
+        return specialCharMap[m] || m;
+    });
 }
 
 export function encodeUnicode16LE(str: string) {
     // TODO Uint8Array?
-    var tmp = new Buffer(str, "ucs2"), res = [];
+    var tmp = new Buffer(str.replace(/./g, function(m) {
+        return specialCharMapReverse[m] || m;
+    }), "ucs2"), res = [];
     for (var i = 0; i < tmp.length; ++i) {
         res.push(tmp.readUInt8(i));
     }
