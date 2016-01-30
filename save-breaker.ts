@@ -65,8 +65,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     var dataView1 = util.createDataView(break1);
     var dataView2 = util.createDataView(break2);
 
-    var key = await currentKeyStore.getSaveKey(util.getStamp(break1, 0x10));
-    if (key !== undefined) {
+    try {
+        var key = await currentKeyStore.getSaveKey(util.getStamp(break1, 0x10));
         if (util.sequenceEqual(break1, 524288, break2, 524288, 520192)) {
             key.slot1Flag = dataView2.getUint32(360, true);
         } else if (util.sequenceEqual(break1, 4096, break2, 4096, 520192)) {
@@ -83,8 +83,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         reader2 = new SaveReaderEncrypted(break2, key);
         reader2.scanSlots();
 
-        return { success: true, result: "Found old key. Based new keystream on that.\n\nPlease save new Keystream.", res: key };
-    }
+        return { success: true, result: "Found old key. Based new keystream on that.\n\nSaving new Keystream." };
+    } catch (e) {}
 
     if (util.sequenceEqual(break1, 524288, break2, 524288, 520192)) {
         for (var i = 162304; i < 446160; ++i) {
@@ -349,6 +349,6 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     currentKeyStore.setSaveKey(new SaveKey(savkey), new Pkx(pkx, 0, 1, false));
     return {
         success: true,
-        result: "Keystreams were successfully bruteforced!\n\nSave your keystream now..."
+        result: "Keystreams were successfully bruteforced!\n\nSaving your keystream now..."
     };
 }
