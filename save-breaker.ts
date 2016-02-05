@@ -46,13 +46,12 @@ export interface SaveBreakResult {
 }
 
 export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<SaveBreakResult> {
+    var savkey: Uint8Array;
     var offset = [0, 0];
     var empty = new Uint8Array(232);
-    var emptyekx = new Uint8Array(232);
+    var emptyekx: Uint8Array;
     var pkx = new Uint8Array(232);
-    var savkey;
-    savkey = new Uint8Array(740052);
-    var result;
+    var key: SaveKey;
 
     if (!util.sequenceEqual(break1, 16, break2, 16, 8)) {
         return { success: false, result: "Saves are not from the same game!\nPlease follow the instructions." };
@@ -66,16 +65,16 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     var dataView2 = util.createDataView(break2);
 
     try {
-        var key = await currentKeyStore.getSaveKey(util.getStamp(break1, 0x10));
-        if (util.sequenceEqual(break1, 524288, break2, 524288, 520192)) {
-            key.slot1Flag = dataView2.getUint32(360, true);
-        } else if (util.sequenceEqual(break1, 4096, break2, 4096, 520192)) {
-            key.slot1Flag = dataView1.getUint32(360, true);
+        key = await currentKeyStore.getSaveKey(util.getStamp(break1, 0x10));
+        if (util.sequenceEqual(break1, 0x80000, break2, 0x80000, 0x7f000)) {
+            key.slot1Flag = dataView2.getUint32(0x168, true);
+        } else if (util.sequenceEqual(break1, 0x1000, break2, 0x1000, 0x7f000)) {
+            key.slot1Flag = dataView1.getUint32(0x168, true);
         } else {
             return { success: false, result: "The saves are seperated by more than one save.\nPlease follow the instructions." };
         }
 
-        util.xor(break1, key.boxOffset, break1, key.boxOffset - 520192, key.slot1Key, 0, 232*30*31);
+        util.xor(break1, key.boxOffset, break1, key.boxOffset - 0x7f000, key.slot1Key, 0, 232*30*31);
 
         var reader1, reader2;
         reader1 = new SaveReaderEncrypted(break1, key);
@@ -86,28 +85,32 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         return { success: true, result: "Found old key. Based new keystream on that.\n\nSaving new Keystream." };
     } catch (e) {}
 
-    if (util.sequenceEqual(break1, 524288, break2, 524288, 520192)) {
+    savkey = new Uint8Array(0xB4AD4);
+    key = new SaveKey(savkey);
+
+    if (util.sequenceEqual(break1, 0x80000, break2, 0x80000, 0x7f000)) {
+        // TODO method to xor three
+        // write slot 1 to slot 2 for breaking purposes
+        // TODO create a copy as not to overwrite input data?
         for (var i = 162304; i < 446160; ++i) {
             break2[i + 520192] = ((break2[i] ^ break1[i] ^ break1[i + 520192]) & 0xFF);
         }
 
         // Copy the key for the slot selector
-        util.copy(break2, 360, savkey, 524288, 4);
+        key.slot1Flag = dataView2.getUint32(0x168, true);
 
         // Copy the key for the other save slot
-        util.xor(break2, offset[0], break2, offset[0] - 520192, savkey, 524292,
-            215760 /* 232*30*31 */);
+        util.xor(break2, offset[0], break2, offset[0] - 0x7f000, savkey, 0x80004, 232*30*31);
     } else if (util.sequenceEqual(break1, 4096, break2, 4096, 520192)) {
         // Copy the key for the slot selector
-        util.copy(break1, 360, savkey, 524288, 4);
+        key.slot1Flag = dataView1.getUint32(0x168, true);
 
         // Copy the key for the other save slot
-        util.xor(break2, offset[0], break2, offset[0] - 520192, savkey, 524292,
-            215760 /* 232*30*31 */);
+        util.xor(break2, offset[0], break2, offset[0] - 0x7f000, savkey, 0x80004, 232*30*31);
     }
 
     var tmpBreak = break1; break1 = break2; break2 = tmpBreak;
-    var dataViewBreak = dataView1; dataView1 = dataView2; dataView2 = dataView1;
+    var tmpDataView = dataView1; dataView1 = dataView2; dataView2 = tmpDataView;
 
     //#region Finding the User Specific Data: Using Valid to keep track of progress...
     // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.
@@ -119,6 +122,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         for (var i = fo; i <= 757552; i += 68096) {
             var err = 0;
             // Start at findoffset and see if it matches pattern
+            // TODO what "pattern"
             if ((break1[i + 4] == break2[i + 4]) && (break1[i + 4 + 232] == break2[i + 4 + 232])) {
                 // Sanity Placeholders are the same
                 for (var j = 0; j < 4; j++) {
@@ -152,97 +156,67 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         return { success: false, result: "Unable to Find Box.\nKeystreams were NOT bruteforced!\n\nStart over and try again :(" };
     }
 
-    // Let's go deeper. We have the two box offsets.
-    // Chunk up the base streams.
-    var estream1 = new Uint8Array(6960 /* 30 * 232 */);
-    var estream2 = new Uint8Array(6960 /* 30 * 232 */);
-    // Stuff 'em.
-    for (var i = 0; i < 30; i++) {
-        for (var j = 0; j < 232; j++) {
-            estream1[i * 232 + j] = break1[offset[0] + 232 * i + j];
-            estream2[i * 232 + j] = break2[offset[1] + 232 * i + j];
-        }
-    }
-
     // Okay, now that we have the encrypted streams, formulate our EKX.
+    // TODO why number one specifically?
+    // TODO do we actually need to set this?
     var nick = eggnames[1];
     // Stuff in the nickname to our blank EKX.
     var nicknamebytes = util.encodeUnicode16LE(nick);
     util.copy(nicknamebytes, 0, empty, 64, nicknamebytes.length);
 
     // Encrypt the Empty PKX to EKX.
-    util.copy(empty, 0, emptyekx, 0, 232);
-    emptyekx = Pkx.decrypt(emptyekx);
+    emptyekx = Pkx.encrypt(empty);
     // Not gonna bother with the checksum, as this empty file is temporary.
 
     // Sweet. Now we just have to find the E0-E3 values. Let's get our polluted streams from each.
     // Save file 1 has empty box 1. Save file 2 has empty box 2.
-    var pstream1 = new Uint8Array(6960 /* 30 * 232 */); // Polluted Keystream 1
-    var pstream2 = new Uint8Array(6960 /* 30 * 232 */); // Polluted Keystream 2
-    for (var i = 0; i < 30; i++) {
-        for (var j = 0; j < 232; j++) {
-            pstream1[i * 232 + j] = ((estream1[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-            pstream2[i * 232 + j] = ((estream2[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-        }
-    }
 
     // Cool. So we have a fairly decent keystream to roll with. We now need to find what the E0-E3 region is.
     // 0x00000000 Encryption Constant has the D block last.
     // We need to make sure our Supplied Encryption Constant Pokemon have the D block somewhere else (Pref in 1 or 3).
 
-    // First, let's get out our polluted EKX's.
-    var polekx = [new Uint8Array(232), new Uint8Array(232), new Uint8Array(232),
-                  new Uint8Array(232), new Uint8Array(232), new Uint8Array(232)];
+    var valid = false;
     for (var i = 0; i < 6; i++) {
+        // First, let's get out our polluted EKX's.
+        var polekx = new Uint8Array(232);
         for (var j = 0; j < 232; j++) {
-            polekx[i][j] = ((break1[offset[1] + 232 * i + j] ^ pstream2[i * 232 + j]) & 0xFF);
+            // TODO write method to xor three
+            polekx[j] = break1[offset[1] + 232 * i + j] ^ break2[offset[1] + i * 232 + j] ^ emptyekx[j];
         }
-    }
+        let encryptionconstant = util.createDataView(polekx).getUint32(0, true);
 
-    var encryptionconstants = <number[]>new Array(6); // Array for all 6 Encryption Constants.
-    var valid = 0;
-    for (var i = 0; i < 6; i++) {
-        encryptionconstants[i] = polekx[i][0];
-        encryptionconstants[i] += polekx[i][1] * 256;
-        encryptionconstants[i] += polekx[i][2] * 65536;
-        encryptionconstants[i] += polekx[i][3] * 16777216;
         // EC Obtained. Check to see if Block D is not last.
-        if (Pkx.getDloc(encryptionconstants[i]) != 3) {
-            valid++;
+        // If Block D is last, the location data wouldn't be correct and we need that to fix the keystream.
+        if (Pkx.getDloc(encryptionconstant[i]) != 3) {
+            valid = true;
             // Find the Origin/Region data.
-            var encryptedekx = new Uint8Array(232);
-            var decryptedpkx = new Uint8Array(232);
-            for (var z = 0; z < 232; z++) {
-                encryptedekx[z] = polekx[i][z];
-            }
-
-            decryptedpkx = Pkx.decrypt(encryptedekx);
+            var decryptedpkx = Pkx.decrypt(polekx);
 
             // finalize data
 
             // Okay, now that we have the encrypted streams, formulate our EKX.
             nick = eggnames[decryptedpkx[227] - 1];
             // Stuff in the nickname to our blank EKX.
+            // TODO get a method to write bytes directly to uint8array
             nicknamebytes = util.encodeUnicode16LE(nick);
             util.copy(nicknamebytes, 0, empty, 64, nicknamebytes.length);
 
             // Dump it into our Blank EKX. We have won!
-            empty[224] = decryptedpkx[224];
-            empty[225] = decryptedpkx[225];
-            empty[226] = decryptedpkx[226];
-            empty[227] = decryptedpkx[227];
+            util.copy(decryptedpkx, 224, empty, 224, 4);
             break;
         }
     }
     //#endregion
 
-    if (valid == 0) { // We didn't get any valid EC's where D was not in last. Tell the user to try again with different specimens.
+    if (!valid) { // We didn't get any valid EC's where D was not in last. Tell the user to try again with different specimens.
         return { success: false, result: "The 6 supplied Pokemon are not suitable. \nRip new saves with 6 different ones that originated from your save file.\nKeystreams were NOT bruteforced!\n\nStart over and try again :(" };
     }
 
     //#region Fix up our Empty File
     // We can continue to get our actual keystream.
     // Let's calculate the actual checksum of our empty pkx.
+    // TODO use a util function to create Uint16Array
+    // TODO write a "fix checksum" function
     var empty16 = new Uint16Array(empty.buffer);
     var chk = 0;
     for (var i = 4; i < 116 /* 232 / 2 */; i++) {
@@ -253,93 +227,69 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     empty16[3] = chk;
 
     // Okay. So we're now fixed with the proper blank PKX. Encrypt it!
-    util.copy(empty, 0, emptyekx, 0, 232);
-    emptyekx = Pkx.encrypt(emptyekx);
+    emptyekx = Pkx.encrypt(empty);
 
     // Copy over 0x10-0x1F (Save Encryption Unused Data so we can track data).
     util.copy(break1, 16, savkey, 0, 8);
     // Include empty data
-    savkey[16] = empty[224];
-    savkey[17] = empty[225];
-    savkey[18] = empty[226];
-    savkey[19] = empty[227];
+    util.copy(empty, 224, savkey, 16, 4);
     // Copy over the scan offsets.
     util.createDataView(savkey).setUint32(28, offset[0], true);
 
     for (var i = 0; i < 30; i++) {
-        for (var j = 0; j < 232; j++) {
-            savkey[256 + i * 232 + j] = ((estream1[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-            savkey[7216 /* 0x100 + (30 * 232) */ + i * 232 + j] = ((estream2[i * 232 + j] ^ emptyekx[j]) & 0xFF);
-        }
+        util.xor(break1, i * 232 + offset[0], emptyekx, 0, savkey, 0x100 + i * 232, 232);
+        util.xor(break2, i * 232 + offset[1], emptyekx, 0, savkey, 0x100 + (30 * 232) + i * 232, 232);
     }
+
     //#endregion
     // Let's extract some of the information now for when we set the Keystream filename.
     //#region Keystream Naming
-    var data1 = new Uint8Array(232);
-    var data2 = new Uint8Array(232);
-    for (var i = 0; i < 232; i++) {
-        data1[i] = ((savkey[256 + i] ^ break1[offset[0] + i]) & 0xFF);
-        data2[i] = ((savkey[256 + i] ^ break2[offset[0] + i]) & 0xFF);
-    }
-    var data1a = new Uint8Array(232);
-    var data2a = new Uint8Array(232);
-    util.copy(data1, 0, data1a, 0, 232);
-    util.copy(data2, 0, data2a, 0, 232);
+    var data1 = util.xor(savkey, 256+i, break1, offset[0], 232);
+    var data2 = util.xor(savkey, 256+i, break2, offset[0], 232);
     var pkx1 = Pkx.decrypt(data1);
     var pkx2 = Pkx.decrypt(data2);
     if (Pkx.verifyChk(pkx1) && (pkx1[8] | pkx1[9])) {
         // Save 1 has the box1 data
         pkx = pkx1;
     }
-    else
-        if (Pkx.verifyChk(pkx2) && (pkx2[8] | pkx2[9])) {
+    else if (Pkx.verifyChk(pkx2) && (pkx2[8] | pkx2[9])) {
+        // Save 2 has the box1 data
+        pkx = pkx2;
+    } else {
+        // Data isn't decrypting right...
+        util.xorInPlace(data1, 0, empty, 0, 232);
+        util.xorInPlace(data2, 0, empty, 0, 232);
+
+        pkx1 = Pkx.decrypt(data1);
+        pkx2 = Pkx.decrypt(data2);
+
+        if (Pkx.verifyChk(pkx1) && (pkx1[8] | pkx1[9])) {
+            // TODO don't we already know this?
+            // Save 1 has the box1 data
+            pkx = pkx1;
+        } else if (Pkx.verifyChk(pkx2) && (pkx2[8] | pkx2[9])) {
             // Save 2 has the box1 data
             pkx = pkx2;
         } else {
-            // Data isn't decrypting right...
-            for (var i = 0; i < 232; i++) {
-                data1a[i] ^= empty[i];
-                data2a[i] ^= empty[i];
-            }
-            pkx1 = Pkx.decrypt(data1a);
-            pkx2 = Pkx.decrypt(data2a);
-            if (Pkx.verifyChk(pkx1) && (pkx1[8] | pkx1[9])) {
-                // Save 1 has the box1 data
-                pkx = pkx1;
-            } else if (Pkx.verifyChk(pkx2) && (pkx2[8] | pkx2[9])) {
-                // Save 2 has the box1 data
-                pkx = pkx2;
-            } else {
-                // Sigh...
-                return { success: false, result: "Sigh..." };
-            }
+            // Sigh...
+            // TODO when would this ever occur?
+            return { success: false, result: "Sigh..." };
         }
+    }
     //#endregion
 
-    // Clear the keystream file...
-    savkey.fill(0, 256, 216016 /* 0x100+232*30*31 */);
-    savkey.fill(0, 262144, 477904 /* 0x40000+232*30*31 */);
-
+    // TODO Yes we do.
+    // TODO check both slot1 and slot2 of each save
     // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
-    var data1 = new Uint8Array(232);
-    var data2 = new Uint8Array(232);
     for (var i = 0; i < 31; i++) {
         for (var j = 0; j < 30; j++) {
-            util.copy(break1, offset[0] + i * 6960 /* 232 * 30 */ + j * 232,
-                data1, 0, 232);
-            util.copy(break2, offset[0] + i * 6960 /* 232 * 30 */ + j * 232,
-                data2, 0, 232);
-            if (util.sequenceEqual(data1, data2)) {
-                // Just copy data1 into the key file.
-                util.copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232,
-                    232);
-            }
-            else {
-                // Copy both datas into their keystream spots.
-                util.copy(data1, 0, savkey, 256 + i * 6960 /* 232 * 30 */ + j * 232,
-                    232);
-                util.copy(data2, 0, savkey, 262144 + i * 6960 /* 232 * 30 */ + j * 232,
-                    232);
+            if (util.sequenceEqual(break1, offset[0] + i * 232 * 30 + j * 232, break2, offset[0] + i * 232 * 30 + j * 232, 232)) {
+                // Copy slot into the key file only once if it is equal in both saves.
+                util.copy(break1, offset[0] + i * 232 * 30 + j * 232, savkey, 0x100 + i * 232 * 30 + j * 232, 232);
+            } else {
+                // Copy slot from both saves into their keystream spots.
+                util.copy(break1, offset[0] + i * 232 * 30 + j * 232, savkey, 0x100 + i * 232 * 30 + j * 232, 232);
+                util.copy(break2, offset[0] + i * 232 * 30 + j * 232, savkey, 0x40000 + i * 232 * 30 + j * 232, 232);
             }
         }
     }
