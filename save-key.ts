@@ -28,7 +28,7 @@ export default class SaveKey {
     }
 
     get stamp(): string {
-        return util.getStamp(this.key, 0);
+        return util.getStampSav(this.key, 0);
     }
 
     get boxOffset(): number {

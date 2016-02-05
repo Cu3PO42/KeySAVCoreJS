@@ -19,7 +19,7 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
         case 0x10019A:
             input = input.subarray(input.length - 0x100000);
         case 0x100000:
-            var key = await currentKeyStore.getSaveKey(util.getStamp(input, 0x10));
+            var key = await currentKeyStore.getSaveKey(util.getStampSav(input, 0x10));
             return new SaveReaderEncrypted(input, key);
         case 0x76000:
             if (view.getUint32(0x75E10, true) != magic)
@@ -65,7 +65,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     var dataView2 = util.createDataView(break2);
 
     try {
-        key = await currentKeyStore.getSaveKey(util.getStamp(break1, 0x10));
+        key = await currentKeyStore.getSaveKey(util.getStampSav(break1, 0x10));
         if (util.sequenceEqual(break1, 0x80000, break2, 0x80000, 0x7f000)) {
             key.slot1Flag = dataView2.getUint32(0x168, true);
         } else if (util.sequenceEqual(break1, 0x1000, break2, 0x1000, 0x7f000)) {

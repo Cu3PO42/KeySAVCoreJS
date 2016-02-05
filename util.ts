@@ -171,6 +171,10 @@ export function pad5(n: number) {
     return ("00000" + n).slice(-5);
 }
 
-export function getStamp(arr: Uint8Array, off: number): string {
+export function getStampSav(arr: Uint8Array, off: number): string {
     return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+8)));
+}
+
+export function getStampBv(arr: Uint8Array, off: number): string {
+    return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+0x10)));
 }
