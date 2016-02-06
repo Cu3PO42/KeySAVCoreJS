@@ -212,25 +212,83 @@ export default class Pkx {
         this.isShiny = (this.tsv == this.esv);
     }
 
-    static shuffleArray(pkx: Uint8Array, sv: number) {
+    static deshuffle(pkx: Uint8Array, sv: number) {
         var ekx = new Uint8Array(pkx.length);
         util.copy(pkx, 0, ekx, 0, 8);
 
-        // Now to shuffle the blocks
-        // Define Shuffle Order Structure
-        var aloc = [ 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3 ];
-        var bloc = [ 1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2 ];
-        var cloc = [ 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1 ];
-        var dloc = [ 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0 ];
+        // Deshuffle order
+        var sloc = [[ 0, 1, 2, 3 ],
+                    [ 0, 1, 3, 2 ],
+                    [ 0, 2, 1, 3 ],
+                    [ 0, 3, 1, 2 ],
+                    [ 0, 2, 3, 1 ],
+                    [ 0, 3, 2, 1 ],
+                    [ 1, 0, 2, 3 ],
+                    [ 1, 0, 3, 2 ],
+                    [ 2, 0, 1, 3 ],
+                    [ 3, 0, 1, 2 ],
+                    [ 2, 0, 3, 1 ],
+                    [ 3, 0, 2, 1 ],
+                    [ 1, 2, 0, 3 ],
+                    [ 1, 3, 0, 2 ],
+                    [ 2, 1, 0, 3 ],
+                    [ 3, 1, 0, 2 ],
+                    [ 2, 3, 0, 1 ],
+                    [ 3, 2, 0, 1 ],
+                    [ 1, 2, 3, 0 ],
+                    [ 1, 3, 2, 0 ],
+                    [ 2, 1, 3, 0 ],
+                    [ 3, 1, 2, 0 ],
+                    [ 2, 3, 1, 0 ],
+                    [ 3, 2, 1, 0 ]];
 
-        // Get Shuffle Order
-        var shlog = [ aloc[sv], bloc[sv], cloc[sv], dloc[sv] ];
+        var shuffle = sloc[sv];
 
-        // UnShuffle Away!
         for (var b = 0; b < 4; b++)
-            util.copy(pkx, 8 + 56 * shlog[b], ekx, 8 + 56 * b, 56);
+            util.copy(pkx, 8 + 56 * shuffle[b], ekx, 8 + 56 * b, 56);
 
-        // Fill the Battle Stats back
+        // Copy back party data
+        if (pkx.length > 232)
+            util.copy(pkx, 232, ekx, 232, 28);
+        return ekx;
+    }
+
+    static shuffle(pkx: Uint8Array, sv: number) {
+        var ekx = new Uint8Array(pkx.length);
+        util.copy(pkx, 0, ekx, 0, 8);
+
+        // Shuffle order
+        var sloc = [[ 0, 1, 2, 3 ],
+                    [ 0, 1, 3, 2 ],
+                    [ 0, 2, 1, 3 ],
+                    [ 0, 2, 3, 1 ],
+                    [ 0, 3, 1, 2 ],
+                    [ 0, 3, 2, 1 ],
+                    [ 1, 0, 2, 3 ],
+                    [ 1, 0, 3, 2 ],
+                    [ 1, 2, 0, 3 ],
+                    [ 1, 2, 3, 0 ],
+                    [ 1, 3, 0, 2 ],
+                    [ 1, 3, 2, 0 ],
+                    [ 2, 0, 1, 3 ],
+                    [ 2, 0, 3, 1 ],
+                    [ 2, 1, 0, 3 ],
+                    [ 2, 1, 3, 0 ],
+                    [ 2, 3, 0, 1 ],
+                    [ 2, 3, 1, 0 ],
+                    [ 3, 0, 1, 2 ],
+                    [ 3, 0, 2, 1 ],
+                    [ 3, 1, 0, 2 ],
+                    [ 3, 1, 2, 0 ],
+                    [ 3, 2, 0, 1 ],
+                    [ 3, 2, 1, 0 ]];
+
+        var shuffle = sloc[sv];
+
+        for (var b = 0; b < 4; b++)
+            util.copy(pkx, 8 + 56 * shuffle[b], ekx, 8 + 56 * b, 56);
+
+        // Copy back party data
         if (pkx.length > 232)
             util.copy(pkx, 232, ekx, 232, 28);
         return ekx;
@@ -239,62 +297,69 @@ export default class Pkx {
     static decrypt(ekx: Uint8Array) {
         var pkx = new Uint8Array(232);
         util.copy(ekx, 0, pkx, 0, 232);
-        var pv = new DataView(pkx.buffer).getUint32(0, true);
+        var pv = util.createDataView(pkx).getUint32(0, true);
         var sv = (((pv & 0x3E000) >> 0xD) % 24);
-
         var seed = pv;
 
-        var pkx16 = new Uint16Array(pkx.buffer);
-        // Decrypt Blocks with RNG Seed
+        var pkx16 = util.createUint16Array(pkx);
         for (var i = 4; i < 232/2; ++i) {
             seed = LCRNG.next(seed);
             pkx16[i] ^= ((seed >> 0x10) & 0xFFFF);
         }
 
-        // TODO: decrypt party stats?
+        // Decrypt party data
+        seed = pv;
+        if (pkx.length > 232) {
+            for (var i = 232 / 2; i < 260 / 2; ++i) {
+                seed = LCRNG.next(seed);
+                pkx16[i] ^= ((seed >> 16) & 0xFFFF);
+            }
+        }
 
-        // Deshuffle
-        pkx = Pkx.shuffleArray(pkx, sv);
+        pkx = Pkx.deshuffle(pkx, sv);
         return pkx;
     }
 
     static encrypt(pkx: Uint8Array) {
-        var ekx = new Uint8Array(232);
+        var ekx = new Uint8Array(pkx.length);
         util.copy(pkx, 0, ekx, 0, 232);
-
-        // Shuffle
-        var pv = new DataView(pkx.buffer).getUint32(0, true);
+        var pv = util.createDataView(pkx).getUint32(0, true);
         var sv = (((pv & 0x3E000) >> 0xD) % 24);
 
-        // If I unshuffle 11 times, the 12th (decryption) will always decrypt to ABCD.
-        // 2 x 3 x 4 = 12 (possible unshuffle loops -> total iterations)
-        for (var i = 0; i < 11; i++) {
-            ekx = Pkx.shuffleArray(ekx, sv);
-        }
+        ekx = Pkx.shuffle(ekx, sv);
 
         var seed = pv;
         var ekx16 = new Uint16Array(ekx.buffer);
-        // Encrypt Blocks with RNG Seed
+        // Encrypt blocks with RNG generated key
         for (var i = 4; i < 232/2; ++i) {
             seed = LCRNG.next(seed);
             ekx16[i] ^= ((seed >> 16) & 0xFFFF);
         }
 
-        // Encrypt the Party Stats
+        // Encrypt the party data
         seed = pv;
-        if (pkx.length > 232)
-            for (var i = 232/2; i < 260/2; ++i) {
+        if (pkx.length > 232) {
+            for (var i = 232 / 2; i < 260 / 2; ++i) {
                 seed = LCRNG.next(seed);
                 ekx16[i] ^= ((seed >> 16) & 0xFFFF);
             }
+        }
 
-        // Done
         return ekx;
+    }
+
+    static calcChk(pkx: Uint8Array) {
+        var chk = 0;
+        var pkx16 = util.createUint16Array(pkx);
+        for (var i = 8/2; i < 232/2; i++) {
+            chk += pkx16[i];
+        }
+        return chk&0xFFFF;
     }
 
     static verifyChk(pkx: Uint8Array) {
         var chk = 0;
-        var pkx16 = new Uint16Array(pkx.buffer);
+        var pkx16 = util.createUint16Array(pkx);
         for (var i = 8/2; i < 232/2; i++) {
             chk += pkx16[i];
         }
@@ -306,10 +371,8 @@ export default class Pkx {
     }
 
     static getDloc(ec: number) {
-        // Define Shuffle Order Structure
-        var dloc = [ 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0 ];
-        var sv = (((ec & 0x3E000) >> 0xD) % 24);
-
-        return dloc[sv]
+        return [ 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0 ][
+            ((ec & 0x3E000) >> 0xD) % 24
+        ];
     }
 }
