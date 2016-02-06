@@ -146,7 +146,7 @@ export default class Pkx {
         this.ribbonSet4 = pkx[53];
 
         // Block B
-        this.nickname = util.trimCString(util.decodeUnicode16LE(pkx, 64, 24));
+        this.nickname = util.decodeUnicode16LE(pkx, 64, 24);
         // 0x58, 0x59 - unused
         this.move1 = data.getUint16(90, true);
         this.move2 = data.getUint16(92, true);
@@ -179,12 +179,12 @@ export default class Pkx {
         this.isNick = (IV32 >> 31) != 0;
 
         // Block C
-        this.notOT = util.trimCString(util.decodeUnicode16LE(pkx, 120, 24));
+        this.notOT = util.decodeUnicode16LE(pkx, 120, 24);
         var notOTG = (pkx[146]) != 0;
         // Memory Editor edits everything else with pkx in a new form
 
         // Block D
-        this.ot = util.trimCString(util.decodeUnicode16LE(pkx, 176, 24));
+        this.ot = util.decodeUnicode16LE(pkx, 176, 24);
         // 0xC8, 0xC9 - unused
         this.otFriendship = pkx[202];
         this.otAffection = pkx[203]; // Handled by Memory Editor

@@ -119,6 +119,12 @@ declare var Buffer: {
      * @param buffer The buffer to copy.
      */
     new (buffer: Buffer): Buffer;
+    /**
+     * Shares the memory of the passed {buffer}.
+     *
+     * @param buffer The ArrayBuffer whose memory to share.
+     */
+    new (buffer: ArrayBuffer): Buffer;
     prototype: Buffer;
     /**
      * Returns true if {obj} is a Buffer
