@@ -348,13 +348,13 @@ export default class Pkx {
         return ekx;
     }
 
-    static calcChk(pkx: Uint8Array) {
+    static fixChk(pkx: Uint8Array) {
         var chk = 0;
         var pkx16 = util.createUint16Array(pkx);
         for (var i = 8/2; i < 232/2; i++) {
             chk += pkx16[i];
         }
-        return chk&0xFFFF;
+        pkx16[6/2] = chk & 0xFFFF;
     }
 
     static verifyChk(pkx: Uint8Array) {

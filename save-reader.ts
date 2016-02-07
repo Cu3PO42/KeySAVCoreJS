@@ -3,7 +3,6 @@
 import Pkx from "./pkx";
 
 interface SaveReader {
-    keyName: string;
     unlockedSlots: number;
     isNewKey: boolean;
     scanSlots(from: number, to: number);

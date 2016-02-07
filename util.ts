@@ -158,6 +158,21 @@ export function xor(src1: Uint8Array, b, c?, d?, e?, f?, g?): any {
         return dest;
 }
 
+export function xorThree(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, src3: Uint8Array, off3: number, length: number): Uint8Array {
+    var lower4Bound: number, upper4Bound: number, totalOffset1 = off1 + src1.byteOffset;
+    lower4Bound = Math.min((totalOffset1 | 3) - totalOffset1, length);
+    upper4Bound = Math.min(((totalOffset1 + length) & 3) - totalOffset1, length);
+    if (((src1.byteOffset + off1 - src2.byteOffset - off2) & 3) !== 0 ||
+        ((src1.byteOffset + off1 - src3.byteOffset - off3) & 3) !== 0 || lower4Bound >= upper4Bound) {
+        var dest = new Uint8Array(length);
+        for (var i = 0; i < length; ++i) {
+            dest[i] = src1[i+off1] ^ src2[i+off2] ^ src3[i+off3];
+        }
+    } else {
+        var dest = new Uint8Array(length + lower4Bound).subarray(lower4Bound); // do this so the destination array is on the same 4-byte alignment
+    }
+}
+
 export function xorInPlace(dest: Uint8Array, off1: number, src: Uint8Array, off2: number, length: number): void {
     var lower4Bound: number, upper4Bound: number;
     lower4Bound = Math.min(((off1 + dest.byteOffset) | 3) - dest.byteOffset, length);

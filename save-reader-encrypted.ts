@@ -12,10 +12,6 @@ export { default as SaveReader } from "./save-reader";
 export default class SaveReaderEncrypted implements SaveReader {
     private activeSlot: number;
 
-    get keyName() {
-        return this.key.name;
-    }
-
     get unlockedSlots() {
         var res = 0;
         for (var i = 0; i < this.key.slotsUnlocked.length; ++i)
