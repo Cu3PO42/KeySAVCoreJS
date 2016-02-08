@@ -113,9 +113,6 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         boxes2 = break2.subarray(0x80000, 0xFF000);
     }
 
-    boxesDataView1 = util.createDataView(boxes1);
-    boxesDataView2 = util.createDataView(boxes2);
-
     var offset: number = undefined ;
     var potentialOffsets = [0x26A00 /* XY */, 0x37400 /* ORAS */];
 
@@ -132,16 +129,16 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
             continue;
         }
 
-        // TODO this still looks random/wrong
         let err = 0;
         for (var j = 8; j < 232; j++) {
             if (break1[i + j] == break2[i + j])
                 err++;
         }
 
-        if (err < 20) {
-            // Tolerable amount of difference between offsets. We have a result.
+        if (err < 56) {
             offset = i + 0x80000; // Add the offset for the actual save inside the save file
+            boxes1 = boxes1.subarray(i, i + 232 * 30 * 31);
+            boxes2 = boxes2.subarray(i, i + 232 * 30 * 31);
             break;
         }
     }
@@ -149,6 +146,9 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     if (offset === undefined) {
         return { success: false, result: "Unable to find boxes.\nPlease follow the instructions." };
     }
+
+    boxesDataView1 = util.createDataView(boxes1);
+    boxesDataView2 = util.createDataView(boxes2);
 
     // To get the keystream we need to get the complete empty ekx. It contains location data 0xE0-0xE3 and the egg name.
     // 0x00000000 Encryption Constant has the D block last.
