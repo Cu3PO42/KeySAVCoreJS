@@ -75,10 +75,11 @@ export function createUint32Array(arr): Uint32Array {
 }
 
 export function copy(src: Uint8Array, off1: number, dest: Uint8Array, off2: number, len: number) {
-    var lower4Bound: number, upper4Bound: number;
-    lower4Bound = Math.min(((off2 + dest.byteOffset) | 3) - dest.byteOffset, length);
-    upper4Bound = Math.min(((off2 + length + dest.byteOffset) & 3) - dest.byteOffset, length);
-    if (((dest.byteOffset + off2 - src.byteOffset - off1) & 3) !== 0 || lower4Bound >= upper4Bound) {
+    var totalOffset1 = off1 + src.byteOffset;
+    var totalOffset2 = off2 + dest.byteOffset;
+    var lower4Bound = Math.min(-totalOffset1 & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
+    if (((totalOffset1 - totalOffset2) & 3) !== 0 || lower4Bound >= upper4Bound) {
         for (var i = 0; i < length; ++i) {
             dest[i + off2] = src[i + off1];
         }
@@ -87,8 +88,8 @@ export function copy(src: Uint8Array, off1: number, dest: Uint8Array, off2: numb
             dest[i + off2] = src[i + off1];
         }
         var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
-        var dest_32 = new Uint32Array(dest.buffer, dest.byteOffset + lower4Bound, intermediate4Length);
-        var src_32 = new Uint32Array(src.buffer, src.byteOffset + lower4Bound, intermediate4Length);
+        var src_32 = new Uint32Array(src.buffer, totalOffset1 + lower4Bound, intermediate4Length);
+        var dest_32 = new Uint32Array(dest.buffer, totalOffset2 + lower4Bound, intermediate4Length);
         for (var i = 0; i < intermediate4Length; ++i) {
             dest_32[i] = src_32[i];
         }
@@ -130,11 +131,13 @@ export function xor(src1: Uint8Array, b, c?, d?, e?, f?, g?): any {
         }
     }
 
-    var lower4Bound: number, upper4Bound: number;
-    lower4Bound = Math.min(((off1 + src1.byteOffset) | 3) - src1.byteOffset, length);
-    upper4Bound = Math.min(((off1 + length + src1.byteOffset) & 3) - src1.byteOffset, length);
-    if (((src1.byteOffset + off1 - src2.byteOffset - off2) & 3) !== 0 ||
-        ((src1.byteOffset + off1 - dest.byteOffset - off3) & 3) !== 0 || lower4Bound >= upper4Bound) {
+    var totalOffset1 = off1 + src1.byteOffset;
+    var totalOffset2 = off2 + src2.byteOffset;
+    var totalOffset3 = off3 + dest.byteOffset;
+    var lower4Bound = Math.min(-totalOffset1 & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
+    if (((totalOffset1 - totalOffset2) & 3) !== 0 ||
+        ((totalOffset1 - totalOffset3) & 3) !== 0 || lower4Bound >= upper4Bound) {
         for (var i = 0; i < length; ++i) {
             dest[i+off3] = src1[i+off1] ^ src2[i+off2];
         }
@@ -143,9 +146,9 @@ export function xor(src1: Uint8Array, b, c?, d?, e?, f?, g?): any {
             dest[i+off3] = src1[i+off1] ^ src2[i+off2];
         }
         var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
-        var src1_32 = new Uint32Array(src1.buffer, src1.byteOffset + lower4Bound, intermediate4Length);
-        var src2_32 = new Uint32Array(src2.buffer, src2.byteOffset + lower4Bound, intermediate4Length);
-        var dest_32 = new Uint32Array(dest.buffer, dest.byteOffset + lower4Bound, intermediate4Length);
+        var src1_32 = new Uint32Array(src1.buffer, totalOffset1 + lower4Bound, intermediate4Length);
+        var src2_32 = new Uint32Array(src2.buffer, totalOffset2 + lower4Bound, intermediate4Length);
+        var dest_32 = new Uint32Array(dest.buffer, totalOffset3 + lower4Bound, intermediate4Length);
         for (var i = 0; i < intermediate4Length; ++i) {
             dest_32[i] = src1_32[i] ^ src2_32[i];
         }
@@ -159,25 +162,43 @@ export function xor(src1: Uint8Array, b, c?, d?, e?, f?, g?): any {
 }
 
 export function xorThree(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, src3: Uint8Array, off3: number, length: number): Uint8Array {
-    var lower4Bound: number, upper4Bound: number, totalOffset1 = off1 + src1.byteOffset;
-    lower4Bound = Math.min((totalOffset1 | 3) - totalOffset1, length);
-    upper4Bound = Math.min(((totalOffset1 + length) & 3) - totalOffset1, length);
-    if (((src1.byteOffset + off1 - src2.byteOffset - off2) & 3) !== 0 ||
-        ((src1.byteOffset + off1 - src3.byteOffset - off3) & 3) !== 0 || lower4Bound >= upper4Bound) {
+    var totalOffset1 = off1 + src1.byteOffset;
+    var totalOffset2 = off2 + src2.byteOffset;
+    var totalOffset3 = off3 + src3.byteOffset;
+    var lower4Bound = Math.min(-totalOffset1 & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
+    if (((totalOffset1 - totalOffset2) & 3) !== 0 ||
+        ((totalOffset1 - totalOffset3) & 3) !== 0 || lower4Bound >= upper4Bound) {
         var dest = new Uint8Array(length);
         for (var i = 0; i < length; ++i) {
             dest[i] = src1[i+off1] ^ src2[i+off2] ^ src3[i+off3];
         }
     } else {
+        for (var i = 0; i < lower4Bound; ++i) {
+            dest[i] = src1[i+off1] ^ src2[i+off2] ^ src3[i+off3];
+        }
+        var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
         var dest = new Uint8Array(length + lower4Bound).subarray(lower4Bound); // do this so the destination array is on the same 4-byte alignment
+        var src1_32 = new Uint32Array(src1.buffer, totalOffset1 + lower4Bound, intermediate4Length);
+        var src2_32 = new Uint32Array(src2.buffer, totalOffset2 + lower4Bound, intermediate4Length);
+        var src3_32 = new Uint32Array(src3.buffer, totalOffset3 + lower4Bound, intermediate4Length);
+        var dest_32 = new Uint32Array(dest.buffer, dest.byteOffset + lower4Bound, intermediate4Length);
+        for (var i = 0; i < intermediate4Length; ++i) {
+            dest_32[i] = src1_32[i+off1] ^ src2_32[i+off2] ^ src3_32[i+off3];
+        }
+        for (var i = lower4Bound; i < length; ++i) {
+            dest[i] = src1[i+off1] ^ src2[i+off2] ^ src3[i+off3];
+        }
     }
+    return dest;
 }
 
 export function xorInPlace(dest: Uint8Array, off1: number, src: Uint8Array, off2: number, length: number): void {
-    var lower4Bound: number, upper4Bound: number;
-    lower4Bound = Math.min(((off1 + dest.byteOffset) | 3) - dest.byteOffset, length);
-    upper4Bound = Math.min(((off1 + length + dest.byteOffset) & 3) - dest.byteOffset, length);
-    if (((dest.byteOffset + off1 - src.byteOffset - off2) & 3) !== 0 || lower4Bound >= upper4Bound) {
+    var totalOffset1 = off1 + dest.byteOffset;
+    var totalOffset2 = off2 + src.byteOffset;
+    var lower4Bound = Math.min(-totalOffset1 & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
+    if (((totalOffset1 - totalOffset2) & 3) !== 0 || lower4Bound >= upper4Bound) {
         for (var i = 0; i < length; ++i) {
             dest[i + off1] ^= src[i + off2];
         }
@@ -186,8 +207,8 @@ export function xorInPlace(dest: Uint8Array, off1: number, src: Uint8Array, off2
             dest[i + off1] ^= src[i + off2];
         }
         var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
-        var dest_32 = new Uint32Array(dest.buffer, dest.byteOffset + lower4Bound, intermediate4Length);
-        var src_32 = new Uint32Array(src.buffer, src.byteOffset + lower4Bound, intermediate4Length);
+        var dest_32 = new Uint32Array(dest.buffer, totalOffset1 + lower4Bound, intermediate4Length);
+        var src_32 = new Uint32Array(src.buffer, totalOffset2 + lower4Bound, intermediate4Length);
         for (var i = 0; i < intermediate4Length; ++i) {
             dest_32[i] ^= src_32[i];
         }
@@ -204,9 +225,9 @@ export function empty(src: Uint8Array, offset?: number, length?: number): boolea
         offset = 0;
         length = src.length;
     }
-    var lower4Bound: number, upper4Bound: number;
-    lower4Bound = Math.min(((offset + src.byteOffset) | 3) - src.byteOffset, length);
-    upper4Bound = Math.min(((offset + length + src.byteOffset) & 3) - src.byteOffset, length);
+    var totalOffset = offset + src.byteOffset;
+    var lower4Bound = Math.min(-totalOffset & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
     if (lower4Bound >= upper4Bound) {
         for (var i = 0; i < length; ++i) {
             if (src[i+offset] != 0)
@@ -218,7 +239,7 @@ export function empty(src: Uint8Array, offset?: number, length?: number): boolea
                 return false;
         }
         var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
-        var src_32 = new Uint32Array(src.buffer, src.byteOffset + lower4Bound, intermediate4Length);
+        var src_32 = new Uint32Array(src.buffer, totalOffset + lower4Bound, intermediate4Length);
         for (var i = 0; i < intermediate4Length; ++i) {
             if (src_32[i] != 0)
                 return false;
@@ -251,10 +272,11 @@ export function sequenceEqual(src1: Uint8Array, b, c?, d?, e?): boolean {
         off2 = d;
         length = e;
     }
-    var lower4Bound: number, upper4Bound: number;
-    lower4Bound = Math.min(((off1 + src1.byteOffset) | 3) - src1.byteOffset, length);
-    upper4Bound = Math.min(((off1 + length + src1.byteOffset) & 3) - src1.byteOffset, length);
-    if (((src1.byteOffset + off1 - src2.byteOffset - off2) & 3) !== 0 || lower4Bound >= upper4Bound) {
+    var totalOffset1 = off1 + src1.byteOffset;
+    var totalOffset2 = off2 + src2.byteOffset;
+    var lower4Bound = Math.min(-totalOffset1 & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
+    if (((totalOffset1 - totalOffset2) & 3) !== 0 || lower4Bound >= upper4Bound) {
         for (var i = 0; i < length; ++i) {
             if (src1[i+off1] != src2[i+off2])
                 return false;
@@ -265,8 +287,8 @@ export function sequenceEqual(src1: Uint8Array, b, c?, d?, e?): boolean {
                 return false;
         }
         var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
-        var src1_32 = new Uint32Array(src1.buffer, src1.byteOffset + lower4Bound, intermediate4Length);
-        var src2_32 = new Uint32Array(src2.buffer, src2.byteOffset + lower4Bound, intermediate4Length);
+        var src1_32 = new Uint32Array(src1.buffer, totalOffset1 + lower4Bound, intermediate4Length);
+        var src2_32 = new Uint32Array(src2.buffer, totalOffset2 + lower4Bound, intermediate4Length);
         for (var i = 0; i < intermediate4Length; ++i) {
             if (src1_32[i] != src2_32[i])
                 return false;
