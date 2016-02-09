@@ -53,16 +53,14 @@ export default class SaveReaderEncrypted implements SaveReader {
     }
 
     private getPkxRaw(pos: number, slot: number): [Uint8Array, boolean] {
-        // TODO refactor moar
         // Auto updates the keystream when it dumps important data!
-        var ekx: Uint8Array;
         var pkx: Uint8Array;
 
         var keyOffset = pos * 232;
         var savOffset = keyOffset + this.key.boxOffset - (1 - slot) * 520192;
 
         if (util.empty(this.key.boxKey1, keyOffset, 232)) {
-            if (util.sequenceEqual(zeros, this.key.boxKey2, keyOffset)) {
+            if (util.empty(this.key.boxKey2, keyOffset, 232)) {
                 // We don't have any data for this slot
                 util.copy(this.sav, savOffset, this.key.boxKey1, keyOffset, 232);
                 return [undefined, false];
@@ -79,91 +77,42 @@ export default class SaveReaderEncrypted implements SaveReader {
             }
         }
 
+        var data1 = util.xor(this.sav, savOffset, this.key.boxKey1, keyOffset, 232);
+        var data2 = util.xor(this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
+        var possibleExtraKeys = [zeros, ezeros, this.key.blank];
+        var possibleEkx1 = possibleExtraKeys.map((e) => util.xor(data1, e));
+        var possibleEkx2 = possibleExtraKeys.map((e) => util.xor(data2, e));
+
+        function tryDecrypt(possibleEkx: Uint8Array[], sourceKey: Uint8Array, sourceOffset: number, destinationKey: Uint8Array): [Uint8Array, boolean] {
+            var pkx: Uint8Array;
+            for (var i = 0; i < possibleExtraKeys.length; ++i) {
+                pkx = possibleEkx[i];
+                if (Pkx.verifyChk(pkx)) {
+                    util.xor(possibleExtraKeys[i], 0, sourceKey, sourceOffset, destinationKey, keyOffset, 232);
+                    return [pkx, true];
+                }
+            }
+
+            return [undefined, false];
+        }
+
         if (util.empty(this.key.boxKey2, keyOffset, 232)) {
-            if (util.sequenceEqual(this.key.boxKey1, keyOffset, this.sav, savOffset, 232)) {
+            if (possibleEkx1.some(util.empty)) {
                 // Slot hasn't changed.
                 return [undefined, false];
             }
 
-            // Try to decrypt the data
-            ekx = util.xor(this.key.boxKey1, keyOffset, this.sav, savOffset, 232);
-            pkx = Pkx.decrypt(ekx);
-            if (Pkx.verifyChk(pkx)) {
-                util.copy(this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            // Try xoring with the empty data.
-            pkx = Pkx.decrypt(util.xor(ekx, this.key.blank));
-            if (Pkx.verifyChk(pkx)) {
-                util.xor(this.key.blank, 0, this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            pkx = Pkx.decrypt(util.xor(ekx, ezeros));
-            if (Pkx.verifyChk(pkx)) {
-                util.xor(ezeros, 0, this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            return [undefined, false]; // Not a failed decryption; we just haven't seen new data here yet.
+            return tryDecrypt(possibleEkx1, this.sav, savOffset, this.key.boxKey2);
         }
 
-        var data1 = util.xor(this.sav, savOffset, this.key.boxKey1, keyOffset, 232);
-        var data2 = util.xor(this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
-        var possibleEkx1 = [data1, util.xor(data1, ezeros), util.xor(data1, this.key.blank)];
-        var possibleEkx2 = [data2, util.xor(data2, ezeros), util.xor(data2, this.key.blank)];
-
-        // We've dumped data at least once.
         if (possibleEkx1.some(util.empty)) {
-            // Data is back to break state, but we can still dump with the other key.
-
-            ekx = util.xor(this.key.boxKey2, keyOffset, this.sav, savOffset, 232);
-            pkx = Pkx.decrypt(ekx);
-            if (Pkx.verifyChk(pkx)) {
-                return [pkx, true];
-            }
-
-            pkx = Pkx.decrypt(util.xor(ekx, this.key.blank));
-            if (Pkx.verifyChk(pkx)) {
-                util.xor(this.key.blank, 0, this.key.boxKey2, keyOffset, this.key.boxKey2, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            pkx = Pkx.decrypt(util.xor(ekx, ezeros));
-            if (Pkx.verifyChk(pkx)) {
-                // Key1 decrypts our data after we remove encrypted zeros.
-                // Copy Key1 to Key2, then zero out Key1.
-                // TODO ugh. I don't know about this. Are we really done?
-                util.xor(ezeros, 0, this.key.boxKey2, keyOffset, this.key.boxKey2, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            // TODO is this really an error? do we need to reset here?
-            return [undefined, false]; // Decryption Error
+            // Save  is the same as key 1
+            return tryDecrypt(possibleEkx2, this.key.boxKey2, keyOffset, this.key.boxKey2);
         }
 
         if (possibleEkx2.some(util.empty)) {
-            // Data is changed only once to a dumpable, but we can still dump with the other key.
-            ekx = util.xor(this.key.boxKey1, keyOffset, this.sav, savOffset, 232);
-            pkx = Pkx.decrypt(ekx);
-            if (Pkx.verifyChk(pkx)) {
-                return [pkx, true];
-            }
-
-            pkx = Pkx.decrypt(util.xor(ekx, this.key.blank));
-            if (Pkx.verifyChk(pkx)) {
-                util.xor(this.key.blank, 0, this.key.boxKey1, keyOffset, this.key.boxKey1, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            pkx = Pkx.decrypt(util.xor(ekx, ezeros));
-            if (Pkx.verifyChk(pkx)) {
-                util.xor(ezeros, 0, this.key.boxKey1, keyOffset, this.key.boxKey1, keyOffset, 232);
-                return [pkx, true];
-            }
-
-            return [undefined, false]; // Decryption Error
+            // Save is the same as key 2
+            return tryDecrypt(possibleEkx1, this.key.boxKey1, keyOffset, this.key.boxKey1);
         }
 
         // Data has been observed to change twice! We can potentially get our exact keystream now!
@@ -174,17 +123,18 @@ export default class SaveReaderEncrypted implements SaveReader {
                 continue;
             }
 
-            if (possibleEkx2.filter((e) => Pkx.verifyChk(Pkx.decrypt(e))).length === 0) {
-                // Key 1 is empty
-                util.xor(possibleEkx, 0, this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
-            } else {
+            if (possibleEkx2.some((e) => Pkx.verifyChk(Pkx.decrypt(e)))) {
                 // Save file is empty
                 util.xor(possibleEkx, 0, this.key.boxKey1, keyOffset, this.key.boxKey2, keyOffset, 232);
+            } else {
+                // Key 1 is empty
+                util.xor(possibleEkx, 0, this.sav, savOffset, this.key.boxKey2, keyOffset, 232);
             }
 
             util.copy(zeros, 0, this.key.boxKey1, keyOffset, 232);
             return [pkx, false];
         }
+
         for (let possibleEkx of possibleEkx2) {
             pkx = Pkx.decrypt(possibleEkx);
             if (!Pkx.verifyChk(pkx)) {
