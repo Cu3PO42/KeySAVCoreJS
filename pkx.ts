@@ -189,8 +189,8 @@ export default class Pkx {
         this.otFriendship = pkx[0xca];
         this.otAffection = pkx[0xcb]; // Handled by Memory Editor
         // 0xCC, 0xCD, 0xCE, 0xCF, 0xD0
-        this.eggDate = (pkx[0xd1] | pkx[0xd2] | pkx[0xd3]) != 0 ? [pkx[0xd1] + 2000, pkx[0xd2], pkx[0xd3]] : [0, 0, 0];
-        this.metDate = [pkx[0xd4] + 2000, pkx[0xd5], pkx[0xd6]];
+        this.eggDate = (pkx[0xd1] | pkx[0xd2] | pkx[0xd3]) != 0 ? [pkx[0xd1] + 2000, pkx[0xd2]-1, pkx[0xd3]] : [2000, 0, 1];
+        this.metDate = [pkx[0xd4] + 2000, pkx[0xd5]-1, pkx[0xd6]];
         // 0xD7 - unused
         this.eggLocation = data.getUint16(0xd8, true);
         this.metLocation = data.getUint16(0xda, true);
