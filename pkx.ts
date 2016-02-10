@@ -164,6 +164,7 @@ export default class Pkx {
         this.eggMove3 = data.getUint16(0x6e, true);
         this.eggMove4 = data.getUint16(0x70, true);
 
+        // TODO dump EVERYTHING
         // 0x72 - Super Training Flag - Passed with pkx to new form
 
         // 0x73 - unused/unknown
@@ -329,7 +330,7 @@ export default class Pkx {
 
         var seed = pv;
         var ekx16 = util.createUint16Array(ekx);
-        // Encrypt blocks with RNG generated keyNew
+        // Encrypt blocks with RNG generated key
         for (var i = 4; i < 232/2; ++i) {
             seed = LCRNG.next(seed);
             ekx16[i] ^= ((seed >> 16) & 0xFFFF);

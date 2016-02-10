@@ -52,10 +52,10 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { suc
     dataView2 = util.createDataView(break2);
 
     if (key.isNewKey) {
-        // Scan the two saves to improve the keyNew.
+        // Scan the two saves to improve the key.
         reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
         reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
-        return { success: false, result: "You already have a keyNew for this save." }
+        return { success: false, result: "You already have a key for this save." }
     }
 
     if (util.sequenceEqual(break1, 0x80000, break2, 0x80000, 0x7f000)) {
@@ -76,7 +76,7 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { suc
 
     return {
         success: true,
-        result: "Found old keyNew. Based new keystream on that.\n\nSaving new Keystream.",
+        result: "Found old key. Based new keystream on that.\n\nSaving new Keystream.",
         pkx: reader1.getPkx(0) || reader2.getPkx(30)
     };
 }
@@ -99,7 +99,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         return { success: false, result: "The saves are identical.\nPlease follow the instructions." };
     }
 
-    // Let's try to upgrade an existing old style keyNew to a new style keyNew.
+    // Let's try to upgrade an existing old style key to a new style key.
     try {
         key = await getKeyStore().getSaveKey(util.getStampSav(break1, 0x10));
         return upgradeKey(key, break1, break2);

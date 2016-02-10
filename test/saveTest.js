@@ -101,7 +101,7 @@ describe("SaveBreaker", function() {
             });
         });
 
-        it("should upgrade an old style keyNew to a new style keyNew", function () {
+        it("should upgrade an old style key to a new style key", function () {
             var store = new KeyStoreMemory();
             store.setSaveKey(new SaveKey(new Uint8Array(keyOld.keyData)));
             setKeyStore(store);

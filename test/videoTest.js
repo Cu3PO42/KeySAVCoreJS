@@ -20,7 +20,7 @@ var linoone = new Pkx(bufferToUint8Array(fs.readFileSync(__dirname + "/data/lino
 
 describe("BattleVideoBreaker", function() {
     describe("#breakKey()", function() {
-        it("should break a battle video keyNew correctly", function() {
+        it("should break a battle video key correctly", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             assert.equal(BattleVideoBreaker.breakKey(video1, video2).success, true);
@@ -29,7 +29,7 @@ describe("BattleVideoBreaker", function() {
     });
 
     describe("#load()", function() {
-        it("should get the keyNew for a battle video from the store and create a BattleVideoReader", function() {
+        it("should get the key for a battle video from the store and create a BattleVideoReader", function() {
             var store = new KeyStoreMemory();
             store.setBvKey(key);
             setKeyStore(store);

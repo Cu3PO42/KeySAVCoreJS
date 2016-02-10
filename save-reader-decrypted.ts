@@ -14,7 +14,7 @@ export default class SaveReaderDecrypted implements SaveReader {
     private offset: number;
 
     get keyName() {
-        return "Decrypted. No keyNew needed.";
+        return "Decrypted. No key needed.";
     }
 
     get unlockedSlots() {

@@ -53,13 +53,13 @@ export function breakKey(video1: Uint8Array, video2: Uint8Array): BattleVideoBre
     // Set the unique stamp for this battle video slot
     util.copy(video1, 0x10, key.stampRaw, 0, 0x10);
 
-    // Try to create a keyNew for the opponent, too
+    // Try to create a key for the opponent, too
     var canDumpOpponent = breakParty(video1, video2, 0x5438, key.opponentTeamKey) !== undefined;
 
     var decodedPkx = new Pkx(pkx, -1, 0, false);
     var result = `Success!\nYour first Pokemon's TSV: ${util.pad4(decodedPkx.tsv)}\nOT: ${decodedPkx.ot}\n`
     if (canDumpOpponent) {
-        result += "Can dump from Opponent Data on this keyNew too!\n";
+        result += "Can dump from Opponent Data on this key too!\n";
     }
     result += "\nYour keystream will be saved.";
     getKeyStore().setBvKey(key);

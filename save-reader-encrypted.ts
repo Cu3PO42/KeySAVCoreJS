@@ -70,12 +70,12 @@ export default class SaveReaderEncrypted implements SaveReader {
                 return [undefined, false];
             }
 
-            // We have a key2 only, this is supposed to be the actual keyNew
+            // We have a key2 only, this is supposed to be the actual key
             pkx = Pkx.decrypt(util.xor(this.key.boxKey2, offset, boxes, offset, 232));
             if (Pkx.verifyChk(pkx)) {
                 return [pkx, false];
             } else {
-                // Something is wrong. Our data didn't decrypt properly. Apparently the keyNew is wrong.
+                // Something is wrong. Our data didn't decrypt properly. Apparently the key is wrong.
                 util.copy(zeros, 0, this.key.boxKey2, offset, 232);
                 return [undefined, false];
             }
@@ -110,12 +110,12 @@ export default class SaveReaderEncrypted implements SaveReader {
         }
 
         if (possibleEkx1.some(util.empty)) {
-            // Save  is the same as keyNew 1
+            // Save  is the same as key 1
             return tryDecrypt(possibleEkx2, this.key.boxKey2, offset, this.key.boxKey2);
         }
 
         if (possibleEkx2.some(util.empty)) {
-            // Save is the same as keyNew 2
+            // Save is the same as key 2
             return tryDecrypt(possibleEkx1, this.key.boxKey1, offset, this.key.boxKey1);
         }
 
