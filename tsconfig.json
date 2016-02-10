@@ -19,6 +19,7 @@
     "files": [
         "battle-video-breaker.ts",
         "battle-video-reader.ts",
+        "battle-video-key.ts",
         "calculator.ts",
         "index.ts",
         "key-store.ts",
