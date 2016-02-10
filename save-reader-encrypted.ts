@@ -17,7 +17,7 @@ export default class SaveReaderEncrypted implements SaveReader {
     get unlockedSlots() {
         var res = 0;
         for (var i = 0; i < this.key.slotsUnlocked.length; ++i)
-            if (this.key.slotsUnlocked[i] != 0)
+            if (this.key.slotsUnlocked[i])
                 ++res;
         return res;
     }

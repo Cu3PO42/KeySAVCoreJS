@@ -1,5 +1,5 @@
 var assert = require("assert");
-var Pkx = require("../Pkx").default;
+var Pkx = require("../pkx").default;
 var BattleVideoBreaker = require("../battle-video-breaker");
 var fs = require("fs");
 var KeyStoreMemory = require("./support/key-store-memory").default;

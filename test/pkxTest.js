@@ -1,5 +1,5 @@
 var assert = require("assert");
-var Pkx = require("../Pkx").default;
+var Pkx = require("../pkx").default;
 var fs = require("fs");
 
 function bufferToUint8Array(buf) {

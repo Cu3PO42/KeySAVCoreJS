@@ -7,4 +7,4 @@ bower_components/
 !typings/**/*.d.ts
 test/data/
 test/data.zip
-!test/*.js
+!test/**/*.js
