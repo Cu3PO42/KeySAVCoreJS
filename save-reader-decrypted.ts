@@ -14,7 +14,7 @@ export default class SaveReaderDecrypted implements SaveReader {
     private offset: number;
 
     get keyName() {
-        return "Decrypted. No key needed.";
+        return "Decrypted. No keyNew needed.";
     }
 
     get unlockedSlots() {
@@ -57,7 +57,7 @@ export default class SaveReaderDecrypted implements SaveReader {
         var pkxOffset = this.offset + pos * 232;
         var pkx = this.sav.subarray(pkxOffset, pkxOffset + 232);
         if (util.empty(pkx))
-            return null;
+            return undefined;
         pkx = Pkx.decrypt(pkx);
         if (Pkx.verifyChk(pkx) && (pkx[8] | pkx[9]) != 0) {
             return new Pkx(pkx, Math.floor(pos / 30), pos % 30, false);

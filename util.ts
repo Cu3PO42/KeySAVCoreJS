@@ -36,16 +36,18 @@ var specialCharMap: { [char: string]: string } = {
     "\ue08e": "♂",
     "\ue08f": "♀",
     "\ue08d": "…"
-}
+};
 
 var specialCharMapReverse: { [char: string]: string } = {};
 
 for (let key in specialCharMap) {
-    specialCharMapReverse[specialCharMap[key]] = key;
+    if (specialCharMap.hasOwnProperty(key)) {
+        specialCharMapReverse[specialCharMap[key]] = key;
+    }
 }
 
 export function decodeUnicode16LE(arr: Uint8Array, offset: number, length: number) {
-    var buf = new Buffer(arr.buffer).slice(offset + arr.byteOffset, length);
+    var buf = new Buffer(arr.buffer).slice(offset + arr.byteOffset, offset + arr.byteOffset + length);
     return trimCString(buf.toString("ucs2").replace(/./g, function(m) {
         return specialCharMap[m] || m;
     }));
@@ -74,7 +76,7 @@ export function createUint32Array(arr): Uint32Array {
     return new Uint32Array(arr.buffer, arr.byteOffset, arr.byteLength >> 2);
 }
 
-export function copy(src: Uint8Array, off1: number, dest: Uint8Array, off2: number, len: number) {
+export function copy(src: Uint8Array, off1: number, dest: Uint8Array, off2: number, length: number) {
     var totalOffset1 = off1 + src.byteOffset;
     var totalOffset2 = off2 + dest.byteOffset;
     var lower4Bound = Math.min(-totalOffset1 & 3, length);
@@ -302,11 +304,11 @@ export function sequenceEqual(src1: Uint8Array, b, c?, d?, e?): boolean {
 }
 
 export function pad4(n: number) {
-    return ("0000" + n).slice(-4);
+    return n < 10000 ? ("0000" + n).slice(-4) : `${n}`;
 }
 
 export function pad5(n: number) {
-    return ("00000" + n).slice(-5);
+    return n < 100000 ? ("00000" + n).slice(-5) : `${n}`;
 }
 
 export function getStampSav(arr: Uint8Array, off: number): string {

@@ -10,8 +10,7 @@ export default class BattleVideoReader {
     constructor(private video: Uint8Array, private key: BattleVideoKey) {}
 
     get dumpsEnemy() {
-        return (this.key[0x800] | this.key[0x801] | this.key[0x802] | this.key[0x803]
-              | this.key[0x804] | this.key[0x805] | this.key[0x806] | this.key[0x807]) != 0;
+        return this.key.dumpsEnemy;
     }
 
     getPkx(slot: number, isOpponent: boolean): Pkx {

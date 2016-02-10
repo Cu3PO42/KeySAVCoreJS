@@ -1,8 +1,12 @@
-import { getStampBv } from "./util";
+import { getStampBv, empty } from "./util";
 
 export default class BattleVideoKey {
     get stamp(): string {
         return getStampBv(this.keyData, 0);
+    }
+
+    get dumpsEnemy(): boolean {
+        return !empty(this.opponentTeamKey);
     }
 
     public stampRaw: Uint8Array;

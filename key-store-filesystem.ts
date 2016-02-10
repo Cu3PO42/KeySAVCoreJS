@@ -9,7 +9,7 @@ import KeyStore from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
 import Pkx from "./pkx";
-import { getStampSav, pad4, pad5 } from "./util";
+import {getStampSav, pad4, pad5, getStampBv} from "./util";
 import BattleVideoKey from "./battle-video-key";
 
 var readdirAsync = Promise.promisify(fs.readdir),
@@ -28,6 +28,7 @@ class LazyValue<T> {
     async get(): Promise<T> {
         if (!this.evaluated) {
             this.value = await this.fun();
+            this.evaluated = true;
         }
         return this.value;
     }
@@ -42,8 +43,7 @@ export default class KeyStoreFileSystem implements KeyStore {
     private keys: { [stamp: string]: { fd: number,
                                        name: string,
                                        isSav: boolean,
-                                       key: LazyValue<BattleVideoKey|SaveKey> } }
-        = {};
+                                       key: LazyValue<BattleVideoKey|SaveKey> } } = {};
 
     constructor(private path: string) {
         this.scan = this.scanSaveDirectory(this.path);
@@ -55,17 +55,19 @@ export default class KeyStoreFileSystem implements KeyStore {
             if (!(stats.size === 0xB4AD4 || stats.size === 0x80000 || stats.size === 0x1000)) {
                 continue;
             }
+            let isSav = stats.size !== 0x1000;
+            let readSize = isSav ? 8 : 0x10;
             let fd = <number>(await openAsync(join(path, fileName), 'r+'));
-            let buf = new Buffer(8);
-            await readAsync(fd, buf, 0, 8, 0);
-            let stamp = getStampSav(new Uint8Array(buf.buffer, buf.byteOffset, 8), 0);
+            let buf = new Buffer(readSize);
+            await readAsync(fd, buf, 0, readSize, 0);
+            let stamp = (isSav ? getStampSav : getStampBv)(new Uint8Array(buf.buffer, buf.byteOffset, readSize), 0);
             if (this.keys[stamp] !== undefined) {
                 continue;
             }
             this.keys[stamp] = {
                 fd: fd,
                 name: fileName,
-                isSav: stats.size !== 0x1000,
+                isSav: isSav,
                 key: new LazyValue(async function() {
                     var size = stats.size === 0x1000 ? 0x1000 : 0xB4AD4;
                     var buf = new Buffer(stats.size);
@@ -102,13 +104,13 @@ export default class KeyStoreFileSystem implements KeyStore {
 
     async close() {
         for (let key in this.keys) {
-            if (key.hasOwnProperty(key))
+            if (!this.keys.hasOwnProperty(key))
                 continue;
             let lazyKey = this.keys[key];
             if (lazyKey.isSav && lazyKey.key.isInitialized) {
                 let buf = new Buffer((<SaveKey>(await lazyKey.key.get())).keyData);
                 await writeAsync(lazyKey.fd, buf, 0, buf.length, 0);
-                fs.close(lazyKey.fd);
+                await closeAsync(lazyKey.fd);
             }
         }
     }
@@ -130,10 +132,10 @@ export default class KeyStoreFileSystem implements KeyStore {
 
     async setBvKey(key: BattleVideoKey) {
         var stamp = key.stamp;
-        this.setKey(`BV Key - ${key.stamp}.bin`, key.keyData, async function() { return key; }, key.stamp, false);
+        await this.setKey(`BV Key - ${key.stamp}.bin`, key.keyData, async function() { return key; }, key.stamp, false);
     }
 
     async setSaveKey(key: SaveKey, pkx: Pkx) {
-        this.setKey(`SAV Key - ${pkx.ot} - (${pad5(pkx.tid)}.${pad5(pkx.sid)}) - TSV ${pad4(pkx.tsv)}.bin`, key.keyData, async function() { return key; }, key.stamp, true);
+        await this.setKey(`SAV Key - ${pkx.ot} - (${pad5(pkx.tid)}.${pad5(pkx.sid)}) - TSV ${pad4(pkx.tsv)}.bin`, key.keyData, async function() { return key; }, key.stamp, true);
     }
 }

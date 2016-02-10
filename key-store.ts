@@ -17,4 +17,8 @@ export function setKeyStore(store: KeyStore): void {
     currentKeyStore = store;
 }
 
+export function getKeyStore(): KeyStore {
+    return currentKeyStore;
+}
+
 export default KeyStore;

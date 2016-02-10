@@ -108,7 +108,7 @@ export default class Pkx {
         this.slot = slot;
         this.isGhost = isGhost;
 
-        var data: DataView = new DataView(pkx.buffer);
+        var data: DataView = util.createDataView(pkx);
 
         this.ec = data.getUint32(0, true);
         this.chk = data.getUint16(6, true);
@@ -295,8 +295,8 @@ export default class Pkx {
     }
 
     static decrypt(ekx: Uint8Array) {
-        var pkx = new Uint8Array(232);
-        util.copy(ekx, 0, pkx, 0, 232);
+        var pkx = new Uint8Array(ekx.length);
+        util.copy(ekx, 0, pkx, 0, ekx.length);
         var pv = util.createDataView(pkx).getUint32(0, true);
         var sv = (((pv & 0x3E000) >> 0xD) % 24);
         var seed = pv;
@@ -322,15 +322,15 @@ export default class Pkx {
 
     static encrypt(pkx: Uint8Array) {
         var ekx = new Uint8Array(pkx.length);
-        util.copy(pkx, 0, ekx, 0, 232);
+        util.copy(pkx, 0, ekx, 0, ekx.length);
         var pv = util.createDataView(pkx).getUint32(0, true);
         var sv = (((pv & 0x3E000) >> 0xD) % 24);
 
         ekx = Pkx.shuffle(ekx, sv);
 
         var seed = pv;
-        var ekx16 = new Uint16Array(ekx.buffer);
-        // Encrypt blocks with RNG generated key
+        var ekx16 = util.createUint16Array(ekx);
+        // Encrypt blocks with RNG generated keyNew
         for (var i = 4; i < 232/2; ++i) {
             seed = LCRNG.next(seed);
             ekx16[i] ^= ((seed >> 16) & 0xFFFF);
@@ -365,7 +365,7 @@ export default class Pkx {
         }
 
         var actualsum = pkx16[6/2];
-        if (pkx16[8/2] > 750 || pkx16[144/2] != 0)
+        if (pkx16[8/2] > 750 || pkx16[0x90 / 2] != 0)
             return false;
         return (chk & 0xFFFF) == actualsum;
     }
