@@ -17,6 +17,7 @@
     "lodash": "^3.10.0"
   },
   "devDependencies": {
+    "mocha": "^2.4.5",
     "typescript": "1.8.0-dev.20160125"
   }
 }

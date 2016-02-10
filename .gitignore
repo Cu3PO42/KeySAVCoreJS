@@ -5,3 +5,6 @@ bower_components/
 !fixdts.js
 *.d.ts
 !typings/**/*.d.ts
+test/data/
+test/data.zip
+!test/*.js
