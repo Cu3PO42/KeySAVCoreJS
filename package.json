@@ -4,7 +4,7 @@
   "description": "A library for breaking the encryption of Generation 6 Pokémon games.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "build": "tsc && tsc --declaration && node ./fixdts.js",
     "publish": "publish"
   },
