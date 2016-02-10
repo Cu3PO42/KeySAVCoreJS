@@ -109,65 +109,65 @@ export default class Pkx {
 
         var data: DataView = util.createDataView(pkx);
 
-        this.ec = data.getUint32(0, true);
-        this.chk = data.getUint16(6, true);
-        this.species = data.getUint16(8, true);
-        this.heldItem = data.getUint16(10, true);
-        this.tid = data.getUint16(12, true);
-        this.sid = data.getUint16(14, true);
-        this.exp = data.getUint32(16, true);
-        this.ability = pkx[20];
-        this.abilityNum = pkx[21];
+        this.ec = data.getUint32(0x0, true);
+        this.chk = data.getUint16(0x6, true);
+        this.species = data.getUint16(0x8, true);
+        this.heldItem = data.getUint16(0xa, true);
+        this.tid = data.getUint16(0xc, true);
+        this.sid = data.getUint16(0xe, true);
+        this.exp = data.getUint32(0x10, true);
+        this.ability = pkx[0x14];
+        this.abilityNum = pkx[0x15];
         // 0x16, 0x17 - unknown
-        this.pid = data.getUint32(24, true);
-        this.nature = pkx[28];
-        this.isFatefulEncounter = (pkx[29] & 1) == 1;
-        this.gender = (((pkx[29] >> 1) & 3) & 0xFF);
-        this.form = ((pkx[29] >> 3) & 0xFF);
-        this.evHp = pkx[30];
-        this.evAtk = pkx[31];
-        this.evDef = pkx[32];
-        this.evSpAtk = pkx[34];
-        this.evSpDef = pkx[35];
-        this.evSpe = pkx[33];
-        this.contestStatCool = pkx[36];
-        this.contestStatBeauty = pkx[37];
-        this.contestStatCute = pkx[38];
-        this.contestStatSmart = pkx[39];
-        this.contestStatTough = pkx[40];
-        this.contestStatSheen = pkx[41];
-        this.markings = pkx[42];
-        this.pkrsStrain = pkx[43] >> 4;
-        this.pkrsDuration = pkx[43] % 16;
-        this.ribbonSet1 = data.getUint16(48, true);
-        this.ribbonSet2 = data.getUint16(50, true);
-        this.ribbonSet3 = pkx[52];
-        this.ribbonSet4 = pkx[53];
+        this.pid = data.getUint32(0x18, true);
+        this.nature = pkx[0x1c];
+        this.isFatefulEncounter = (pkx[0x1d] & 1) == 1;
+        this.gender = (pkx[0x1d] >> 1) & 3;
+        this.form = pkx[0x1d] >> 3;
+        this.evHp = pkx[0x1e];
+        this.evAtk = pkx[0x1f];
+        this.evDef = pkx[0x20];
+        this.evSpAtk = pkx[0x22];
+        this.evSpDef = pkx[0x23];
+        this.evSpe = pkx[0x21];
+        this.contestStatCool = pkx[0x24];
+        this.contestStatBeauty = pkx[0x25];
+        this.contestStatCute = pkx[0x26];
+        this.contestStatSmart = pkx[0x27];
+        this.contestStatTough = pkx[0x28];
+        this.contestStatSheen = pkx[0x29];
+        this.markings = pkx[0x2a];
+        this.pkrsStrain = pkx[0x2b] >> 4;
+        this.pkrsDuration = pkx[0x2b] % 16;
+        this.ribbonSet1 = data.getUint16(0x30, true);
+        this.ribbonSet2 = data.getUint16(0x32, true);
+        this.ribbonSet3 = pkx[0x34];
+        this.ribbonSet4 = pkx[0x35];
 
         // Block B
-        this.nickname = util.decodeUnicode16LE(pkx, 64, 24);
+        this.nickname = util.decodeUnicode16LE(pkx, 0x40, 24);
         // 0x58, 0x59 - unused
-        this.move1 = data.getUint16(90, true);
-        this.move2 = data.getUint16(92, true);
-        this.move3 = data.getUint16(94, true);
-        this.move4 = data.getUint16(96, true);
-        this.move1Pp = pkx[98];
-        this.move2Pp = pkx[99];
-        this.move3Pp = pkx[100];
-        this.move4Pp = pkx[101];
-        this.move1Ppu = pkx[102];
-        this.move2Ppu = pkx[103];
-        this.move3Ppu = pkx[104];
-        this.move4Ppu = pkx[105];
-        this.eggMove1 = data.getUint16(106, true);
-        this.eggMove2 = data.getUint16(108, true);
-        this.eggMove3 = data.getUint16(110, true);
-        this.eggMove4 = data.getUint16(112, true);
+        this.move1 = data.getUint16(0x5a, true);
+        this.move2 = data.getUint16(0x5c, true);
+        this.move3 = data.getUint16(0x5e, true);
+        this.move4 = data.getUint16(0x60, true);
+        this.move1Pp = pkx[0x62];
+        this.move2Pp = pkx[0x63];
+        this.move3Pp = pkx[0x64];
+        this.move4Pp = pkx[0x65];
+        this.move1Ppu = pkx[0x66];
+        this.move2Ppu = pkx[0x67];
+        this.move3Ppu = pkx[0x68];
+        this.move4Ppu = pkx[0x69];
+        this.eggMove1 = data.getUint16(0x6a, true);
+        this.eggMove2 = data.getUint16(0x6c, true);
+        this.eggMove3 = data.getUint16(0x6e, true);
+        this.eggMove4 = data.getUint16(0x70, true);
 
         // 0x72 - Super Training Flag - Passed with pkx to new form
 
         // 0x73 - unused/unknown
-        var IV32 = data.getUint32(116, true);
+        var IV32 = data.getUint32(0x74, true);
         this.ivHp = IV32 & 31;
         this.ivAtk = (IV32 >> 5) & 31;
         this.ivDef = (IV32 >> 10) & 31;
@@ -178,30 +178,30 @@ export default class Pkx {
         this.isNick = (IV32 >> 31) != 0;
 
         // Block C
-        this.notOT = util.decodeUnicode16LE(pkx, 120, 24);
-        var notOTG = (pkx[146]) != 0;
+        this.notOT = util.decodeUnicode16LE(pkx, 0x78, 24);
+        var notOTG = (pkx[0x92]) != 0;
         // Memory Editor edits everything else with pkx in a new form
 
         // Block D
-        this.ot = util.decodeUnicode16LE(pkx, 176, 24);
+        this.ot = util.decodeUnicode16LE(pkx, 0xb0, 24);
         // 0xC8, 0xC9 - unused
-        this.otFriendship = pkx[202];
-        this.otAffection = pkx[203]; // Handled by Memory Editor
+        this.otFriendship = pkx[0xca];
+        this.otAffection = pkx[0xcb]; // Handled by Memory Editor
         // 0xCC, 0xCD, 0xCE, 0xCF, 0xD0
-        this.eggDate = (pkx[209] | pkx[210] | pkx[211]) != 0 ? [pkx[209] + 2000, pkx[210], pkx[211]] : [0, 0, 0];
-        this.metDate = [pkx[212] + 2000, pkx[213], pkx[214]];
+        this.eggDate = (pkx[0xd1] | pkx[0xd2] | pkx[0xd3]) != 0 ? [pkx[0xd1] + 2000, pkx[0xd2], pkx[0xd3]] : [0, 0, 0];
+        this.metDate = [pkx[0xd4] + 2000, pkx[0xd5], pkx[0xd6]];
         // 0xD7 - unused
-        this.eggLocation = data.getUint16(216, true);
-        this.metLocation = data.getUint16(218, true);
-        this.ball = pkx[220];
-        this.levelMet = pkx[221] & 127;
-        this.otGender = (pkx[221]) >> 7;
-        this.encounterType = pkx[222];
-        this.gameVersion = pkx[223];
-        this.countryID = pkx[224];
-        this.regionID = pkx[225];
-        this.dsregID = pkx[226];
-        this.otLang = pkx[227];
+        this.eggLocation = data.getUint16(0xd8, true);
+        this.metLocation = data.getUint16(0xda, true);
+        this.ball = pkx[0xdc];
+        this.levelMet = pkx[0xdd] & 127;
+        this.otGender = (pkx[0xdd]) >> 7;
+        this.encounterType = pkx[0xde];
+        this.gameVersion = pkx[0xdf];
+        this.countryID = pkx[0xe0];
+        this.regionID = pkx[0xe1];
+        this.dsregID = pkx[0xe2];
+        this.otLang = pkx[0xe3];
 
         this.hpType = ((15 * ((this.ivHp & 1) + 2 * (this.ivAtk & 1) + 4 * (this.ivDef & 1) + 8 * (this.ivSpe & 1) + 16 * (this.ivSpAtk & 1) + 32 * (this.ivSpDef & 1))) / 63 | 0) + 1;
 
