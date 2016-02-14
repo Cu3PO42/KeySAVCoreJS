@@ -196,11 +196,25 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
     var result = upgradeKey(key, break1, break2);
     getKeyStore().setSaveKey(key, result.pkx);
+    var zeros = new Uint8Array(232);
+    var ezeros = Pkx.encrypt(zeros);
     if (result.success) {
         // Set the keys for slots 1-6 in boxes 1 and 2
         for (let i of indices) {
-            util.xor(boxes1, i + 232 * 30, emptyEkx, 0, key.boxKey2, i + 232 * 30, 232);
-            util.xor(boxes2, i , emptyEkx, 0, key.boxKey2, i, 232);
+            for (let empty of [ezeros, emptyEkx]) {
+                if (Pkx.verifyChk(Pkx.decrypt(util.xorThree(boxes1, i + 232 * 30, empty, 0, boxes2, i + 232 * 30, 232)))) {
+                    util.copy(zeros, 0, key.boxKey1, i + 232 * 30, 232);
+                    util.xor(boxes1, i + 232 * 30, empty, 0, key.boxKey2, i + 232 * 30, 232);
+                    break;
+                }
+            }
+            for (let empty of [ezeros, emptyEkx]) {
+                if (Pkx.verifyChk(Pkx.decrypt(util.xorThree(boxes2, i, empty, 0, boxes1, i, 232)))) {
+                    util.copy(zeros, 0, key.boxKey1, i, 232);
+                    util.xor(boxes2, i, empty, 0, key.boxKey2, i, 232);
+                    break;
+                }
+            }
         }
 
         return {

@@ -28,7 +28,7 @@ function keyEqual(key1, key2) {
     var slot = new Uint8Array(232);
     var slot32 = util.createUint32Array(slot);
     for (var i = 0; i < 930; ++i) {
-        for (var j = 0; j < 232/4; ++j) slot32[j] = key11[j]^key12[j]^key21[j]^key22[j];
+        for (var j = 0; j < 232/4; ++j) slot32[j] = key11[j+232/4*i]^key12[j+232/4*i]^key21[j+232/4*i]^key22[j+232/4*i];
         assert.equal(validSlots.some((e) => util.sequenceEqual(e, slot)) || util.empty(key2.boxKey1, i * 232, 232), true, `Key slot ${i} not equal!`);
     }
 }
@@ -111,6 +111,30 @@ describe("SaveBreaker", function() {
                 keyEqual(keyNew, key2);
             });
         });
+
+        it("should break a key that can be used to dump the first six slots", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
+                return SaveBreaker.load(sav16);
+            }).then(function(reader) {
+                for (var i = 0; i < 6; ++i) {
+                    assert.notEqual(reader.getPkx(i), undefined, `Box 1 slot ${i+1} should be dumpable.`);
+                }
+                for (i = 30; i < 36; ++i) {
+                    assert.equal(reader.getPkx(i), undefined, `Box 2 slot ${i-29} should be empty.`);
+                }
+                return SaveBreaker.load(sav165);
+            }).then(function(reader) {
+                for (var i = 0; i < 6; ++i) {
+                    assert.equal(reader.getPkx(i), undefined, `Box 1 slot ${i+1} should be empty.`);
+                }
+                for (i = 30; i < 36; ++i) {
+                    assert.notEqual(reader.getPkx(i), undefined, `Box 2 slot ${i-29} should be dumpable.`);
+                }
+                return SaveBreaker.load(sav165);
+            });
+        });
     });
 });
 
@@ -131,6 +155,7 @@ describe("SaveReaderEncrypted", function() {
             var slotsUnlocked = key.slotsUnlocked;
             for (var i = 0; i < 12 * 30; ++i) {
                 assert.equal(slotsUnlocked[i], true, `Slot ${i} should be unlocked.`);
+                assert.equal(reader.getPkx(i).isGhost, false, `Slot ${i} should have the key completed.`);
             }
         });
     });
