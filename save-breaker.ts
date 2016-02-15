@@ -65,7 +65,13 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { suc
         // We have written to slot 2 in the second save and as such to slot 1 in the first save
         key.slot1Flag = dataView1.getUint32(0x168, true);
     } else {
-        return { success: false, result: "The saves are seperated by more than one save.\nPlease follow the instructions." };
+        reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
+        reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
+        return {
+            success: false,
+            result: "The saves are separated by more than one save.\nPlease follow the instructions.",
+            pkx: reader1.getPkx(0) || reader2.getPkx(30)
+        };
     }
 
     // This XORpad can encode/decode between slot 1 and slot 2 data.

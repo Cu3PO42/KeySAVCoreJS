@@ -62,7 +62,7 @@ describe("SaveBreaker", function() {
 
         it("should load an encrypted save by creating a SaveReaderEncrypted", function() {
             var store = new KeyStoreMemory();
-            store.setSaveKey(keyNew);
+            store.setSaveKeyManually(keyNew);
             setKeyStore(store);
             return SaveBreaker.load(sav16).then(function(reader) {
                 assert.equal(reader instanceof SaveReaderEncrypted, true);
@@ -103,7 +103,7 @@ describe("SaveBreaker", function() {
 
         it("should upgrade an old style key to a new style key", function () {
             var store = new KeyStoreMemory();
-            store.setSaveKey(new SaveKey(new Uint8Array(keyOld.keyData)));
+            store.setSaveKeyManually(new SaveKey(new Uint8Array(keyOld.keyData)));
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
                 assert.equal(res.success, true);
@@ -140,8 +140,15 @@ describe("SaveBreaker", function() {
 
 describe("SaveReaderEncrypted", function() {
     describe("#getPkx()", function() {
-        it("should dump a Pokémon from a save", function() {
+        it("should dump a Pokémon from a save with a new-style key", function() {
             var reader = new SaveReaderEncrypted(sav16, keyNew);
+            var pkx = reader.getPkx(0);
+            assert.notEqual(pkx, undefined);
+            assert.equal(pkx.species, 262);
+        });
+
+        it("should dump a Pokémon from a save with an old-style key", function() {
+            var reader = new SaveReaderEncrypted(sav16, keyOld);
             var pkx = reader.getPkx(0);
             assert.notEqual(pkx, undefined);
             assert.equal(pkx.species, 262);

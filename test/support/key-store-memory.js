@@ -1,5 +1,7 @@
 "use strict";
 
+var assert = require("assert");
+
 class KeyStoreMemory {
     constructor() {
         this.saveKeys = {};
@@ -22,7 +24,12 @@ class KeyStoreMemory {
         return (this.bvKeys[stamp]);
     }
 
-    setSaveKey(key) {
+    setSaveKeyManually(key) {
+        this.saveKeys[key.stamp] = key;
+    }
+
+    setSaveKey(key, pkx) {
+        assert.notEqual(pkx, undefined, "Should get a Pkx when setting a save key.");
         this.saveKeys[key.stamp] = key;
     }
 

@@ -43,9 +43,15 @@ export default class SaveReaderEncrypted implements SaveReader {
             pos2 = 31 * 30;
         }
 
-        for (let i = pos1; i < pos2; ++i) {
-            this.getPkxRaw(i, 0);
-            this.getPkxRaw(i, 1);
+        if (this.key.isNewKey) {
+            for (let i = pos1; i < pos2; ++i) {
+                this.getPkxRaw(i, 0);
+                this.getPkxRaw(i, 1);
+            }
+        } else {
+            for (let i = pos1; i < pos2; ++i) {
+                this.getPkxRaw(i, 1);
+            }
         }
     }
 
