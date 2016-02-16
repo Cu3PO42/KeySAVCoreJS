@@ -28,4 +28,29 @@ export default class BattleVideoReader {
         }
         return new Pkx(pkx, -1, slot, false);
     }
+
+    getAllPkx() {
+        var myTeam = [];
+        var tmp;
+        for (var i = 0; i < 6; ++i) {
+            tmp = this.getPkx(i, false);
+            if (tmp === undefined)
+                break;
+            myTeam.push(tmp);
+        }
+        var enemyTeam = undefined;
+        if (this.dumpsEnemy) {
+            enemyTeam = [];
+            for (var i = 0; i < 6; ++i) {
+                tmp = this.getPkx(i, true);
+                if (tmp === undefined)
+                    break;
+                enemyTeam.push(tmp);
+            }
+        }
+        return {
+            myTeam,
+            enemyTeam
+        };
+    }
 }

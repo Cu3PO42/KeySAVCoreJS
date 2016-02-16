@@ -9,6 +9,7 @@ interface SaveReader {
     scanSlots(slot: number);
     scanSlots();
     getPkx(pos: number): Pkx;
+    getAllPkx(): Pkx[];
 }
 
 export default SaveReader;

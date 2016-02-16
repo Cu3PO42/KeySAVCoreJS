@@ -62,6 +62,18 @@ export default class SaveReaderEncrypted implements SaveReader {
         return new Pkx(data, (pos / 30) | 0, pos % 30, ghost);
     }
 
+    getAllPkx() {
+        var res = [];
+        var tmp;
+        for (var i = 0; i < 930; ++i) {
+            tmp = this.getPkx(i);
+            if (tmp !== undefined) {
+                res.push(tmp);
+            }
+        }
+        return res;
+    }
+
     private getPkxRaw(pos: number, slot: number): [Uint8Array, boolean] {
         // Auto updates the keystream when it dumps important data!
         var pkx: Uint8Array;

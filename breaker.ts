@@ -1,5 +1,5 @@
-import { breakKey as breakKeyBv, load as loadBv } from "./battle-video-breaker";
-import { breakKey as breakKeySav, load as loadSav } from "./save-breaker";
+import { breakKey as breakKeyBv, load as loadBv, BattleVideoBreakResult } from "./battle-video-breaker";
+import { breakKey as breakKeySav, load as loadSav, SaveBreakResult } from "./save-breaker";
 import BattleVideoReader from "./battle-video-reader";
 import SaveReader from "./save-reader";
 

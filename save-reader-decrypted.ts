@@ -64,4 +64,16 @@ export default class SaveReaderDecrypted implements SaveReader {
         }
         return undefined;
     }
+
+    getAllPkx() {
+        var res = [];
+        var tmp;
+        for (var i = 0; i < 930; ++i) {
+            tmp = this.getPkx(i);
+            if (tmp !== undefined) {
+                res.push(tmp);
+            }
+        }
+        return res;
+    }
 }
