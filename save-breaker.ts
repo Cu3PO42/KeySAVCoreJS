@@ -11,6 +11,12 @@ import * as util from "./util";
 const magic = 0x42454546;
 export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알"];
 
+function createNotASaveError() {
+    var e = new Error("The supplied data is not a supported save type.") as any;
+    e.type = "NOT_A_SAVE";
+    return e;
+}
+
 export async function load(input: Uint8Array): Promise<SaveReader> {
     var view = util.createDataView(input);
     switch (input.length) {
@@ -22,11 +28,11 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
             return new SaveReaderEncrypted(input, key);
         case 0x76000:
             if (view.getUint32(0x75E10, true) != magic)
-                throw new Error("No save.");
+                throw createNotASaveError();
             return new SaveReaderDecrypted(input, "ORAS");
         case 0x65600:
             if (view.getUint32(0x65410, true) != magic)
-                throw new Error("No save.");
+                throw createNotASaveError();
             return new SaveReaderDecrypted(input, "XY");
         case 232 * 30 * 32:
             return new SaveReaderDecrypted(input, "YABD");
@@ -35,7 +41,7 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
         case 0x70000:
             return new SaveReaderDecrypted(input, "ORASRAM");
         default:
-            throw new Error("No save.");
+            throw createNotASaveError();
     }
 }
 

@@ -38,6 +38,13 @@ class LazyValue<T> {
     }
 }
 
+function createNoKeyError(stamp: string, isSav: boolean) {
+    var e = new Error(`No key for ${isSav ? "save" : "battle video"} with stamp ${stamp} available.`) as any;
+    e.type = "NO_KEY";
+    e.stamp = stamp;
+    return e;
+}
+
 export default class KeyStoreFileSystem implements KeyStore {
     private scan: Promise<void>;
     private keys: { [stamp: string]: { fd: number,
@@ -84,13 +91,13 @@ export default class KeyStoreFileSystem implements KeyStore {
             if (this.keys[stamp].isSav === isSav) {
                 return await this.keys[stamp].key.get();
             }
-            throw new Error("No key available.");
+            throw createNoKeyError(stamp, isSav);
         } else {
             await (this.scan.isFulfilled() ? (this.scan = this.scanSaveDirectory(this.path)) : this.scan);
             if (this.keys[stamp] !== undefined && this.keys[stamp].isSav === isSav) {
                 return await this.keys[stamp].key.get();
             }
-            throw new Error("No key available.");
+            throw createNoKeyError(stamp, isSav);
         }
     }
 
