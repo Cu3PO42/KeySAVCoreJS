@@ -11,3 +11,4 @@ export { load as loadSav, breakKey as breakSav, SaveBreakResult } from "./save-b
 export { default as SaveReaderDecrypted } from "./save-reader-decrypted";
 export { default as SaveReaderEncrypted } from "./save-reader-encrypted";
 export { default as SaveReader } from "./save-reader";
+export { loadSavOrBv, breakSavOrBv } from "./breaker";
