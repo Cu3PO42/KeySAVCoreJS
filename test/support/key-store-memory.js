@@ -9,11 +9,15 @@ class KeyStoreMemory {
     }
 
     getSaveKey(stamp) {
-        return Promise.resolve(this.saveKeys[stamp]);
+        if (this.saveKeys[stamp] !== undefined)
+            return Promise.resolve(this.saveKeys[stamp]);
+        return Promise.reject({ name: "NoSaveKey" });
     }
 
     getBvKey(stamp) {
-        return Promise.resolve(this.bvKeys[stamp]);
+        if (this.bvKeys[stamp] !== undefined)
+            return Promise.resolve(this.bvKeys[stamp]);
+        return Promise.reject({ name: "NoBattleVideoKey" });
     }
 
     getSaveKeySync(stamp) {

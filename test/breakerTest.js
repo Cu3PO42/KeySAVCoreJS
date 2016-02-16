@@ -23,7 +23,7 @@ describe("Breaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return Breaker.breakSavOrBv(sav16, sav165).then(function(res) {
-                assert.equal(res.success, true);
+                assert.equal("CREATED_NEW", res);
                 assert.notEqual(store.getSaveKeySync(savKey.stamp), undefined);
             });
         });
@@ -32,7 +32,7 @@ describe("Breaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return Breaker.breakSavOrBv(video1, video2).then(function(res) {
-                assert.equal(res.success, true);
+                assert.equal("CREATED_WITH_OPPONENT", res);
                 assert.notEqual(store.getBvKeySync(bvKey.stamp), undefined);
             });
         });
@@ -41,7 +41,7 @@ describe("Breaker", function() {
             return Breaker.breakSavOrBv(sav16, video1).then(function(res) {
                 assert(false, "This should throw.");
             }, function(e) {
-                assert.equal(e.type, "NOT_SAME_FILE_TYPE");
+                assert.equal(e.name, "NotSameFileTypeError");
                 assert.equal(e.fileType1, "SAV");
                 assert.equal(e.fileType2, "BV");
             });

@@ -14,12 +14,13 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true
     },
-    "compileOnSave": false,
+    "compileOnSave": true,
     "buildOnSave": false,
     "files": [
         "battle-video-breaker.ts",
         "battle-video-reader.ts",
         "battle-video-key.ts",
+        "breaker.ts",
         "calculator.ts",
         "index.ts",
         "key-store.ts",

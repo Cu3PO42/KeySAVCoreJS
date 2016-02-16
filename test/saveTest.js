@@ -75,7 +75,7 @@ describe("SaveBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
-                assert.equal(res.success, true);
+                assert.equal("CREATED_NEW", res);
                 var key2 = store.getSaveKeySync(keyNew.stamp);
                 keyEqual(keyNew, key2);
             });
@@ -85,7 +85,7 @@ describe("SaveBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav26).then(function(res) {
-                assert.equal(res.success, true);
+                assert.equal("CREATED_OLD", res);
                 var key2 = store.getSaveKeySync(keyOld.stamp);
                 keyEqual(keyOld, key2);
             });
@@ -95,7 +95,7 @@ describe("SaveBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav26, sav16).then(function(res) {
-                assert.equal(res.success, true);
+                assert.equal("CREATED_OLD", res);
                 var key2 = store.getSaveKeySync(keyOld.stamp);
                 keyEqual(keyOld, key2);
             });
@@ -106,7 +106,7 @@ describe("SaveBreaker", function() {
             store.setSaveKeyManually(new SaveKey(new Uint8Array(keyOld.keyData)));
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
-                assert.equal(res.success, true);
+                assert.equal("UPGRADED", res);
                 var key2 = store.getSaveKeySync(keyNew.stamp);
                 keyEqual(keyNew, key2);
             });

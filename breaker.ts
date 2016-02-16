@@ -1,5 +1,5 @@
-import { breakKey as breakKeyBv, load as loadBv, BattleVideoBreakResult } from "./battle-video-breaker";
-import { breakKey as breakKeySav, load as loadSav, SaveBreakResult } from "./save-breaker";
+import { breakKey as breakKeyBv, load as loadBv } from "./battle-video-breaker";
+import { breakKey as breakKeySav, load as loadSav } from "./save-breaker";
 import BattleVideoReader from "./battle-video-reader";
 import SaveReader from "./save-reader";
 
@@ -10,7 +10,7 @@ export async function loadSavOrBv(file: Uint8Array): Promise<{type: string, read
             reader: await loadBv(file)
         };
     } catch(e) {
-        if (e.type === "NO_KEY") {
+        if (e.name === "NoKeyAvailableError") {
             throw e;
         }
     }
@@ -20,7 +20,7 @@ export async function loadSavOrBv(file: Uint8Array): Promise<{type: string, read
             reader: await loadSav(file)
         };
     } catch(e) {
-        if (e.type === "NO_KEY") {
+        if (e.name === "NoKeyAvailableError") {
             throw e;
         }
     }

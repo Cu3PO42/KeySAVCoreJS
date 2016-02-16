@@ -23,8 +23,10 @@ describe("BattleVideoBreaker", function() {
         it("should break a battle video key correctly", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
-            assert.equal(BattleVideoBreaker.breakKey(video1, video2).success, true);
-            assert.deepEqual(store.getBvKeySync(key.stamp), key);
+            BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
+                assert.equal("CREATED_WITH_OPPONENT", res);
+                assert.deepEqual(store.getBvKeySync(key.stamp), key);
+            });
         });
     });
 

@@ -45,12 +45,7 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
     }
 }
 
-export interface SaveBreakResult {
-    success: boolean;
-    result: string;
-}
-
-function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { success: boolean, result: string, pkx?: Pkx} {
+function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { result: number, pkx?: Pkx} {
     var reader1: SaveReader, reader2: SaveReader;
     var dataView1: DataView, dataView2: DataView;
 
@@ -61,7 +56,8 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { suc
         // Scan the two saves to improve the key.
         reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
         reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
-        return { success: false, result: "You already have a key for this save." }
+        // We already have a key.
+        return { result: 0 };
     }
 
     if (util.sequenceEqual(break1, 0x80000, break2, 0x80000, 0x7f000)) {
@@ -73,9 +69,9 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { suc
     } else {
         reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
         reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
+        // The saves are seperated by more than one save. Couldn't upgrade to a new style key.
         return {
-            success: false,
-            result: "The saves are separated by more than one save.\nPlease follow the instructions.",
+            result: 1,
             pkx: reader1.getPkx(0) || reader2.getPkx(30)
         };
     }
@@ -86,35 +82,69 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { suc
     reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
     reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
 
+    // Successfully upgraded to a new style key.
     return {
-        success: true,
-        result: "Found old key. Based new keystream on that.\n\nSaving new Keystream.",
+        result: 2,
         pkx: reader1.getPkx(0) || reader2.getPkx(30)
     };
 }
 
-export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<SaveBreakResult> {
+function checkLength(file: Uint8Array) {
+    let length = file.length;
+    return length === 0x100000 || length === 0x10009C || length === 0x10019A;
+}
+
+export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<string> {
     var emptyPkx = new Uint8Array(232);
     var emptyEkx = Pkx.encrypt(emptyPkx);
     var key: SaveKey;
     var boxes1: Uint8Array, boxes2: Uint8Array;
     var boxesDataView1: DataView, boxesDataView2: DataView;
 
+    if (!checkLength(break1)) {
+        let e = new Error("File 1 is not a valid save file.") as any;
+        e.name = "NotASaveError";
+        e.file = 1;
+        throw e;
+    }
+
+    if (!checkLength(break2)) {
+        let e = new Error("File 2 is not a valid save file.") as any;
+        e.name = "NotASaveError";
+        e.file = 2;
+        throw e;
+    }
+
     break1 = break1.subarray(break1.length % 0x100000);
     break2 = break2.subarray(break2.length % 0x100000);
 
     if (!util.sequenceEqual(break1, 16, break2, 16, 8)) {
-        return { success: false, result: "Saves are not from the same game!\nPlease follow the instructions." };
+        let e = new Error("The saves are not from the same game!");
+        e.name = "NotSameGameError";
+        throw e;
     }
 
     if (util.sequenceEqual(break1, break2)) {
-        return { success: false, result: "The saves are identical.\nPlease follow the instructions." };
+        let e = new Error("The saves are identical.\nPlease follow the instructions.");
+        e.name = "SaveIdenticalError";
+        throw e;
     }
 
     // Let's try to upgrade an existing old style key to a new style key.
     try {
         key = await getKeyStore().getSaveKey(util.getStampSav(break1, 0x10));
-        return upgradeKey(key, break1, break2);
+        let res = upgradeKey(key, break1, break2);
+        switch (res.result) {
+            case 0:
+                var e = new Error("You already have a key for this save.");
+                e.name = "SaveKeyAlreadyExistsError";
+                throw e;
+            case 1:
+                break;
+            case 2:
+                // TODO figure out return handling
+                return "UPGRADED";
+        }
     } catch (e) {}
 
     key = new SaveKey(new Uint8Array(0xB4AD4));
@@ -160,7 +190,9 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     }
 
     if (offset === undefined) {
-        return { success: false, result: "Unable to find boxes.\nPlease follow the instructions." };
+        var e = new Error("Unable to find boxes.");
+        e.name = "NoBoxesError";
+        throw e;
     }
 
     boxesDataView1 = util.createDataView(boxes1);
@@ -192,10 +224,9 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
     if (!valid) {
         // We didn't get any valid EC's where D was not in last. Tell the user to try again with different specimens.
-        return {
-            success: false,
-            result: "The 6 supplied Pokemon are not suitable. \nRip new saves with 6 different ones that originated from your save file.\n\n There is a 1 in 4096 chance that this happens. You got really unlucky :(\nStart over and try again!"
-        };
+        var e = new Error("The 6 supplied Pokemon are not suitable.");
+        e.name = "PokemonNotSuitableError";
+        throw e;
     }
 
     // This is now the complete blank pkx.
@@ -210,7 +241,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     getKeyStore().setSaveKey(key, result.pkx);
     var zeros = new Uint8Array(232);
     var ezeros = Pkx.encrypt(zeros);
-    if (result.success) {
+    if (result.result === 2) {
         // Set the keys for slots 1-6 in boxes 1 and 2
         for (let i of indices) {
             for (let empty of [ezeros, emptyEkx]) {
@@ -229,14 +260,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
             }
         }
 
-        return {
-            success: true,
-            result: "Keystreams were successfully bruteforced!\n\nSaving your keystream now..."
-        };
+        return "CREATED_NEW";
     } else {
-        return {
-            success: true,
-            result: "Old style keystreams were successfully bruteforced!\nSaving twice will be required.\n\nSaving your keystream now..."
-        }
+        return "CREATED_OLD";
     }
 }
