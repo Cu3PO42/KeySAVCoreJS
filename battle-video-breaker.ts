@@ -9,7 +9,7 @@ import BattleVideoKey from "./battle-video-key";
 export async function load(input: Uint8Array): Promise<BattleVideoReader> {
     if (input.length !== 0x6E60) {
         var e = new Error("The supplied data is not a valid battle video.") as any;
-        e.type = "NOT_A_BATTLEVIDEO";
+        e.name = "NotABattleVideoError";
         throw e;
     }
     var key = await getKeyStore().getBvKey(util.getStampBv(input, 0x10));

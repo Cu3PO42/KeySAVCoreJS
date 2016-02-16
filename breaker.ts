@@ -25,7 +25,7 @@ export async function loadSavOrBv(file: Uint8Array): Promise<{type: string, read
         }
     }
     var e = new Error("The supplied file is neither a valid save nor a valid battle video.") as any;
-    e.type = "NOT_A_SAVE_OR_BATTLEVIDEO";
+    e.name = "NotASaveOrBattleVideoError";
     throw e;
 }
 
@@ -37,7 +37,7 @@ const typeDescription = {
 
 function makeNotSameFileError(type1: string, type2: string) {
     var e = new Error(`The two files don't have the same type. The first is ${typeDescription[type1]}, the second is ${typeDescription[type2]}.`) as any;
-    e.type = "NOT_SAME_FILE_TYPE";
+    e.name = "NotSameFileTypeError";
     e.fileType1 = type1;
     e.fileType2 = type2;
     return e;

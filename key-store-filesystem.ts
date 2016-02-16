@@ -40,7 +40,7 @@ class LazyValue<T> {
 
 function createNoKeyError(stamp: string, isSav: boolean) {
     var e = new Error(`No key for ${isSav ? "save" : "battle video"} with stamp ${stamp} available.`) as any;
-    e.type = "NO_KEY";
+    e.name = "NoKeyAvailableError";
     e.stamp = stamp;
     return e;
 }

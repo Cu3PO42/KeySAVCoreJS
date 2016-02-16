@@ -13,7 +13,7 @@ export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "",
 
 function createNotASaveError() {
     var e = new Error("The supplied data is not a supported save type.") as any;
-    e.type = "NOT_A_SAVE";
+    e.name = "NotASaveError";
     return e;
 }
 

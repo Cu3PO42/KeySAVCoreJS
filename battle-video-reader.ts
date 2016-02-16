@@ -23,7 +23,7 @@ export default class BattleVideoReader {
             ekx = util.xor(this.video, BattleVideoReader.myTeamOffset + 260 * slot, this.key.myTeamKey, 260 * slot, 260);
         }
         pkx = Pkx.decrypt(ekx);
-        if ( !Pkx.verifyChk(pkx) || pkx.every(e => e == 0)) {
+        if ( !Pkx.verifyChk(pkx) || util.empty(pkx)) {
             return undefined;
         }
         return new Pkx(pkx, -1, slot, false);
