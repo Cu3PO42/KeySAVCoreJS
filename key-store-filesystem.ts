@@ -69,11 +69,11 @@ export default class KeyStoreFileSystem implements KeyStore {
                 name: fileName,
                 isSav: isSav,
                 key: new LazyValue(async function() {
-                    var size = stats.size === 0x1000 ? 0x1000 : 0xB4AD4;
-                    var buf = new Buffer(stats.size);
+                    var size = isSav ? 0xB4AD4 : 0x1000;
+                    var buf = new Buffer(size);
                     await readAsync(fd, buf, 0, stats.size, 0);
                     var ui8 = new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
-                    return stats.size !== 0x1000 ? new SaveKey(ui8) : new BattleVideoKey(ui8);
+                    return isSav ? new SaveKey(ui8) : new BattleVideoKey(ui8);
                 })
             }
         }

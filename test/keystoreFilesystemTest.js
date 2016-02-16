@@ -2,13 +2,15 @@ var assert = require("assert");
 var KeyStoreFileSystem = require("../key-store-filesystem").default;
 var SaveKey = require("../save-key").default;
 var BattleVideoKey = require("../battle-video-key").default;
-var fs = require("fs");
+var fs = require("fs-extra");
 var util = require("../util");
 var Pkx = require("../pkx").default;
 var Promise = require("bluebird");
 
 var mkdir = Promise.promisify(fs.mkdir),
     unlink = Promise.promisify(fs.unlink),
+    copy = Promise.promisify(fs.copy),
+    stat = Promise.promisify(fs.stat),
     rmdir = Promise.promisify(fs.rmdir);
 
 function bufferToUint8Array(buf) {
@@ -45,6 +47,25 @@ describe("KeyStoreFileSystem", function() {
             var store = new KeyStoreFileSystem(__dirname + "/data");
             return store.getSaveKey(savKey.stamp).then(function(key2) {
                 keyEqual(savKey, key2);
+            });
+        });
+
+        it("should read a 0x80000 sized old style key and resize it to 0xB4AD4", function() {
+            var store;
+            return mkdir(__dirname + "/store").then(function() {
+                return copy(__dirname + "/data/oras-key-old-small.bin", __dirname + "/store/key.bin");
+            }).then(function() {
+                store = new KeyStoreFileSystem(__dirname + "/store");
+                return store.getSaveKey(savKey.stamp);
+            }).then(function(key2) {
+                return store.close();
+            }).then(function() {
+                return stat(__dirname + "/store/key.bin");
+            }).then(function(stats) {
+                assert.equal(stats.size, 0xB4AD4);
+                return unlink(__dirname + "/store/key.bin");
+            }).then(function() {
+                return rmdir(__dirname + "/store");
             });
         });
     });
