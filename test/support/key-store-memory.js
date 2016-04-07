@@ -11,13 +11,13 @@ class KeyStoreMemory {
     getSaveKey(stamp) {
         if (this.saveKeys[stamp] !== undefined)
             return Promise.resolve(this.saveKeys[stamp]);
-        return Promise.reject({ name: "NoSaveKey" });
+        return Promise.reject({ name: "NoKeyAvailableError" });
     }
 
     getBvKey(stamp) {
         if (this.bvKeys[stamp] !== undefined)
             return Promise.resolve(this.bvKeys[stamp]);
-        return Promise.reject({ name: "NoBattleVideoKey" });
+        return Promise.reject({ name: "NoKeyAvailableError" });
     }
 
     getSaveKeySync(stamp) {

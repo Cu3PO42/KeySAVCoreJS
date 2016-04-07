@@ -59,6 +59,16 @@ describe("Breaker", function() {
             });
         });
 
+        it("should throw a NoKeyAvailableError if there is no key", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return Breaker.loadSavOrBv(sav16).then(function(res) {
+                assert(false, "This should have thrown.");
+            }, function(e) {
+                assert.equal(e.name, "NoKeyAvailableError");
+            });
+        });
+
         it("should load a battle video", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
