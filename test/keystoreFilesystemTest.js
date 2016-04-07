@@ -38,7 +38,7 @@ function keyEqual(key1, key2) {
 }
 
 var savKey = new SaveKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
-var bvKey = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000059-key.bin")));
+var bvKey = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000059-key-without-opponent.bin")));
 var mudkip = new Pkx(bufferToUint8Array(fs.readFileSync(__dirname + "/data/mudkip.pk6")));
 
 describe("KeyStoreFileSystem", function() {

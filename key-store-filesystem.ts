@@ -42,6 +42,7 @@ function createNoKeyError(stamp: string, isSav: boolean) {
     var e = new Error(`No key for ${isSav ? "save" : "battle video"} with stamp ${stamp} available.`) as any;
     e.name = "NoKeyAvailableError";
     e.stamp = stamp;
+    e.keyType = isSav ? "SAV" : "BV";
     return e;
 }
 

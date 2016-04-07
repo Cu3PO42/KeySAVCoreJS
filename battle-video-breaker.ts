@@ -62,27 +62,34 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
     var key: BattleVideoKey;
     try {
         key = await getKeyStore().getBvKey(util.getStampBv(video1, 0x10));
-        var e = new Error("You already have a key for this battle video slot.") as any;
-        e.name = "BattleVideoKeyAlreadyExistsError";
-        throw e;
+        if (key.dumpsEnemy) {
+            var e = new Error("You already have a key for this battle video slot.") as any;
+            e.name = "BattleVideoKeyAlreadyExistsError";
+            throw e;
+        }
     } catch (e) {
         if (e.name === "BattleVideoKeyAlreadyExistsError") {
             throw e;
         }
     }
 
-    var key = new BattleVideoKey(new Uint8Array(0x1000));
+    if (key === undefined) {
+        key = new BattleVideoKey(new Uint8Array(0x1000));
 
-    if (!breakParty(video1, video2, 0x4E18, key.myTeamKey)) {
-        var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
-        e.name = "BattleVideoBreakError";
-        throw e;
+        if (!breakParty(video1, video2, 0x4E18, key.myTeamKey)) {
+            var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
+            e.name = "BattleVideoBreakError";
+            throw e;
+        }
+
+        // Set the unique stamp for this battle video slot
+        util.copy(video1, 0x10, key.stampRaw, 0, 0x10);
+        getKeyStore().setBvKey(key);
+
+        // Try to create a key for the opponent, too
+        return breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
     }
 
-    // Set the unique stamp for this battle video slot
-    util.copy(video1, 0x10, key.stampRaw, 0, 0x10);
-    getKeyStore().setBvKey(key);
-
-    // Try to create a key for the opponent, too
-    return breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
+    // We already have a key for out team, but we might be able to upgrade it so it can work with the opponent team, too.
+    return breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "UPGRADED_WITH_OPPONENT" : "NOT_UPGRADED_WITH_OPPONENT";
 }
