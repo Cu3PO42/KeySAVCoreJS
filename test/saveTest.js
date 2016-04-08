@@ -135,6 +135,15 @@ describe("SaveBreaker", function() {
                 return SaveBreaker.load(sav165);
             });
         });
+
+        it("should throw an error if a key already exists", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            store.setSaveKeyManually(keyNew);
+            return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
+                assert.fail(0, 1, "This should have thrown.");
+            }, function() {});
+        });
     });
 });
 

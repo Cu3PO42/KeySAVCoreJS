@@ -144,7 +144,10 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
             case 2:
                 return "UPGRADED";
         }
-    } catch (e) {}
+    } catch (e) {
+        if (e.name === "SaveKeyAlreadyExistsError")
+            throw e;
+    }
 
     key = new SaveKey(new Uint8Array(0xB4AD4));
 
