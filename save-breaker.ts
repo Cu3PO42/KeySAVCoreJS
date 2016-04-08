@@ -140,9 +140,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
                 e.name = "SaveKeyAlreadyExistsError";
                 throw e;
             case 1:
-                break;
+                return "NOT_UPGRADED";
             case 2:
-                // TODO figure out return handling
                 return "UPGRADED";
         }
     } catch (e) {}
