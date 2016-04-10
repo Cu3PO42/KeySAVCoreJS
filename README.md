@@ -16,4 +16,4 @@ Originally I forked the KeySAV2 project to add some features, since then I refac
 # License
 
 All code is Copyright 2014-2016 Tobias "Copper Phosphate" Zimmermann and distributed under the terms of the MIT license.  
-The Pokémon character names, stats and other data is Copyright 2002-2916 Pokémon, Copyright 1995-2016 Nintendo/Creatures Inc./GAME FREAK Inc.
+The Pokémon character names, stats and other data is Copyright 2002-2016 Pokémon, Copyright 1995-2016 Nintendo/Creatures Inc./GAME FREAK Inc.
