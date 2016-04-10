@@ -5,6 +5,7 @@
 
 import * as Promise from "bluebird";
 import * as fs from "fs";
+import { createHash } from "crypto";
 import KeyStore from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
@@ -51,7 +52,7 @@ export default class KeyStoreFileSystem implements KeyStore {
     private keys: { [stamp: string]: { fd: number,
                                        name: string,
                                        isSav: boolean,
-                                       key: LazyValue<BattleVideoKey|SaveKey> } } = {};
+                                       key: LazyValue<{ key: BattleVideoKey|SaveKey, hash: string }> } } = {};
 
     constructor(private path: string) {
         this.scan = this.scanSaveDirectory(this.path);
@@ -81,7 +82,11 @@ export default class KeyStoreFileSystem implements KeyStore {
                     var buf = new Buffer(size);
                     await readAsync(fd, buf, 0, stats.size, 0);
                     var ui8 = new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
-                    return isSav ? new SaveKey(ui8) : new BattleVideoKey(ui8);
+                    var hash = createHash('sha256').update(buf).digest('hex');
+                    return {
+                        key: isSav ? new SaveKey(ui8) : new BattleVideoKey(ui8),
+                        hash: hash
+                    };
                 })
             }
         }
@@ -90,13 +95,13 @@ export default class KeyStoreFileSystem implements KeyStore {
     private async getKey(stamp: string, isSav: boolean): Promise<SaveKey|BattleVideoKey> {
         if (this.keys[stamp] !== undefined) {
             if (this.keys[stamp].isSav === isSav) {
-                return await this.keys[stamp].key.get();
+                return (await this.keys[stamp].key.get()).key;
             }
             throw createNoKeyError(stamp, isSav);
         } else {
             await (this.scan.isFulfilled() ? (this.scan = this.scanSaveDirectory(this.path)) : this.scan);
             if (this.keys[stamp] !== undefined && this.keys[stamp].isSav === isSav) {
-                return await this.keys[stamp].key.get();
+                return (await this.keys[stamp].key.get()).key;
             }
             throw createNoKeyError(stamp, isSav);
         }
@@ -115,35 +120,39 @@ export default class KeyStoreFileSystem implements KeyStore {
             if (!this.keys.hasOwnProperty(key))
                 continue;
             let lazyKey = this.keys[key];
-            if (lazyKey.isSav && lazyKey.key.isInitialized) {
-                let buf = new Buffer((<SaveKey>(await lazyKey.key.get())).keyData);
-                await writeAsync(lazyKey.fd, buf, 0, buf.length, 0);
-                await closeAsync(lazyKey.fd);
+            if (lazyKey.key.isInitialized) {
+                let key = await lazyKey.key.get();
+                if (key.hash !== createHash("sha256").update(key.key.keyData).digest("hex")) {
+                    let buf = new Buffer(key.key.keyData);
+                    await writeAsync(lazyKey.fd, buf, 0, buf.length, 0);
+                }
             }
+            await closeAsync(lazyKey.fd);
         }
     }
 
-    async setKey(name: string, data: Uint8Array, keyFn: () => Promise<BattleVideoKey|SaveKey>, stamp: string, isSav: boolean) {
+    async setKey(name: string, key: BattleVideoKey|SaveKey, isSav: boolean) {
+        var stamp = key.stamp;
         if (this.keys[stamp] !== undefined) {
             await closeAsync(this.keys[stamp].fd);
         }
-        var buf = new Buffer(data);
+        var buf = new Buffer(key.keyData);
+        var hash = createHash("sha256").update(buf).digest("hex");
         var fd = <number>(await openAsync(join(this.path, name), "w+"));
         await writeAsync(fd, buf, 0, buf.length, 0);
         this.keys[stamp] = {
             fd: fd,
             name: name,
             isSav: isSav,
-            key: new LazyValue(keyFn)
+            key: new LazyValue(async function() { return { key: key, hash: hash }; })
         };
     }
 
     async setBvKey(key: BattleVideoKey) {
-        var stamp = key.stamp;
-        await this.setKey(`BV Key - ${key.stamp}.bin`, key.keyData, async function() { return key; }, key.stamp, false);
+        await this.setKey(`BV Key - ${key.stamp}.bin`, key, false);
     }
 
     async setSaveKey(key: SaveKey, pkx: Pkx) {
-        await this.setKey(`SAV Key - ${pkx.ot} - (${pad5(pkx.tid)}.${pad5(pkx.sid)}) - TSV ${pad4(pkx.tsv)}.bin`, key.keyData, async function() { return key; }, key.stamp, true);
+        await this.setKey(`SAV Key - ${pkx.ot} - (${pad5(pkx.tid)}.${pad5(pkx.sid)}) - TSV ${pad4(pkx.tsv)}.bin`, key, true);
     }
 }
