@@ -127,12 +127,12 @@ describe("util", function() {
     describe("#encodeUnicode16LE()", function() {
         it("should decode a simple string", function() {
             var src = new Uint8Array([ 84, 0, 101, 0, 115, 0, 116, 0, 33, 0 ]);
-            assert.deepEqual(util.encodeUnicode16LE("Test!"), src);
+            assert.deepEqual(new Buffer(util.encodeUnicode16LE("Test!")), new Buffer(src));
         });
 
         it("should encode GameFreak's private use symbols", function() {
             var src = new Uint8Array([149,224,150,224,151,224,152,224,153,224,144,224,146,224,147,224,145,224,148,224,154,224,155,224,156,224,157,224,158,224,61,216,16,222,61,216,10,222,61,216,43,222,61,216,36,222,61,216,164,220,163,224,164,224,142,224,143,224,141,224]);
-            assert.deepEqual(util.encodeUnicode16LE("⊙○□△♢♠♥♦♣★♪☀⛅☂⛄😐😊😫😤💤⤴⤵♂♀…"), src)
+            assert.deepEqual(new Buffer(util.encodeUnicode16LE("⊙○□△♢♠♥♦♣★♪☀⛅☂⛄😐😊😫😤💤⤴⤵♂♀…")), new Buffer(src));
         });
     });
 

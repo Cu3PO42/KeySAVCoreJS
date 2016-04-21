@@ -19,13 +19,13 @@ describe("Pkx", function() {
 
     describe("#encrypt()", function() {
         it("should properly encrypt a pk6 file", function() {
-            assert.deepEqual(Pkx.encrypt(pkx), ekx);
+            assert.deepEqual(new Buffer(Pkx.encrypt(pkx)), new Buffer(ekx));
         });
     });
 
     describe("#decrypt()", function() {
         it("should properly decrypt a ek6 file", function() {
-            assert.deepEqual(Pkx.decrypt(ekx), pkx);
+            assert.deepEqual(new Buffer(Pkx.decrypt(ekx)), new Buffer(pkx));
         });
     });
 

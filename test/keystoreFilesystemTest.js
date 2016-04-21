@@ -97,7 +97,7 @@ describe("KeyStoreFileSystem", function() {
                 return store.getSaveKey(key.stamp);
             }).then(function (key2) {
                 assert.deepEqual(key.keyData, key2.keyData);
-                return unlink(__dirname + "/store/SAV Key - Meth Fred Jr - (31101.35009) - TSV 3867.bin");
+                return unlink(__dirname + "/store/SAV Key - uGgrVpFasVg=.bin");
             }).then(function () {
                 return rmdir(__dirname + "/store");
             });
