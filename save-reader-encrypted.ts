@@ -45,18 +45,18 @@ export default class SaveReaderEncrypted implements SaveReader {
 
         if (this.key.isNewKey) {
             for (let i = pos1; i < pos2; ++i) {
-                this.getPkxRaw(i, 0);
-                this.getPkxRaw(i, 1);
+                SaveReaderEncrypted.getPkxRaw(this.boxes1, i, this.key);
+                SaveReaderEncrypted.getPkxRaw(this.boxes2, i, this.key);
             }
         } else {
             for (let i = pos1; i < pos2; ++i) {
-                this.getPkxRaw(i, 1);
+                SaveReaderEncrypted.getPkxRaw(this.boxes2, i, this.key);
             }
         }
     }
 
     getPkx(pos: number) {
-        var res = this.getPkxRaw(pos, this.activeSlot), data = res[0], ghost = res[1];
+        var res = SaveReaderEncrypted.getPkxRaw(this.activeSlot === 0 ? this.boxes1 : this.boxes2, pos, this.key), data = res[0], ghost = res[1];
         if (data === undefined || (data[8] | data[9]) == 0)
             return undefined;
         return new Pkx(data, (pos / 30) | 0, pos % 30, ghost);
@@ -74,34 +74,33 @@ export default class SaveReaderEncrypted implements SaveReader {
         return res;
     }
 
-    private getPkxRaw(pos: number, slot: number): [Uint8Array, boolean] {
+    public static getPkxRaw(boxes: Uint8Array, pos: number, key: SaveKey): [Uint8Array, boolean] {
         // Auto updates the keystream when it dumps important data!
         var pkx: Uint8Array;
 
-        var offset = pos * 232;
-        var boxes = slot === 0 ? this.boxes1 : this.boxes2;
+        const offset = pos * 232;
 
-        if (util.empty(this.key.boxKey1, offset, 232)) {
-            if (util.empty(this.key.boxKey2, offset, 232)) {
+        if (util.empty(key.boxKey1, offset, 232)) {
+            if (util.empty(key.boxKey2, offset, 232)) {
                 // We don't have any data for this slot
-                util.copy(boxes, offset, this.key.boxKey1, offset, 232);
+                util.copy(boxes, offset, key.boxKey1, offset, 232);
                 return [undefined, false];
             }
 
             // We have a key2 only, this is supposed to be the actual key
-            pkx = Pkx.decrypt(util.xor(this.key.boxKey2, offset, boxes, offset, 232));
+            pkx = Pkx.decrypt(util.xor(key.boxKey2, offset, boxes, offset, 232));
             if (Pkx.verifyChk(pkx)) {
                 return [pkx, false];
             } else {
                 // Something is wrong. Our data didn't decrypt properly. Apparently the key is wrong.
-                util.copy(zeros, 0, this.key.boxKey2, offset, 232);
+                util.copy(zeros, 0, key.boxKey2, offset, 232);
                 return [undefined, false];
             }
         }
 
-        var data1 = util.xor(boxes, offset, this.key.boxKey1, offset, 232);
-        var data2 = util.xor(boxes, offset, this.key.boxKey2, offset, 232);
-        var possibleExtraKeys = [zeros, ezeros, this.key.blank];
+        var data1 = util.xor(boxes, offset, key.boxKey1, offset, 232);
+        var data2 = util.xor(boxes, offset, key.boxKey2, offset, 232);
+        var possibleExtraKeys = [zeros, ezeros, key.blank];
         var possibleEkx1 = possibleExtraKeys.map((e) => util.xor(data1, e));
         var possibleEkx2 = possibleExtraKeys.map((e) => util.xor(data2, e));
 
@@ -118,23 +117,23 @@ export default class SaveReaderEncrypted implements SaveReader {
             return [undefined, false];
         }
 
-        if (util.empty(this.key.boxKey2, offset, 232)) {
+        if (util.empty(key.boxKey2, offset, 232)) {
             if (possibleEkx1.some(util.empty)) {
                 // Slot hasn't changed.
                 return [undefined, false];
             }
 
-            return tryDecrypt(possibleEkx1, boxes, offset, this.key.boxKey2);
+            return tryDecrypt(possibleEkx1, boxes, offset, key.boxKey2);
         }
 
         if (possibleEkx1.some(util.empty)) {
             // Save  is the same as key 1
-            return tryDecrypt(possibleEkx2, this.key.boxKey2, offset, this.key.boxKey2);
+            return tryDecrypt(possibleEkx2, key.boxKey2, offset, key.boxKey2);
         }
 
         if (possibleEkx2.some(util.empty)) {
             // Save is the same as key 2
-            return tryDecrypt(possibleEkx1, this.key.boxKey1, offset, this.key.boxKey1);
+            return tryDecrypt(possibleEkx1, key.boxKey1, offset, key.boxKey1);
         }
 
         // Data has been observed to change twice! We can potentially get our exact keystream now!
@@ -147,13 +146,13 @@ export default class SaveReaderEncrypted implements SaveReader {
 
             if (possibleEkx2.some((e) => Pkx.verifyChk(Pkx.decrypt(e)))) {
                 // Save file is empty
-                util.xor(possibleEkx, 0, this.key.boxKey1, offset, this.key.boxKey2, offset, 232);
+                util.xor(possibleEkx, 0, key.boxKey1, offset, key.boxKey2, offset, 232);
             } else {
                 // Key 1 is empty
-                util.xor(possibleEkx, 0, boxes, offset, this.key.boxKey2, offset, 232);
+                util.xor(possibleEkx, 0, boxes, offset, key.boxKey2, offset, 232);
             }
 
-            util.copy(zeros, 0, this.key.boxKey1, offset, 232);
+            util.copy(zeros, 0, key.boxKey1, offset, 232);
             return [pkx, false];
         }
 
@@ -164,8 +163,8 @@ export default class SaveReaderEncrypted implements SaveReader {
             }
 
             // Key 2 is empty
-            util.xor(possibleEkx, 0, boxes, offset, this.key.boxKey2, offset, 232);
-            util.copy(zeros, 0, this.key.boxKey1, offset, 232);
+            util.xor(possibleEkx, 0, boxes, offset, key.boxKey2, offset, 232);
+            util.copy(zeros, 0, key.boxKey1, offset, 232);
             return [pkx, false];
         }
 

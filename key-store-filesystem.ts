@@ -152,7 +152,25 @@ export default class KeyStoreFileSystem implements KeyStore {
         await this.setKey(`BV Key - ${key.stamp}.bin`, key, false);
     }
 
-    async setSaveKey(key: SaveKey, pkx: Pkx) {
-        await this.setKey(`SAV Key - ${pkx.ot} - (${pad5(pkx.tid)}.${pad5(pkx.sid)}) - TSV ${pad4(pkx.tsv)}.bin`, key, true);
+    async setSaveKey(key: SaveKey) {
+        await this.setKey(`SAV Key - ${key.stamp}.bin`, key, true);
+    }
+
+    async setOrMergeBvKey(key: BattleVideoKey) {
+        try {
+            const oldKey = await this.getBvKey(key.stamp);
+            oldKey.mergeKey(key);
+        } catch (e) {
+            await this.setBvKey(key);
+        }
+    }
+
+    async setOrMergeSaveKey(key: SaveKey) {
+        try {
+            const oldKey = await this.getSaveKey(key.stamp);
+            oldKey.mergeKey(key);
+        } catch (e) {
+            await this.setSaveKey(key);
+        }
     }
 }

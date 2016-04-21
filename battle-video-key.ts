@@ -1,4 +1,4 @@
-import { getStampBv, empty } from "./util";
+import { getStampBv, empty, copy } from "./util";
 
 export default class BattleVideoKey {
     get stamp(): string {
@@ -19,4 +19,9 @@ export default class BattleVideoKey {
         this.opponentTeamKey = this.keyData.subarray(0x800, 0x800+260*6);
     }
 
+    mergeKey(other: BattleVideoKey) {
+        if (!this.dumpsEnemy && other.dumpsEnemy) {
+            copy(other.opponentTeamKey, 0, this.opponentTeamKey, 0, 260*6);
+        }
+    }
 }

@@ -3,6 +3,7 @@
 import Pkx from "./pkx";
 import * as util from "./util";
 import { eggnames } from "./save-breaker";
+import SaveReaderEncrypted from "./save-reader-encrypted";
 
 export default class SaveKey {
     public boxKey1: Uint8Array;
@@ -66,6 +67,29 @@ export default class SaveKey {
             res.push(util.empty(this.boxKey1, i * 232, 232) && !util.empty(this.boxKey2, i * 232, 232))
         }
         return res;
+    }
+
+    public mergeKey(other: SaveKey) {
+        // upgrade to a new style key if possible
+        if (!this.isNewKey && other.isNewKey) {
+            util.copy(other.slot1Key, 0, this.slot1Key, 0, 0x34AD0);
+        }
+        for (var i = 0; i < 930; ++i) {
+            // this means our key is not complete for this slot
+            if (!util.empty(this.boxKey1, i * 232, 232) || util.empty(this.boxKey2, i * 232, 232)) {
+                // this slot is complete for the other key, just copy it
+                if (util.empty(other.boxKey1, i * 232, 232) && !util.empty(other.boxKey2, i * 232, 232)) {
+                    util.copy(other.boxKey1, i * 232, this.boxKey1, i * 232, 232);
+                    util.copy(other.boxKey2, i * 232, this.boxKey2, i * 232, 232);
+                    continue;
+                }
+
+                if (!util.empty(other.boxKey1, i * 232, 232))
+                    SaveReaderEncrypted.getPkxRaw(other.boxKey1, i, this);
+                if (!util.empty(other.boxKey2, i * 232, 232))
+                    SaveReaderEncrypted.getPkxRaw(other.boxKey2, i, this);
+            }
+        }
     }
 
     constructor(private key: Uint8Array) {
