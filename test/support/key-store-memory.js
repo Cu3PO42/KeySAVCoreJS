@@ -32,8 +32,7 @@ class KeyStoreMemory {
         this.saveKeys[key.stamp] = key;
     }
 
-    setSaveKey(key, pkx) {
-        assert.notEqual(pkx, undefined, "Should get a Pkx when setting a save key.");
+    setSaveKey(key) {
         this.saveKeys[key.stamp] = key;
     }
 
