@@ -175,4 +175,31 @@ describe("SaveReaderEncrypted", function() {
             }
         });
     });
+
+    describe("SaveKey", function() {
+        it("should merge keys properly", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            var key1;
+            var key2;
+            return SaveBreaker.breakKey(sav16, sav165).then(function() {
+                return SaveBreaker.load(savFull1);
+            }).then(function(reader) {
+                reader.scanSlots();
+                key1 = store.getSaveKeySync(keyNew.stamp);
+                store.saveKeys = {};
+                return SaveBreaker.breakKey(sav16, sav165);
+            }).then(function() {
+                return SaveBreaker.load(savFull2);
+            }).then(function(reader) {
+                reader.scanSlots();
+                key2 = store.getSaveKeySync(keyNew.stamp);
+                key1.mergeKey(key2);
+                var slotsUnlocked = key1.slotsUnlocked;
+                for (var i = 0; i < 12 * 30; ++i) {
+                  assert.equal(slotsUnlocked[i], true, `Slot ${i} should be unlocked.`);
+                }
+            });
+        });
+    });
 });
