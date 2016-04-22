@@ -5,7 +5,7 @@ export default class BattleVideoKey {
         return getStampBv(this.keyData, 0);
     }
 
-    get dumpsEnemy(): boolean {
+    get dumpsOpponent(): boolean {
         return !empty(this.opponentTeamKey);
     }
 
@@ -20,7 +20,7 @@ export default class BattleVideoKey {
     }
 
     mergeKey(other: BattleVideoKey) {
-        if (!this.dumpsEnemy && other.dumpsEnemy) {
+        if (!this.dumpsOpponent && other.dumpsOpponent) {
             copy(other.opponentTeamKey, 0, this.opponentTeamKey, 0, 260*6);
         }
     }

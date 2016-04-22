@@ -62,7 +62,7 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
     var key: BattleVideoKey;
     try {
         key = await getKeyStore().getBvKey(util.getStampBv(video1, 0x10));
-        if (key.dumpsEnemy) {
+        if (key.dumpsOpponent) {
             var e = new Error("You already have a key for this battle video slot.") as any;
             e.name = "BattleVideoKeyAlreadyExistsError";
             throw e;

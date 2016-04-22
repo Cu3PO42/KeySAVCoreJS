@@ -9,14 +9,14 @@ export default class BattleVideoReader {
 
     constructor(private video: Uint8Array, private key: BattleVideoKey) {}
 
-    get dumpsEnemy() {
-        return this.key.dumpsEnemy;
+    get dumpsOpponent() {
+        return this.key.dumpsOpponent;
     }
 
     getPkx(slot: number, isOpponent: boolean): Pkx {
         var ekx, pkx;
         if (isOpponent) {
-            if (!this.dumpsEnemy)
+            if (!this.dumpsOpponent)
                 return undefined;
             ekx = util.xor(this.video, BattleVideoReader.opponentTeamOffset + 260 * slot, this.key.opponentTeamKey, 260 * slot, 260);
         } else {
@@ -38,19 +38,19 @@ export default class BattleVideoReader {
                 break;
             myTeam.push(tmp);
         }
-        var enemyTeam = undefined;
-        if (this.dumpsEnemy) {
-            enemyTeam = [];
+        var opponentTeam = undefined;
+        if (this.dumpsOpponent) {
+            opponentTeam = [];
             for (var i = 0; i < 6; ++i) {
                 tmp = this.getPkx(i, true);
                 if (tmp === undefined)
                     break;
-                enemyTeam.push(tmp);
+                opponentTeam.push(tmp);
             }
         }
         return {
             myTeam,
-            enemyTeam
+            opponentTeam
         };
     }
 }
