@@ -5,5 +5,5 @@ FRE
 ITA
 GER
 ???
-ESP
+SPA
 KOR
