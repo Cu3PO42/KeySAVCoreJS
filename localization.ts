@@ -6,6 +6,7 @@ import * as fs from "fs";
 import Pkx from "./pkx";
 var forms = require("./localization/forms.json"),
     locations = require("./localization/locations.json"),
+    characteristics = require("./localization/characteristics.json"),
     ribbons = require("./localization/ribbons.json");
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
@@ -30,6 +31,7 @@ export interface LocalizationLanguage {
     getEggLocation(pkm: Pkx): string;
     getRibbons(pkm: Pkx): string[];
     getBallName(ball: number): string;
+    getCharacteristic(pkm: Pkx): string;
 }
 
 export interface Localization {
@@ -111,6 +113,20 @@ for (var i = 0; i < langs.length; ++i) {
 
             return lang.items[ballToItem[ball]];
         };
+    })(lang);
+
+    lang.getCharacteristic = (function(lang) {
+        return function(pkx: Pkx) {
+            const ivs = [pkx.ivHp, pkx.ivAtk, pkx.ivDef, pkx.ivSpe, pkx.ivSpAtk, pkx.ivSpDef];
+            const max = Math.max.apply(Math, ivs);
+            const maxVals = ivs.map(iv => iv === max ? max : undefined);
+
+            for (let index = pkx.pid % 6;; index = (index + 1) % 6) {
+                if (maxVals[index] !== undefined) {
+                    return characteristics[lang][index][max % 5];
+                }
+            }
+        }
     })(lang);
 }
 

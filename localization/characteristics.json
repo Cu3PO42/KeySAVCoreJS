@@ -1,0 +1,310 @@
+{
+    "en": [
+        [
+            "Loves to eat",
+            "Takes plenty of siestas",
+            "Nods off a lot",
+            "Scatters things often",
+            "Likes to relax"
+        ],
+        [
+            "Proud of its power",
+            "Likes to thrash about",
+            "A little quick tempered",
+            "Likes to fight",
+            "Quick tempered"
+        ],
+        [
+            "Sturdy body",
+            "Capable of taking hits",
+            "Highly persistent",
+            "Good endurance",
+            "Good perseverance"
+        ],
+        [
+            "Highly curious",
+            "Mischievous",
+            "Thoroughly cunning",
+            "Often lost in thought",
+            "Very finicky"
+        ],
+        [
+            "Strong willed",
+            "Somewhat vain",
+            "Strongly defiant",
+            "Hates to lose",
+            "Somewhat stubborn"
+        ],
+        [
+            "Likes to run",
+            "Alert to sounds",
+            "Impetuous and silly",
+            "Somewhat of a clown",
+            "Quick to flee"
+        ]
+    ],
+    "ja": [
+        [
+            "食べるのが　大好き",
+            "昼寝を　よくする",
+            "居眠りが　多い",
+            "ものを　よく　散らかす",
+            "のんびりするのが　好き"
+        ],
+        [
+            "力が　自慢",
+            "暴れることが　好き",
+            "ちょっと　怒りっぽい",
+            "ケンカを　するのが　好き",
+            "血の気が　多い"
+        ],
+        [
+            "体が　丈夫",
+            "打たれ強い",
+            "粘り強い",
+            "辛抱強い",
+            "我慢強い"
+        ],
+        [
+            "好奇心が　強い",
+            "イタズラが　好き",
+            "抜け目が　ない",
+            "考え事が　多い",
+            "とても　きちょうめん"
+        ],
+        [
+            "気が　強い",
+            "ちょっぴり　みえっぱり",
+            "負けん気が　強い",
+            "負けず嫌い",
+            "ちょっぴり　強情"
+        ],
+        [
+            "駆けっこが　好き",
+            "物音に　敏感",
+            "おっちょこちょい",
+            "すこし　お調子者",
+            "逃げるのが　はやい"
+        ]
+    ],
+    "fr": [
+        [
+            "Adore manger",
+            "S'assoupit souvent",
+            "Dort beaucoup",
+            "Éparpille des choses",
+            "Aime se détendre"
+        ],
+        [
+            "Est fier de sa puissance",
+            "Aime se démener",
+            "Un peu coléreux",
+            "Aime combattre",
+            "S'emporte facilement"
+        ],
+        [
+            "Corps robuste",
+            "Sait encaisser les coups",
+            "Très obstiné",
+            "Bonne endurance",
+            "Persévérant"
+        ],
+        [
+            "Extrêmement curieux",
+            "Coquin",
+            "Très astucieux",
+            "Souvent dans la lune",
+            "Très particulier"
+        ],
+        [
+            "Très volontaire",
+            "Un peu vaniteux",
+            "Esprit rebelle",
+            "A horreur de perdre",
+            "Assez entêté"
+        ],
+        [
+            "Aime courir",
+            "Attentif aux sons",
+            "Bête et impulsif",
+            "Aime faire le pitre",
+            "Fuit rapidement"
+        ]
+    ],
+    "de": [
+        [
+            "Liebt es zu essen",
+            "Nickt oft ein",
+            "Schläft gern",
+            "Macht oft Unordnung",
+            "Mag es, sich zu entspannen"
+        ],
+        [
+            "Stolz auf seine Stärke",
+            "Prügelt sich gern",
+            "Besitzt Temperament",
+            "Liebt Kämpfe",
+            "Impulsiv"
+        ],
+        [
+            "Hat einen robusten Körper",
+            "Kann Treffer gut verkraften",
+            "Äußerst ausdauernd",
+            "Hat eine gute Ausdauer",
+            "Ist beharrlich"
+        ],
+        [
+            "Sehr neugierig",
+            "Hinterhältig",
+            "Äußerst gerissen",
+            "Ist oft in Gedanken",
+            "Sehr pedantisch"
+        ],
+        [
+            "Besitzt einen starken Willen",
+            "Etwas eitel",
+            "Sehr aufsässig",
+            "Hasst Niederlagen",
+            "Dickköpfig"
+        ],
+        [
+            "Liebt es zu rennen",
+            "Achtet auf Geräusche",
+            "Ungestüm und einfältig",
+            "Ein bisschen albern.",
+            "Flüchtet schnell"
+        ]
+    ],
+    "it": [
+        [
+            "Adora mangiare",
+            "Si addormenta spesso",
+            "Dorme a lungo",
+            "Lascia cose in giro",
+            "Adora rilassarsi"
+        ],
+        [
+            "La forza è il suo vanto",
+            "Adora dimenarsi",
+            "Si arrabbia facilmente",
+            "Adora combattere",
+            "È facilmente irritabile"
+        ],
+        [
+            "Ha un corpo robusto",
+            "È forte in attacco",
+            "È molto ostinato",
+            "È molto paziente",
+            "È molto tenace"
+        ],
+        [
+            "È un grande ficcanaso",
+            "È alquanto vivace",
+            "È estremamente sagace",
+            "Si perde nel suo mondo",
+            "È molto esigente"
+        ],
+        [
+            "Sa il fatto suo",
+            "È abbastanza superficiale",
+            "È molto insolente",
+            "Non sopporta perdere",
+            "È un po' testardo"
+        ],
+        [
+            "Adora correre",
+            "Fa attenzione ai suoni",
+            "È irruente e semplice",
+            "È una specie di buffone",
+            "Sa fuggire velocemente"
+        ]
+    ],
+    "es": [
+        [
+            "Le encanta comer",
+            "A menudo se duerme",
+            "Duerme muncho",
+            "Suele desordenar cosas",
+            "Le gusta relajarse"
+        ],
+        [
+            "Está orgulloso de su fuerza",
+            "Le gusta revolverse",
+            "A veces se enfada",
+            "Le gusta luchar",
+            "Tiene mal genio"
+        ],
+        [
+            "Se caracteriza por su cuerpo resistente",
+            "Es un buen fajador",
+            "Es muy persistente",
+            "Se caracteriza por ser muy resistente",
+            "Es muy perseverante"
+        ],
+        [
+            "Es extremadamente curioso",
+            "Le gusta hacer travesuras",
+            "Es muy astuto",
+            "A menudo está en Babia",
+            "Es muy melindroso"
+        ],
+        [
+            "Se distingue por ser muy voluntarioso",
+            "Es algo orgulloso",
+            "Es muy insolente",
+            "Odia perder",
+            "Es un poco cabezota"
+        ],
+        [
+            "Le gusta correr",
+            "Siempre tiene el oído alerta",
+            "Resulta algo impetuoso y bobo",
+            "Es un poco payaso",
+            "Huye rápido"
+        ]
+    ],
+    "ko": [
+        [
+            "먹는 것을 제일 좋아함",
+            "낮잠을 잘 잠",
+            "말뚝잠이 많음",
+            "물건을 잘 어지름",
+            "유유자적함을 좋아함"
+        ],
+        [
+            "힘자랑이 특기임",
+            "난동부리기를 좋아함",
+            "약간 화를 잘 내는 성미임",
+            "싸움을 좋아함",
+            "혈기가 왕성함"
+        ],
+        [
+            "몸이 튼튼함",
+            "맷집이 강함",
+            "끈질김",
+            "인내심이 강함",
+            "잘 참음"
+        ],
+        [
+            "호기심이 강함",
+            "매우 꼼꼼함",
+            "빈틈이 없음",
+            "걱정거리가 많음",
+            "매우 꼼꼼함"
+        ],
+        [
+            "기가 센 성격임",
+            "조금 겉치레를 좋아함",
+            "오기가 센 성격임",
+            "지기 싫어함",
+            "조금 고집통이임"
+        ],
+        [
+            "약간 우쭐쟁이임",
+            "주위 소리에 민감함",
+            "촐랑대는 성격임",
+            "약간 우쭐쟁이임",
+            "도망에는 선수임"
+        ]
+    ]
+}
