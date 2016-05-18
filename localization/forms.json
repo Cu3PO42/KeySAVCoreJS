@@ -152,11 +152,11 @@
             "1": "Méga"
         },
         "479": {
-            "1": "Motisma Chaleur",
-            "2": "Motisma Lavage",
-            "3": "Motisma Froid",
-            "4": "Motisma Hélice",
-            "5": "Motisma Tonte"
+            "1": "Chaleur",
+            "2": "Lavage",
+            "3": "Froid",
+            "4": "Hélice",
+            "5": "Tonte"
         },
         "487": {
             "0": "Forme Alternative",
@@ -558,11 +558,11 @@
             "1": "Mega"
         },
         "479": {
-            "1": "Heat Rotom",
-            "2": "Wash Rotom",
-            "3": "Frost Rotom",
-            "4": "Fan Rotom",
-            "5": "Mow Rotom"
+            "1": "Heat",
+            "2": "Wash",
+            "3": "Frost",
+            "4": "Fan",
+            "5": "Mow"
         },
         "487": {
             "0": "Altered Forme",
@@ -908,11 +908,11 @@
             "1": "Mega"
         },
         "479": {
-            "1": "Hitze-Rotom",
-            "2": "Wasch-Rotom",
-            "3": "Frost-Rotom",
-            "4": "Wirbel-Rotom",
-            "5": "Schneid-Rotom"
+            "1": "Hitze",
+            "2": "Wasch",
+            "3": "Frost",
+            "4": "Wirbel",
+            "5": "Schneid"
         },
         "487": {
             "0": "Wandelform",
@@ -1258,11 +1258,11 @@
             "1": "메가"
         },
         "479": {
-            "1": "히트로토무",
-            "2": "워시로토무",
-            "3": "프로스트로토무",
-            "4": "스핀로토무",
-            "5": "커트로토무"
+            "1": "히트",
+            "2": "워시",
+            "3": "프로스트",
+            "4": "스핀",
+            "5": "커트"
         },
         "487": {
             "0": "어나더폼",
@@ -1594,11 +1594,11 @@
             "1": "Mega"
         },
         "479": {
-            "1": "Rotom Calore",
-            "2": "Rotom Lavaggio",
-            "3": "Rotom Gelo",
-            "4": "Rotom Vortice",
-            "5": "Rotom Taglio"
+            "1": "Calore",
+            "2": "Lavaggio",
+            "3": "Gelo",
+            "4": "Vortice",
+            "5": "Taglio"
         },
         "487": {
             "0": "Forma Alterata",
@@ -1935,11 +1935,11 @@
             "1": "メガユキノオー"
         },
         "479": {
-            "1": "ヒートロトム",
-            "2": "ウォッシュロトム",
-            "3": "フロストロトム",
-            "4": "スピンロトム",
-            "5": "カットロトム"
+            "1": "ヒート",
+            "2": "ウォッシュ",
+            "3": "フロスト",
+            "4": "スピン",
+            "5": "カット"
         },
         "487": {
             "0": "アナザーフォルム",
@@ -2276,11 +2276,11 @@
             "1": "Mega"
         },
         "479": {
-            "1": "Rotom Calor",
-            "2": "Rotom Lavado",
-            "3": "Rotom Frío",
-            "4": "Rotom Ventilador",
-            "5": "Rotom Corte"
+            "1": "Calor",
+            "2": "Lavado",
+            "3": "Frío",
+            "4": "Ventilador",
+            "5": "Corte"
         },
         "487": {
             "0": "Forma Modificada",
