@@ -1437,39 +1437,39 @@
     },
     "it": {
         "3": {
-            "1": "MegaVenusaur"
+            "1": "Mega"
         },
         "6": {
-            "1": "MegaCharizard X",
-            "2": "MegaCharizard Y"
+            "1": "Mega X",
+            "2": "Mega Y"
         },
         "9": {
-            "1": "MegaBlastoise"
+            "1": "Mega"
         },
         "65": {
-            "1": "MegaAlakazam"
+            "1": "Mega"
         },
         "94": {
-            "1": "MegaGengar"
+            "1": "Mega"
         },
         "115": {
-            "1": "MegaKangaskhan"
+            "1": "Mega"
         },
         "127": {
-            "1": "MegaPinsir"
+            "1": "Mega"
         },
         "130": {
-            "1": "MegaGyarados"
+            "1": "Mega"
         },
         "142": {
-            "1": "MegaAerodactyl"
+            "1": "Mega"
         },
         "150": {
-            "1": "MegaMewtwo X",
-            "2": "MegaMewtwo Y"
+            "1": "Mega X",
+            "2": "Mega Y"
         },
         "181": {
-            "1": "MegaAmpharos"
+            "1": "Mega"
         },
         "201": {
             "0": "A",
@@ -1501,34 +1501,34 @@
             "26": "!"
         },
         "212": {
-            "1": "MegaScizor"
+            "1": "Mega"
         },
         "214": {
-            "1": "MegaHeracross"
+            "1": "Mega"
         },
         "229": {
-            "1": "MegaHoundoom"
+            "1": "Mega"
         },
         "248": {
-            "1": "MegaTyranitar"
+            "1": "Mega"
         },
         "257": {
-            "1": "MegaBlaziken"
+            "1": "Mega"
         },
         "282": {
-            "1": "MegaGardevoir"
+            "1": "Mega"
         },
         "303": {
-            "1": "MegaMawile"
+            "1": "Mega"
         },
         "306": {
-            "1": "MegaAggron"
+            "1": "Mega"
         },
         "308": {
-            "1": "MegaMedicham"
+            "1": "Mega"
         },
         "310": {
-            "1": "MegaManectric"
+            "1": "Mega"
         },
         "351": {
             "1": "Forma Sole",
@@ -1536,16 +1536,16 @@
             "3": "Forma Nuvola di Neve"
         },
         "354": {
-            "1": "MegaBanette"
+            "1": "Mega"
         },
         "359": {
-            "1": "MegaAbsol"
+            "1": "Mega"
         },
         "380": {
-            "1": "MegaLatias"
+            "1": "Mega"
         },
         "381": {
-            "1": "MegaLatios"
+            "1": "Mega"
         },
         "386": {
             "0": "Forma Normale",
@@ -1576,13 +1576,13 @@
             "1": "Mare Est"
         },
         "445": {
-            "1": "MegaGarchomp"
+            "1": "Mega"
         },
         "448": {
-            "1": "MegaLucario"
+            "1": "Mega"
         },
         "460": {
-            "1": "MegaAbomasnow"
+            "1": "Mega"
         },
         "479": {
             "1": "Rotom Calore",
@@ -1637,8 +1637,8 @@
             "1": "Forma Totem"
         },
         "646": {
-            "1": "Kyurem Nero",
-            "2": "Kyurem Bianco"
+            "1": "Nero",
+            "2": "Bianco"
         },
         "647": {
             "0": "Forma Normale",
