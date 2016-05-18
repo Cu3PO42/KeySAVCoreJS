@@ -1,42 +1,42 @@
 {
     "fr": {
         "3": {
-            "1": "Méga-Florizarre"
+            "1": "Méga"
         },
         "6": {
-            "1": "Méga-Dracaufeu X",
-            "2": "Méga-Dracaufeu Y"
+            "1": "Méga X",
+            "2": "Méga Y"
         },
         "9": {
-            "1": "Méga-Tortank"
+            "1": "Méga"
         },
         "65": {
-            "1": "Méga-Alakazam"
+            "1": "Méga"
         },
         "94": {
-            "1": "Méga-Ectoplasma"
+            "1": "Méga"
         },
         "115": {
-            "1": "Méga-Kangourex"
+            "1": "Méga"
         },
         "127": {
-            "1": "Méga-Scarabrute"
+            "1": "Méga"
         },
         "130": {
-            "1": "Méga-Léviator"
+            "1": "Méga"
         },
         "142": {
-            "1": "Méga-Ptéra"
+            "1": "Méga"
         },
         "150": {
-            "1": "Méga-Mewtwo X",
-            "2": "Méga-Mewtwo Y"
+            "1": "Méga X",
+            "2": "Méga Y"
         },
         "172": {
             "1": "Troizépi"
         },
         "181": {
-            "1": "Méga-Pharamp"
+            "1": "Méga"
         },
         "201": {
             "0": "A",
@@ -68,34 +68,34 @@
             "26": "!"
         },
         "212": {
-            "1": "Méga-Cizayox"
+            "1": "Méga"
         },
         "214": {
-            "1": "Méga-Scarhino"
+            "1": "Méga"
         },
         "229": {
-            "1": "Méga-Démolosse"
+            "1": "Méga"
         },
         "248": {
-            "1": "Méga-Tyranocif"
+            "1": "Méga"
         },
         "257": {
-            "1": "Méga-Braségali"
+            "1": "Méga"
         },
         "282": {
-            "1": "Méga-Gardevoir"
+            "1": "Méga"
         },
         "303": {
-            "1": "Méga-Mysdibule"
+            "1": "Méga"
         },
         "306": {
-            "1": "Méga-Galeking"
+            "1": "Méga"
         },
         "308": {
-            "1": "Méga-Charmina"
+            "1": "Méga"
         },
         "310": {
-            "1": "Méga-Élecsprint"
+            "1": "Méga"
         },
         "351": {
             "1": "Forme Solaire",
@@ -103,16 +103,16 @@
             "3": "Forme Blizzard"
         },
         "354": {
-            "1": "Méga-Branette"
+            "1": "Méga"
         },
         "359": {
-            "1": "Méga-Absol"
+            "1": "Méga"
         },
         "380": {
-            "1": "Méga-Latias"
+            "1": "Méga"
         },
         "381": {
-            "1": "Méga-Latios"
+            "1": "Méga"
         },
         "386": {
             "0": "Forme Normale",
@@ -143,13 +143,13 @@
             "1": "Mer Orient"
         },
         "445": {
-            "1": "Méga-Carchacrok"
+            "1": "Méga"
         },
         "448": {
-            "1": "Méga-Lucario"
+            "1": "Méga"
         },
         "460": {
-            "1": "Méga-Blizzaroi"
+            "1": "Méga"
         },
         "479": {
             "1": "Motisma Chaleur",
@@ -204,8 +204,8 @@
             "1": "Forme Totémique"
         },
         "646": {
-            "1": "Kyurem Noir",
-            "2": "Kyurem Blanc"
+            "1": "Noir",
+            "2": "Blanc"
         },
         "647": {
             "0": "Aspect Normal",
