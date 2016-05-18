@@ -217,7 +217,10 @@
             "1": "Forme Danse"
         },
         "649": {
-            "1": "Module Aqua"
+            "1": "Module Aqua",
+            "2": "Module Choc",
+            "3": "Module Pyro",
+            "4": "Module Cryo"
         },
         "664": {
             "0": "Motif Blizzard",
@@ -627,7 +630,10 @@
             "1": "Pirouette Forme"
         },
         "649": {
-            "1": "Douse Drive"
+            "1": "Douse Drive",
+            "2": "Shock Drive",
+            "3": "Burn Drive",
+            "4": "Chill Drive"
         },
         "664": {
             "0": "Icy Snow Pattern",
@@ -975,7 +981,10 @@
             "1": "Tanzform"
         },
         "649": {
-            "1": "Aquamodul"
+            "1": "Aquamodul",
+            "2": "Blitzmodul",
+            "3": "Flammenmodul",
+            "4": "Gefriermodul"
         },
         "664": {
             "0": "Frostmuster",
@@ -1321,7 +1330,10 @@
             "1": "스텝폼"
         },
         "649": {
-            "1": "아쿠아카세트"
+            "1": "아쿠아카세트",
+            "2": "번개카세트",
+            "3": "블레이즈카세트",
+            "4": "프리즈카세트"
         },
         "664": {
             "0": "빙설의 모양",
@@ -1663,7 +1675,10 @@
             "1": "Forma Danza"
         },
         "649": {
-            "1": "Idromodulo"
+            "1": "Idromodulo",
+            "2": "Voltmodulo",
+            "3": "Piromodulo",
+            "4": "Gelomodulo"
         },
         "664": {
             "0": "Motivo Nevi Perenni",
@@ -2005,7 +2020,10 @@
             "1": "ステップフォルム"
         },
         "649": {
-            "1": "アクアカセット"
+            "1": "アクアカセット",
+            "2": "イナズマカセット",
+            "3": "ブレイズカセット",
+            "4": "フリーズカセット"
         },
         "664": {
             "0": "ひょうせつのもよう",
@@ -2347,7 +2365,10 @@
             "1": "Forma Danza"
         },
         "649": {
-            "1": "HidroROM"
+            "1": "HidroROM",
+            "2": "FulgoROM",
+            "3": "PiroROM",
+            "4": "CrioROM"
         },
         "664": {
             "0": "Motivo Polar",
