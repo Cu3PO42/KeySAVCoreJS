@@ -760,39 +760,39 @@
     },
     "de": {
         "3": {
-            "1": "Mega-Bisaflor"
+            "1": "Mega"
         },
         "6": {
-            "1": "Mega-Glurak X",
-            "2": "Mega-Glurak Y"
+            "1": "Mega X",
+            "2": "Mega Y"
         },
         "9": {
-            "1": "Mega-Turtok"
+            "1": "Mega"
         },
         "65": {
-            "1": "Mega-Simsala"
+            "1": "Mega"
         },
         "94": {
-            "1": "Mega-Gengar"
+            "1": "Mega"
         },
         "115": {
-            "1": "Mega-Kangama"
+            "1": "Mega"
         },
         "127": {
-            "1": "Mega-Pinsir"
+            "1": "Mega"
         },
         "130": {
-            "1": "Mega-Garados"
+            "1": "Mega"
         },
         "142": {
-            "1": "Mega-Aerodactyl"
+            "1": "Mega"
         },
         "150": {
-            "1": "Mega-Mewtu X",
-            "2": "Mega-Mewtu Y"
+            "1": "Mega X",
+            "2": "Mega Y"
         },
         "181": {
-            "1": "Mega-Ampharos"
+            "1": "Mega"
         },
         "201": {
             "0": "A",
@@ -824,34 +824,34 @@
             "26": "!"
         },
         "212": {
-            "1": "Mega-Scherox"
+            "1": "Mega"
         },
         "214": {
-            "1": "Mega-Skaraborn"
+            "1": "Mega"
         },
         "229": {
-            "1": "Mega-Hundemon"
+            "1": "Mega"
         },
         "248": {
-            "1": "Mega-Despotar"
+            "1": "Mega"
         },
         "257": {
-            "1": "Mega-Lohgock"
+            "1": "Mega"
         },
         "282": {
-            "1": "Mega-Guardevoir"
+            "1": "Mega"
         },
         "303": {
-            "1": "Mega-Flunkifer"
+            "1": "Mega"
         },
         "306": {
-            "1": "Mega-Stolloss"
+            "1": "Mega"
         },
         "308": {
-            "1": "Mega-Meditalis"
+            "1": "Mega"
         },
         "310": {
-            "1": "Mega-Voltenso"
+            "1": "Mega"
         },
         "351": {
             "1": "Sonnenform",
@@ -859,16 +859,16 @@
             "3": "Schneeform"
         },
         "354": {
-            "1": "Mega-Banette"
+            "1": "Mega"
         },
         "359": {
-            "1": "Mega-Absol"
+            "1": "Mega"
         },
         "380": {
-            "1": "Mega-Latias"
+            "1": "Mega"
         },
         "381": {
-            "1": "Mega-Latios"
+            "1": "Mega"
         },
         "386": {
             "0": "Normalform",
@@ -899,13 +899,13 @@
             "1": "Östliches Meer"
         },
         "445": {
-            "1": "Mega-Knakrack"
+            "1": "Mega"
         },
         "448": {
-            "1": "Mega-Lucario"
+            "1": "Mega"
         },
         "460": {
-            "1": "Mega-Rexblisar"
+            "1": "Mega"
         },
         "479": {
             "1": "Hitze-Rotom",
@@ -960,8 +960,8 @@
             "1": "Tiergeistform"
         },
         "646": {
-            "1": "Schwarzes Kyurem",
-            "2": "Weißes Kyurem"
+            "1": "Schwarz",
+            "2": "Weiß"
         },
         "647": {
             "0": "Standardform",
