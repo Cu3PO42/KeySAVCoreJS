@@ -127,7 +127,7 @@ for (var i = 0; i < langs.length; ++i) {
                 }
             }
         }
-    })(lang);
+    })(langs[i]);
 }
 
 export var de = names["de"];
