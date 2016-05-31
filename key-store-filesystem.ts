@@ -149,11 +149,11 @@ export default class KeyStoreFileSystem implements KeyStore {
     }
 
     async setBvKey(key: BattleVideoKey) {
-        await this.setKey(`BV Key - ${key.stamp}.bin`, key, false);
+        await this.setKey(`BV Key - ${key.stamp.replace('/', '-')}.bin`, key, false);
     }
 
     async setSaveKey(key: SaveKey) {
-        await this.setKey(`SAV Key - ${key.stamp}.bin`, key, true);
+        await this.setKey(`SAV Key - ${key.stamp.replace('/', '-')}.bin`, key, true);
     }
 
     async setOrMergeBvKey(key: BattleVideoKey) {
