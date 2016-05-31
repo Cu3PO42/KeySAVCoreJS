@@ -18,7 +18,8 @@ var readdirAsync = Promise.promisify(fs.readdir),
     openAsync = Promise.promisify(fs.open),
     readAsync = Promise.promisify(fs.read),
     writeAsync = <any>Promise.promisify(fs.write),
-    closeAsync = Promise.promisify(fs.close);
+    closeAsync = Promise.promisify(fs.close),
+    unlink = Promise.promisify(fs.unlink);
 
 class LazyValue<T> {
     private evaluated = false;
@@ -132,20 +133,27 @@ export default class KeyStoreFileSystem implements KeyStore {
     }
 
     async setKey(name: string, key: BattleVideoKey|SaveKey, isSav: boolean) {
-        var stamp = key.stamp;
-        if (this.keys[stamp] !== undefined) {
-            await closeAsync(this.keys[stamp].fd);
+        try {
+            var stamp = key.stamp;
+            if (this.keys[stamp] !== undefined) {
+                await closeAsync(this.keys[stamp].fd);
+                await unlink(join(this.path, this.keys[stamp].name));
+            }
+            var buf = new Buffer(key.keyData);
+            var hash = createHash("sha256").update(buf).digest("hex");
+            var fd = <number>(await openAsync(join(this.path, name), "w+"));
+            await writeAsync(fd, buf, 0, buf.length, 0);
+            this.keys[stamp] = {
+                fd: fd,
+                name: name,
+                isSav: isSav,
+                key: new LazyValue(async function() { return { key: key, hash: hash }; })
+            };
+        } catch(e) {
+            var e = new Error("There was an error saving the key.") as any;
+            e.name = "KeySavingError";
+            throw e;
         }
-        var buf = new Buffer(key.keyData);
-        var hash = createHash("sha256").update(buf).digest("hex");
-        var fd = <number>(await openAsync(join(this.path, name), "w+"));
-        await writeAsync(fd, buf, 0, buf.length, 0);
-        this.keys[stamp] = {
-            fd: fd,
-            name: name,
-            isSav: isSav,
-            key: new LazyValue(async function() { return { key: key, hash: hash }; })
-        };
     }
 
     async setBvKey(key: BattleVideoKey) {
