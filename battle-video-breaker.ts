@@ -91,10 +91,6 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
             throw e;
         }
 
-        // Set the unique stamp for this battle video slot
-        util.copy(video1, 0x10, key.stampRaw, 0, 0x10);
-        getKeyStore().setBvKey(key);
-
         // Try to create a key for the opponent, too
         const res = breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
         if (!checkParty(video1, video2, key)) {
@@ -102,6 +98,11 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
             e.name = "BattleVideoBreakError";
             throw e;
         }
+
+        // Set the unique stamp for this battle video slot
+        util.copy(video1, 0x10, key.stampRaw, 0, 0x10);
+        await getKeyStore().setBvKey(key);
+
         return res;
     }
 

@@ -240,7 +240,6 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     key.boxOffset = offset;
 
     var result = upgradeKey(key, break1, break2);
-    getKeyStore().setSaveKey(key);
     var zeros = new Uint8Array(232);
     var ezeros = Pkx.encrypt(zeros);
     if (result.result === 2) {
@@ -262,8 +261,12 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
             }
         }
 
+        await getKeyStore().setSaveKey(key);
+
         return "CREATED_NEW";
     } else {
+        await getKeyStore().setSaveKey(key);
+        
         return "CREATED_OLD";
     }
 }
