@@ -26,7 +26,7 @@ describe("BattleVideoBreaker", function() {
         it("should break a battle video key without opponent key correctly", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
-            BattleVideoBreaker.breakKey(video3, video4).then(function(res) {
+            return BattleVideoBreaker.breakKey(video3, video4).then(function(res) {
                 assert.equal("CREATED_WITHOUT_OPPONENT", res);
                 assert.deepEqual(store.getBvKeySync(keyWithoutOpponent.stamp), keyWithoutOpponent);
             });
@@ -35,7 +35,7 @@ describe("BattleVideoBreaker", function() {
         it("should break a battle video key with opponent key correctly", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
-            BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
+            return BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
                 assert.equal("CREATED_WITH_OPPONENT", res);
                 assert.deepEqual(store.getBvKeySync(key.stamp), key);
             });
@@ -45,7 +45,7 @@ describe("BattleVideoBreaker", function() {
           var store = new KeyStoreMemory();
           setKeyStore(store);
           store.setBvKey(keyWithoutOpponent);
-          BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
+          return BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
             assert.equal("UPGRADED_WITH_OPPONENT", res);
             assert.deepEqual(store.getBvKeySync(key.stamp), key);
           });
