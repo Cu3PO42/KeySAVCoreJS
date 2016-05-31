@@ -38,6 +38,15 @@ function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number,
     return true;
 }
 
+function checkParty(video1: Uint8Array, video2: Uint8Array, key: BattleVideoKey): boolean {
+    const video1Reader = new BattleVideoReader(video1, key);
+    const video2Reader = new BattleVideoReader(video2, key);
+    const video1Pkx = video1Reader.getAllPkx();
+    const video2Pkx = video2Reader.getAllPkx();
+    return !(video1Pkx.myTeam.length !== 1 || video2Pkx.myTeam.length !==2 ||
+        key.dumpsOpponent && (video1Pkx.opponentTeam.length !== 1 || video2Pkx.opponentTeam.length !== 2));
+}
+
 export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<string> {
     if (video1.length !== 0x6E60) {
         var e = new Error("The first file is not a battle video.") as any;
@@ -87,9 +96,15 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
         getKeyStore().setBvKey(key);
 
         // Try to create a key for the opponent, too
-        return breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
+        const res = breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
+        if (!checkParty(video1, video2, key)) {
+            var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
+            e.name = "BattleVideoBreakError";
+            throw e;
+        }
+        return res;
     }
 
     // We already have a key for out team, but we might be able to upgrade it so it can work with the opponent team, too.
-    return breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "UPGRADED_WITH_OPPONENT" : "NOT_UPGRADED_WITH_OPPONENT";
+    return breakParty(video1, video2, 0x5438, key.opponentTeamKey) && checkParty(video1, video2, key) ? "UPGRADED_WITH_OPPONENT" : "NOT_UPGRADED_WITH_OPPONENT";
 }
