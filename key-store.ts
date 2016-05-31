@@ -7,10 +7,10 @@ import Pkx from "./pkx";
 export interface KeyStore {
     getSaveKey(stamp: string): Promise<SaveKey>;
     getBvKey(stamp: string): Promise<BattleVideoKey>;
-    setSaveKey(key: SaveKey);
-    setOrMergeSaveKey(key: SaveKey);
-    setBvKey(key: BattleVideoKey);
-    setOrMergeBvKey(key: BattleVideoKey);
+    setSaveKey(key: SaveKey): Promise<void>;
+    setOrMergeSaveKey(key: SaveKey): Promise<void>;
+    setBvKey(key: BattleVideoKey): Promise<void>;
+    setOrMergeBvKey(key: BattleVideoKey): Promise<void>;
 }
 
 export var currentKeyStore: KeyStore = undefined;
