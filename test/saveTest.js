@@ -119,18 +119,18 @@ describe("SaveBreaker", function() {
                 return SaveBreaker.load(sav16);
             }).then(function(reader) {
                 for (var i = 0; i < 6; ++i) {
-                    assert.notEqual(reader.getPkx(i), undefined, `Box 1 slot ${i+1} should be dumpable.`);
+                    assert.notEqual(reader.getPkx(i), undefined, `Box 1 slot ${i + 1} should be dumpable.`);
                 }
                 for (i = 30; i < 36; ++i) {
-                    assert.equal(reader.getPkx(i), undefined, `Box 2 slot ${i-29} should be empty.`);
+                    assert.equal(reader.getPkx(i), undefined, `Box 2 slot ${i - 29} should be empty.`);
                 }
                 return SaveBreaker.load(sav165);
             }).then(function(reader) {
                 for (var i = 0; i < 6; ++i) {
-                    assert.equal(reader.getPkx(i), undefined, `Box 1 slot ${i+1} should be empty.`);
+                    assert.equal(reader.getPkx(i), undefined, `Box 1 slot ${i + 1} should be empty.`);
                 }
                 for (i = 30; i < 36; ++i) {
-                    assert.notEqual(reader.getPkx(i), undefined, `Box 2 slot ${i-29} should be dumpable.`);
+                    assert.notEqual(reader.getPkx(i), undefined, `Box 2 slot ${i - 29} should be dumpable.`);
                 }
                 return SaveBreaker.load(sav165);
             });
@@ -170,8 +170,8 @@ describe("SaveReaderEncrypted", function() {
 
             var slotsUnlocked = key.slotsUnlocked;
             for (var i = 0; i < 12 * 30; ++i) {
-                assert.equal(slotsUnlocked[i], true, `Slot ${i} should be unlocked.`);
-                assert.equal(reader.getPkx(i).isGhost, false, `Slot ${i} should have the key completed.`);
+                assert.equal(slotsUnlocked[i], true, `Slot ${i + 1} should be unlocked.`);
+                assert.equal(reader.getPkx(i).isGhost, false, `Slot ${i + 1} should have the key completed.`);
             }
         });
 
@@ -180,24 +180,24 @@ describe("SaveReaderEncrypted", function() {
             var reader = new SaveReaderEncrypted(savFull1, key);
 
             for (var i = 0; i < 6; ++i) {
-              const pkx = reader.getPkx(i);
-              assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
-              assert.equal(pkx.isGhost, false, `Slot ${i + 1} should not be a ghost.`);
+                const pkx = reader.getPkx(i);
+                assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
+                assert.equal(pkx.isGhost, false, `Slot ${i + 1} should not be a ghost.`);
             }
             for (var i = 6; i < 30; ++i) {
-              const pkx = reader.getPkx(i);
-              assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
-              assert.equal(pkx.isGhost, true, `Slot ${i + 1} should be a ghost.`);
+                const pkx = reader.getPkx(i);
+                assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
+                assert.equal(pkx.isGhost, true, `Slot ${i + 1} should be a ghost.`);
             }
             for (var i = 30; i < 6; ++i) {
-              const pkx = reader.getPkx(i);
-              assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
-              assert.equal(pkx.isGhost, false, `Slot ${i + 1} should not be a ghost.`);
+                const pkx = reader.getPkx(i);
+                assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
+                assert.equal(pkx.isGhost, false, `Slot ${i + 1} should not be a ghost.`);
             }
             for (var i = 36; i < 12 * 30; ++i) {
-              const pkx = reader.getPkx(i);
-              assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
-              assert.equal(pkx.isGhost, true, `Slot ${i + 1} should be a ghost.`);
+                const pkx = reader.getPkx(i);
+                assert.notEqual(pkx, undefined, `Slot ${i + 1} should be dumpable.`);
+                assert.equal(pkx.isGhost, true, `Slot ${i + 1} should be a ghost.`);
             }
         });
     });
@@ -223,7 +223,7 @@ describe("SaveReaderEncrypted", function() {
                 key1.mergeKey(key2);
                 var slotsUnlocked = key1.slotsUnlocked;
                 for (var i = 0; i < 12 * 30; ++i) {
-                  assert.equal(slotsUnlocked[i], true, `Slot ${i} should be unlocked.`);
+                  assert.equal(slotsUnlocked[i], true, `Slot ${i + 1} should be unlocked.`);
                 }
             });
         });
