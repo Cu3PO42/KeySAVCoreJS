@@ -16,6 +16,6 @@ deploy:
     tags: true
     repo: Cu3PO42/KeySAVCoreJS
 before_install:
-- openssl aes-256-cbc -K $encrypted_a02c42a85227_key -iv $encrypted_a02c42a85227_iv
+- openssl aes-256-cbc -K $encrypted_4281030c4abf_key -iv $encrypted_4281030c4abf_iv
   -in test/data.zip.enc -out test/data.zip -d
 - unzip ./test/data.zip -d ./test

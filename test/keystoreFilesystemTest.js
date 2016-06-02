@@ -38,7 +38,7 @@ function keyEqual(key1, key2) {
 }
 
 var savKey = new SaveKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
-var bvKey = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000059-key-without-opponent.bin")));
+var bvKey = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
 var mudkip = new Pkx(bufferToUint8Array(fs.readFileSync(__dirname + "/data/mudkip.pk6")));
 
 describe("KeyStoreFileSystem", function() {
@@ -119,7 +119,7 @@ describe("KeyStoreFileSystem", function() {
                 return store.getBvKey(key.stamp);
             }).then(function (key2) {
                 assert.deepEqual(key.keyData, key2.keyData);
-                return unlink(__dirname + "/store/BV Key - cz1pBoGdP5UPBzRWVBX01Q==.bin");
+                return unlink(__dirname + "/store/BV Key - PxzkhbtT8A6r6OVTGroWzA==.bin");
             }).then(function () {
                 return rmdir(__dirname + "/store");
             });
