@@ -211,9 +211,13 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
         // If Block D is last, the location data wouldn't be correct and we need that to fix the keystream.
         if (Pkx.getDloc(encryptionConstant) != 3) {
-            valid = true;
             var incompletePkx = Pkx.decrypt(incompleteEkx);
+            if (incompletePkx[0xE3] >= 8) {
+                console.log('uhm, this shouldn\'t happen');
+                continue;
+            }
 
+            valid = true;
             var nickName = eggnames[incompletePkx[0xE3] - 1];
             var nicknameBytes = util.encodeUnicode16LE(nickName);
             util.copy(nicknameBytes, 0, emptyPkx, 64, nicknameBytes.length);
@@ -266,7 +270,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         return "CREATED_NEW";
     } else {
         await getKeyStore().setSaveKey(key);
-        
+
         return "CREATED_OLD";
     }
 }
