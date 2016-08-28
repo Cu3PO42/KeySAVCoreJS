@@ -33,7 +33,6 @@ export default class Pkx {
     public pkrsStrain: number;
     public pkrsDuration: number;
     public levelMet: number;
-    public otGender: number;
 
     // Ushorts
     public ability: number;
@@ -66,6 +65,8 @@ export default class Pkx {
     public chk: number;
     public otFriendship: number;
     public otAffection: number;
+    public notOtFriendship: number;
+    public notOtAffection: number;
     public eggLocation: number;
     public metLocation: number;
     public ball: number;
@@ -75,6 +76,7 @@ export default class Pkx {
     public regionID: number;
     public dsregID: number;
     public otLang: number;
+    public trainingBagHitsRemaining: number;
 
     // Shorts
     public box: number;
@@ -83,6 +85,8 @@ export default class Pkx {
     // Bytes
     public ribbonSet3: number;
     public ribbonSet4: number;
+    public contestMemoryRibbonCount: number;
+    public battleMemoryRibbonCount: number;
     public form: number;
     public gender: number;
 
@@ -94,6 +98,23 @@ export default class Pkx {
     public isShiny: boolean;
     public isGhost: boolean;
     public isFatefulEncounter: boolean;
+    public otGender: boolean;
+    public notOtGender: boolean;
+    public currentHandler: boolean;
+
+    public geoRegion1: number;
+    public geoCountry1: number;
+    public geoRegion2: number;
+    public geoCountry2: number;
+    public geoRegion3: number;
+    public geoCountry3: number;
+    public geoRegion4: number;
+    public geoCountry4: number;
+    public geoRegion5: number;
+    public geoCountry5: number;
+
+    public fullness: number;
+    public enjoyment: number;
 
     public data: number[];
 
@@ -118,7 +139,7 @@ export default class Pkx {
         this.exp = data.getUint32(0x10, true);
         this.ability = pkx[0x14];
         this.abilityNum = pkx[0x15];
-        // 0x16, 0x17 - unknown
+        this.trainingBagHitsRemaining = data.getUint16(0x16, true);
         this.pid = data.getUint32(0x18, true);
         this.nature = pkx[0x1c];
         this.isFatefulEncounter = (pkx[0x1d] & 1) == 1;
@@ -138,11 +159,14 @@ export default class Pkx {
         this.contestStatSheen = pkx[0x29];
         this.markings = pkx[0x2a];
         this.pkrsStrain = pkx[0x2b] >> 4;
-        this.pkrsDuration = pkx[0x2b] % 16;
+        this.pkrsDuration = pkx[0x2b] & 0xF;
         this.ribbonSet1 = data.getUint16(0x30, true);
         this.ribbonSet2 = data.getUint16(0x32, true);
         this.ribbonSet3 = pkx[0x34];
         this.ribbonSet4 = pkx[0x35];
+        this.contestMemoryRibbonCount = pkx[0x38];
+        this.battleMemoryRibbonCount = pkx[0x39];
+        // TODO super training flags
 
         // Block B
         this.nickname = util.decodeUnicode16LE(pkx, 0x40, 24);
@@ -165,9 +189,8 @@ export default class Pkx {
         this.eggMove4 = data.getUint16(0x70, true);
 
         // TODO dump EVERYTHING
-        // 0x72 - Super Training Flag - Passed with pkx to new form
+        // TODO 0x72 - Super Training Flag - Passed with pkx to new form
 
-        // 0x73 - unused/unknown
         var IV32 = data.getUint32(0x74, true);
         this.ivHp = IV32 & 31;
         this.ivAtk = (IV32 >> 5) & 31;
@@ -180,8 +203,22 @@ export default class Pkx {
 
         // Block C
         this.notOT = util.decodeUnicode16LE(pkx, 0x78, 24);
-        var notOTG = (pkx[0x92]) != 0;
-        // Memory Editor edits everything else with pkx in a new form
+        this.notOtGender = pkx[0x92] != 0;
+        this.currentHandler = pkx[0x93] != 0;
+        this.notOtFriendship = pkx[0xa2];
+        this.notOtAffection = pkx[0xa3];
+        this.geoRegion1 = pkx[0x94];
+        this.geoCountry1 = pkx[0x95];
+        this.geoRegion2 = pkx[0x96];
+        this.geoCountry2 = pkx[0x97];
+        this.geoRegion3 = pkx[0x98];
+        this.geoCountry3 = pkx[0x99];
+        this.geoRegion4 = pkx[0x9a];
+        this.geoCountry4 = pkx[0x9b];
+        this.geoRegion5 = pkx[0x9c];
+        this.geoCountry5 = pkx[0x9d];
+        this.fullness = pkx[0xae];
+        this.enjoyment = pkx[0xaf];
 
         // Block D
         this.ot = util.decodeUnicode16LE(pkx, 0xb0, 24);
@@ -196,7 +233,7 @@ export default class Pkx {
         this.metLocation = data.getUint16(0xda, true);
         this.ball = pkx[0xdc];
         this.levelMet = pkx[0xdd] & 127;
-        this.otGender = (pkx[0xdd]) >> 7;
+        this.otGender = (pkx[0xdd] >> 7) != 0;
         this.encounterType = pkx[0xde];
         this.gameVersion = pkx[0xdf];
         this.countryID = pkx[0xe0];
