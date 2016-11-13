@@ -7,3 +7,5 @@ TED
 ???
 SPA
 COR
+CIN-S
+CIN-T

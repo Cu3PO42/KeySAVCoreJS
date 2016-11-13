@@ -7,3 +7,5 @@ DEU
 ???
 SPA
 KOR
+CHV
+CHT
