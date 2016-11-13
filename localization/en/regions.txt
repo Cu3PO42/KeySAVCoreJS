@@ -26,3 +26,5 @@ Kalos
 Kalos
 Hoenn
 Hoenn
+Alola
+Alola
