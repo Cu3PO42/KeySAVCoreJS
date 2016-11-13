@@ -7,10 +7,17 @@ import Pkx from "./pkx";
 var forms = require("./localization/forms.json"),
     locations = require("./localization/locations.json"),
     characteristics = require("./localization/characteristics.json"),
-    ribbons = require("./localization/ribbons.json");
+    ribbons = require("./localization/ribbons.json"),
+    abilities = require("./localization/abilities.json"),
+    items = require("./localization/items.json"),
+    species = require("./localization/species.json"),
+    moves = require("./localization/moves.json"),
+    games = require("./localization/games.json"),
+    types = require("./localization/types.json"),
+    natures = require("./localization/natures.json");
 
-var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
-var files = ["abilities", "countries", "forms", "games", "items", "languageTags", "moves", "natures", "regions", "species", "types"];
+var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
+var files = ["countries", "forms", "languageTags", "regions"];
 
 
 export interface LocalizationLanguage {
@@ -51,10 +58,22 @@ for (var i = 0; i < langs.length; ++i) {
     var lang = names[langs[i]] = <any>{};
 
     for (var j = 0; j < files.length; ++j) {
-        lang[files[j]] = fs.readFileSync(__dirname + "/localization/" + langs[i] + "/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
+        try {
+            lang[files[j]] = fs.readFileSync(__dirname + "/localization/" + langs[i] + "/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
+        } catch (e) {
+            lang[files[j]] = fs.readFileSync(__dirname + "/localization/en/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
+        }
     }
 
     lang.forms = forms[langs[i]];
+    lang.abilities = abilities[langs[i]];
+    lang.items = items[langs[i]];
+    lang.moves = moves[langs[i]];
+    lang.species = species[langs[i]];
+    lang.moves = moves[langs[i]];
+    lang.games = games[langs[i]];
+    lang.types = types[langs[i]];
+    lang.natures = natures[langs[i]];
 
     lang.getLocation = (function(lang) {
         return function(originGame, location) {
