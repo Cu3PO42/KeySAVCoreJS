@@ -42,6 +42,19 @@ function generateGames() {
     generateBase('Games', 'games');
 }
 
+function generateCharacteristics() {
+    const data = {};
+    for (const lang of languages) {
+        const lines = fs.readFileSync(path.join(textPath, lang, `text_Character_${lang}.txt`), 'utf-8').split(/\r?\n/);
+        const langData = [];
+        for (let i = 0; i < lines.length; i += 5) {
+            langData.push(lines.slice(i, i + 5));
+        }
+        data[lang] = langData;
+    }
+    fs.writeFileSync(path.join(localPath, 'characteristics.json'), JSON.stringify(data, null, 4), 'utf-8');
+}
+
 function generateAll() {
     generateSpecies();
     generateItems();
@@ -50,6 +63,7 @@ function generateAll() {
     generateNatures();
     generateTypes();
     generateGames();
+    generateCharacteristics();
 }
 
 if (!module.parent) {
