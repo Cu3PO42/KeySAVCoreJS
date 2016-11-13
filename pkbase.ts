@@ -1,9 +1,9 @@
-"use strict";
-
 import * as util from "./util";
 import * as LCRNG from "./lcrng";
 
-export default class Pkx {
+export default class PkBase {
+    public version: number;
+
     // Uints
     public ec: number;
     public pid: number;
@@ -26,8 +26,9 @@ export default class Pkx {
     public contestStatSmart: number;
     public contestStatTough: number;
     public contestStatSheen: number;
-    public markings: number;
     public hpType: number;
+    public markings: number;
+
 
     // Ints
     public pkrsStrain: number;
@@ -76,7 +77,6 @@ export default class Pkx {
     public regionID: number;
     public dsregID: number;
     public otLang: number;
-    public trainingBagHitsRemaining: number;
 
     // Shorts
     public box: number;
@@ -139,7 +139,6 @@ export default class Pkx {
         this.exp = data.getUint32(0x10, true);
         this.ability = pkx[0x14];
         this.abilityNum = pkx[0x15];
-        this.trainingBagHitsRemaining = data.getUint16(0x16, true);
         this.pid = data.getUint32(0x18, true);
         this.nature = pkx[0x1c];
         this.isFatefulEncounter = (pkx[0x1d] & 1) == 1;
@@ -157,7 +156,6 @@ export default class Pkx {
         this.contestStatSmart = pkx[0x27];
         this.contestStatTough = pkx[0x28];
         this.contestStatSheen = pkx[0x29];
-        this.markings = pkx[0x2a];
         this.pkrsStrain = pkx[0x2b] >> 4;
         this.pkrsDuration = pkx[0x2b] & 0xF;
         this.ribbonSet1 = data.getUint16(0x30, true);
@@ -255,29 +253,29 @@ export default class Pkx {
 
         // Deshuffle order
         var sloc = [[ 0, 1, 2, 3 ],
-                    [ 0, 1, 3, 2 ],
-                    [ 0, 2, 1, 3 ],
-                    [ 0, 3, 1, 2 ],
-                    [ 0, 2, 3, 1 ],
-                    [ 0, 3, 2, 1 ],
-                    [ 1, 0, 2, 3 ],
-                    [ 1, 0, 3, 2 ],
-                    [ 2, 0, 1, 3 ],
-                    [ 3, 0, 1, 2 ],
-                    [ 2, 0, 3, 1 ],
-                    [ 3, 0, 2, 1 ],
-                    [ 1, 2, 0, 3 ],
-                    [ 1, 3, 0, 2 ],
-                    [ 2, 1, 0, 3 ],
-                    [ 3, 1, 0, 2 ],
-                    [ 2, 3, 0, 1 ],
-                    [ 3, 2, 0, 1 ],
-                    [ 1, 2, 3, 0 ],
-                    [ 1, 3, 2, 0 ],
-                    [ 2, 1, 3, 0 ],
-                    [ 3, 1, 2, 0 ],
-                    [ 2, 3, 1, 0 ],
-                    [ 3, 2, 1, 0 ]];
+            [ 0, 1, 3, 2 ],
+            [ 0, 2, 1, 3 ],
+            [ 0, 3, 1, 2 ],
+            [ 0, 2, 3, 1 ],
+            [ 0, 3, 2, 1 ],
+            [ 1, 0, 2, 3 ],
+            [ 1, 0, 3, 2 ],
+            [ 2, 0, 1, 3 ],
+            [ 3, 0, 1, 2 ],
+            [ 2, 0, 3, 1 ],
+            [ 3, 0, 2, 1 ],
+            [ 1, 2, 0, 3 ],
+            [ 1, 3, 0, 2 ],
+            [ 2, 1, 0, 3 ],
+            [ 3, 1, 0, 2 ],
+            [ 2, 3, 0, 1 ],
+            [ 3, 2, 0, 1 ],
+            [ 1, 2, 3, 0 ],
+            [ 1, 3, 2, 0 ],
+            [ 2, 1, 3, 0 ],
+            [ 3, 1, 2, 0 ],
+            [ 2, 3, 1, 0 ],
+            [ 3, 2, 1, 0 ]];
 
         var shuffle = sloc[sv];
 
@@ -296,29 +294,29 @@ export default class Pkx {
 
         // Shuffle order
         var sloc = [[ 0, 1, 2, 3 ],
-                    [ 0, 1, 3, 2 ],
-                    [ 0, 2, 1, 3 ],
-                    [ 0, 2, 3, 1 ],
-                    [ 0, 3, 1, 2 ],
-                    [ 0, 3, 2, 1 ],
-                    [ 1, 0, 2, 3 ],
-                    [ 1, 0, 3, 2 ],
-                    [ 1, 2, 0, 3 ],
-                    [ 1, 2, 3, 0 ],
-                    [ 1, 3, 0, 2 ],
-                    [ 1, 3, 2, 0 ],
-                    [ 2, 0, 1, 3 ],
-                    [ 2, 0, 3, 1 ],
-                    [ 2, 1, 0, 3 ],
-                    [ 2, 1, 3, 0 ],
-                    [ 2, 3, 0, 1 ],
-                    [ 2, 3, 1, 0 ],
-                    [ 3, 0, 1, 2 ],
-                    [ 3, 0, 2, 1 ],
-                    [ 3, 1, 0, 2 ],
-                    [ 3, 1, 2, 0 ],
-                    [ 3, 2, 0, 1 ],
-                    [ 3, 2, 1, 0 ]];
+            [ 0, 1, 3, 2 ],
+            [ 0, 2, 1, 3 ],
+            [ 0, 2, 3, 1 ],
+            [ 0, 3, 1, 2 ],
+            [ 0, 3, 2, 1 ],
+            [ 1, 0, 2, 3 ],
+            [ 1, 0, 3, 2 ],
+            [ 1, 2, 0, 3 ],
+            [ 1, 2, 3, 0 ],
+            [ 1, 3, 0, 2 ],
+            [ 1, 3, 2, 0 ],
+            [ 2, 0, 1, 3 ],
+            [ 2, 0, 3, 1 ],
+            [ 2, 1, 0, 3 ],
+            [ 2, 1, 3, 0 ],
+            [ 2, 3, 0, 1 ],
+            [ 2, 3, 1, 0 ],
+            [ 3, 0, 1, 2 ],
+            [ 3, 0, 2, 1 ],
+            [ 3, 1, 0, 2 ],
+            [ 3, 1, 2, 0 ],
+            [ 3, 2, 0, 1 ],
+            [ 3, 2, 1, 0 ]];
 
         var shuffle = sloc[sv];
 
@@ -353,7 +351,7 @@ export default class Pkx {
             }
         }
 
-        pkx = Pkx.deshuffle(pkx, sv);
+        pkx = PkBase.deshuffle(pkx, sv);
         return pkx;
     }
 
@@ -363,7 +361,7 @@ export default class Pkx {
         var pv = util.createDataView(pkx).getUint32(0, true);
         var sv = (((pv & 0x3E000) >> 0xD) % 24);
 
-        ekx = Pkx.shuffle(ekx, sv);
+        ekx = PkBase.shuffle(ekx, sv);
 
         var seed = pv;
         var ekx16 = util.createUint16Array(ekx);
@@ -409,7 +407,7 @@ export default class Pkx {
 
     static getDloc(ec: number) {
         return [ 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0 ][
-            ((ec & 0x3E000) >> 0xD) % 24
-        ];
+        ((ec & 0x3E000) >> 0xD) % 24
+            ];
     }
 }
