@@ -14,10 +14,11 @@ var forms = require("./localization/forms.json"),
     moves = require("./localization/moves.json"),
     games = require("./localization/games.json"),
     types = require("./localization/types.json"),
-    natures = require("./localization/natures.json");
+    natures = require("./localization/natures.json"),
+    countries = require("./localization/countries.json");
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
-var files = ["countries", "forms", "languageTags", "regions"];
+var files = ["forms", "languageTags", "regions"];
 
 
 export interface LocalizationLanguage {
@@ -74,6 +75,7 @@ for (var i = 0; i < langs.length; ++i) {
     lang.games = games[langs[i]];
     lang.types = types[langs[i]];
     lang.natures = natures[langs[i]];
+    lang.countries = countries[langs[i]];
 
     lang.getLocation = (function(lang) {
         return function(originGame, location) {

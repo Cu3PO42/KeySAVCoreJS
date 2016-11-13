@@ -55,6 +55,21 @@ function generateCharacteristics() {
     fs.writeFileSync(path.join(localPath, 'characteristics.json'), JSON.stringify(data, null, 4), 'utf-8');
 }
 
+const languagesInLocale = ['ja', 'en', 'fr', 'de', 'it', 'es', 'zh', 'ko'];
+
+function generateCountries() {
+    const lines = fs.readFileSync(path.join(textPath, 'locale', 'countries.txt'), 'ucs2').split(/\r?\n/).map(l => l.split(/,/)).slice(1);
+    const res = {};
+    for (let i = 0; i < languagesInLocale.length; ++i) {
+        const lang = languagesInLocale[i];
+        const langData = res[lang] = [];
+        for (const line of lines) {
+            langData[line[0]] = line[i + 1];
+        }
+    }
+    fs.writeFileSync(path.join(localPath, 'countries.json'), JSON.stringify(res, null, 4), 'utf-8');
+}
+
 function generateAll() {
     generateSpecies();
     generateItems();
@@ -64,6 +79,7 @@ function generateAll() {
     generateTypes();
     generateGames();
     generateCharacteristics();
+    generateCountries();
 }
 
 if (!module.parent) {
