@@ -1,6 +1,6 @@
 # KeySAVCoreJS
 
-This is a library for all your Pokémon Generation 6 breaking needs. It has support for exporting data from Powersaves backups/backups from digital copies, main files as well as battle videos.
+This is a library for all your Pokémon Generation 6 and 7 breaking needs. It has support for exporting data from Powersaves backups/backups from digital copies, main files as well as battle videos.
 Basically, this is the logic part of KeySAV2 rewritten. Data is returned in the form of an object containing all relevant information about the Pokémon.
 
 A TypeScript definition file is provided for your convenience and will serve as an API documentation until a proper one is written.
