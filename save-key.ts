@@ -1,6 +1,6 @@
 "use strict";
 
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 import * as util from "./util";
 import { eggnames } from "./save-breaker";
 import SaveReaderEncrypted from "./save-reader-encrypted";
@@ -107,8 +107,8 @@ export default class SaveKey {
                 util.copy(key, 0x10, this._blank, 0xE0, 0x4);
                 var nicknameBytes = util.encodeUnicode16LE(eggnames[this._blank[0xE3] - 1]);
                 util.copy(nicknameBytes, 0, this._blank, 0x40, nicknameBytes.length);
-                Pkx.fixChk(this._blank);
-                util.copy(Pkx.encrypt(this._blank), 0, this._blank, 0, 232);
+                PkBase.fixChk(this._blank);
+                util.copy(PkBase.encrypt(this._blank), 0, this._blank, 0, 232);
             }
         }
     }

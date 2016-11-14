@@ -58,7 +58,7 @@ export default class SaveReaderEncrypted implements SaveReader {
         }
     }
 
-    getPkx(pos: number) {
+    getPkx(pos: number): PkBase {
         var res = SaveReaderEncrypted.getPkxRaw(this.activeSlot === 0 ? this.boxes1 : this.boxes2, pos, this.key), data = res[0], ghost = res[1];
         if (data === undefined || (data[8] | data[9]) == 0)
             return undefined;

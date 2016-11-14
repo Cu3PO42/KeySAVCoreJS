@@ -1,4 +1,4 @@
-import PkBase from "./pkbase";
+import PkBase, { registerPkmImpl } from "./pkbase";
 import * as util from "./util";
 
 export default class Pk7 extends PkBase {
@@ -15,3 +15,5 @@ export default class Pk7 extends PkBase {
         this.tid7 = data.getUint32(0x0C, true) % 1000000;
     }
 }
+
+registerPkmImpl(7, Pk7);

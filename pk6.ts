@@ -1,7 +1,7 @@
 "use strict";
 
 import * as util from "./util";
-import PkBase from "./pkbase";
+import PkBase, { registerPkmImpl } from "./pkbase";
 
 export default class Pk6 extends PkBase {
     // Uints
@@ -21,3 +21,5 @@ export default class Pk6 extends PkBase {
         // TODO 0x72 - Super Training Flag - Passed with pkx to new form
     }
 }
+
+registerPkmImpl(6, Pk6);
