@@ -34,6 +34,8 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
             if (view.getUint32(0x65410, true) != magic)
                 throw createNotASaveError();
             return new SaveReaderDecrypted(input, "XY");
+        case 0x6BE00:
+            return new SaveReaderDecrypted(input, "SM");
         case 232 * 30 * 32:
             return new SaveReaderDecrypted(input, "YABD");
         case 232 * 30 * 31:

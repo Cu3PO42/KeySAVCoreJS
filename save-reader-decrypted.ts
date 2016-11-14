@@ -8,6 +8,7 @@ const orasOffset = 0x33000;
 const xyOffset = 0x22600;
 const xyRamsavOffset = 0x1EF38;
 const orasRamsavOffset = 0x2F794;
+const smOffset = 0x04E00;
 
 export { default as SaveReader } from "./save-reader";
 export default class SaveReaderDecrypted implements SaveReader {
@@ -56,6 +57,10 @@ export default class SaveReaderDecrypted implements SaveReader {
         case "ORASRAM":
             this.version = 6;
             this.offset = orasRamsavOffset;
+            break;
+        case "SM":
+            this.version = 7;
+            this.offset = smOffset;
             break;
         }
     }
