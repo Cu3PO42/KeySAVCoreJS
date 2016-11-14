@@ -70,6 +70,57 @@ function generateCountries() {
     fs.writeFileSync(path.join(localPath, 'countries.json'), JSON.stringify(res, null, 4), 'utf-8');
 }
 
+function arrToObj(arr, obj, offset) {
+    if (!offset) offset = 0;
+    return arr.reduce(function(o, v, i) {
+        if (v !== '')
+            o[i+offset] = v;
+        return o;
+    }, obj || {});
+}
+
+function readLocations(name, lang, obj, offset) {
+    const lines = fs.readFileSync(path.join(textPath, lang, `text_${name}_${lang}.txt`), 'utf-8').split(/\r?\n/);
+    return arrToObj(lines, obj, offset);
+}
+
+function generateLocations() {
+    var res = {};
+    for (const lang of languages) {
+        const langData = res[lang] = {};
+
+        /*langData.hgss = readLocations('hgss_00000', lang);
+        readLocations('hgss_02000', lang, langData.hgss, 2000);
+        readLocations('hgss_03000', lang, langData.hgss, 3000);*/
+
+        langData.bw2 = readLocations('bw2_00000', lang);
+        readLocations('bw2_30000', lang, langData.bw2, 30000+1);
+        readLocations('bw2_40000', lang, langData.bw2, 40000+1);
+        readLocations('bw2_60000', lang, langData.bw2, 60000+1);
+
+        langData.xy = readLocations('xy_00000', lang);
+        readLocations('xy_30000', lang, langData.xy, 30000+1);
+        readLocations('xy_40000', lang, langData.xy, 40000+1);
+        readLocations('xy_60000', lang, langData.xy, 60000+1);
+
+        // I have no idea why this is neccessary, see PKHeX/PKHeX/Game/GameInfo.cs#Sanitize
+        const sm0 = fs.readFileSync(path.join(textPath, lang, `text_sm_00000_${lang}.txt`), 'utf-8').split(/\r?\n/);
+        const sm0Copy = sm0.slice(0);
+        for (let i = 0; i < sm0.length; i += 2) {
+          const nextLoc = sm0[i + 1];
+          if (/\S/.test(nextLoc) && nextLoc.charAt(0) !== '[') {
+            sm0Copy[i] += ` (${nextLoc})`;
+          }
+        }
+        langData.sm = arrToObj(sm0Copy, {});
+        readLocations('sm_30000', lang, langData.sm, 30000+1);
+        readLocations('sm_40000', lang, langData.sm, 40000+1);
+        readLocations('sm_60000', lang, langData.sm, 60000+1);
+    }
+
+    fs.writeFileSync(path.join(localPath, 'locations.json'), JSON.stringify(res, null, 4), 'utf-8');
+}
+
 function generateAll() {
     generateSpecies();
     generateItems();
@@ -80,6 +131,7 @@ function generateAll() {
     generateGames();
     generateCharacteristics();
     generateCountries();
+    generateLocations();
 }
 
 if (!module.parent) {

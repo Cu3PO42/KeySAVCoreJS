@@ -88,14 +88,14 @@ for (var i = 0; i < langs.length; ++i) {
                     return "";
                 }
             }
-            if (originGame < 13 && originGame > 6) {
-                return locations[lang].hgss[location];
-            }
             if (originGame < 24) {
                 return locations[lang].bw2[location];
             }
             if (originGame > 23) {
                 return locations[lang].xy[location];
+            }
+            if (originGame > 27) {
+                return locations[lang].sm[location];
             }
         };
     })(langs[i]);
