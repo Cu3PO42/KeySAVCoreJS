@@ -121,16 +121,50 @@ function generateLocations() {
     fs.writeFileSync(path.join(localPath, 'locations.json'), JSON.stringify(res, null, 4), 'utf-8');
 }
 
-function migrateLegacy() {
-    for (const file of fs.readdirSync(path.join(localPath, 'en'))) {
-      const res = {};
+function generateForms() {
+    const pkmFile = fs.readFileSync(path.join(pkhexPath, 'PKHeX', 'PKM', 'PKX.cs'), 'utf-8');
+    const startIndex = pkmFile.indexOf('public static string[] getFormList(int species, string[] t, string[] f, string[] g, int generation = 6)');
+    const startOfCodeIndex = pkmFile.indexOf('{', startIndex);
+    const endOfCodeIndex = pkmFile.indexOf('\n        }', startIndex);
+    const functionCode = pkmFile.substring(startOfCodeIndex + 1, endOfCodeIndex);
+    const patchedCode = functionCode
+        .replace(/new\[\]/g, '')
+        .replace(/^( {16}(?: {4})?(?: {4})?)\{/gm, '$1[')
+        .replace(/^( {16}(?: {4})?(?: {4})?)\}/gm, '$1]')
+        .replace('{""}', '[""]')
+        .replace('Array.IndexOf(', '')
+        .replace('], species) > -1', '].includes(species)')
+        .replace(/return +\r?\n +\[/g, 'return [')
+    const formGetter = new Function('species', 't', 'f', 'g', 'generation', patchedCode);
 
-      for (const lang of languages) {
-        res[lang] = fs.readFileSync(path.join(localPath, lang, file), 'utf-8').split(/\r?\n/);
-      }
+    const res = {};
+    for (const lang of languages) {
+        const langData = res[lang] = {};
+        const types = fs.readFileSync(path.join(textPath, lang, `text_Types_${lang}.txt`), 'utf-8').split(/\r?\n/);
+        const forms = fs.readFileSync(path.join(textPath, lang, `text_Forms_${lang}.txt`), 'ucs2').split(/\r?\n/);
 
-      fs.writeFileSync(path.join(localPath, path.basename(file, '.txt') + '.json'), JSON.stringify(res, null, 4), 'utf-8');
+        for (let i = 0; i < 804; ++i) {
+            const formsForPkm = formGetter(i, types, forms, ['♂', '♀', '-'], 7);
+            if (formsForPkm.length !== 1 || formsForPkm[0] !== '') {
+              langData[i] = formsForPkm;
+            }
+        }
     }
+    fs.writeFileSync(path.join(localPath, 'forms7.json'), JSON.stringify(res, null, 4), 'utf-8');
+}
+
+function migrateLegacy() {
+    try {
+        for (const file of fs.readdirSync(path.join(localPath, 'en'))) {
+          const res = {};
+
+          for (const lang of languages) {
+            res[lang] = fs.readFileSync(path.join(localPath, lang, file), 'utf-8').split(/\r?\n/);
+          }
+
+          fs.writeFileSync(path.join(localPath, path.basename(file, '.txt') + '.json'), JSON.stringify(res, null, 4), 'utf-8');
+        }
+    } catch (e) {}
 }
 
 function generateAll() {
@@ -145,6 +179,7 @@ function generateAll() {
     generateCharacteristics();
     generateCountries();
     generateLocations();
+    generateForms();
 }
 
 if (!module.parent) {

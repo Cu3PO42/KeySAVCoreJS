@@ -4,7 +4,8 @@
 
 import * as fs from "fs";
 import Pkx from "./pkx";
-var forms = require("./localization/forms.json"),
+var forms6 = require("./localization/forms6.json"),
+    forms7 = require("./localization/forms7.json"),
     locations = require("./localization/locations.json"),
     characteristics = require("./localization/characteristics.json"),
     ribbons = require("./localization/ribbons.json"),
@@ -24,7 +25,8 @@ var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
 export interface LocalizationLanguage {
     abilities: string[];
     countries: string[];
-    forms: string[][];
+    forms6: string[][];
+    forms7: string[][];
     games: string[];
     items: string[];
     languageTags: string[];
@@ -58,7 +60,8 @@ var names: Localization = <any>{};
 for (var i = 0; i < langs.length; ++i) {
     var lang = names[langs[i]] = <any>{};
 
-    lang.forms = forms[langs[i]];
+    lang.forms6 = forms6[langs[i]];
+    lang.forms7 = forms7[langs[i]];
     lang.abilities = abilities[langs[i]];
     lang.items = items[langs[i]];
     lang.moves = moves[langs[i]];
