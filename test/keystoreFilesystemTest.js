@@ -4,7 +4,8 @@ var SaveKey = require("../save-key").default;
 var BattleVideoKey = require("../battle-video-key").default;
 var fs = require("fs-extra");
 var util = require("../util");
-var Pkx = require("../pkx").default;
+var PkBase = require("../pkbase").default;
+var Pk6 = require("../pk6").default;
 var Promise = require("bluebird");
 
 var mkdir = Promise.promisify(fs.mkdir),
@@ -24,7 +25,7 @@ function keyEqual(key1, key2) {
     assert.equal(util.sequenceEqual(key2.blank, key1.blank), true);
     assert.equal(util.sequenceEqual(key2.slot1Key, key1.slot1Key), true);
     var zeros = new Uint8Array(232);
-    var validSlots = [zeros, Pkx.encrypt(zeros), key1.blank];
+    var validSlots = [zeros, PkBase.encrypt(zeros), key1.blank];
     var key11 = util.createUint32Array(key1.boxKey1);
     var key12 = util.createUint32Array(key1.boxKey2);
     var key21 = util.createUint32Array(key2.boxKey1);
@@ -39,7 +40,7 @@ function keyEqual(key1, key2) {
 
 var savKey = new SaveKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
 var bvKey = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
-var mudkip = new Pkx(bufferToUint8Array(fs.readFileSync(__dirname + "/data/mudkip.pk6")));
+var mudkip = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/mudkip.pk6")));
 
 describe("KeyStoreFileSystem", function() {
     describe("#getSaveKey()", function() {

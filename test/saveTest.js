@@ -2,7 +2,8 @@ var assert = require("assert");
 var SaveReaderDecrypted = require("../save-reader-decrypted").default;
 var SaveReaderEncrypted = require("../save-reader-encrypted").default;
 var SaveBreaker = require("../save-breaker");
-var Pkx = require("../pkx").default;
+var PkBase = require("../pkbase").default;
+var Pk6 = require("../pk6").default;
 var fs = require("fs");
 var KeyStoreMemory = require("./support/key-store-memory").default;
 var setKeyStore = require("../key-store").setKeyStore;
@@ -20,7 +21,7 @@ function keyEqual(key1, key2) {
     assert.equal(util.sequenceEqual(key2.blank, key1.blank), true);
     assert.equal(util.sequenceEqual(key2.slot1Key, key1.slot1Key), true);
     var zeros = new Uint8Array(232);
-    var validSlots = [zeros, Pkx.encrypt(zeros), keyNew.blank];
+    var validSlots = [zeros, PkBase.encrypt(zeros), keyNew.blank];
     var key11 = util.createUint32Array(key1.boxKey1);
     var key12 = util.createUint32Array(key1.boxKey2);
     var key21 = util.createUint32Array(key2.boxKey1);
@@ -47,7 +48,7 @@ describe("SaveReaderDecrypted", function() {
     describe("#getPkx()", function() {
         it("should get a Pk6 from a raw save file", function() {
             var reader = new SaveReaderDecrypted(main, "ORAS");
-            assert.deepEqual(reader.getPkx(3), new Pkx(mudkip, 0, 3, false));
+            assert.deepEqual(reader.getPkx(3), new Pk6(mudkip, 0, 3, false));
         });
     });
 });

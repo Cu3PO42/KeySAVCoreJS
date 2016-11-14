@@ -1,5 +1,5 @@
 var assert = require("assert");
-var Pkx = require("../pkx").default;
+var Pk6 = require("../pk6").default;
 var BattleVideoBreaker = require("../battle-video-breaker");
 var fs = require("fs");
 var KeyStoreMemory = require("./support/key-store-memory").default;
@@ -32,8 +32,8 @@ var video3 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1"))
 var video4 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2"));
 var key = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
 var keyWithoutOpponent = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-without-opponent.bin")));
-var honedge = new Pkx(bufferToUint8Array(fs.readFileSync(__dirname + "/data/honedge.pk6")), -1, 0, false);
-var garchomp = new Pkx(bufferToUint8Array(fs.readFileSync(__dirname + "/data/garchomp.pk6")), -1, 0, false);
+var honedge = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/honedge.pk6")), -1, 0, false);
+var garchomp = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/garchomp.pk6")), -1, 0, false);
 
 describe("BattleVideoBreaker", function() {
     describe("#breakKey()", function() {
