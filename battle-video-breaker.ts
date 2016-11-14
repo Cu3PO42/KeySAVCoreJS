@@ -3,7 +3,7 @@
 import BattleVideoReader from "./battle-video-reader";
 import { getKeyStore } from "./key-store";
 import * as util from "./util";
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 import BattleVideoKey from "./battle-video-key";
 
 export async function load(input: Uint8Array): Promise<BattleVideoReader> {
@@ -16,7 +16,7 @@ export async function load(input: Uint8Array): Promise<BattleVideoReader> {
     return new BattleVideoReader(input, key);
 }
 
-var encryptedZeros = Pkx.encrypt(new Uint8Array(260));
+var encryptedZeros = PkBase.encrypt(new Uint8Array(260));
 
 function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number, key: Uint8Array): boolean {
     // The teams from the two videos XORed together
@@ -24,8 +24,8 @@ function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number,
 
     // Retrieve data for the Pokémon that is in slot 1 in video 1 and slot 2 in video 2
     var ekx = util.xor(encryptedZeros, 0, partyXored, 260, 260);
-    var pkx = Pkx.decrypt(ekx);
-    if (!Pkx.verifyChk(pkx) || (pkx[0x8] | pkx[0x9]) === 0) {
+    var pkx = PkBase.decrypt(ekx);
+    if (!PkBase.verifyChk(pkx) || (pkx[0x8] | pkx[0x9]) === 0) {
         return false;
     }
 

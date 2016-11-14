@@ -5,7 +5,7 @@ import SaveKey from "./save-key";
 import SaveReaderEncrypted from "./save-reader-encrypted";
 import SaveReaderDecrypted from "./save-reader-decrypted";
 import { getKeyStore } from "./key-store";
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 import * as util from "./util";
 
 const magic = 0x42454546;
@@ -45,7 +45,7 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
     }
 }
 
-function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { result: number, pkx?: Pkx} {
+function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { result: number, pkx?: PkBase} {
     var reader1: SaveReader, reader2: SaveReader;
     var dataView1: DataView, dataView2: DataView;
 
@@ -96,7 +96,7 @@ function checkLength(file: Uint8Array) {
 
 export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<string> {
     var emptyPkx = new Uint8Array(232);
-    var emptyEkx = Pkx.encrypt(emptyPkx);
+    var emptyEkx = PkBase.encrypt(emptyPkx);
     var key: SaveKey;
     var boxes1: Uint8Array, boxes2: Uint8Array;
     var boxesDataView1: DataView, boxesDataView2: DataView;
@@ -210,8 +210,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         let encryptionConstant = util.createDataView(incompleteEkx).getUint32(0, true);
 
         // If Block D is last, the location data wouldn't be correct and we need that to fix the keystream.
-        if (Pkx.getDloc(encryptionConstant) != 3) {
-            var incompletePkx = Pkx.decrypt(incompleteEkx);
+        if (PkBase.getDloc(encryptionConstant) != 3) {
+            var incompletePkx = PkBase.decrypt(incompleteEkx);
             if (incompletePkx[0xE3] >= 8) {
                 console.log('uhm, this shouldn\'t happen');
                 continue;
@@ -236,8 +236,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     }
 
     // This is now the complete blank pkx.
-    Pkx.fixChk(emptyPkx);
-    emptyEkx = Pkx.encrypt(emptyPkx);
+    PkBase.fixChk(emptyPkx);
+    emptyEkx = PkBase.encrypt(emptyPkx);
 
     key.setStamp(break1);
     key.blank = emptyEkx;
@@ -245,19 +245,19 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
     var result = upgradeKey(key, break1, break2);
     var zeros = new Uint8Array(232);
-    var ezeros = Pkx.encrypt(zeros);
+    var ezeros = PkBase.encrypt(zeros);
     if (result.result === 2) {
         // Set the keys for slots 1-6 in boxes 1 and 2
         for (let i of indices) {
             for (let empty of [ezeros, emptyEkx]) {
-                if (Pkx.verifyChk(Pkx.decrypt(util.xorThree(boxes1, i + 232 * 30, empty, 0, boxes2, i + 232 * 30, 232)))) {
+                if (PkBase.verifyChk(PkBase.decrypt(util.xorThree(boxes1, i + 232 * 30, empty, 0, boxes2, i + 232 * 30, 232)))) {
                     util.copy(zeros, 0, key.boxKey1, i + 232 * 30, 232);
                     util.xor(boxes1, i + 232 * 30, empty, 0, key.boxKey2, i + 232 * 30, 232);
                     break;
                 }
             }
             for (let empty of [ezeros, emptyEkx]) {
-                if (Pkx.verifyChk(Pkx.decrypt(util.xorThree(boxes2, i, empty, 0, boxes1, i, 232)))) {
+                if (PkBase.verifyChk(PkBase.decrypt(util.xorThree(boxes2, i, empty, 0, boxes1, i, 232)))) {
                     util.copy(zeros, 0, key.boxKey1, i, 232);
                     util.xor(boxes2, i, empty, 0, key.boxKey2, i, 232);
                     break;

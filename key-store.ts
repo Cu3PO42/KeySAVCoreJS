@@ -2,7 +2,6 @@
 
 import SaveKey from "./save-key";
 import BattleVideoKey from "./battle-video-key";
-import Pkx from "./pkx";
 
 export interface KeyStore {
     getSaveKey(stamp: string): Promise<SaveKey>;

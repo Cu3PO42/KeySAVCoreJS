@@ -1,5 +1,7 @@
 import * as util from "./util";
 import * as LCRNG from "./lcrng";
+import Pk6 from "./pk6";
+import Pk7 from "./pk7";
 
 export default class PkBase {
     public version: number;
@@ -245,6 +247,10 @@ export default class PkBase {
         this.esv = (((((this.pid >> 16) & 65535) ^ (this.pid & 65535)) >> 4) & 0xFFFF);
 
         this.isShiny = (this.tsv == this.esv);
+    }
+
+    static makePkm(pkx: Uint8Array, generation: number, box: number, slot: number, ghost: boolean) {
+        return new (generation === 6 ? Pk6 : Pk7)(pkx, box, slot, ghost);
     }
 
     static deshuffle(pkx: Uint8Array, sv: number) {

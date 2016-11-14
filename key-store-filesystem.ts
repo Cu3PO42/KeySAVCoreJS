@@ -9,7 +9,6 @@ import { createHash } from "crypto";
 import KeyStore from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
-import Pkx from "./pkx";
 import {getStampSav, pad4, pad5, getStampBv} from "./util";
 import BattleVideoKey from "./battle-video-key";
 

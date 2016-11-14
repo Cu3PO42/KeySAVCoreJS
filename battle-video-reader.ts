@@ -1,5 +1,5 @@
 "use strict";
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 import * as util from "./util";
 import BattleVideoKey from "./battle-video-key";
 
@@ -13,7 +13,7 @@ export default class BattleVideoReader {
         return this.key.dumpsOpponent;
     }
 
-    getPkx(slot: number, isOpponent: boolean): Pkx {
+    getPkx(slot: number, isOpponent: boolean): PkBase {
         var ekx, pkx;
         if (isOpponent) {
             if (!this.dumpsOpponent)
@@ -22,11 +22,11 @@ export default class BattleVideoReader {
         } else {
             ekx = util.xor(this.video, BattleVideoReader.myTeamOffset + 260 * slot, this.key.myTeamKey, 260 * slot, 260);
         }
-        pkx = Pkx.decrypt(ekx);
-        if ( !Pkx.verifyChk(pkx) || util.empty(pkx)) {
+        pkx = PkBase.decrypt(ekx);
+        if ( !PkBase.verifyChk(pkx) || util.empty(pkx)) {
             return undefined;
         }
-        return new Pkx(pkx, -1, slot, false);
+        return PkBase.makePkm(pkx, 6, -1, slot, false);
     }
 
     getAllPkx() {
