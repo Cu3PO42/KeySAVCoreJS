@@ -121,7 +121,20 @@ function generateLocations() {
     fs.writeFileSync(path.join(localPath, 'locations.json'), JSON.stringify(res, null, 4), 'utf-8');
 }
 
+function migrateLegacy() {
+    for (const file of fs.readdirSync(path.join(localPath, 'en'))) {
+      const res = {};
+
+      for (const lang of languages) {
+        res[lang] = fs.readFileSync(path.join(localPath, lang, file), 'utf-8').split(/\r?\n/);
+      }
+
+      fs.writeFileSync(path.join(localPath, path.basename(file, '.txt') + '.json'), JSON.stringify(res, null, 4), 'utf-8');
+    }
+}
+
 function generateAll() {
+    migrateLegacy();
     generateSpecies();
     generateItems();
     generateAbilities();

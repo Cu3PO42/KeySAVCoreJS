@@ -15,11 +15,11 @@ var forms = require("./localization/forms.json"),
     games = require("./localization/games.json"),
     types = require("./localization/types.json"),
     natures = require("./localization/natures.json"),
-    countries = require("./localization/countries.json");
+    countries = require("./localization/countries.json"),
+    languageTags = require("./localization/languageTags.json"),
+    regions = require("./localization/regions.json");
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
-var files = ["forms", "languageTags", "regions"];
-
 
 export interface LocalizationLanguage {
     abilities: string[];
@@ -58,14 +58,6 @@ var names: Localization = <any>{};
 for (var i = 0; i < langs.length; ++i) {
     var lang = names[langs[i]] = <any>{};
 
-    for (var j = 0; j < files.length; ++j) {
-        try {
-            lang[files[j]] = fs.readFileSync(__dirname + "/localization/" + langs[i] + "/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
-        } catch (e) {
-            lang[files[j]] = fs.readFileSync(__dirname + "/localization/en/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
-        }
-    }
-
     lang.forms = forms[langs[i]];
     lang.abilities = abilities[langs[i]];
     lang.items = items[langs[i]];
@@ -76,6 +68,8 @@ for (var i = 0; i < langs.length; ++i) {
     lang.types = types[langs[i]];
     lang.natures = natures[langs[i]];
     lang.countries = countries[langs[i]];
+    lang.languageTags = languageTags[langs[i]];
+    lang.regions = regions[langs[i]];
 
     lang.getLocation = (function(lang) {
         return function(originGame, location) {
