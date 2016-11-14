@@ -11,7 +11,7 @@ export default class Pk7 extends PkBase {
 
         const data: DataView = util.createDataView(pkx);
 
-        this.markings = pkx[0x16];
+        this.markings = data.getUint16(0x16);
         this.tid7 = data.getUint32(0x0C, true) % 1000000;
     }
 }
