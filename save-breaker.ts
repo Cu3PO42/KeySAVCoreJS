@@ -2,7 +2,7 @@
 
 import SaveReader from "./save-reader";
 import SaveKey from "./save-key";
-import SaveReaderEncrypted, { getOffsets } from "./save-reader-encrypted";
+import SaveReaderEncrypted from "./save-reader-encrypted";
 import SaveReaderDecrypted from "./save-reader-decrypted";
 import { getKeyStore } from "./key-store";
 import PkBase from "./pkbase";
@@ -25,13 +25,13 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
             input = input.subarray(input.length - 0x100000);
         case 0x100000:
             var key = await getKeyStore().getSaveKey(util.getStampSav(input, 0x10));
-            return new SaveReaderEncrypted(input, key, 6);
+            return new SaveReaderEncrypted(input, key);
         case 0x0fe09c:
         case 0x0fe19a:
             input = input.subarray(input.length - 0x0fe000);
         case 0xfe000:
             var key = await getKeyStore().getSaveKey(util.getStampSav(input, 0x10));
-            return new SaveReaderEncrypted(input, key, 7);
+            return new SaveReaderEncrypted(input, key);
         case 0x76000:
             if (view.getUint32(0x75E10, true) != magic)
                 throw createNotASaveError();
@@ -53,16 +53,6 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
     }
 }
 
-function getGeneration(file: Uint8Array) {
-    let length = file.length;
-    if (length === 0x100000 || length === 0x10009C || length === 0x10019A) {
-        return 6;
-    }
-    if (length === 0x0fe000 || length === 0x0fe09c || length === 0x0fe19a) {
-        return 7;
-    }
-    return -1;
-}
 
 
 function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { result: number, pkx?: PkBase} {
@@ -72,12 +62,12 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     dataView1 = util.createDataView(break1);
     dataView2 = util.createDataView(break2);
 
-    const offsets = getOffsets(getGeneration(break1));
+    const offsets = SaveReaderEncrypted.getOffsets(SaveReaderEncrypted.getGeneration(break1));
 
     if (key.isNewKey) {
         // Scan the two saves to improve the key.
-        reader1 = new SaveReaderEncrypted(break1, key, getGeneration(break1)); reader1.scanSlots();
-        reader2 = new SaveReaderEncrypted(break2, key, getGeneration(break1)); reader2.scanSlots();
+        reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
+        reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
         // We already have a key.
         return { result: 0 };
     }
@@ -89,8 +79,8 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
         // We have written to slot 2 in the second save and as such to slot 1 in the first save
         key.slot1Flag = dataView1.getUint32(0x168, true);
     } else {
-        reader1 = new SaveReaderEncrypted(break1, key, getGeneration(break1)); reader1.scanSlots();
-        reader2 = new SaveReaderEncrypted(break2, key, getGeneration(break1)); reader2.scanSlots();
+        reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
+        reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
         // The saves are seperated by more than one save. Couldn't upgrade to a new style key.
         return {
             result: 1,
@@ -101,8 +91,8 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     // This XORpad can encode/decode between slot 1 and slot 2 data.
     util.xor(break1, key.boxOffset, break1, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232*30*31);
 
-    reader1 = new SaveReaderEncrypted(break1, key, getGeneration(break1)); reader1.scanSlots();
-    reader2 = new SaveReaderEncrypted(break2, key, getGeneration(break1)); reader2.scanSlots();
+    reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
+    reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
 
     // Successfully upgraded to a new style key.
     return {
@@ -119,7 +109,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     var boxes1: Uint8Array, boxes2: Uint8Array;
     var boxesDataView1: DataView, boxesDataView2: DataView;
 
-    const generation1 = getGeneration(break1);
+    const generation1 = SaveReaderEncrypted.getGeneration(break1);
     if (generation1 === -1) {
         let e = new Error("File 1 is not a valid save file.") as any;
         e.name = "NotASaveError";
@@ -127,7 +117,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         throw e;
     }
 
-    const generation2 = getGeneration(break2);
+    const generation2 = SaveReaderEncrypted.getGeneration(break2);
     if (generation2 === -1) {
         let e = new Error("File 2 is not a valid save file.") as any;
         e.name = "NotASaveError";
@@ -141,7 +131,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
         throw e;
     }
 
-    const offsets = getOffsets(generation1);
+    const offsets = SaveReaderEncrypted.getOffsets(generation1);
 
     break1 = break1.subarray(break1.length % offsets.fileSize);
     break2 = break2.subarray(break2.length % offsets.fileSize);

@@ -92,7 +92,6 @@ describe("BattleVideoBreaker", function() {
             return BattleVideoBreaker.breakKey(video5, video6).then(function() {
                 return BattleVideoBreaker.load(video5);
             }).then(function (reader) {
-                console.log(reader.getPkx(0, false));
             });
         });
     });

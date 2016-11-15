@@ -8,28 +8,42 @@ import * as util from "./util";
 var zeros = new Uint8Array(232);
 var ezeros = PkBase.encrypt(zeros);
 
-export function getOffsets(generation: number) {
-    return {
-        6: {
-            fileSize: 0x100000,
-            saveSize: 0x07f000,
-            base1: 0x1000,
-            base2: 0x080000
-        },
-        7: {
-            fileSize: 0x0fe000,
-            saveSize: 0x07e000,
-            base1: 0x2000,
-            base2: 0x080000
-        }
-    }[generation];
-}
 
 export { default as SaveReader } from "./save-reader";
 export default class SaveReaderEncrypted implements SaveReader {
+    public static getOffsets(generation: number) {
+        return {
+            6: {
+                fileSize: 0x100000,
+                saveSize: 0x07f000,
+                base1: 0x1000,
+                base2: 0x080000
+            },
+            7: {
+                fileSize: 0x0fe000,
+                saveSize: 0x07e000,
+                base1: 0x2000,
+                base2: 0x080000
+            }
+        }[generation];
+    }
+
+    public static getGeneration(file: Uint8Array) {
+        let length = file.length;
+        if (length === 0x100000 || length === 0x10009C || length === 0x10019A) {
+            return 6;
+        }
+        if (length === 0x0fe000 || length === 0x0fe09c || length === 0x0fe19a) {
+            return 7;
+        }
+        return -1;
+    }
+
     private activeSlot: number;
     private boxes1: Uint8Array;
     private boxes2: Uint8Array;
+
+    public version: number;
 
     get unlockedSlots() {
         var res = 0;
@@ -43,8 +57,9 @@ export default class SaveReaderEncrypted implements SaveReader {
         return this.key.isNewKey;
     }
 
-    constructor(private sav: Uint8Array, private key: SaveKey, public version: number) {
-        const offsets = getOffsets(this.version);
+    constructor(private sav: Uint8Array, private key: SaveKey) {
+        this.version = SaveReaderEncrypted.getGeneration(sav);
+        const offsets = SaveReaderEncrypted.getOffsets(this.version);
 
         this.sav = this.sav.subarray(this.sav.length % offsets.fileSize);
         this.activeSlot = this.key.slot1Flag == util.createDataView(sav).getUint32(0x168, true) && this.key.isNewKey ? 0 : 1;

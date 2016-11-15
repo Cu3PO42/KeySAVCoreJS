@@ -2,8 +2,8 @@
 
 "use strict";
 
-import * as fs from "fs";
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
+
 var forms6 = require("./localization/forms6.json"),
     forms7 = require("./localization/forms7.json"),
     locations = require("./localization/locations.json"),
@@ -36,12 +36,12 @@ export interface LocalizationLanguage {
     species: string[];
     types: string[];
 
-    getLocation(pkm: Pkx): string;
+    getLocation(pkm: PkBase): string;
     getLocation(gameVersion: number, location: number): string;
-    getEggLocation(pkm: Pkx): string;
-    getRibbons(pkm: Pkx): string[];
+    getEggLocation(pkm: PkBase): string;
+    getRibbons(pkm: PkBase): string[];
     getBallName(ball: number): string;
-    getCharacteristic(pkm: Pkx): string;
+    getCharacteristic(pkm: PkBase): string;
 }
 
 export interface Localization {
@@ -134,7 +134,7 @@ for (var i = 0; i < langs.length; ++i) {
     })(lang);
 
     lang.getCharacteristic = (function(lang) {
-        return function(pkx: Pkx) {
+        return function(pkx: PkBase) {
             const ivs = [pkx.ivHp, pkx.ivAtk, pkx.ivDef, pkx.ivSpe, pkx.ivSpAtk, pkx.ivSpDef];
             const max = Math.max.apply(Math, ivs);
             const maxVals = ivs.map(iv => iv === max ? max : undefined);

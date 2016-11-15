@@ -41,6 +41,8 @@ var sav165 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165.bin"));
 var sav26 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/26.bin"));
 var savFull1 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/full-1.bin"));
 var savFull2 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/full-2.bin"));
+var sav16SM = bufferToUint8Array(fs.readFileSync(__dirname + "/data/16-sm.sav"));
+var sav165SM = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165-sm.sav"));
 var keyNew = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
 var keyOld = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-old.bin")));
 
@@ -72,7 +74,7 @@ describe("SaveBreaker", function() {
     });
 
     describe("#breakKey()", function() {
-        it("should create a new style key from two appropriate saves", function() {
+        it("should create a new style key from two appropriate saves (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
@@ -82,7 +84,7 @@ describe("SaveBreaker", function() {
             });
         });
 
-        it("should create an old style key from two appropriate saves", function() {
+        it("should create an old style key from two appropriate saves (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav26).then(function(res) {
@@ -92,7 +94,7 @@ describe("SaveBreaker", function() {
             });
         });
 
-        it("should create an old style key if the saves are in the reverse order", function() {
+        it("should create an old style key if the saves are in the reverse order (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav26, sav16).then(function(res) {
@@ -102,7 +104,7 @@ describe("SaveBreaker", function() {
             });
         });
 
-        it("should upgrade an old style key to a new style key", function () {
+        it("should upgrade an old style key to a new style key (Gen 6)", function () {
             var store = new KeyStoreMemory();
             store.setSaveKeyManually(new SaveKey(new Uint8Array(keyOld.keyData)));
             setKeyStore(store);
@@ -113,7 +115,7 @@ describe("SaveBreaker", function() {
             });
         });
 
-        it("should break a key that can be used to dump the first six slots", function() {
+        it("should break a key that can be used to dump the first six slots (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16, sav165).then(function(res) {
