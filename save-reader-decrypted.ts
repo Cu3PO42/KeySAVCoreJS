@@ -20,7 +20,7 @@ export default class SaveReaderDecrypted implements SaveReader {
     }
 
     get unlockedSlots() {
-        return 930;
+        return this.version === 6 ? 930 : 960;
     }
 
     get isNewKey() {
@@ -80,7 +80,7 @@ export default class SaveReaderDecrypted implements SaveReader {
     getAllPkx() {
         var res = [];
         var tmp;
-        for (var i = 0; i < 930; ++i) {
+        for (var i = 0; i < (this.version === 6 ? 930 : 960); ++i) {
             tmp = this.getPkx(i);
             if (tmp !== undefined) {
                 res.push(tmp);

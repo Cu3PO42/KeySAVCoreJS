@@ -8,12 +8,28 @@ import * as util from "./util";
 var zeros = new Uint8Array(232);
 var ezeros = PkBase.encrypt(zeros);
 
+export function getOffsets(generation: number) {
+    return {
+        6: {
+            fileSize: 0x100000,
+            saveSize: 0x07f000,
+            base1: 0x1000,
+            base2: 0x080000
+        },
+        7: {
+            fileSize: 0x0fe000,
+            saveSize: 0x07e000,
+            base1: 0x2000,
+            base2: 0x080000
+        }
+    }[generation];
+}
+
 export { default as SaveReader } from "./save-reader";
 export default class SaveReaderEncrypted implements SaveReader {
     private activeSlot: number;
     private boxes1: Uint8Array;
     private boxes2: Uint8Array;
-    public version: number;
 
     get unlockedSlots() {
         var res = 0;
@@ -27,13 +43,13 @@ export default class SaveReaderEncrypted implements SaveReader {
         return this.key.isNewKey;
     }
 
-    constructor(private sav: Uint8Array, private key: SaveKey) {
-        this.sav = this.sav.subarray(this.sav.length % 0x100000);
-        this.activeSlot = this.key.slot1Flag == util.createDataView(sav).getUint32(0x168, true) && this.key.isNewKey ? 0 : 1;
-        this.boxes1 = util.xor(this.sav, key.boxOffset - 0x7F000, key.slot1Key, 0, 232 * 30 * 31);
-        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * 31);
+    constructor(private sav: Uint8Array, private key: SaveKey, public version: number) {
+        const offsets = getOffsets(this.version);
 
-        this.version = 6; // TODO gen 7 support
+        this.sav = this.sav.subarray(this.sav.length % offsets.fileSize);
+        this.activeSlot = this.key.slot1Flag == util.createDataView(sav).getUint32(0x168, true) && this.key.isNewKey ? 0 : 1;
+        this.boxes1 = util.xor(this.sav, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232 * 30 * 31);
+        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * (this.version === 6 ? 31 : 32));
     }
 
     scanSlots(pos1?: number, pos2?: number) {
@@ -43,7 +59,7 @@ export default class SaveReaderEncrypted implements SaveReader {
             }
         } else {
             pos1 = 0;
-            pos2 = 31 * 30;
+            pos2 = (this.version === 6 ? 31 : 32) * 30;
         }
 
         if (this.key.isNewKey) {
@@ -68,7 +84,7 @@ export default class SaveReaderEncrypted implements SaveReader {
     getAllPkx() {
         var res = [];
         var tmp;
-        for (var i = 0; i < 930; ++i) {
+        for (var i = 0; i < (this.version === 6 ? 930 : 960); ++i) {
             tmp = this.getPkx(i);
             if (tmp !== undefined) {
                 res.push(tmp);
