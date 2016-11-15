@@ -7,7 +7,7 @@ import PkBase from "./pkbase";
 import BattleVideoKey from "./battle-video-key";
 
 export async function load(input: Uint8Array): Promise<BattleVideoReader> {
-    if (input.length !== 0x6E60) {
+    if (BattleVideoReader.getGeneration(input) === -1) {
         var e = new Error("The supplied data is not a valid battle video.") as any;
         e.name = "NotABattleVideoError";
         throw e;
@@ -18,6 +18,8 @@ export async function load(input: Uint8Array): Promise<BattleVideoReader> {
 
 var encryptedZeros = PkBase.encrypt(new Uint8Array(260));
 
+
+
 function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number, key: Uint8Array): boolean {
     // The teams from the two videos XORed together
     var partyXored = util.xor(video1, partyOffset, video2, partyOffset, 260*6);
@@ -25,7 +27,8 @@ function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number,
     // Retrieve data for the Pokémon that is in slot 1 in video 1 and slot 2 in video 2
     var ekx = util.xor(encryptedZeros, 0, partyXored, 260, 260);
     var pkx = PkBase.decrypt(ekx);
-    if (!PkBase.verifyChk(pkx) || (pkx[0x8] | pkx[0x9]) === 0) {
+    var isValid = PkBase.verifyChk(pkx);
+    if (!isValid || (pkx[0x8] | pkx[0x9]) === 0) {
         return false;
     }
 
@@ -48,19 +51,29 @@ function checkParty(video1: Uint8Array, video2: Uint8Array, key: BattleVideoKey)
 }
 
 export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<string> {
-    if (video1.length !== 0x6E60) {
+    const generation1 = BattleVideoReader.getGeneration(video1);
+    if (generation1 === -1) {
         var e = new Error("The first file is not a battle video.") as any;
         e.name = "NotABattleVideoError";
         e.file = 1;
         throw e;
     }
 
-    if (video2.length !== 0x6E60) {
+    const generation2 = BattleVideoReader.getGeneration(video2);
+    if (generation2 === -1) {
         var e = new Error("The second file is not a valid battle video.") as any;
         e.name = "NotABattleVideoError";
         e.file = 2;
         throw e;
     }
+
+    if (generation1 !== generation2) {
+        var e = new Error("The battle videos are not from the same generation.") as any;
+        e.name = "BattleVideosNotSameGenerationError";
+        throw e;
+    }
+
+    const offsets = BattleVideoReader.getOffsets(generation1);
 
     if (!util.sequenceEqual(video1, 0x10, video2, 0x10, 0x10)) {
         var e = new Error("Battle videos are not from the same game or battle video slot.") as any;
@@ -85,14 +98,14 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
     if (key === undefined) {
         key = new BattleVideoKey(new Uint8Array(0x1000));
 
-        if (!breakParty(video1, video2, 0x4E18, key.myTeamKey)) {
+        if (!breakParty(video1, video2, offsets.myParty, key.myTeamKey)) {
             var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
             e.name = "BattleVideoBreakError";
             throw e;
         }
 
         // Try to create a key for the opponent, too
-        const res = breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
+        const res = breakParty(video1, video2, offsets.opponentParty, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
         if (!checkParty(video1, video2, key)) {
             var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
             e.name = "BattleVideoBreakError";
@@ -107,5 +120,5 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
     }
 
     // We already have a key for out team, but we might be able to upgrade it so it can work with the opponent team, too.
-    return breakParty(video1, video2, 0x5438, key.opponentTeamKey) && checkParty(video1, video2, key) ? "UPGRADED_WITH_OPPONENT" : "NOT_UPGRADED_WITH_OPPONENT";
+    return breakParty(video1, video2, offsets.opponentParty, key.opponentTeamKey) && checkParty(video1, video2, key) ? "UPGRADED_WITH_OPPONENT" : "NOT_UPGRADED_WITH_OPPONENT";
 }

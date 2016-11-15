@@ -30,6 +30,8 @@ var video1 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1-o"
 var video2 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2-o"));
 var video3 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1"));
 var video4 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2"));
+var video5 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1-sm"));
+var video6 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2-sm"));
 var key = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
 var keyWithoutOpponent = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-without-opponent.bin")));
 var honedge = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/honedge.pk6")), -1, 0, false);
@@ -37,7 +39,7 @@ var garchomp = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/gar
 
 describe("BattleVideoBreaker", function() {
     describe("#breakKey()", function() {
-        it("should break a battle video key without opponent key correctly", function() {
+        it("should break a battle video key without opponent key correctly (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return BattleVideoBreaker.breakKey(video3, video4).then(function(res) {
@@ -46,7 +48,7 @@ describe("BattleVideoBreaker", function() {
             });
         });
 
-        it("should break a battle video key with opponent key correctly", function() {
+        it("should break a battle video key with opponent key correctly (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
@@ -55,7 +57,7 @@ describe("BattleVideoBreaker", function() {
             });
         });
 
-        it("should upgrade a battle video key without opponent key to one with opponent key", function() {
+        it("should upgrade a battle video key without opponent key to one with opponent key (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             store.setBvKey(keyWithoutOpponent);
@@ -66,7 +68,7 @@ describe("BattleVideoBreaker", function() {
             });
         });
 
-        it("should break the same key with and without opponent", function() {
+        it("should break the same key with and without opponent (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             var keyWOpponent, keyWOOpponent;
@@ -81,6 +83,16 @@ describe("BattleVideoBreaker", function() {
                 var readerWO = new BattleVideoReader(video1, keyWOpponent);
                 var readerWOO = new BattleVideoReader(video1, keyWOOpponent);
                 assert.deepEqual(readerWO.getPkx(0), readerWOO.getPkx(0));
+            });
+        });
+
+        it("should break a key with opponent (Gen 7)", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return BattleVideoBreaker.breakKey(video5, video6).then(function() {
+                return BattleVideoBreaker.load(video5);
+            }).then(function (reader) {
+                console.log(reader.getPkx(0, false));
             });
         });
     });
