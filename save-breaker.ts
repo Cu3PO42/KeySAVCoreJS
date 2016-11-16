@@ -182,6 +182,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
     var offset: number = undefined ;
     var potentialOffsets = [0x26A00 /* XY */, 0x37400 /* ORAS */, 0x8200 /* SM */];
+    // TODO only use offsets for relevant generation
 
     const indices = [0, 232, 464, 696, 928, 1160]; // the first six multiples of 232
     for (let i of potentialOffsets) {
@@ -203,13 +204,12 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
         if (err < 56) {
             offset = i + offsets.base2; // Add the offset for the actual save inside the save file
+            // TODO break for 32 boxes in gen 7
             boxes1 = boxes1.subarray(i, i + 232 * 30 * 31);
             boxes2 = boxes2.subarray(i, i + 232 * 30 * 31);
             break;
         }
     }
-
-    console.log(offset);
 
     if (offset === undefined) {
         var e = new Error("Unable to find boxes.");

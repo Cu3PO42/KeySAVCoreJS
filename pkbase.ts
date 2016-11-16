@@ -421,3 +421,6 @@ export default class PkBase {
             ];
     }
 }
+
+import "./pk6";
+import "./pk7";

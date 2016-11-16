@@ -139,6 +139,14 @@ describe("SaveBreaker", function() {
             });
         });
 
+        it("should create a new style key from two appropriate saves (Gen 7)", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return SaveBreaker.breakKey(sav16SM, sav165SM).then(function(res) {
+                assert.equal("CREATED_NEW", res);
+            });
+        });
+
         it("should throw an error if a key already exists", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
