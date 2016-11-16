@@ -13,13 +13,14 @@ function bufferToUint8Array(buf) {
 var sav16 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/16.bin"));
 var sav165 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165.bin"));
 var savKey = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
+var mainSm = bufferToUint8Array(fs.readFileSync(__dirname + "/data/main-sm"));
 var video1 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1-o"));
 var video2 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2-o"));
 var bvKey = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
 
 describe("Breaker", function() {
     describe("#breakSavOrBv()", function() {
-        it("should create a key for two saves", function() {
+        it("should create a key for two saves (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return Breaker.breakSavOrBv(sav16, sav165).then(function(res) {
@@ -28,7 +29,7 @@ describe("Breaker", function() {
             });
         });
 
-        it("should create a key for two battle videos", function() {
+        it("should create a key for two battle videos (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return Breaker.breakSavOrBv(video1, video2).then(function(res) {
@@ -49,13 +50,22 @@ describe("Breaker", function() {
     });
 
     describe("#loadSavOrBv()", function() {
-        it("should load a save file", function() {
+        it("should load a save file (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             store.setSaveKeyManually(savKey);
             return Breaker.loadSavOrBv(sav16).then(function(res) {
                 assert.equal(res.type, "SAV");
                 assert.notEqual(res.reader, undefined);
+            });
+        });
+
+        it("should load a main file (Gen 7)", function () {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return Breaker.loadSavOrBv(mainSm).then(function(reader) {
+                console.log(reader);
+                console.log(reader.reader.getPkx(0));
             });
         });
 
@@ -69,7 +79,7 @@ describe("Breaker", function() {
             });
         });
 
-        it("should load a battle video", function() {
+        it("should load a battle video (Gen 6)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             store.setBvKey(bvKey);
