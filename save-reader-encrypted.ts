@@ -40,7 +40,9 @@ export default class SaveReaderEncrypted implements SaveReader {
     private boxes1: Uint8Array;
     private boxes2: Uint8Array;
 
-    public version: number;
+    public get generation() {
+        return this.key.generation;
+    }
 
     get unlockedSlots() {
         var res = 0;
@@ -55,14 +57,12 @@ export default class SaveReaderEncrypted implements SaveReader {
     }
 
     constructor(private sav: Uint8Array, private key: SaveKey) {
-        this.version = SaveReaderEncrypted.getGeneration(sav);
-        const offsets = SaveReaderEncrypted.getOffsets(this.version);
+        const offsets = SaveReaderEncrypted.getOffsets(this.generation);
 
         this.sav = this.sav.subarray(this.sav.length % offsets.fileSize);
         this.activeSlot = this.key.slot1Flag == util.createDataView(sav).getUint32(0x168, true) && this.key.isNewKey ? 0 : 1;
-        this.boxes1 = util.xor(this.sav, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232 * 30 * 31);
-//        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * (this.version === 6 ? 31 : 32));
-        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * (this.version === 6 ? 31 : 31));
+        this.boxes1 = util.xor(this.sav, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232 * 30 * (this.generation === 6 ? 31 : 32));
+        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * (this.generation === 6 ? 31 : 31));
     }
 
     scanSlots(pos1?: number, pos2?: number) {
@@ -72,8 +72,7 @@ export default class SaveReaderEncrypted implements SaveReader {
             }
         } else {
             pos1 = 0;
-//            pos2 = (this.version === 6 ? 31 : 32) * 30;
-            pos2 = (this.version === 6 ? 31 : 31) * 30;
+            pos2 = (this.generation=== 6 ? 31 : 32) * 30;
 
         }
 
@@ -93,14 +92,13 @@ export default class SaveReaderEncrypted implements SaveReader {
         var res = SaveReaderEncrypted.getPkxRaw(this.activeSlot === 0 ? this.boxes1 : this.boxes2, pos, this.key), data = res[0], ghost = res[1];
         if (data === undefined || (data[8] | data[9]) == 0)
             return undefined;
-        return PkBase.makePkm(data, this.version, (pos / 30) | 0, pos % 30, ghost);
+        return PkBase.makePkm(data, this.generation, (pos / 30) | 0, pos % 30, ghost);
     }
 
     getAllPkx() {
         var res = [];
         var tmp;
-//        for (var i = 0; i < (this.version === 6 ? 930 : 960); ++i) {
-        for (var i = 0; i < (this.version === 6 ? 930 : 930); ++i) {
+        for (var i = 0; i < (this.generation === 6 ? 930 : 960); ++i) {
             tmp = this.getPkx(i);
             if (tmp !== undefined) {
                 res.push(tmp);

@@ -60,7 +60,8 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     dataView1 = util.createDataView(break1);
     dataView2 = util.createDataView(break2);
 
-    const offsets = SaveReaderEncrypted.getOffsets(SaveReaderEncrypted.getGeneration(break1));
+    const generation = SaveReaderEncrypted.getGeneration(break1);
+    const offsets = SaveReaderEncrypted.getOffsets(generation);
 
     if (key.isNewKey) {
         // Scan the two saves to improve the key.
@@ -87,7 +88,7 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     }
 
     // This XORpad can encode/decode between slot 1 and slot 2 data.
-    util.xor(break1, key.boxOffset, break1, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232*30*31);
+    util.xor(break1, key.boxOffset, break1, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232*30*(generation === 6 ? 31 : 32));
 
     reader1 = new SaveReaderEncrypted(break1, key); reader1.scanSlots();
     reader2 = new SaveReaderEncrypted(break2, key); reader2.scanSlots();
@@ -165,7 +166,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
             throw e;
     }
 
-    key = new SaveKey(new Uint8Array(0xB4AD4));
+    key = new SaveKey(generation1);
 
     boxes1 = break1.subarray(offsets.base2, offsets.base2 + offsets.saveSize);
     if (util.sequenceEqual(break1, offsets.base2, break2, offsets.base2, offsets.saveSize)) {

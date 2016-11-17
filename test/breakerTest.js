@@ -12,7 +12,7 @@ function bufferToUint8Array(buf) {
 
 var sav16 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/16.bin"));
 var sav165 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165.bin"));
-var savKey = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
+var savKey = new SaveKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
 var mainSm = bufferToUint8Array(fs.readFileSync(__dirname + "/data/main-sm"));
 var video1 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1-o"));
 var video2 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2-o"));

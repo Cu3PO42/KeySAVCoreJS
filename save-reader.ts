@@ -3,7 +3,7 @@ import PkBase from "./pkbase";
 interface SaveReader {
     unlockedSlots: number;
     isNewKey: boolean;
-    version: number;
+    generation: number;
     scanSlots(from: number, to: number);
     scanSlots(slot: number);
     scanSlots();

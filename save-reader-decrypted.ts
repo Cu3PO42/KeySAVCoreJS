@@ -11,14 +11,14 @@ const smOffset = 0x04E00;
 export { default as SaveReader } from "./save-reader";
 export default class SaveReaderDecrypted implements SaveReader {
     private offset: number;
-    public version: number;
+    public generation: number;
 
     get keyName() {
         return "Decrypted. No key needed.";
     }
 
     get unlockedSlots() {
-        return this.version === 6 ? 930 : 960;
+        return this.generation === 6 ? 930 : 960;
     }
 
     get isNewKey() {
@@ -31,33 +31,33 @@ export default class SaveReaderDecrypted implements SaveReader {
         switch (type) {
         case "XY":
             this.offset = xyOffset;
-            this.version = 6;
+            this.generation = 6;
             break;
         case "ORAS":
             this.offset = orasOffset;
-            this.version = 6;
+            this.generation = 6;
             break;
         case "YABD":
-            this.version = 6;
+            this.generation = 6;
             this.offset = 4;
             var ekx = sav.subarray(4, 236);
             if (!PkBase.verifyChk(PkBase.decrypt(ekx)))
                 this.offset = 8;
             break;
         case "PCDATA":
-            this.version = 6;
+            this.generation = 6;
             this.offset = 0;
             break;
         case "XYRAM":
-            this.version = 6;
+            this.generation = 6;
             this.offset = xyRamsavOffset;
             break;
         case "ORASRAM":
-            this.version = 6;
+            this.generation = 6;
             this.offset = orasRamsavOffset;
             break;
         case "SM":
-            this.version = 7;
+            this.generation = 7;
             this.offset = smOffset;
             break;
         }
@@ -70,7 +70,7 @@ export default class SaveReaderDecrypted implements SaveReader {
             return undefined;
         pkx = PkBase.decrypt(pkx);
         if (PkBase.verifyChk(pkx) && (pkx[8] | pkx[9]) != 0) {
-            return PkBase.makePkm(pkx, this.version, Math.floor(pos / 30), pos % 30, false);
+            return PkBase.makePkm(pkx, this.generation, Math.floor(pos / 30), pos % 30, false);
         }
         return undefined;
     }
@@ -78,7 +78,7 @@ export default class SaveReaderDecrypted implements SaveReader {
     getAllPkx() {
         var res = [];
         var tmp;
-        for (var i = 0; i < (this.version === 6 ? 930 : 960); ++i) {
+        for (var i = 0; i < (this.generation === 6 ? 930 : 960); ++i) {
             tmp = this.getPkx(i);
             if (tmp !== undefined) {
                 res.push(tmp);

@@ -3,12 +3,12 @@ import * as util from "./util";
 import BattleVideoKey from "./battle-video-key";
 
 export default class BattleVideoReader {
-    public version: number;
+    public generation: number;
     private _offsets: { partyOffsets: number[] };
 
     constructor(private video: Uint8Array, private key: BattleVideoKey) {
-        this.version = BattleVideoReader.getGeneration(video);
-        this._offsets = BattleVideoReader.getOffsets(this.version);
+        this.generation = BattleVideoReader.getGeneration(video);
+        this._offsets = BattleVideoReader.getOffsets(this.generation);
     }
 
     public static getGeneration(video: Uint8Array) {
