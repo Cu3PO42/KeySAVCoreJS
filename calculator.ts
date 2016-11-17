@@ -1,7 +1,3 @@
-/// <reference path="typings/node/node.d.ts"/>
-
-"use strict";
-
 var expData = require("./expData.json");
 var stats6 = require("./stats6.json");
 var stats7 = require("./stats7.json");

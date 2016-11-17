@@ -16,25 +16,9 @@
     },
     "compileOnSave": true,
     "buildOnSave": false,
-    "files": [
-        "battle-video-breaker.ts",
-        "battle-video-reader.ts",
-        "battle-video-key.ts",
-        "breaker.ts",
-        "calculator.ts",
-        "index.ts",
-        "key-store.ts",
-        "key-store-filesystem.ts",
-        "localization.ts",
-        "pkbase.ts",
-        "pk6.ts",
-        "pk7.ts",
-        "save-reader.ts",
-        "save-reader-decrypted.ts",
-        "save-reader-encrypted.ts",
-        "save-breaker.ts",
-        "save-key.ts",
-        "util.ts"
+    "include": [
+      "*.ts",
+      "node_modules/@types/**/*.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

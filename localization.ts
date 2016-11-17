@@ -1,7 +1,3 @@
-/// <reference path="typings/node/node.d.ts" />
-
-"use strict";
-
 import PkBase from "./pkbase";
 
 var forms6 = require("./localization/forms6.json"),

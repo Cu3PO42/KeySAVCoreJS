@@ -1,5 +1,3 @@
-"use strict";
-
 export { load as loadBv, breakKey as breakBv } from "./battle-video-breaker";
 export { default as BattleVideoReader } from "./battle-video-reader";
 import * as Calc from "./calculator"; export var Calculator = Calc;

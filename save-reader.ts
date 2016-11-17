@@ -1,5 +1,3 @@
-"use strict";
-
 import PkBase from "./pkbase";
 
 interface SaveReader {

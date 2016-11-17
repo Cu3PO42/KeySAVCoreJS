@@ -1,5 +1,3 @@
-"use strict";
-
 import BattleVideoReader from "./battle-video-reader";
 import { getKeyStore } from "./key-store";
 import * as util from "./util";

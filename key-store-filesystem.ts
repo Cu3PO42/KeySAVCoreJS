@@ -1,9 +1,3 @@
-/// <reference path="typings/bluebird/bluebird.d.ts"/>
-/// <reference path="typings/node/node.d.ts"/>
-
-"use strict";
-
-import * as Promise from "bluebird";
 import * as fs from "fs";
 import { createHash } from "crypto";
 import KeyStore from "./key-store";
@@ -11,14 +5,15 @@ import { join } from "path";
 import SaveKey from "./save-key";
 import {getStampSav, pad4, pad5, getStampBv} from "./util";
 import BattleVideoKey from "./battle-video-key";
+import { promisify, createBuffer } from "./util";
 
-var readdirAsync = Promise.promisify(fs.readdir),
-    statAsync = Promise.promisify(fs.stat),
-    openAsync = Promise.promisify(fs.open),
-    readAsync = Promise.promisify(fs.read),
-    writeAsync = <any>Promise.promisify(fs.write),
-    closeAsync = Promise.promisify(fs.close),
-    unlink = Promise.promisify(fs.unlink);
+var readdirAsync = promisify(fs.readdir),
+    statAsync = promisify(fs.stat),
+    openAsync = promisify(fs.open),
+    readAsync = promisify(fs.read),
+    writeAsync = promisify(fs.write) as (fd: number, buf: Buffer, offset: number, length: number, position: number) => Promise<void>,
+    closeAsync = promisify(fs.close),
+    unlink = promisify(fs.unlink);
 
 class LazyValue<T> {
     private evaluated = false;
@@ -48,6 +43,7 @@ function createNoKeyError(stamp: string, isSav: boolean) {
 }
 
 export default class KeyStoreFileSystem implements KeyStore {
+    private isScanning: boolean = false;
     private scan: Promise<void>;
     private keys: { [stamp: string]: { fd: number,
                                        name: string,
@@ -59,6 +55,7 @@ export default class KeyStoreFileSystem implements KeyStore {
     }
 
     private async scanSaveDirectory(path: string): Promise<void> {
+        this.isScanning = true;
         for (let fileName of await readdirAsync(path)) {
             let stats = await statAsync(join(path, fileName));
             if (!(stats.size === 0xB4AD4 || stats.size === 0x80000 || stats.size === 0x1000)) {
@@ -90,6 +87,7 @@ export default class KeyStoreFileSystem implements KeyStore {
                 })
             }
         }
+        this.isScanning = false;
     }
 
     private async getKey(stamp: string, isSav: boolean): Promise<SaveKey|BattleVideoKey> {
@@ -99,7 +97,10 @@ export default class KeyStoreFileSystem implements KeyStore {
             }
             throw createNoKeyError(stamp, isSav);
         } else {
-            await (this.scan.isFulfilled() ? (this.scan = this.scanSaveDirectory(this.path)) : this.scan);
+            if (!this.isScanning) {
+                this.scan = this.scanSaveDirectory(this.path);
+            }
+            await this.scan;
             if (this.keys[stamp] !== undefined && this.keys[stamp].isSav === isSav) {
                 return (await this.keys[stamp].key.get()).key;
             }
@@ -122,7 +123,7 @@ export default class KeyStoreFileSystem implements KeyStore {
             let lazyKey = this.keys[key];
             if (lazyKey.key.isInitialized) {
                 let key = await lazyKey.key.get();
-                if (key.hash !== createHash("sha256").update(key.key.keyData).digest("hex")) {
+                if (key.hash !== createHash("sha256").update(createBuffer(key.key.keyData)).digest("hex")) {
                     let buf = new Buffer(key.key.keyData);
                     await writeAsync(lazyKey.fd, buf, 0, buf.length, 0);
                 }

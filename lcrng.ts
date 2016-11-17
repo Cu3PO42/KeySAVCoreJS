@@ -1,7 +1,5 @@
 /// <reference path="typings/cuint/cuint.d.ts"/>
 
-"use strict";
-
 import * as cuint from "cuint";
 
 var mul_const = cuint.UINT32(1103515245);

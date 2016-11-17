@@ -1,5 +1,3 @@
-"use strict";
-
 import SaveKey from "./save-key";
 import BattleVideoKey from "./battle-video-key";
 

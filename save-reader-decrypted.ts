@@ -1,5 +1,3 @@
-"use strict";
-
 import SaveReader from "./save-reader";
 import PkBase from "./pkbase";
 import * as util from "./util";

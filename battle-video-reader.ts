@@ -1,4 +1,3 @@
-"use strict";
 import PkBase from "./pkbase";
 import * as util from "./util";
 import BattleVideoKey from "./battle-video-key";

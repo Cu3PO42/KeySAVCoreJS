@@ -1,5 +1,3 @@
-"use strict";
-
 import PkBase from "./pkbase";
 import * as util from "./util";
 import { eggnames } from "./save-breaker";

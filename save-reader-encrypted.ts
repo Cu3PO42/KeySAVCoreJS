@@ -1,5 +1,3 @@
-"use strict";
-
 import SaveReader from "./save-reader";
 import SaveKey from "./save-key";
 import PkBase from "./pkbase";
@@ -7,7 +5,6 @@ import * as util from "./util";
 
 var zeros = new Uint8Array(232);
 var ezeros = PkBase.encrypt(zeros);
-
 
 export { default as SaveReader } from "./save-reader";
 export default class SaveReaderEncrypted implements SaveReader {

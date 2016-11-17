@@ -6,13 +6,12 @@ var fs = require("fs-extra");
 var util = require("../util");
 var PkBase = require("../pkbase").default;
 var Pk6 = require("../pk6").default;
-var Promise = require("bluebird");
 
-var mkdir = Promise.promisify(fs.mkdir),
-    unlink = Promise.promisify(fs.unlink),
-    copy = Promise.promisify(fs.copy),
-    stat = Promise.promisify(fs.stat),
-    rmdir = Promise.promisify(fs.rmdir);
+var mkdir = util.promisify(fs.mkdir),
+    unlink = util.promisify(fs.unlink),
+    copy = util.promisify(fs.copy),
+    stat = util.promisify(fs.stat),
+    rmdir = util.promisify(fs.rmdir);
 
 function bufferToUint8Array(buf) {
     return new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);

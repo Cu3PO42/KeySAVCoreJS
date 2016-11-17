@@ -1,5 +1,3 @@
-"use strict";
-
 import * as util from "./util";
 import PkBase, { registerPkmImpl } from "./pkbase";
 
