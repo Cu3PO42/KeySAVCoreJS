@@ -9,7 +9,7 @@ import PkBase from "./pkbase";
 import * as util from "./util";
 
 const magic = 0x42454546;
-export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알"];
+export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알", "蛋", "蛋"];
 
 function createNotASaveError() {
     var e = new Error("The supplied data is not a supported save type.") as any;
