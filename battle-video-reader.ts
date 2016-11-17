@@ -4,9 +4,11 @@ import BattleVideoKey from "./battle-video-key";
 
 export default class BattleVideoReader {
     public version: number;
+    private _offsets: { partyOffsets: number[] };
 
     constructor(private video: Uint8Array, private key: BattleVideoKey) {
         this.version = BattleVideoReader.getGeneration(video);
+        this._offsets = BattleVideoReader.getOffsets(this.version);
     }
 
     public static getGeneration(video: Uint8Array) {
@@ -23,61 +25,39 @@ export default class BattleVideoReader {
     public static getOffsets(generation: number) {
         return {
             6: {
-                myParty: 0x4e18,
-                opponentParty: 0x5438
+                partyOffsets: [0x4e18, 0x5438]
             },
             7: {
-                myParty: 0x4e41,
-                opponentParty: 0x545e
+                partyOffsets: [0x4e41, 0x545e, 0x5a7b, 0x6098]
             }
         }[generation];
     }
 
-    get dumpsOpponent() {
-        return this.key.dumpsOpponent;
+    get workingKeys() {
+        return this.key.workingKeys;
     }
 
-    getPkx(slot: number, isOpponent: boolean): PkBase {
-        const offsets = BattleVideoReader.getOffsets(this.version);
-
-        var ekx, pkx;
-        if (isOpponent) {
-            if (!this.dumpsOpponent)
-                return undefined;
-            ekx = util.xor(this.video, offsets.opponentParty + 260 * slot, this.key.opponentTeamKey, 260 * slot, 260);
-        } else {
-            ekx = util.xor(this.video, offsets.myParty + 260 * slot, this.key.myTeamKey, 260 * slot, 260);
-
-        }
-        pkx = PkBase.decrypt(ekx);
+    getPkx(slot: number, team: number): PkBase {
+        const ekx = util.xor(this.video, this._offsets.partyOffsets[team] + 260 * slot, this.key.teamKeys[team], 260 * slot, 260);
+        const pkx = PkBase.decrypt(ekx);
         if ( !PkBase.verifyChk(pkx) || util.empty(pkx)) {
             return undefined;
         }
+
         return PkBase.makePkm(pkx, 6, -1, slot, false);
     }
 
     getAllPkx() {
-        var myTeam = [];
-        var tmp;
-        for (var i = 0; i < 6; ++i) {
-            tmp = this.getPkx(i, false);
-            if (tmp === undefined)
-                break;
-            myTeam.push(tmp);
-        }
-        var opponentTeam = undefined;
-        if (this.dumpsOpponent) {
-            opponentTeam = [];
-            for (var i = 0; i < 6; ++i) {
-                tmp = this.getPkx(i, true);
-                if (tmp === undefined)
-                    break;
-                opponentTeam.push(tmp);
+        const res = [];
+        for (let i = 0; i < this.key.teamKeys.length; ++i) {
+            const team = [];
+            res.push(team);
+            for (let j = 0; j < 6; ++j) {
+                const tmp = this.getPkx(j, i);
+                if (tmp === undefined) break;
+                team.push(tmp);
             }
         }
-        return {
-            myTeam,
-            opponentTeam
-        };
+        return res;
     }
 }

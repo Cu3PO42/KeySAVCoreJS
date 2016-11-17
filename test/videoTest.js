@@ -14,15 +14,14 @@ function bufferToUint8Array(buf) {
 
 function keyEqual(key1, key2, withOpponent) {
   if (withOpponent === undefined) {
-    withOpponent = true;
+      withOpponent = true;
   }
 
   assert.equal(key1.stamp, key2.stamp, 'Key stamp not equal.');
-  for (let i = 0; i < 6; ++i) {
-    assert.equal(util.sequenceEqual(key1.myTeamKey, i * 260, key2.myTeamKey, i * 260, 260), true, `My team key slot ${i + 1} not equal.`);
-    if (withOpponent) {
-        assert.equal(util.sequenceEqual(key1.opponentTeamKey, i * 260, key2.opponentTeamKey, i * 260, 260), true, `Opponent team key slot ${i + 1} not equal.`);
-    }
+  for (let j = 0; j < (withOpponent ? key1.teamKeys.length : 1); ++j) {
+      for (let i = 0; i < 6; ++i) {
+          assert.equal(util.sequenceEqual(key1.teamKeys[j], i * 260, key2.teamKeys[j], i * 260, 260), true, `Team ${j + 1} key slot ${i + 1} not equal.`);
+      }
   }
 }
 
@@ -43,7 +42,7 @@ describe("BattleVideoBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return BattleVideoBreaker.breakKey(video3, video4).then(function(res) {
-                assert.equal("CREATED_WITHOUT_OPPONENT", res);
+                assert.deepEqual({upgraded: undefined, workingKeys: [true, false]}, res);
                 keyEqual(store.getBvKeySync(keyWithoutOpponent.stamp), keyWithoutOpponent);
             });
         });
@@ -52,7 +51,7 @@ describe("BattleVideoBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
-                assert.equal("CREATED_WITH_OPPONENT", res);
+                assert.deepEqual({upgraded: undefined, workingKeys: [true, true]}, res);
                 keyEqual(store.getBvKeySync(key.stamp), key);
             });
         });
@@ -61,9 +60,9 @@ describe("BattleVideoBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             store.setBvKey(keyWithoutOpponent);
-            keyEqual(key, keyWithoutOpponent, false)
+            keyEqual(key, keyWithoutOpponent, false);
             return BattleVideoBreaker.breakKey(video1, video2).then(function(res) {
-                assert.equal("UPGRADED_WITH_OPPONENT", res);
+                assert.deepEqual({upgraded: true, workingKeys: [true, true]}, res);
                 keyEqual(store.getBvKeySync(key.stamp), key);
             });
         });
@@ -82,16 +81,15 @@ describe("BattleVideoBreaker", function() {
                 //keyEqual(keyWOOpponent, keyWOpponent, false);
                 var readerWO = new BattleVideoReader(video1, keyWOpponent);
                 var readerWOO = new BattleVideoReader(video1, keyWOOpponent);
-                assert.deepEqual(readerWO.getPkx(0), readerWOO.getPkx(0));
+                assert.deepEqual(readerWO.getPkx(0, 0), readerWOO.getPkx(0, 0));
             });
         });
 
         it("should break a key with opponent (Gen 7)", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
-            return BattleVideoBreaker.breakKey(video5, video6).then(function() {
-                return BattleVideoBreaker.load(video5);
-            }).then(function (reader) {
+            return BattleVideoBreaker.breakKey(video5, video6).then(function(res) {
+                assert.deepEqual({upgraded: undefined, workingKeys: [true, true, false, false]}, res)
             });
         });
     });
@@ -112,12 +110,12 @@ describe("BattleVideoReader", function() {
     describe("#getPkx()", function() {
         it("should fetch a pk6 from my team", function() {
             var reader = new BattleVideoReader(video1, key);
-            assert.deepEqual(reader.getPkx(0), honedge);
+            assert.deepEqual(reader.getPkx(0, 0), honedge);
         });
 
         it("should fetch a pk6 from my opponent's team", function() {
             var reader = new BattleVideoReader(video1, key);
-            assert.deepEqual(reader.getPkx(0, true), garchomp);
+            assert.deepEqual(reader.getPkx(0, 1), garchomp);
         });
     });
 });

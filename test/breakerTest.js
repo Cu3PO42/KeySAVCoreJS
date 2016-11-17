@@ -24,7 +24,7 @@ describe("Breaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return Breaker.breakSavOrBv(sav16, sav165).then(function(res) {
-                assert.equal("CREATED_NEW", res);
+                assert.deepEqual({ type: "SAV", result: "CREATED_NEW" }, res);
                 assert.notEqual(store.getSaveKeySync(savKey.stamp), undefined);
             });
         });
@@ -33,7 +33,7 @@ describe("Breaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return Breaker.breakSavOrBv(video1, video2).then(function(res) {
-                assert.equal("CREATED_WITH_OPPONENT", res);
+                assert.deepEqual({ type: "BV", result: { upgraded: undefined, workingKeys: [true, true] } }, res);
                 assert.notEqual(store.getBvKeySync(bvKey.stamp), undefined);
             });
         });
