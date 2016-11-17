@@ -1,7 +1,3 @@
-/// <reference path="typings/base-64/base-64.d.ts"/>
-
-import { encode as base64Encode } from "base-64";
-
 function trimCString(str: string) {
     var index = str.indexOf('\0');
     if (index < 0)
@@ -63,7 +59,7 @@ export function createDataView(arr): DataView {
     return new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
 }
 
-export function createBuffer(arr): Buffer {
+export function createBuffer(arr: Uint8Array | Uint16Array |  Uint32Array): Buffer {
     return Buffer.from(arr.buffer, arr.byteOffset, arr.byteLength);
 }
 
@@ -338,6 +334,12 @@ export function pad4(n: number) {
 
 export function pad5(n: number) {
     return n < 100000 ? ("00000" + n).slice(-5) : `${n}`;
+}
+
+export function base64Encode(arr: Uint8Array) {
+    if (typeof Buffer !== "undefined") {
+        return createBuffer(arr).toString("base64");
+    }
 }
 
 export function getStampSav(arr: Uint8Array, off: number): string {
