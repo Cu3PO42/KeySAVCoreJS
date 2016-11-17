@@ -67,21 +67,30 @@ export default class KeyStoreFileSystem implements KeyStore {
             if (!~kind) {
                 continue;
             }
-            if (this.keys[stamp] !== undefined) {
-                const { key } = await this.keys[stamp].key.get();
-                const buf = new Buffer(stats.size);
-                await readAsync(fd, buf, 0, stats.size, 0);
-                switch (kind) {
-                    case 0:
-                        (key as SaveKey).mergeKey(new SaveKey(createUint8Array(buf)));
-                        break;
-                    case 1:
-                        (key as BattleVideoKey).mergeKey(new BattleVideoKey(createUint8Array(buf)));
-                        break;
+            if (this.keys[stamp] !== undefined && this.keys[stamp].name !== fileName) {
+                let key;
+                try {
+                    key = (await this.keys[stamp].key.get()).key;
+                    try {
+                        const buf = new Buffer(stats.size);
+                        await readAsync(fd, buf, 0, stats.size, 0);
+                        switch (kind) {
+                            case 0:
+                                (key as SaveKey).mergeKey(new SaveKey(createUint8Array(buf)));
+                                break;
+                            case 1:
+                                (key as BattleVideoKey).mergeKey(new BattleVideoKey(createUint8Array(buf)));
+                                break;
+                        }
+                    } catch(e) { }
+                    await closeAsync(fd);
+                    await unlinkAsync(join(path, fileName));
+                    continue;
+                } catch(e) {
+                    await closeAsync(this.keys[stamp].fd);
+                    await unlinkAsync(join(this.path, this.keys[stamp].name));
+                    delete this.keys[stamp];
                 }
-                await closeAsync(fd);
-                await unlinkAsync(join(path, fileName));
-                continue;
             }
             this.keys[stamp] = {
                 fd: fd,
@@ -105,9 +114,16 @@ export default class KeyStoreFileSystem implements KeyStore {
     private async getKey(stamp: string, kind: number): Promise<SaveKey|BattleVideoKey> {
         if (this.keys[stamp] !== undefined) {
             if (this.keys[stamp].kind === kind) {
-                return (await this.keys[stamp].key.get()).key;
+                try {
+                    return (await this.keys[stamp].key.get()).key;
+                } catch(e) {
+                    await closeAsync(this.keys[stamp].fd);
+                    await unlinkAsync(join(this.path, this.keys[stamp].name));
+                    delete this.keys[stamp];
+                }
+            } else {
+                throw createNoKeyError(stamp, kind === 0);
             }
-            throw createNoKeyError(stamp, kind === 0);
         } else {
             if (!this.isScanning) {
                 this.scan = this.scanSaveDirectory(this.path);
