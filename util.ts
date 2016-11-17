@@ -340,12 +340,13 @@ export function base64Encode(arr: Uint8Array) {
     if (typeof Buffer !== "undefined") {
         return createBuffer(arr).toString("base64");
     }
+    return btoa(String.fromCharCode(...arr));
 }
 
 export function getStampSav(arr: Uint8Array, off: number): string {
-    return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+8)));
+    return base64Encode(arr.subarray(off, off+8));
 }
 
 export function getStampBv(arr: Uint8Array, off: number): string {
-    return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+0x10)));
+    return base64Encode(arr.subarray(off, off+0x10));
 }
