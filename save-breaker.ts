@@ -181,8 +181,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
     boxesDataView2 = util.createDataView(boxes2);
 
     var offset: number = undefined ;
-    var potentialOffsets = [0x26A00 /* XY */, 0x37400 /* ORAS */, 0x8200 /* SM */];
-    // TODO only use offsets for relevant generation
+    var potentialOffsets = generation1 === 6 ? [0x26A00 /* XY */, 0x37400 /* ORAS */] : [0x8200 /* SM */];
 
     const indices = [0, 232, 464, 696, 928, 1160]; // the first six multiples of 232
     for (let i of potentialOffsets) {
