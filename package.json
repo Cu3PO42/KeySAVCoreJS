@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "tsc && tsc --declaration && node ./fixdts.js",
+    "build": "tsc && tsc --declaration",
     "publish": "publish"
   },
   "author": "Cu3PO42",
