@@ -1,13 +1,11 @@
-"use strict";
-
 import BattleVideoReader from "./battle-video-reader";
 import { getKeyStore } from "./key-store";
 import * as util from "./util";
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 import BattleVideoKey from "./battle-video-key";
 
 export async function load(input: Uint8Array): Promise<BattleVideoReader> {
-    if (input.length !== 0x6E60) {
+    if (BattleVideoReader.getGeneration(input) === -1) {
         var e = new Error("The supplied data is not a valid battle video.") as any;
         e.name = "NotABattleVideoError";
         throw e;
@@ -16,7 +14,7 @@ export async function load(input: Uint8Array): Promise<BattleVideoReader> {
     return new BattleVideoReader(input, key);
 }
 
-var encryptedZeros = Pkx.encrypt(new Uint8Array(260));
+var encryptedZeros = PkBase.encrypt(new Uint8Array(260));
 
 function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number, key: Uint8Array): boolean {
     // The teams from the two videos XORed together
@@ -24,8 +22,9 @@ function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number,
 
     // Retrieve data for the Pokémon that is in slot 1 in video 1 and slot 2 in video 2
     var ekx = util.xor(encryptedZeros, 0, partyXored, 260, 260);
-    var pkx = Pkx.decrypt(ekx);
-    if (!Pkx.verifyChk(pkx) || (pkx[0x8] | pkx[0x9]) === 0) {
+    var pkx = PkBase.decrypt(ekx);
+    var isValid = PkBase.verifyChk(pkx);
+    if (!isValid || (pkx[0x8] | pkx[0x9]) === 0) {
         return false;
     }
 
@@ -43,24 +42,40 @@ function checkParty(video1: Uint8Array, video2: Uint8Array, key: BattleVideoKey)
     const video2Reader = new BattleVideoReader(video2, key);
     const video1Pkx = video1Reader.getAllPkx();
     const video2Pkx = video2Reader.getAllPkx();
-    return !(video1Pkx.myTeam.length !== 1 || video2Pkx.myTeam.length !==2 ||
-        key.dumpsOpponent && (video1Pkx.opponentTeam.length !== 1 || video2Pkx.opponentTeam.length !== 2));
+    const { workingKeys } = key;
+
+    for (let i = 0; i < video1Pkx.length; ++i) {
+        if (workingKeys[i] && (video1Pkx[i].length !== 1 || video2Pkx[i].length !== 2)) {
+            return false;
+        }
+    }
+    return true;
 }
 
-export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<string> {
-    if (video1.length !== 0x6E60) {
+export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<{upgraded: boolean, workingKeys: boolean[]}> {
+    const generation1 = BattleVideoReader.getGeneration(video1);
+    if (generation1 === -1) {
         var e = new Error("The first file is not a battle video.") as any;
         e.name = "NotABattleVideoError";
         e.file = 1;
         throw e;
     }
 
-    if (video2.length !== 0x6E60) {
+    const generation2 = BattleVideoReader.getGeneration(video2);
+    if (generation2 === -1) {
         var e = new Error("The second file is not a valid battle video.") as any;
         e.name = "NotABattleVideoError";
         e.file = 2;
         throw e;
     }
+
+    if (generation1 !== generation2) {
+        var e = new Error("The battle videos are not from the same generation.") as any;
+        e.name = "BattleVideosNotSameGenerationError";
+        throw e;
+    }
+
+    const offsets = BattleVideoReader.getOffsets(generation1);
 
     if (!util.sequenceEqual(video1, 0x10, video2, 0x10, 0x10)) {
         var e = new Error("Battle videos are not from the same game or battle video slot.") as any;
@@ -71,7 +86,7 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
     var key: BattleVideoKey;
     try {
         key = await getKeyStore().getBvKey(util.getStampBv(video1, 0x10));
-        if (key.dumpsOpponent) {
+        if (key.workingKeys.every(e => e)) {
             var e = new Error("You already have a key for this battle video slot.") as any;
             e.name = "BattleVideoKeyAlreadyExistsError";
             throw e;
@@ -82,30 +97,28 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
         }
     }
 
-    if (key === undefined) {
-        key = new BattleVideoKey(new Uint8Array(0x1000));
+    const newKey = new BattleVideoKey(generation1);
+    util.copy(video1, 0x10, newKey.keyData, 0, 0x10);
 
-        if (!breakParty(video1, video2, 0x4E18, key.myTeamKey)) {
-            var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
-            e.name = "BattleVideoBreakError";
-            throw e;
-        }
-
-        // Try to create a key for the opponent, too
-        const res = breakParty(video1, video2, 0x5438, key.opponentTeamKey) ? "CREATED_WITH_OPPONENT" : "CREATED_WITHOUT_OPPONENT";
-        if (!checkParty(video1, video2, key)) {
-            var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
-            e.name = "BattleVideoBreakError";
-            throw e;
-        }
-
-        // Set the unique stamp for this battle video slot
-        util.copy(video1, 0x10, key.stampRaw, 0, 0x10);
-        await getKeyStore().setBvKey(key);
-
-        return res;
+    if (!offsets.partyOffsets.map((o, i) => breakParty(video1, video2, o, newKey.teamKeys[i])).some(e => e)) {
+        var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
+        e.name = "BattleVideoBreakError";
+        throw e;
     }
 
-    // We already have a key for out team, but we might be able to upgrade it so it can work with the opponent team, too.
-    return breakParty(video1, video2, 0x5438, key.opponentTeamKey) && checkParty(video1, video2, key) ? "UPGRADED_WITH_OPPONENT" : "NOT_UPGRADED_WITH_OPPONENT";
+    if (!checkParty(video1, video2, newKey)) {
+        var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
+        e.name = "BattleVideoBreakError";
+        throw e;
+    }
+
+    if (key === undefined) {
+        await getKeyStore().setBvKey(newKey);
+        return { upgraded: undefined, workingKeys: newKey.workingKeys };
+    }
+
+    const unlockedBefore = key.workingKeys;
+    key.mergeKey(newKey);
+    const unlockedAfter = key.workingKeys;
+    return { upgraded: unlockedBefore.some((e, i) => !e && unlockedAfter[i]), workingKeys: unlockedAfter };
 }

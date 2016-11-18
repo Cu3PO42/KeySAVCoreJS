@@ -1,25 +1,18 @@
-/// <reference path="typings/bluebird/bluebird.d.ts"/>
-/// <reference path="typings/node/node.d.ts"/>
-
-"use strict";
-
-import * as Promise from "bluebird";
 import * as fs from "fs";
 import { createHash } from "crypto";
-import KeyStore from "./key-store";
+import KeyStore, { getStampAndKindFromKey } from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
-import Pkx from "./pkx";
-import {getStampSav, pad4, pad5, getStampBv} from "./util";
+import {createUint8Array, createBuffer, promisify} from "./util";
 import BattleVideoKey from "./battle-video-key";
 
-var readdirAsync = Promise.promisify(fs.readdir),
-    statAsync = Promise.promisify(fs.stat),
-    openAsync = Promise.promisify(fs.open),
-    readAsync = Promise.promisify(fs.read),
-    writeAsync = <any>Promise.promisify(fs.write),
-    closeAsync = Promise.promisify(fs.close),
-    unlink = Promise.promisify(fs.unlink);
+var readdirAsync = promisify(fs.readdir),
+    statAsync = promisify(fs.stat),
+    openAsync = promisify(fs.open),
+    readAsync = promisify(fs.read),
+    writeAsync = promisify(fs.write) as (fd: number, buf: Buffer, offset: number, length: number, position: number) => Promise<void>,
+    closeAsync = promisify(fs.close),
+    unlinkAsync = promisify(fs.unlink);
 
 class LazyValue<T> {
     private evaluated = false;
@@ -49,10 +42,11 @@ function createNoKeyError(stamp: string, isSav: boolean) {
 }
 
 export default class KeyStoreFileSystem implements KeyStore {
+    private isScanning: boolean = false;
     private scan: Promise<void>;
     private keys: { [stamp: string]: { fd: number,
                                        name: string,
-                                       isSav: boolean,
+                                       kind: number,
                                        key: LazyValue<{ key: BattleVideoKey|SaveKey, hash: string }> } } = {};
 
     constructor(private path: string) {
@@ -60,60 +54,94 @@ export default class KeyStoreFileSystem implements KeyStore {
     }
 
     private async scanSaveDirectory(path: string): Promise<void> {
+        this.isScanning = true;
         for (let fileName of await readdirAsync(path)) {
-            let stats = await statAsync(join(path, fileName));
-            if (!(stats.size === 0xB4AD4 || stats.size === 0x80000 || stats.size === 0x1000)) {
+            const stats = await statAsync(join(path, fileName));
+            if (stats.isDirectory()) {
                 continue;
             }
-            let isSav = stats.size !== 0x1000;
-            let readSize = isSav ? 8 : 0x10;
-            let fd = <number>(await openAsync(join(path, fileName), 'r+'));
-            let buf = new Buffer(readSize);
-            await readAsync(fd, buf, 0, readSize, 0);
-            let stamp = (isSav ? getStampSav : getStampBv)(new Uint8Array(buf.buffer, buf.byteOffset, readSize), 0);
-            if (this.keys[stamp] !== undefined) {
+            const fd = <number>(await openAsync(join(path, fileName), 'r+'));
+            const buf = new Buffer(0x18);
+            await readAsync(fd, buf, 0, 0x18, 0);
+            const { stamp, kind } = getStampAndKindFromKey(createUint8Array(buf), stats.size);
+            if (!~kind) {
                 continue;
+            }
+            if (this.keys[stamp] !== undefined && this.keys[stamp].name !== fileName) {
+                let key;
+                try {
+                    key = (await this.keys[stamp].key.get()).key;
+                    try {
+                        const buf = new Buffer(stats.size);
+                        await readAsync(fd, buf, 0, stats.size, 0);
+                        switch (kind) {
+                            case 0:
+                                (key as SaveKey).mergeKey(new SaveKey(createUint8Array(buf)));
+                                break;
+                            case 1:
+                                (key as BattleVideoKey).mergeKey(new BattleVideoKey(createUint8Array(buf)));
+                                break;
+                        }
+                    } catch(e) { }
+                    await closeAsync(fd);
+                    await unlinkAsync(join(path, fileName));
+                    continue;
+                } catch(e) {
+                    await closeAsync(this.keys[stamp].fd);
+                    await unlinkAsync(join(this.path, this.keys[stamp].name));
+                    delete this.keys[stamp];
+                }
             }
             this.keys[stamp] = {
                 fd: fd,
                 name: fileName,
-                isSav: isSav,
+                kind,
                 key: new LazyValue(async function() {
-                    var size = isSav ? 0xB4AD4 : 0x1000;
-                    var buf = new Buffer(size);
+                    const buf = new Buffer(stats.size);
                     await readAsync(fd, buf, 0, stats.size, 0);
-                    var ui8 = new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
+                    const ui8 = createUint8Array(buf);
                     var hash = createHash('sha256').update(buf).digest('hex');
                     return {
-                        key: isSav ? new SaveKey(ui8) : new BattleVideoKey(ui8),
+                        key: kind === 0 ? new SaveKey(ui8) : new BattleVideoKey(ui8),
                         hash: hash
                     };
                 })
             }
         }
+        this.isScanning = false;
     }
 
-    private async getKey(stamp: string, isSav: boolean): Promise<SaveKey|BattleVideoKey> {
+    private async getKey(stamp: string, kind: number): Promise<SaveKey|BattleVideoKey> {
         if (this.keys[stamp] !== undefined) {
-            if (this.keys[stamp].isSav === isSav) {
-                return (await this.keys[stamp].key.get()).key;
+            if (this.keys[stamp].kind === kind) {
+                try {
+                    return (await this.keys[stamp].key.get()).key;
+                } catch(e) {
+                    await closeAsync(this.keys[stamp].fd);
+                    await unlinkAsync(join(this.path, this.keys[stamp].name));
+                    delete this.keys[stamp];
+                }
+            } else {
+                throw createNoKeyError(stamp, kind === 0);
             }
-            throw createNoKeyError(stamp, isSav);
         } else {
-            await (this.scan.isFulfilled() ? (this.scan = this.scanSaveDirectory(this.path)) : this.scan);
-            if (this.keys[stamp] !== undefined && this.keys[stamp].isSav === isSav) {
+            if (!this.isScanning) {
+                this.scan = this.scanSaveDirectory(this.path);
+            }
+            await this.scan;
+            if (this.keys[stamp] !== undefined && this.keys[stamp].kind === kind) {
                 return (await this.keys[stamp].key.get()).key;
             }
-            throw createNoKeyError(stamp, isSav);
+            throw createNoKeyError(stamp, kind === 0);
         }
     }
 
     async getSaveKey(stamp: string): Promise<SaveKey> {
-        return <Promise<SaveKey>>this.getKey(stamp, true);
+        return await this.getKey(stamp, 0) as SaveKey;
     }
 
     async getBvKey(stamp: string): Promise<BattleVideoKey> {
-        return <Promise<BattleVideoKey>>this.getKey(stamp, false);
+        return await this.getKey(stamp, 1) as BattleVideoKey;
     }
 
     async close() {
@@ -123,8 +151,8 @@ export default class KeyStoreFileSystem implements KeyStore {
             let lazyKey = this.keys[key];
             if (lazyKey.key.isInitialized) {
                 let key = await lazyKey.key.get();
-                if (key.hash !== createHash("sha256").update(key.key.keyData).digest("hex")) {
-                    let buf = new Buffer(key.key.keyData);
+                if (key.hash !== createHash("sha256").update(createBuffer(key.key.keyData)).digest("hex")) {
+                    let buf = createBuffer(key.key.keyData);
                     await writeAsync(lazyKey.fd, buf, 0, buf.length, 0);
                 }
             }
@@ -132,21 +160,21 @@ export default class KeyStoreFileSystem implements KeyStore {
         }
     }
 
-    async setKey(name: string, key: BattleVideoKey|SaveKey, isSav: boolean) {
+    async setKey(name: string, key: BattleVideoKey|SaveKey, kind: number) {
         try {
             var stamp = key.stamp;
             if (this.keys[stamp] !== undefined) {
                 await closeAsync(this.keys[stamp].fd);
-                await unlink(join(this.path, this.keys[stamp].name));
+                await unlinkAsync(join(this.path, this.keys[stamp].name));
             }
-            var buf = new Buffer(key.keyData);
+            var buf = createBuffer(key.keyData);
             var hash = createHash("sha256").update(buf).digest("hex");
             var fd = <number>(await openAsync(join(this.path, name), "w+"));
             await writeAsync(fd, buf, 0, buf.length, 0);
             this.keys[stamp] = {
                 fd: fd,
                 name: name,
-                isSav: isSav,
+                kind,
                 key: new LazyValue(async function() { return { key: key, hash: hash }; })
             };
         } catch(e) {
@@ -157,11 +185,11 @@ export default class KeyStoreFileSystem implements KeyStore {
     }
 
     async setBvKey(key: BattleVideoKey) {
-        await this.setKey(`BV Key - ${key.stamp.replace('/', '-')}.bin`, key, false);
+        await this.setKey(`BV Key - ${key.stamp.replace('/', '-')}.bin`, key, 1);
     }
 
     async setSaveKey(key: SaveKey) {
-        await this.setKey(`SAV Key - ${key.stamp.replace('/', '-')}.bin`, key, true);
+        await this.setKey(`SAV Key - ${key.stamp.replace('/', '-')}.bin`, key, 0);
     }
 
     async setOrMergeBvKey(key: BattleVideoKey) {

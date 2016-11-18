@@ -1,22 +1,28 @@
-/// <reference path="typings/node/node.d.ts" />
+import PkBase from "./pkbase";
 
-"use strict";
-
-import * as fs from "fs";
-import Pkx from "./pkx";
-var forms = require("./localization/forms.json"),
+var forms6 = require("./localization/forms6.json"),
+    forms7 = require("./localization/forms7.json"),
     locations = require("./localization/locations.json"),
     characteristics = require("./localization/characteristics.json"),
-    ribbons = require("./localization/ribbons.json");
+    ribbons = require("./localization/ribbons.json"),
+    abilities = require("./localization/abilities.json"),
+    items = require("./localization/items.json"),
+    species = require("./localization/species.json"),
+    moves = require("./localization/moves.json"),
+    games = require("./localization/games.json"),
+    types = require("./localization/types.json"),
+    natures = require("./localization/natures.json"),
+    countries = require("./localization/countries.json"),
+    languageTags = require("./localization/languageTags.json"),
+    regions = require("./localization/regions.json");
 
-var langs = ["de", "en", "es", "fr", "it", "ja", "ko"];
-var files = ["abilities", "countries", "forms", "games", "items", "languageTags", "moves", "natures", "regions", "species", "types"];
-
+var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
 
 export interface LocalizationLanguage {
     abilities: string[];
     countries: string[];
-    forms: string[][];
+    forms6: string[][];
+    forms7: string[][];
     games: string[];
     items: string[];
     languageTags: string[];
@@ -26,12 +32,12 @@ export interface LocalizationLanguage {
     species: string[];
     types: string[];
 
-    getLocation(pkm: Pkx): string;
+    getLocation(pkm: PkBase): string;
     getLocation(gameVersion: number, location: number): string;
-    getEggLocation(pkm: Pkx): string;
-    getRibbons(pkm: Pkx): string[];
+    getEggLocation(pkm: PkBase): string;
+    getRibbons(pkm: PkBase): string[];
     getBallName(ball: number): string;
-    getCharacteristic(pkm: Pkx): string;
+    getCharacteristic(pkm: PkBase): string;
 }
 
 export interface Localization {
@@ -50,11 +56,19 @@ var names: Localization = <any>{};
 for (var i = 0; i < langs.length; ++i) {
     var lang = names[langs[i]] = <any>{};
 
-    for (var j = 0; j < files.length; ++j) {
-        lang[files[j]] = fs.readFileSync(__dirname + "/localization/" + langs[i] + "/" + files[j] + ".txt", {encoding: "utf-8"}).split("\n");
-    }
-
-    lang.forms = forms[langs[i]];
+    lang.forms6 = forms6[langs[i]];
+    lang.forms7 = forms7[langs[i]];
+    lang.abilities = abilities[langs[i]];
+    lang.items = items[langs[i]];
+    lang.moves = moves[langs[i]];
+    lang.species = species[langs[i]];
+    lang.moves = moves[langs[i]];
+    lang.games = games[langs[i]];
+    lang.types = types[langs[i]];
+    lang.natures = natures[langs[i]];
+    lang.countries = countries[langs[i]];
+    lang.languageTags = languageTags[langs[i]];
+    lang.regions = regions[langs[i]];
 
     lang.getLocation = (function(lang) {
         return function(originGame, location) {
@@ -67,14 +81,14 @@ for (var i = 0; i < langs.length; ++i) {
                     return "";
                 }
             }
-            if (originGame < 13 && originGame > 6) {
-                return locations[lang].hgss[location];
-            }
             if (originGame < 24) {
                 return locations[lang].bw2[location];
             }
             if (originGame > 23) {
                 return locations[lang].xy[location];
+            }
+            if (originGame > 27) {
+                return locations[lang].sm[location];
             }
         };
     })(langs[i]);
@@ -116,7 +130,7 @@ for (var i = 0; i < langs.length; ++i) {
     })(lang);
 
     lang.getCharacteristic = (function(lang) {
-        return function(pkx: Pkx) {
+        return function(pkx: PkBase) {
             const ivs = [pkx.ivHp, pkx.ivAtk, pkx.ivDef, pkx.ivSpe, pkx.ivSpAtk, pkx.ivSpDef];
             const max = Math.max.apply(Math, ivs);
             const maxVals = ivs.map(iv => iv === max ? max : undefined);

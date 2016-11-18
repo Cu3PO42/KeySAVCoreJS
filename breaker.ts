@@ -44,23 +44,22 @@ function makeNotSameFileError(type1: string, type2: string) {
 }
 
 function checkSavLength(length: number) {
-    return length === 0x100000 || length === 0x10009C || length === 0x10019A;
+    return length === 0x100000 || length === 0x10009C || length === 0x10019A ||
+        length === 0x0fe000 || length === 0x0fe09c || length === 0x0fe19a;
 }
 
-export async function breakSavOrBv(file1: Uint8Array, file2: Uint8Array) {
-    if (file1.length === 0x6E60) {
-        if (file2.length === 0x6E60) {
-            return breakKeyBv(file1, file2);
+export async function breakSavOrBv(file1: Uint8Array, file2: Uint8Array): Promise<{ type: string, result: any }> {
+    if (file1.length === 0x6E60 || file1.length === 0x6bc0) {
+        if (file2.length === 0x6E60 || file1.length === 0x6bc0) {
+            return { type: "BV", result: await breakKeyBv(file1, file2) };
         }
         let type2 = checkSavLength(file2.length) ? "SAV" : "NONE";
         throw makeNotSameFileError("BV", type2);
     }
 
     if (checkSavLength(file1.length)) {
-        file1 = file1.subarray(file1.length - 0x100000);
         if (checkSavLength(file2.length)) {
-            file2 = file2.subarray(file2.length - 0x100000);
-            return await breakKeySav(file1, file2);
+            return { type: "SAV", result: await breakKeySav(file1, file2) };
         }
         throw makeNotSameFileError("SAV", file2.length === 0x6E60 ? "BV" : "NONE");
     }

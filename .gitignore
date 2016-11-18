@@ -2,9 +2,9 @@ node_modules/
 bower_components/
 .DS_Store
 *.js
-!fixdts.js
 *.d.ts
 !typings/**/*.d.ts
 test/data/
 test/data.zip
 !test/**/*.js
+!scripts/**/*.js

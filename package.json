@@ -5,20 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "tsc && tsc --declaration && node ./fixdts.js",
+    "build": "tsc && tsc --declaration",
     "publish": "publish"
   },
   "author": "Cu3PO42",
   "license": "MIT",
   "dependencies": {
-    "base-64": "^0.1.0",
-    "bluebird": "^2.9.34",
-    "cuint": "^0.2.0",
-    "lodash": "^3.10.0"
   },
   "devDependencies": {
+    "@types/node": "^6.0.48",
     "fs-extra": "^0.26.5",
     "mocha": "^2.4.5",
-    "typescript": "1.8.0-dev.20160125"
+    "typescript": "^2.0.10"
   }
 }

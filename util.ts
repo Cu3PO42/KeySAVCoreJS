@@ -1,8 +1,3 @@
-/// <reference path="typings/base-64/base-64.d.ts"/>
-"use strict";
-
-import { encode as base64Encode } from "base-64";
-
 function trimCString(str: string) {
     var index = str.indexOf('\0');
     if (index < 0)
@@ -62,6 +57,14 @@ export function encodeUnicode16LE(str: string) {
 
 export function createDataView(arr): DataView {
     return new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
+}
+
+export function createBuffer(arr: Uint8Array | Uint16Array |  Uint32Array): Buffer {
+    return Buffer.from(arr.buffer, arr.byteOffset, arr.byteLength);
+}
+
+export function createUint8Array(arr): Uint8Array {
+    return new Uint8Array(arr.buffer, arr.byteOffset, arr.byteLength);
 }
 
 export function createUint16Array(arr): Uint16Array {
@@ -303,6 +306,28 @@ export function sequenceEqual(src1: Uint8Array, b, c?, d?, e?): boolean {
     return true;
 }
 
+export function promisify<T>(fn: (cb: (err: Error, res: T) => void) => void): () => Promise<T>;
+export function promisify<T, A1>(fn: (arg1: A1, cb: (err: Error, res: T) => void) => void): (arg1: A1) => Promise<T>;
+export function promisify<T, A1, A2>(fn: (arg1: A1, arg2: A2, cb: (err: Error, res: T) => void) => void): (arg1: A1, arg2: A2) => Promise<T>;
+export function promisify<T, A1, A2, A3>(fn: (arg1: A1, arg2: A2, arg3: A3, cb: (err: Error, res: T) => void) => void): (arg1: A1, arg2: A2, arg3: A3) => Promise<T>;
+export function promisify<T, A1, A2, A3, A4>(fn: (arg1: A1, arg2: A2, arg3: A3, arg4: A4, cb: (err: Error, res: T) => void) => void): (arg1: A1, arg2: A2, arg3: A3, arg4: A4) => Promise<T>;
+export function promisify<T, A1, A2, A3, A4, A5>(fn: (arg1: A1, arg2: A2, arg3: A3, arg4: A4, arg5: A5, cb: (err: Error, res: T) => void) => void): (arg1: A1, arg2: A2, arg3: A3, arg4: A4, arg5: A5) => Promise<T>;
+export function promisify<T, A1, A2, A3, A4, A5, A6>(fn: (arg1: A1, arg2: A2, arg3: A3, arg4: A4, arg5: A5, arg6: A6, cb: (err: Error, res: T) => void) => void): (arg1: A1, arg2: A2, arg3: A3, arg4: A4, arg5: A5, arg6: A6) => Promise<T>;
+export function promisify<T, A1, A2, A3, A4, A5, A6, A7>(fn: (arg1: A1, arg2: A2, arg3: A3, arg4: A4, arg5: A5, arg6: A6, arg7: A7, cb: (err: Error, res: T) => void) => void): (arg1: A1, arg2: A2, arg3: A3, arg4: A4, arg5: A5, arg6: A6, arg7: A7) => Promise<T>;
+export function promisify(fn: Function) {
+    return function(...args: any[]) {
+        return new Promise(function(resolve, reject) {
+            fn(...args, function(err, res) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(res);
+                }
+            });
+        });
+    };
+}
+
 export function pad4(n: number) {
     return n < 10000 ? ("0000" + n).slice(-4) : `${n}`;
 }
@@ -311,10 +336,17 @@ export function pad5(n: number) {
     return n < 100000 ? ("00000" + n).slice(-5) : `${n}`;
 }
 
+export function base64Encode(arr: Uint8Array) {
+    if (typeof Buffer !== "undefined") {
+        return createBuffer(arr).toString("base64");
+    }
+    return btoa(String.fromCharCode(...arr));
+}
+
 export function getStampSav(arr: Uint8Array, off: number): string {
-    return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+8)));
+    return base64Encode(arr.subarray(off, off+8));
 }
 
 export function getStampBv(arr: Uint8Array, off: number): string {
-    return base64Encode(String.fromCharCode.apply(null, arr.subarray(off, off+0x10)));
+    return base64Encode(arr.subarray(off, off+0x10));
 }

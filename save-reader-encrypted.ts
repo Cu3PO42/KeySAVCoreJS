@@ -1,18 +1,48 @@
-"use strict";
-
 import SaveReader from "./save-reader";
 import SaveKey from "./save-key";
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 import * as util from "./util";
 
 var zeros = new Uint8Array(232);
-var ezeros = Pkx.encrypt(zeros);
+var ezeros = PkBase.encrypt(zeros);
 
 export { default as SaveReader } from "./save-reader";
 export default class SaveReaderEncrypted implements SaveReader {
+    public static getOffsets(generation: number) {
+        return {
+            6: {
+                fileSize: 0x100000,
+                saveSize: 0x07f000,
+                base1: 0x1000,
+                base2: 0x080000
+            },
+            7: {
+                fileSize: 0x0fe000,
+                saveSize: 0x07e000,
+                base1: 0x2000,
+                base2: 0x080000
+            }
+        }[generation];
+    }
+
+    public static getGeneration(file: Uint8Array) {
+        let length = file.length;
+        if (length === 0x100000 || length === 0x10009C || length === 0x10019A) {
+            return 6;
+        }
+        if (length === 0x0fe000 || length === 0x0fe09c || length === 0x0fe19a) {
+            return 7;
+        }
+        return -1;
+    }
+
     private activeSlot: number;
     private boxes1: Uint8Array;
     private boxes2: Uint8Array;
+
+    public get generation() {
+        return this.key.generation;
+    }
 
     get unlockedSlots() {
         var res = 0;
@@ -27,10 +57,12 @@ export default class SaveReaderEncrypted implements SaveReader {
     }
 
     constructor(private sav: Uint8Array, private key: SaveKey) {
-        this.sav = this.sav.subarray(this.sav.length % 0x100000);
+        const offsets = SaveReaderEncrypted.getOffsets(this.generation);
+
+        this.sav = this.sav.subarray(this.sav.length % offsets.fileSize);
         this.activeSlot = this.key.slot1Flag == util.createDataView(sav).getUint32(0x168, true) && this.key.isNewKey ? 0 : 1;
-        this.boxes1 = util.xor(this.sav, key.boxOffset - 0x7F000, key.slot1Key, 0, 232 * 30 * 31);
-        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * 31);
+        this.boxes1 = util.xor(this.sav, key.boxOffset - offsets.saveSize, key.slot1Key, 0, 232 * 30 * (this.generation === 6 ? 31 : 32));
+        this.boxes2 = this.sav.subarray(key.boxOffset, key.boxOffset + 232 * 30 * (this.generation === 6 ? 31 : 31));
     }
 
     scanSlots(pos1?: number, pos2?: number) {
@@ -40,7 +72,8 @@ export default class SaveReaderEncrypted implements SaveReader {
             }
         } else {
             pos1 = 0;
-            pos2 = 31 * 30;
+            pos2 = (this.generation=== 6 ? 31 : 32) * 30;
+
         }
 
         if (this.key.isNewKey) {
@@ -55,17 +88,17 @@ export default class SaveReaderEncrypted implements SaveReader {
         }
     }
 
-    getPkx(pos: number) {
+    getPkx(pos: number): PkBase {
         var res = SaveReaderEncrypted.getPkxRaw(this.activeSlot === 0 ? this.boxes1 : this.boxes2, pos, this.key), data = res[0], ghost = res[1];
         if (data === undefined || (data[8] | data[9]) == 0)
             return undefined;
-        return new Pkx(data, (pos / 30) | 0, pos % 30, ghost);
+        return PkBase.makePkm(data, this.generation, (pos / 30) | 0, pos % 30, ghost);
     }
 
     getAllPkx() {
         var res = [];
         var tmp;
-        for (var i = 0; i < 930; ++i) {
+        for (var i = 0; i < (this.generation === 6 ? 930 : 960); ++i) {
             tmp = this.getPkx(i);
             if (tmp !== undefined) {
                 res.push(tmp);
@@ -88,8 +121,8 @@ export default class SaveReaderEncrypted implements SaveReader {
             }
 
             // We have a key2 only, this is supposed to be the actual key
-            pkx = Pkx.decrypt(util.xor(key.boxKey2, offset, boxes, offset, 232));
-            if (Pkx.verifyChk(pkx)) {
+            pkx = PkBase.decrypt(util.xor(key.boxKey2, offset, boxes, offset, 232));
+            if (PkBase.verifyChk(pkx)) {
                 return [pkx, false];
             } else {
                 // Something is wrong. Our data didn't decrypt properly. Apparently the key is wrong.
@@ -107,8 +140,8 @@ export default class SaveReaderEncrypted implements SaveReader {
         function tryDecrypt(possibleEkx: Uint8Array[], sourceKey: Uint8Array, sourceOffset: number, destinationKey: Uint8Array): [Uint8Array, boolean] {
             var pkx: Uint8Array;
             for (var i = 0; i < possibleExtraKeys.length; ++i) {
-                pkx = Pkx.decrypt(possibleEkx[i]);
-                if (Pkx.verifyChk(pkx)) {
+                pkx = PkBase.decrypt(possibleEkx[i]);
+                if (PkBase.verifyChk(pkx)) {
                     util.xor(possibleExtraKeys[i], 0, sourceKey, sourceOffset, destinationKey, offset, 232);
                     return [pkx, true];
                 }
@@ -139,12 +172,12 @@ export default class SaveReaderEncrypted implements SaveReader {
         // Data has been observed to change twice! We can potentially get our exact keystream now!
         // Either key1 or key2 or save would be empty.
         for (let possibleEkx of possibleEkx1) {
-            pkx = Pkx.decrypt(possibleEkx);
-            if (!Pkx.verifyChk(pkx)) {
+            pkx = PkBase.decrypt(possibleEkx);
+            if (!PkBase.verifyChk(pkx)) {
                 continue;
             }
 
-            if (possibleEkx2.some((e) => Pkx.verifyChk(Pkx.decrypt(e)))) {
+            if (possibleEkx2.some((e) => PkBase.verifyChk(PkBase.decrypt(e)))) {
                 // Save file is empty
                 util.xor(possibleEkx, 0, key.boxKey1, offset, key.boxKey2, offset, 232);
             } else {
@@ -157,8 +190,8 @@ export default class SaveReaderEncrypted implements SaveReader {
         }
 
         for (let possibleEkx of possibleEkx2) {
-            pkx = Pkx.decrypt(possibleEkx);
-            if (!Pkx.verifyChk(pkx)) {
+            pkx = PkBase.decrypt(possibleEkx);
+            if (!PkBase.verifyChk(pkx)) {
                 continue;
             }
 

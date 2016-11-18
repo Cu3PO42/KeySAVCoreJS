@@ -1,15 +1,14 @@
-"use strict";
-
-import Pkx from "./pkx";
+import PkBase from "./pkbase";
 
 interface SaveReader {
     unlockedSlots: number;
     isNewKey: boolean;
+    generation: number;
     scanSlots(from: number, to: number);
     scanSlots(slot: number);
     scanSlots();
-    getPkx(pos: number): Pkx;
-    getAllPkx(): Pkx[];
+    getPkx(pos: number): PkBase;
+    getAllPkx(): PkBase[];
 }
 
 export default SaveReader;
