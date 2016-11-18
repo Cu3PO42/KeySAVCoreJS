@@ -126,7 +126,7 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
     if (generation1 !== generation2) {
         let e = new Error("Saves are not from the same generation.") as any;
-        e.name = "SaveNotSameGenerationError";
+        e.name = "SavesNotSameGenerationError";
         throw e;
     }
 
