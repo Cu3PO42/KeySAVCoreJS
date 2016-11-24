@@ -31,6 +31,8 @@ var video3 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1"))
 var video4 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2"));
 var video5 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1-sm"));
 var video6 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2-sm"));
+var video7 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/-1"));
+var video8 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/-2"));
 var key = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
 var keyWithoutOpponent = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-without-opponent.bin")));
 var honedge = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/honedge.pk6")), -1, 0, false);
@@ -83,6 +85,12 @@ describe("BattleVideoBreaker", function() {
                 var readerWOO = new BattleVideoReader(video1, keyWOOpponent);
                 assert.deepEqual(readerWO.getPkx(0, 0), readerWOO.getPkx(0, 0));
             });
+        });
+
+        it("should break a key without opponent (Gen 7)", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return BattleVideoBreaker.breakKey(video7, video8);
         });
 
         it("should break a key with opponent (Gen 7)", function() {

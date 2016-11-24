@@ -16,9 +16,9 @@ export async function load(input: Uint8Array): Promise<BattleVideoReader> {
 
 var encryptedZeros = PkBase.encrypt(new Uint8Array(260));
 
-function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number, key: Uint8Array): boolean {
+function breakParty(reader1: BattleVideoReader, reader2: BattleVideoReader, partyOffset: number, key: BattleVideoKey, partyNumber: number): boolean {
     // The teams from the two videos XORed together
-    var partyXored = util.xor(video1, partyOffset, video2, partyOffset, 260*6);
+    var partyXored = util.xor(reader1.video, partyOffset, reader2.video, partyOffset, 260*6);
 
     // Retrieve data for the Pokémon that is in slot 1 in video 1 and slot 2 in video 2
     var ekx = util.xor(encryptedZeros, 0, partyXored, 260, 260);
@@ -29,26 +29,17 @@ function breakParty(video1: Uint8Array, video2: Uint8Array, partyOffset: number,
     }
 
     // Keystream for slot one (ekx is the Pokémon in the first slot)
-    util.xor(ekx, 0, video1, partyOffset, key, 0, 260);
+    util.xor(ekx, 0, reader1.video, partyOffset, key.teamKeys[partyNumber], 0, 260);
     // All remaining 5 slots are empty (they contain the enctypted zeroes) in video1 and the keystream can be extracted directly
     for (var i = 1; i < 6; ++i)
-        util.xor(video1, partyOffset + 260 * i, encryptedZeros, 0, key, 260 * i, 260);
+        util.xor(reader1.video, partyOffset + 260 * i, encryptedZeros, 0, key.teamKeys[partyNumber], 260 * i, 260);
 
-    return true;
-}
-
-function checkParty(video1: Uint8Array, video2: Uint8Array, key: BattleVideoKey): boolean {
-    const video1Reader = new BattleVideoReader(video1, key);
-    const video2Reader = new BattleVideoReader(video2, key);
-    const video1Pkx = video1Reader.getAllPkx();
-    const video2Pkx = video2Reader.getAllPkx();
-    const { workingKeys } = key;
-
-    for (let i = 0; i < video1Pkx.length; ++i) {
-        if (workingKeys[i] && (video1Pkx[i].length !== 1 || video2Pkx[i].length !== 2)) {
-            return false;
-        }
+    if (reader1.getPkx(0, partyNumber) === undefined || reader1.getPkx(1, partyNumber) !== undefined
+        || reader2.getPkx(1, partyNumber) === undefined || reader2.getPkx(2, partyNumber) !== undefined) {
+        util.clear(key.teamKeys[partyNumber]);
+        return false;
     }
+
     return true;
 }
 
@@ -99,14 +90,10 @@ export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<
 
     const newKey = new BattleVideoKey(generation1);
     util.copy(video1, 0x10, newKey.keyData, 0, 0x10);
+    const reader1 = new BattleVideoReader(video1, newKey);
+    const reader2 = new BattleVideoReader(video2, newKey);
 
-    if (!offsets.partyOffsets.map((o, i) => breakParty(video1, video2, o, newKey.teamKeys[i])).some(e => e)) {
-        var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
-        e.name = "BattleVideoBreakError";
-        throw e;
-    }
-
-    if (!checkParty(video1, video2, newKey)) {
+    if (!offsets.partyOffsets.map((o, i) => breakParty(reader1, reader2, o, newKey, i)).some(e => e)) {
         var e = new Error("Improperly set up Battle Videos. Please follow directions and try again.") as any;
         e.name = "BattleVideoBreakError";
         throw e;

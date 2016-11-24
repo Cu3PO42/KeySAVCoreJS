@@ -257,6 +257,35 @@ export function empty(src: Uint8Array, offset?: number, length?: number): boolea
     return true;
 }
 
+export function clear(src: Uint8Array, offset: number, length: number): void;
+export function clear(src: Uint8Array): void;
+export function clear(src: Uint8Array, offset?: number, length?: number): void {
+    if (!Number.isInteger(offset) || !Number.isInteger(length)) {
+        offset = 0;
+        length = src.length;
+    }
+    var totalOffset = offset + src.byteOffset;
+    var lower4Bound = Math.min(-totalOffset & 3, length);
+    var upper4Bound = Math.min(length & ~3 + lower4Bound, length);
+    if (lower4Bound >= upper4Bound) {
+        for (var i = 0; i < length; ++i) {
+            src[i+offset] = 0;
+        }
+    } else {
+        for (var i = 0; i < lower4Bound; ++i) {
+            src[i+offset] = 0;
+        }
+        var intermediate4Length = (upper4Bound - lower4Bound) >> 2;
+        var src_32 = new Uint32Array(src.buffer, totalOffset + lower4Bound, intermediate4Length);
+        for (var i = 0; i < intermediate4Length; ++i) {
+            src_32[i] = 0;
+        }
+        for (var i = upper4Bound; i < length; ++i) {
+            src[i+offset] = 0;
+        }
+    }
+}
+
 export function sequenceEqual(src1: Uint8Array, src2: Uint8Array): boolean;
 export function sequenceEqual(src1: Uint8Array, src2: Uint8Array, offset: number): boolean;
 export function sequenceEqual(src1: Uint8Array, off1: number, src2: Uint8Array, off2: number, length: number): boolean;

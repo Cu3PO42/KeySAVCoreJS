@@ -6,8 +6,12 @@ export default class BattleVideoReader {
     public generation: number;
     private _offsets: { partyOffsets: number[] };
 
-    constructor(private video: Uint8Array, private key: BattleVideoKey) {
-        this.generation = BattleVideoReader.getGeneration(video);
+    public get video() {
+        return this._video;
+    }
+
+    constructor(private _video: Uint8Array, private key: BattleVideoKey) {
+        this.generation = BattleVideoReader.getGeneration(_video);
         this._offsets = BattleVideoReader.getOffsets(this.generation);
     }
 
@@ -38,7 +42,7 @@ export default class BattleVideoReader {
     }
 
     getPkx(slot: number, team: number): PkBase {
-        const ekx = util.xor(this.video, this._offsets.partyOffsets[team] + 260 * slot, this.key.teamKeys[team], 260 * slot, 260);
+        const ekx = util.xor(this._video, this._offsets.partyOffsets[team] + 260 * slot, this.key.teamKeys[team], 260 * slot, 260);
         const pkx = PkBase.decrypt(ekx);
         if ( !PkBase.verifyChk(pkx) || util.empty(pkx)) {
             return undefined;
