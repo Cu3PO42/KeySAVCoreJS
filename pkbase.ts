@@ -410,7 +410,7 @@ export default class PkBase {
         }
 
         var actualsum = pkx16[6/2];
-        if (pkx16[8/2] > 750 || pkx16[0x90 / 2] != 0)
+        if (pkx16[8/2] > 805 || pkx16[0x90 / 2] != 0)
             return false;
         return (chk & 0xFFFF) == actualsum;
     }
