@@ -123,6 +123,7 @@ function generateLocations() {
 
 function generateForms() {
     const pkmFile = fs.readFileSync(path.join(pkhexPath, 'PKHeX', 'PKM', 'PKX.cs'), 'utf-8');
+    const forms6 = require(path.join(localPath, 'forms6.json'));
     const startIndex = pkmFile.indexOf('public static string[] getFormList(int species, string[] t, string[] f, string[] g, int generation = 6)');
     const startOfCodeIndex = pkmFile.indexOf('{', startIndex);
     const endOfCodeIndex = pkmFile.indexOf('\n        }', startIndex);
@@ -143,10 +144,24 @@ function generateForms() {
         const types = fs.readFileSync(path.join(textPath, lang, `text_Types_${lang}.txt`), 'utf-8').split(/\r?\n/);
         const forms = fs.readFileSync(path.join(textPath, lang, `text_Forms_${lang}.txt`), 'ucs2').split(/\r?\n/);
 
-        for (let i = 0; i < 804; ++i) {
-            const formsForPkm = formGetter(i, types, forms, ['♂', '♀', '-'], 7);
-            if (formsForPkm.length !== 1 || formsForPkm[0] !== '') {
-              langData[i] = formsForPkm;
+        for (let i = 1; i < 804; ++i) {
+            const formsForPkm7 = formGetter(i, types, forms, ['♂', '♀', '-'], 7);
+            const formsForPkm6 = formGetter(i, types, forms, ['♂', '♀', '-'], 6);
+            let formsForPkm = formsForPkm7;
+            if (formsForPkm6.length === formsForPkm7.length) {
+              let isEq = true;
+              for (let j = 0; j < formsForPkm6.length; ++j) {
+                if (formsForPkm6[j] !== formsForPkm7[j]) {
+                  isEq = false;
+                  break;
+                }
+              }
+              if (isEq && forms6[lang] && forms6[lang][i]) {
+                formsForPkm = forms6[lang][i];
+              }
+            }
+            if (formsForPkm.length !== 1) {
+              langData[i] = (Array.isArray(formsForPkm) ? arrToObj(formsForPkm) : formsForPkm);
             }
         }
     }
