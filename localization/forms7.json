@@ -1,4994 +1,4290 @@
 {
     "de": {
-        "3": [
-            "Normal",
-            "Mega"
-        ],
-        "6": [
-            "Normal",
-            "Mega X",
-            "Mega Y"
-        ],
-        "9": [
-            "Normal",
-            "Mega"
-        ],
-        "13": [
-            "Normal",
-            "Mega"
-        ],
-        "18": [
-            "Normal",
-            "Mega"
-        ],
-        "19": [
-            "Normal",
-            "Alola"
-        ],
-        "20": [
-            "Normal",
-            "Alola"
-        ],
-        "21": [
-            "Normal",
-            "Original",
-            "Hoenn",
-            "Sinnoh",
-            "Einall",
-            "Kalos",
-            "Alola"
-        ],
-        "26": [
-            "Normal",
-            "Alola"
-        ],
-        "27": [
-            "Normal",
-            "Alola"
-        ],
-        "28": [
-            "Normal",
-            "Alola"
-        ],
-        "37": [
-            "Normal",
-            "Alola"
-        ],
-        "38": [
-            "Normal",
-            "Alola"
-        ],
-        "50": [
-            "Normal",
-            "Alola"
-        ],
-        "51": [
-            "Normal",
-            "Alola"
-        ],
-        "52": [
-            "Normal",
-            "Alola"
-        ],
-        "53": [
-            "Normal",
-            "Mega"
-        ],
-        "74": [
-            "Normal",
-            "Alola"
-        ],
-        "75": [
-            "Normal",
-            "Alola"
-        ],
-        "76": [
-            "Normal",
-            "Alola"
-        ],
-        "80": [
-            "Normal",
-            "Mega"
-        ],
-        "88": [
-            "Normal",
-            "Alola"
-        ],
-        "89": [
-            "Normal",
-            "Alola"
-        ],
-        "94": [
-            "Normal",
-            "Mega"
-        ],
-        "103": [
-            "Normal",
-            "Alola"
-        ],
-        "105": [
-            "Normal",
-            "Alola"
-        ],
-        "115": [
-            "Normal",
-            "Mega"
-        ],
-        "127": [
-            "Normal",
-            "Mega"
-        ],
-        "130": [
-            "Normal",
-            "Mega"
-        ],
-        "142": [
-            "Normal",
-            "Mega"
-        ],
-        "150": [
-            "Normal",
-            "Mega X",
-            "Mega Y"
-        ],
-        "181": [
-            "Normal",
-            "Mega"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "Normal",
-            "Mega"
-        ],
-        "212": [
-            "Normal",
-            "Mega"
-        ],
-        "214": [
-            "Normal",
-            "Mega"
-        ],
-        "229": [
-            "Normal",
-            "Mega"
-        ],
-        "248": [
-            "Normal",
-            "Mega"
-        ],
-        "254": [
-            "Normal",
-            "Mega"
-        ],
-        "257": [
-            "Normal",
-            "Mega"
-        ],
-        "260": [
-            "Normal",
-            "Mega"
-        ],
-        "282": [
-            "Normal",
-            "Mega"
-        ],
-        "302": [
-            "Normal",
-            "Mega"
-        ],
-        "303": [
-            "Normal",
-            "Mega"
-        ],
-        "306": [
-            "Normal",
-            "Mega"
-        ],
-        "308": [
-            "Normal",
-            "Mega"
-        ],
-        "310": [
-            "Normal",
-            "Mega"
-        ],
-        "319": [
-            "Normal",
-            "Mega"
-        ],
-        "323": [
-            "Normal",
-            "Mega"
-        ],
-        "334": [
-            "Normal",
-            "Mega"
-        ],
-        "351": [
-            "Normal",
-            "Sonnen",
-            "Regen",
-            "Schnee"
-        ],
-        "354": [
-            "Normal",
-            "Mega"
-        ],
-        "359": [
-            "Normal",
-            "Mega"
-        ],
-        "362": [
-            "Normal",
-            "Mega"
-        ],
-        "373": [
-            "Normal",
-            "Mega"
-        ],
-        "376": [
-            "Normal",
-            "Mega"
-        ],
-        "380": [
-            "Normal",
-            "Mega"
-        ],
-        "381": [
-            "Normal",
-            "Mega"
-        ],
-        "382": [
-            "Normal",
-            "Proto"
-        ],
-        "383": [
-            "Normal",
-            "Proto"
-        ],
-        "384": [
-            "Normal",
-            "Mega"
-        ],
-        "386": [
-            "Normal",
-            "Angriffs",
-            "Verteidigungs",
-            "Initiative"
-        ],
-        "412": [
-            "Pflanz",
-            "Sandumhang",
-            "Initiative"
-        ],
-        "413": [
-            "Pflanz",
-            "Sandumhang",
-            "Initiative"
-        ],
-        "414": [
-            "Pflanz",
-            "Sandumhang",
-            "Initiative"
-        ],
-        "421": [
-            "Wolken",
-            "Sonnen"
-        ],
-        "422": [
-            "West",
-            "Östlich"
-        ],
-        "423": [
-            "West",
-            "Östlich"
-        ],
-        "428": [
-            "Normal",
-            "Mega"
-        ],
-        "445": [
-            "Normal",
-            "Mega"
-        ],
-        "448": [
-            "Normal",
-            "Mega"
-        ],
-        "460": [
-            "Normal",
-            "Mega"
-        ],
-        "475": [
-            "Normal",
-            "Mega"
-        ],
-        "479": [
-            "Normal",
-            "Hitze",
-            "Wasch",
-            "Frost",
-            "Wirbel",
-            "Schneid"
-        ],
-        "487": [
-            "Wandel",
-            "Ur"
-        ],
-        "492": [
-            "Land",
-            "Zenit"
-        ],
-        "493": [
-            "Normal",
-            "Kampf",
-            "Flug",
-            "Gift",
-            "Boden",
-            "Gestein",
-            "Käfer",
-            "Geist",
-            "Stahl",
-            "Feuer",
-            "Wasser",
-            "Pflanze",
-            "Elektro",
-            "Psycho",
-            "Eis",
-            "Drache",
-            "Unlicht",
-            "Fee"
-        ],
-        "531": [
-            "Normal",
-            "Mega"
-        ],
-        "550": [
-            "Rotlinige",
-            "Blaulinige"
-        ],
-        "555": [
-            "Normal",
-            "Trance"
-        ],
-        "585": [
-            "Herbst",
-            "Winter",
-            "Tiergeist",
-            "Tiergeist"
-        ],
-        "586": [
-            "Herbst",
-            "Winter",
-            "Tiergeist",
-            "Tiergeist"
-        ],
-        "641": [
-            "Inkarnations",
-            "Tiergeist"
-        ],
-        "642": [
-            "Inkarnations",
-            "Tiergeist"
-        ],
-        "645": [
-            "Inkarnations",
-            "Tiergeist"
-        ],
-        "646": [
-            "Normal",
-            "Weißes",
-            "Schwarzes"
-        ],
-        "647": [
-            "Standard",
-            "Resolut"
-        ],
-        "648": [
-            "Gesangs",
-            "Tanz"
-        ],
-        "649": [
-            "Normal",
-            "Stahl",
-            "Wasser",
-            "Feuer",
-            "Elektro"
-        ],
-        "658": [
-            "Normal",
-            "Ash",
-            "Aktiv-"
-        ],
-        "664": [
-            "Frost",
-            "Schneefeld",
-            "Flocken",
-            "Kontinental",
-            "Ziergarten",
-            "Prunk",
-            "Blumenmeer",
-            "Dschungel",
-            "Aquamarin",
-            "Archipel",
-            "Dürre",
-            "Sand",
-            "Flussdelta",
-            "Monsun",
-            "Savannen",
-            "Sonnen",
-            "Ozean",
-            "Weiß",
-            "Fantasie",
-            "Pokéball"
-        ],
-        "665": [
-            "Frost",
-            "Schneefeld",
-            "Flocken",
-            "Kontinental",
-            "Ziergarten",
-            "Prunk",
-            "Blumenmeer",
-            "Dschungel",
-            "Aquamarin",
-            "Archipel",
-            "Dürre",
-            "Sand",
-            "Flussdelta",
-            "Monsun",
-            "Savannen",
-            "Sonnen",
-            "Ozean",
-            "Weiß",
-            "Fantasie",
-            "Pokéball"
-        ],
-        "666": [
-            "Frost",
-            "Schneefeld",
-            "Flocken",
-            "Kontinental",
-            "Ziergarten",
-            "Prunk",
-            "Blumenmeer",
-            "Dschungel",
-            "Aquamarin",
-            "Archipel",
-            "Dürre",
-            "Sand",
-            "Flussdelta",
-            "Monsun",
-            "Savannen",
-            "Sonnen",
-            "Ozean",
-            "Weiß",
-            "Fantasie",
-            "Pokéball"
-        ],
-        "669": [
-            "Weiß",
-            "Gelb",
-            "Orange",
-            "Blau",
-            "Weiß"
-        ],
-        "670": [
-            "Weiß",
-            "Gelb",
-            "Orange",
-            "Blau",
-            "Weiß",
-            "Ewig"
-        ],
-        "671": [
-            "Weiß",
-            "Gelb",
-            "Orange",
-            "Blau",
-            "Weiß"
-        ],
-        "676": [
-            "Weiß",
-            "Herzchen",
-            "Sternchen",
-            "Diamanten",
-            "Fräulein",
-            "Damen",
-            "Kavaliers",
-            "Königinnen",
-            "Kabuki",
-            "Herrscher"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "Schild",
-            "Klingen"
-        ],
-        "710": [
-            "M",
-            "S",
-            "L",
-            "XL"
-        ],
-        "711": [
-            "M",
-            "S",
-            "L",
-            "XL"
-        ],
-        "716": [
-            "Normal",
-            "Aktiv-"
-        ],
-        "718": [
-            "Normal",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "Normal",
-            "Mega"
-        ],
-        "720": [
-            "Normal",
-            "Entfesseltes"
-        ],
-        "741": [
-            "Flamenco",
-            "Cheer",
-            "Hula",
-            "Buyo"
-        ],
-        "745": [
-            "Tag",
-            "Nacht"
-        ],
-        "746": [
-            "Einzel",
-            "Schwarm"
-        ],
-        "773": [
-            "Normal",
-            "Kampf",
-            "Flug",
-            "Gift",
-            "Boden",
-            "Gestein",
-            "Käfer",
-            "Geist",
-            "Stahl",
-            "Feuer",
-            "Wasser",
-            "Pflanze",
-            "Elektro",
-            "Psycho",
-            "Eis",
-            "Drache",
-            "Unlicht",
-            "Fee"
-        ],
-        "774": [
-            "M-Roter",
-            "M-Oranger",
-            "M-Gelber",
-            "M-Grüner",
-            "M-Hellblauer",
-            "M-Blauer",
-            "M-Violetter",
-            "K-Roter",
-            "K-Oranger",
-            "K-Gelber",
-            "K-Grüner",
-            "K-Hellblauer",
-            "K-Blauer",
-            "K-Violetter"
-        ],
-        "778": [
-            "Normal",
-            "Entlarvte"
-        ]
+        "3": {
+            "1": "Mega"
+        },
+        "6": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "9": {
+            "1": "Mega"
+        },
+        "15": {
+            "1": "Mega"
+        },
+        "18": {
+            "1": "Mega"
+        },
+        "19": {
+            "1": "Alola"
+        },
+        "20": {
+            "1": "Alola"
+        },
+        "25": {
+            "1": "Kanto",
+            "2": "Hoenn",
+            "3": "Sinnoh",
+            "4": "Einall",
+            "5": "Kalos",
+            "6": "Alola"
+        },
+        "26": {
+            "1": "Alola"
+        },
+        "27": {
+            "1": "Alola"
+        },
+        "28": {
+            "1": "Alola"
+        },
+        "37": {
+            "1": "Alola"
+        },
+        "38": {
+            "1": "Alola"
+        },
+        "50": {
+            "1": "Alola"
+        },
+        "51": {
+            "1": "Alola"
+        },
+        "52": {
+            "1": "Alola"
+        },
+        "53": {
+            "1": "Mega"
+        },
+        "65": {
+            "1": "Mega"
+        },
+        "74": {
+            "1": "Alola"
+        },
+        "75": {
+            "1": "Alola"
+        },
+        "76": {
+            "1": "Alola"
+        },
+        "80": {
+            "1": "Mega"
+        },
+        "88": {
+            "1": "Alola"
+        },
+        "89": {
+            "1": "Alola"
+        },
+        "94": {
+            "1": "Mega"
+        },
+        "103": {
+            "1": "Alola"
+        },
+        "105": {
+            "1": "Alola"
+        },
+        "115": {
+            "1": "Mega"
+        },
+        "127": {
+            "1": "Mega"
+        },
+        "130": {
+            "1": "Mega"
+        },
+        "142": {
+            "1": "Mega"
+        },
+        "150": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "181": {
+            "1": "Mega"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "Mega"
+        },
+        "212": {
+            "1": "Mega"
+        },
+        "214": {
+            "1": "Mega"
+        },
+        "229": {
+            "1": "Mega"
+        },
+        "248": {
+            "1": "Mega"
+        },
+        "254": {
+            "1": "Mega"
+        },
+        "257": {
+            "1": "Mega"
+        },
+        "260": {
+            "1": "Mega"
+        },
+        "282": {
+            "1": "Mega"
+        },
+        "302": {
+            "1": "Mega"
+        },
+        "303": {
+            "1": "Mega"
+        },
+        "306": {
+            "1": "Mega"
+        },
+        "308": {
+            "1": "Mega"
+        },
+        "310": {
+            "1": "Mega"
+        },
+        "319": {
+            "1": "Mega"
+        },
+        "323": {
+            "1": "Mega"
+        },
+        "334": {
+            "1": "Mega"
+        },
+        "351": {
+            "1": "Sonnenform",
+            "2": "Regenform",
+            "3": "Schneeform"
+        },
+        "354": {
+            "1": "Mega"
+        },
+        "359": {
+            "1": "Mega"
+        },
+        "362": {
+            "1": "Mega"
+        },
+        "373": {
+            "1": "Mega"
+        },
+        "376": {
+            "1": "Mega"
+        },
+        "380": {
+            "1": "Mega"
+        },
+        "381": {
+            "1": "Mega"
+        },
+        "382": {
+            "1": "Proto"
+        },
+        "383": {
+            "1": "Proto"
+        },
+        "384": {
+            "1": "Mega"
+        },
+        "386": {
+            "0": "Normalform",
+            "1": "Angriffsform",
+            "2": "Verteidigungsform",
+            "3": "Initiativeform"
+        },
+        "412": {
+            "0": "Pflanzenumhang",
+            "1": "Sandumhang",
+            "2": "Lumpenumhang"
+        },
+        "413": {
+            "0": "Pflanzenumhang",
+            "1": "Sandumhang",
+            "2": "Lumpenumhang"
+        },
+        "421": {
+            "0": "Wolkenform",
+            "1": "Sonnenform"
+        },
+        "422": {
+            "0": "Westliches Meer",
+            "1": "Östliches Meer"
+        },
+        "423": {
+            "0": "Westliches Meer",
+            "1": "Östliches Meer"
+        },
+        "428": {
+            "1": "Mega"
+        },
+        "445": {
+            "1": "Mega"
+        },
+        "448": {
+            "1": "Mega"
+        },
+        "460": {
+            "1": "Mega"
+        },
+        "475": {
+            "1": "Mega"
+        },
+        "479": {
+            "1": "Hitze",
+            "2": "Wasch",
+            "3": "Frost",
+            "4": "Wirbel",
+            "5": "Schneid"
+        },
+        "487": {
+            "0": "Wandelform",
+            "1": "Urform"
+        },
+        "492": {
+            "0": "Landform",
+            "1": "Zenitform"
+        },
+        "493": {
+            "0": "Normal",
+            "1": "Kampf",
+            "2": "Flug",
+            "3": "Gift",
+            "4": "Boden",
+            "5": "Gestein",
+            "6": "Käfer",
+            "7": "Geist",
+            "8": "Stahl",
+            "9": "Feuer",
+            "10": "Wasser",
+            "11": "Pflanze",
+            "12": "Elektro",
+            "13": "Psycho",
+            "14": "Eis",
+            "15": "Drache",
+            "16": "Unlicht",
+            "17": "Fee"
+        },
+        "531": {
+            "1": "Mega"
+        },
+        "550": {
+            "0": "Rotlinige Form",
+            "1": "Blaulinige Form"
+        },
+        "555": {
+            "0": "Normalmodus",
+            "1": "Trance-Modus"
+        },
+        "585": {
+            "0": "Frühlingsform",
+            "1": "Sommerform",
+            "2": "Herbstform",
+            "3": "Winterform"
+        },
+        "586": {
+            "0": "Frühlingsform",
+            "1": "Sommerform",
+            "2": "Herbstform",
+            "3": "Winterform"
+        },
+        "641": {
+            "0": "Inkarnationsform",
+            "1": "Tiergeistform"
+        },
+        "642": {
+            "0": "Inkarnationsform",
+            "1": "Tiergeistform"
+        },
+        "645": {
+            "0": "Inkarnationsform",
+            "1": "Tiergeistform"
+        },
+        "646": {
+            "1": "Schwarz",
+            "2": "Weiß"
+        },
+        "647": {
+            "0": "Standardform",
+            "1": "Resolutform"
+        },
+        "648": {
+            "0": "Gesangsform",
+            "1": "Tanzform"
+        },
+        "649": {
+            "1": "Aquamodul",
+            "2": "Blitzmodul",
+            "3": "Flammenmodul",
+            "4": "Gefriermodul"
+        },
+        "658": {
+            "1": "Ash"
+        },
+        "664": {
+            "0": "Frostmuster",
+            "1": "Schneefeldmuster",
+            "2": "Flockenmuster",
+            "3": "Kontinentalmuster",
+            "4": "Ziergartenmuster",
+            "5": "Prunkmuster",
+            "6": "Blumenmeermuster",
+            "7": "Innovationsmuster",
+            "8": "Aquamarinmuster",
+            "9": "Archipelmuster",
+            "10": "Dürremuster",
+            "11": "Sandmuster",
+            "12": "Flussdeltamuster",
+            "13": "Monsunmuster",
+            "14": "Savannenmuster",
+            "15": "Sonnenmuster",
+            "16": "Ozeanmuster",
+            "17": "Dschungelmuster",
+            "18": "Fantasiemuster",
+            "19": "Pokéball-Muster"
+        },
+        "665": {
+            "0": "Frostmuster",
+            "1": "Schneefeldmuster",
+            "2": "Flockenmuster",
+            "3": "Kontinentalmuster",
+            "4": "Ziergartenmuster",
+            "5": "Prunkmuster",
+            "6": "Blumenmeermuster",
+            "7": "Innovationsmuster",
+            "8": "Aquamarinmuster",
+            "9": "Archipelmuster",
+            "10": "Dürremuster",
+            "11": "Sandmuster",
+            "12": "Flussdeltamuster",
+            "13": "Monsunmuster",
+            "14": "Savannenmuster",
+            "15": "Sonnenmuster",
+            "16": "Ozeanmuster",
+            "17": "Dschungelmuster",
+            "18": "Fantasiemuster",
+            "19": "Pokéball-Muster"
+        },
+        "666": {
+            "0": "Frostmuster",
+            "1": "Schneefeldmuster",
+            "2": "Flockenmuster",
+            "3": "Kontinentalmuster",
+            "4": "Ziergartenmuster",
+            "5": "Prunkmuster",
+            "6": "Blumenmeermuster",
+            "7": "Innovationsmuster",
+            "8": "Aquamarinmuster",
+            "9": "Archipelmuster",
+            "10": "Dürremuster",
+            "11": "Sandmuster",
+            "12": "Flussdeltamuster",
+            "13": "Monsunmuster",
+            "14": "Savannenmuster",
+            "15": "Sonnenmuster",
+            "16": "Ozeanmuster",
+            "17": "Dschungelmuster",
+            "18": "Fantasiemuster",
+            "19": "Pokéball-Muster"
+        },
+        "669": {
+            "0": "Rotblütler",
+            "1": "Gelbblütler",
+            "2": "Orangeblütler",
+            "3": "Blaublütler",
+            "4": "Weißblütler"
+        },
+        "670": {
+            "0": "Rotblütler",
+            "1": "Gelbblütler",
+            "2": "Orangeblütler",
+            "3": "Blaublütler",
+            "4": "Weißblütler",
+            "5": "Ewigblütler"
+        },
+        "671": {
+            "0": "Rotblütler",
+            "1": "Gelbblütler",
+            "2": "Orangeblütler",
+            "3": "Blaublütler",
+            "4": "Weißblütler"
+        },
+        "676": {
+            "0": "Zottelform",
+            "1": "Herzchenschnitt",
+            "2": "Sternchenschnitt",
+            "3": "Diamantenschnitt",
+            "4": "Königinnenschnitt",
+            "5": "Kabuki-Schnitt",
+            "6": "Herrscherschnitt",
+            "7": "Fräuleinschnitt",
+            "8": "Damenschnitt",
+            "9": "Kavaliersschnitt"
+        },
+        "678": {
+            "0": "Männlich",
+            "1": "Weiblich"
+        },
+        "681": {
+            "0": "Schildform",
+            "1": "Klingenform"
+        },
+        "710": {
+            "0": "Größe S",
+            "1": "Größe M",
+            "2": "Größe L",
+            "3": "Größe XL"
+        },
+        "711": {
+            "0": "Größe S",
+            "1": "Größe M",
+            "2": "Größe L",
+            "3": "Größe XL"
+        },
+        "716": {
+            "0": "Ruhe-Modus",
+            "1": "Aktiv-Modus"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "Mega"
+        },
+        "720": {
+            "1": "Entfesselt"
+        },
+        "741": {
+            "0": "Flamenco",
+            "1": "Cheer",
+            "2": "Hula",
+            "3": "Buyo"
+        },
+        "745": {
+            "0": "Tag",
+            "1": "Nacht"
+        },
+        "773": {
+            "0": "Normal",
+            "1": "Kampf",
+            "2": "Flug",
+            "3": "Gift",
+            "4": "Boden",
+            "5": "Gestein",
+            "6": "Käfer",
+            "7": "Geist",
+            "8": "Stahl",
+            "9": "Feuer",
+            "10": "Wasser",
+            "11": "Pflanze",
+            "12": "Elektro",
+            "13": "Psycho",
+            "14": "Eis",
+            "15": "Drache",
+            "16": "Unlicht",
+            "17": "Fee"
+        },
+        "774": {
+            "7": "Roter",
+            "8": "Oranger",
+            "9": "Gelber",
+            "10": "Grüner",
+            "11": "Hellblauer",
+            "12": "Blauer",
+            "13": "Violetter"
+        },
+        "801": {
+            "1": "Original"
+        }
     },
     "en": {
-        "3": [
-            "Normal",
-            "Mega"
-        ],
-        "6": [
-            "Normal",
-            "Mega X",
-            "Mega Y"
-        ],
-        "9": [
-            "Normal",
-            "Mega"
-        ],
-        "13": [
-            "Normal",
-            "Mega"
-        ],
-        "18": [
-            "Normal",
-            "Mega"
-        ],
-        "19": [
-            "Normal",
-            "Alola"
-        ],
-        "20": [
-            "Normal",
-            "Alola"
-        ],
-        "21": [
-            "Normal",
-            "Original",
-            "Hoenn",
-            "Sinnoh",
-            "Unova",
-            "Kalos",
-            "Alola"
-        ],
-        "26": [
-            "Normal",
-            "Alola"
-        ],
-        "27": [
-            "Normal",
-            "Alola"
-        ],
-        "28": [
-            "Normal",
-            "Alola"
-        ],
-        "37": [
-            "Normal",
-            "Alola"
-        ],
-        "38": [
-            "Normal",
-            "Alola"
-        ],
-        "50": [
-            "Normal",
-            "Alola"
-        ],
-        "51": [
-            "Normal",
-            "Alola"
-        ],
-        "52": [
-            "Normal",
-            "Alola"
-        ],
-        "53": [
-            "Normal",
-            "Mega"
-        ],
-        "74": [
-            "Normal",
-            "Alola"
-        ],
-        "75": [
-            "Normal",
-            "Alola"
-        ],
-        "76": [
-            "Normal",
-            "Alola"
-        ],
-        "80": [
-            "Normal",
-            "Mega"
-        ],
-        "88": [
-            "Normal",
-            "Alola"
-        ],
-        "89": [
-            "Normal",
-            "Alola"
-        ],
-        "94": [
-            "Normal",
-            "Mega"
-        ],
-        "103": [
-            "Normal",
-            "Alola"
-        ],
-        "105": [
-            "Normal",
-            "Alola"
-        ],
-        "115": [
-            "Normal",
-            "Mega"
-        ],
-        "127": [
-            "Normal",
-            "Mega"
-        ],
-        "130": [
-            "Normal",
-            "Mega"
-        ],
-        "142": [
-            "Normal",
-            "Mega"
-        ],
-        "150": [
-            "Normal",
-            "Mega X",
-            "Mega Y"
-        ],
-        "181": [
-            "Normal",
-            "Mega"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "Normal",
-            "Mega"
-        ],
-        "212": [
-            "Normal",
-            "Mega"
-        ],
-        "214": [
-            "Normal",
-            "Mega"
-        ],
-        "229": [
-            "Normal",
-            "Mega"
-        ],
-        "248": [
-            "Normal",
-            "Mega"
-        ],
-        "254": [
-            "Normal",
-            "Mega"
-        ],
-        "257": [
-            "Normal",
-            "Mega"
-        ],
-        "260": [
-            "Normal",
-            "Mega"
-        ],
-        "282": [
-            "Normal",
-            "Mega"
-        ],
-        "302": [
-            "Normal",
-            "Mega"
-        ],
-        "303": [
-            "Normal",
-            "Mega"
-        ],
-        "306": [
-            "Normal",
-            "Mega"
-        ],
-        "308": [
-            "Normal",
-            "Mega"
-        ],
-        "310": [
-            "Normal",
-            "Mega"
-        ],
-        "319": [
-            "Normal",
-            "Mega"
-        ],
-        "323": [
-            "Normal",
-            "Mega"
-        ],
-        "334": [
-            "Normal",
-            "Mega"
-        ],
-        "351": [
-            "Normal",
-            "Sunny",
-            "Rainy",
-            "Snowy"
-        ],
-        "354": [
-            "Normal",
-            "Mega"
-        ],
-        "359": [
-            "Normal",
-            "Mega"
-        ],
-        "362": [
-            "Normal",
-            "Mega"
-        ],
-        "373": [
-            "Normal",
-            "Mega"
-        ],
-        "376": [
-            "Normal",
-            "Mega"
-        ],
-        "380": [
-            "Normal",
-            "Mega"
-        ],
-        "381": [
-            "Normal",
-            "Mega"
-        ],
-        "382": [
-            "Normal",
-            "Primal"
-        ],
-        "383": [
-            "Normal",
-            "Primal"
-        ],
-        "384": [
-            "Normal",
-            "Mega"
-        ],
-        "386": [
-            "Normal",
-            "Attack",
-            "Defense",
-            "Speed"
-        ],
-        "412": [
-            "Plant",
-            "Sandy",
-            "Speed"
-        ],
-        "413": [
-            "Plant",
-            "Sandy",
-            "Speed"
-        ],
-        "414": [
-            "Plant",
-            "Sandy",
-            "Speed"
-        ],
-        "421": [
-            "Overcast",
-            "Sunshine"
-        ],
-        "422": [
-            "West",
-            "East"
-        ],
-        "423": [
-            "West",
-            "East"
-        ],
-        "428": [
-            "Normal",
-            "Mega"
-        ],
-        "445": [
-            "Normal",
-            "Mega"
-        ],
-        "448": [
-            "Normal",
-            "Mega"
-        ],
-        "460": [
-            "Normal",
-            "Mega"
-        ],
-        "475": [
-            "Normal",
-            "Mega"
-        ],
-        "479": [
-            "Normal",
-            "Heat",
-            "Wash",
-            "Frost",
-            "Fan",
-            "Mow"
-        ],
-        "487": [
-            "Altered",
-            "Origin"
-        ],
-        "492": [
-            "Land",
-            "Sky"
-        ],
-        "493": [
-            "Normal",
-            "Fighting",
-            "Flying",
-            "Poison",
-            "Ground",
-            "Rock",
-            "Bug",
-            "Ghost",
-            "Steel",
-            "Fire",
-            "Water",
-            "Grass",
-            "Electric",
-            "Psychic",
-            "Ice",
-            "Dragon",
-            "Dark",
-            "Fairy"
-        ],
-        "531": [
-            "Normal",
-            "Mega"
-        ],
-        "550": [
-            "Red",
-            "Blue"
-        ],
-        "555": [
-            "Standard",
-            "Zen"
-        ],
-        "585": [
-            "Autumn",
-            "Winter",
-            "Therian",
-            "Therian"
-        ],
-        "586": [
-            "Autumn",
-            "Winter",
-            "Therian",
-            "Therian"
-        ],
-        "641": [
-            "Incarnate",
-            "Therian"
-        ],
-        "642": [
-            "Incarnate",
-            "Therian"
-        ],
-        "645": [
-            "Incarnate",
-            "Therian"
-        ],
-        "646": [
-            "Normal",
-            "White",
-            "Black"
-        ],
-        "647": [
-            "Ordinary",
-            "Resolute"
-        ],
-        "648": [
-            "Aria",
-            "Pirouette"
-        ],
-        "649": [
-            "Normal",
-            "Steel",
-            "Water",
-            "Fire",
-            "Electric"
-        ],
-        "658": [
-            "Normal",
-            "Ash",
-            "Active"
-        ],
-        "664": [
-            "Icy Snow",
-            "Polar",
-            "Tundra",
-            "Continental",
-            "Garden",
-            "Elegant",
-            "Meadow",
-            "Jungle",
-            "Marine",
-            "Archipelago",
-            "High Plains",
-            "Sandstorm",
-            "River",
-            "Monsoon",
-            "Savanna",
-            "Sun",
-            "Ocean",
-            "White",
-            "Fancy",
-            "Poké Ball"
-        ],
-        "665": [
-            "Icy Snow",
-            "Polar",
-            "Tundra",
-            "Continental",
-            "Garden",
-            "Elegant",
-            "Meadow",
-            "Jungle",
-            "Marine",
-            "Archipelago",
-            "High Plains",
-            "Sandstorm",
-            "River",
-            "Monsoon",
-            "Savanna",
-            "Sun",
-            "Ocean",
-            "White",
-            "Fancy",
-            "Poké Ball"
-        ],
-        "666": [
-            "Icy Snow",
-            "Polar",
-            "Tundra",
-            "Continental",
-            "Garden",
-            "Elegant",
-            "Meadow",
-            "Jungle",
-            "Marine",
-            "Archipelago",
-            "High Plains",
-            "Sandstorm",
-            "River",
-            "Monsoon",
-            "Savanna",
-            "Sun",
-            "Ocean",
-            "White",
-            "Fancy",
-            "Poké Ball"
-        ],
-        "669": [
-            "White",
-            "Yellow",
-            "Orange",
-            "Blue",
-            "White"
-        ],
-        "670": [
-            "White",
-            "Yellow",
-            "Orange",
-            "Blue",
-            "White",
-            "Eternal"
-        ],
-        "671": [
-            "White",
-            "Yellow",
-            "Orange",
-            "Blue",
-            "White"
-        ],
-        "676": [
-            "White",
-            "Heart",
-            "Star",
-            "Diamond",
-            "Debutante",
-            "Matron",
-            "Dandy",
-            "La Reine",
-            "Kabuki",
-            "Pharaoh"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "Shield",
-            "Blade"
-        ],
-        "710": [
-            "Average",
-            "Small",
-            "Large",
-            "Super"
-        ],
-        "711": [
-            "Average",
-            "Small",
-            "Large",
-            "Super"
-        ],
-        "716": [
-            "Normal",
-            "Active"
-        ],
-        "718": [
-            "Normal",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "Normal",
-            "Mega"
-        ],
-        "720": [
-            "Normal",
-            "Unbound"
-        ],
-        "741": [
-            "Baile",
-            "Pom-Pom",
-            "Pa’u",
-            "Sensu"
-        ],
-        "745": [
-            "Midday",
-            "Midnight"
-        ],
-        "746": [
-            "Solo",
-            "School"
-        ],
-        "773": [
-            "Normal",
-            "Fighting",
-            "Flying",
-            "Poison",
-            "Ground",
-            "Rock",
-            "Bug",
-            "Ghost",
-            "Steel",
-            "Fire",
-            "Water",
-            "Grass",
-            "Electric",
-            "Psychic",
-            "Ice",
-            "Dragon",
-            "Dark",
-            "Fairy"
-        ],
-        "774": [
-            "M-Red",
-            "M-Orange",
-            "M-Yellow",
-            "M-Green",
-            "M-Blue",
-            "M-Indigo",
-            "M-Violet",
-            "C-Red",
-            "C-Orange",
-            "C-Yellow",
-            "C-Green",
-            "C-Blue",
-            "C-Indigo",
-            "C-Violet"
-        ],
-        "778": [
-            "Normal",
-            "Busted"
-        ]
+        "3": {
+            "1": "Mega"
+        },
+        "6": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "9": {
+            "1": "Mega"
+        },
+        "15": {
+            "1": "Mega"
+        },
+        "18": {
+            "1": "Mega"
+        },
+        "19": {
+            "1": "Alola"
+        },
+        "20": {
+            "1": "Alola"
+        },
+        "25": {
+            "1": "Kanto",
+            "2": "Hoenn",
+            "3": "Sinnoh",
+            "4": "Unova",
+            "5": "Kalos",
+            "6": "Alola"
+        },
+        "26": {
+            "1": "Alola"
+        },
+        "27": {
+            "1": "Alola"
+        },
+        "28": {
+            "1": "Alola"
+        },
+        "37": {
+            "1": "Alola"
+        },
+        "38": {
+            "1": "Alola"
+        },
+        "50": {
+            "1": "Alola"
+        },
+        "51": {
+            "1": "Alola"
+        },
+        "52": {
+            "1": "Alola"
+        },
+        "53": {
+            "1": "Mega"
+        },
+        "65": {
+            "1": "Mega"
+        },
+        "74": {
+            "1": "Alola"
+        },
+        "75": {
+            "1": "Alola"
+        },
+        "76": {
+            "1": "Alola"
+        },
+        "80": {
+            "1": "Mega"
+        },
+        "88": {
+            "1": "Alola"
+        },
+        "89": {
+            "1": "Alola"
+        },
+        "94": {
+            "1": "Mega"
+        },
+        "103": {
+            "1": "Alola"
+        },
+        "105": {
+            "1": "Alola"
+        },
+        "115": {
+            "1": "Mega"
+        },
+        "127": {
+            "1": "Mega"
+        },
+        "130": {
+            "1": "Mega"
+        },
+        "142": {
+            "1": "Mega"
+        },
+        "150": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "181": {
+            "1": "Mega"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "Mega"
+        },
+        "212": {
+            "1": "Mega"
+        },
+        "214": {
+            "1": "Mega"
+        },
+        "229": {
+            "1": "Mega"
+        },
+        "248": {
+            "1": "Mega"
+        },
+        "254": {
+            "1": "Mega"
+        },
+        "257": {
+            "1": "Mega"
+        },
+        "260": {
+            "1": "Mega"
+        },
+        "282": {
+            "1": "Mega"
+        },
+        "302": {
+            "1": "Mega"
+        },
+        "303": {
+            "1": "Mega"
+        },
+        "306": {
+            "1": "Mega"
+        },
+        "308": {
+            "1": "Mega"
+        },
+        "310": {
+            "1": "Mega"
+        },
+        "319": {
+            "1": "Mega"
+        },
+        "323": {
+            "1": "Mega"
+        },
+        "334": {
+            "1": "Mega"
+        },
+        "351": {
+            "1": "Sunny Form",
+            "2": "Rainy Form",
+            "3": "Snowy Form"
+        },
+        "354": {
+            "1": "Mega"
+        },
+        "359": {
+            "1": "Mega"
+        },
+        "362": {
+            "1": "Mega"
+        },
+        "373": {
+            "1": "Mega"
+        },
+        "376": {
+            "1": "Mega"
+        },
+        "380": {
+            "1": "Mega"
+        },
+        "381": {
+            "1": "Mega"
+        },
+        "382": {
+            "1": "Primal"
+        },
+        "383": {
+            "1": "Primal"
+        },
+        "384": {
+            "1": "Mega"
+        },
+        "386": {
+            "0": "Normal Forme",
+            "1": "Attack Forme",
+            "2": "Defense Forme",
+            "3": "Speed Forme"
+        },
+        "412": {
+            "0": "Plant Cloak",
+            "1": "Sandy Cloak",
+            "2": "Trash Cloak"
+        },
+        "413": {
+            "0": "Plant Cloak",
+            "1": "Sandy Cloak",
+            "2": "Trash Cloak"
+        },
+        "421": {
+            "0": "Overcast Form",
+            "1": "Sunshine Form"
+        },
+        "422": {
+            "0": "West Sea",
+            "1": "East Sea"
+        },
+        "423": {
+            "0": "West Sea",
+            "1": "East Sea"
+        },
+        "428": {
+            "1": "Mega"
+        },
+        "445": {
+            "1": "Mega"
+        },
+        "448": {
+            "1": "Mega"
+        },
+        "460": {
+            "1": "Mega"
+        },
+        "475": {
+            "1": "Mega"
+        },
+        "479": {
+            "1": "Heat",
+            "2": "Wash",
+            "3": "Frost",
+            "4": "Fan",
+            "5": "Mow"
+        },
+        "487": {
+            "0": "Altered Forme",
+            "1": "Origin Forme"
+        },
+        "492": {
+            "0": "Land Forme",
+            "1": "Sky Forme"
+        },
+        "493": {
+            "0": "Normal",
+            "1": "Fighting",
+            "2": "Flying",
+            "3": "Poison",
+            "4": "Ground",
+            "5": "Rock",
+            "6": "Bug",
+            "7": "Ghost",
+            "8": "Steel",
+            "9": "Fire",
+            "10": "Water",
+            "11": "Grass",
+            "12": "Electric",
+            "13": "Psychic",
+            "14": "Ice",
+            "15": "Dragon",
+            "16": "Dark",
+            "17": "Fairy"
+        },
+        "531": {
+            "1": "Mega"
+        },
+        "550": {
+            "0": "Red-Striped Form",
+            "1": "Blue-Striped Form"
+        },
+        "555": {
+            "0": "Standard Mode",
+            "1": "Zen Mode"
+        },
+        "585": {
+            "0": "Spring Form",
+            "1": "Summer Form",
+            "2": "Autumn Form",
+            "3": "Winter Form"
+        },
+        "586": {
+            "0": "Spring Form",
+            "1": "Summer Form",
+            "2": "Autumn Form",
+            "3": "Winter Form"
+        },
+        "641": {
+            "0": "Incarnate Forme",
+            "1": "Therian Forme"
+        },
+        "642": {
+            "0": "Incarnate Forme",
+            "1": "Therian Forme"
+        },
+        "645": {
+            "0": "Incarnate Forme",
+            "1": "Therian Forme"
+        },
+        "646": {
+            "1": "Black",
+            "2": "White"
+        },
+        "647": {
+            "0": "Ordinary Form",
+            "1": "Resolute Form"
+        },
+        "648": {
+            "0": "Aria Forme",
+            "1": "Pirouette Forme"
+        },
+        "649": {
+            "1": "Douse Drive",
+            "2": "Shock Drive",
+            "3": "Burn Drive",
+            "4": "Chill Drive"
+        },
+        "658": {
+            "1": "Ash"
+        },
+        "664": {
+            "0": "Icy Snow Pattern",
+            "1": "Polar Pattern",
+            "2": "Tundra Pattern",
+            "3": "Continental Pattern",
+            "4": "Garden Pattern",
+            "5": "Elegant Pattern",
+            "6": "Meadow Pattern",
+            "7": "Modern Pattern",
+            "8": "Marine Pattern",
+            "9": "Archipelago Pattern",
+            "10": "High Plains Pattern",
+            "11": "Sandstorm Pattern",
+            "12": "River Pattern",
+            "13": "Monsoon Pattern",
+            "14": "Savanna Pattern",
+            "15": "Sun Pattern",
+            "16": "Ocean Pattern",
+            "17": "Jungle Pattern",
+            "18": "Fancy Pattern",
+            "19": "Poké Ball Pattern"
+        },
+        "665": {
+            "0": "Icy Snow Pattern",
+            "1": "Polar Pattern",
+            "2": "Tundra Pattern",
+            "3": "Continental Pattern",
+            "4": "Garden Pattern",
+            "5": "Elegant Pattern",
+            "6": "Meadow Pattern",
+            "7": "Modern Pattern",
+            "8": "Marine Pattern",
+            "9": "Archipelago Pattern",
+            "10": "High Plains Pattern",
+            "11": "Sandstorm Pattern",
+            "12": "River Pattern",
+            "13": "Monsoon Pattern",
+            "14": "Savanna Pattern",
+            "15": "Sun Pattern",
+            "16": "Ocean Pattern",
+            "17": "Jungle Pattern",
+            "18": "Fancy Pattern",
+            "19": "Poké Ball Pattern"
+        },
+        "666": {
+            "0": "Icy Snow Pattern",
+            "1": "Polar Pattern",
+            "2": "Tundra Pattern",
+            "3": "Continental Pattern",
+            "4": "Garden Pattern",
+            "5": "Elegant Pattern",
+            "6": "Meadow Pattern",
+            "7": "Modern Pattern",
+            "8": "Marine Pattern",
+            "9": "Archipelago Pattern",
+            "10": "High Plains Pattern",
+            "11": "Sandstorm Pattern",
+            "12": "River Pattern",
+            "13": "Monsoon Pattern",
+            "14": "Savanna Pattern",
+            "15": "Sun Pattern",
+            "16": "Ocean Pattern",
+            "17": "Jungle Pattern",
+            "18": "Fancy Pattern",
+            "19": "Poké Ball Pattern"
+        },
+        "669": {
+            "0": "Red Flower",
+            "1": "Yellow Flower",
+            "2": "Orange Flower",
+            "3": "Blue Flower",
+            "4": "White Flower"
+        },
+        "670": {
+            "0": "Red Flower",
+            "1": "Yellow Flower",
+            "2": "Orange Flower",
+            "3": "Blue Flower",
+            "4": "White Flower",
+            "5": "Eternal Flower"
+        },
+        "671": {
+            "0": "Red Flower",
+            "1": "Yellow Flower",
+            "2": "Orange Flower",
+            "3": "Blue Flower",
+            "4": "White Flower"
+        },
+        "676": {
+            "0": "Natural Form",
+            "1": "Heart Trim",
+            "2": "Star Trim",
+            "3": "Diamond Trim",
+            "4": "La Reine Trim",
+            "5": "Kabuki Trim",
+            "6": "Pharaoh Trim",
+            "7": "Debutante Trim",
+            "8": "Matron Trim",
+            "9": "Dandy Trim"
+        },
+        "678": {
+            "0": "Male",
+            "1": "Female"
+        },
+        "681": {
+            "0": "Shield Forme",
+            "1": "Blade Forme"
+        },
+        "710": {
+            "0": "Small Size",
+            "1": "Average Size",
+            "2": "Large Size",
+            "3": "Super Size"
+        },
+        "711": {
+            "0": "Small Size",
+            "1": "Average Size",
+            "2": "Large Size",
+            "3": "Super Size"
+        },
+        "716": {
+            "0": "Neutral Mode",
+            "1": "Active Mode"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "Mega"
+        },
+        "720": {
+            "1": "Unbound"
+        },
+        "741": {
+            "0": "Baile",
+            "1": "Pom-Pom",
+            "2": "Pa’u",
+            "3": "Sensu"
+        },
+        "745": {
+            "0": "Midday",
+            "1": "Midnight"
+        },
+        "773": {
+            "0": "Normal",
+            "1": "Fighting",
+            "2": "Flying",
+            "3": "Poison",
+            "4": "Ground",
+            "5": "Rock",
+            "6": "Bug",
+            "7": "Ghost",
+            "8": "Steel",
+            "9": "Fire",
+            "10": "Water",
+            "11": "Grass",
+            "12": "Electric",
+            "13": "Psychic",
+            "14": "Ice",
+            "15": "Dragon",
+            "16": "Dark",
+            "17": "Fairy"
+        },
+        "774": {
+            "7": "Red",
+            "8": "Orange",
+            "9": "Yellow",
+            "10": "Green",
+            "11": "Blue",
+            "12": "Indigo",
+            "13": "Violet"
+        },
+        "801": {
+            "1": "Original"
+        }
     },
     "es": {
-        "3": [
-            "Normal",
-            "Mega"
-        ],
-        "6": [
-            "Normal",
-            "Mega X",
-            "Mega Y"
-        ],
-        "9": [
-            "Normal",
-            "Mega"
-        ],
-        "13": [
-            "Normal",
-            "Mega"
-        ],
-        "18": [
-            "Normal",
-            "Mega"
-        ],
-        "19": [
-            "Normal",
-            "Alola"
-        ],
-        "20": [
-            "Normal",
-            "Alola"
-        ],
-        "21": [
-            "Normal",
-            "Original",
-            "Hoenn",
-            "Sinnoh",
-            "Teselia",
-            "Kalos",
-            "Alola"
-        ],
-        "26": [
-            "Normal",
-            "Alola"
-        ],
-        "27": [
-            "Normal",
-            "Alola"
-        ],
-        "28": [
-            "Normal",
-            "Alola"
-        ],
-        "37": [
-            "Normal",
-            "Alola"
-        ],
-        "38": [
-            "Normal",
-            "Alola"
-        ],
-        "50": [
-            "Normal",
-            "Alola"
-        ],
-        "51": [
-            "Normal",
-            "Alola"
-        ],
-        "52": [
-            "Normal",
-            "Alola"
-        ],
-        "53": [
-            "Normal",
-            "Mega"
-        ],
-        "74": [
-            "Normal",
-            "Alola"
-        ],
-        "75": [
-            "Normal",
-            "Alola"
-        ],
-        "76": [
-            "Normal",
-            "Alola"
-        ],
-        "80": [
-            "Normal",
-            "Mega"
-        ],
-        "88": [
-            "Normal",
-            "Alola"
-        ],
-        "89": [
-            "Normal",
-            "Alola"
-        ],
-        "94": [
-            "Normal",
-            "Mega"
-        ],
-        "103": [
-            "Normal",
-            "Alola"
-        ],
-        "105": [
-            "Normal",
-            "Alola"
-        ],
-        "115": [
-            "Normal",
-            "Mega"
-        ],
-        "127": [
-            "Normal",
-            "Mega"
-        ],
-        "130": [
-            "Normal",
-            "Mega"
-        ],
-        "142": [
-            "Normal",
-            "Mega"
-        ],
-        "150": [
-            "Normal",
-            "Mega X",
-            "Mega Y"
-        ],
-        "181": [
-            "Normal",
-            "Mega"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "Normal",
-            "Mega"
-        ],
-        "212": [
-            "Normal",
-            "Mega"
-        ],
-        "214": [
-            "Normal",
-            "Mega"
-        ],
-        "229": [
-            "Normal",
-            "Mega"
-        ],
-        "248": [
-            "Normal",
-            "Mega"
-        ],
-        "254": [
-            "Normal",
-            "Mega"
-        ],
-        "257": [
-            "Normal",
-            "Mega"
-        ],
-        "260": [
-            "Normal",
-            "Mega"
-        ],
-        "282": [
-            "Normal",
-            "Mega"
-        ],
-        "302": [
-            "Normal",
-            "Mega"
-        ],
-        "303": [
-            "Normal",
-            "Mega"
-        ],
-        "306": [
-            "Normal",
-            "Mega"
-        ],
-        "308": [
-            "Normal",
-            "Mega"
-        ],
-        "310": [
-            "Normal",
-            "Mega"
-        ],
-        "319": [
-            "Normal",
-            "Mega"
-        ],
-        "323": [
-            "Normal",
-            "Mega"
-        ],
-        "334": [
-            "Normal",
-            "Mega"
-        ],
-        "351": [
-            "Normal",
-            "Sol",
-            "Lluvia",
-            "Nieve"
-        ],
-        "354": [
-            "Normal",
-            "Mega"
-        ],
-        "359": [
-            "Normal",
-            "Mega"
-        ],
-        "362": [
-            "Normal",
-            "Mega"
-        ],
-        "373": [
-            "Normal",
-            "Mega"
-        ],
-        "376": [
-            "Normal",
-            "Mega"
-        ],
-        "380": [
-            "Normal",
-            "Mega"
-        ],
-        "381": [
-            "Normal",
-            "Mega"
-        ],
-        "382": [
-            "Normal",
-            "Primigenia"
-        ],
-        "383": [
-            "Normal",
-            "Primigenia"
-        ],
-        "384": [
-            "Normal",
-            "Mega"
-        ],
-        "386": [
-            "Normal",
-            "Ataque",
-            "Defensa",
-            "Velocidad"
-        ],
-        "412": [
-            "Planta",
-            "Arena",
-            "Velocidad"
-        ],
-        "413": [
-            "Planta",
-            "Arena",
-            "Velocidad"
-        ],
-        "414": [
-            "Planta",
-            "Arena",
-            "Velocidad"
-        ],
-        "421": [
-            "Encapotado",
-            "Soleado"
-        ],
-        "422": [
-            "Oeste",
-            "Mar Este"
-        ],
-        "423": [
-            "Oeste",
-            "Mar Este"
-        ],
-        "428": [
-            "Normal",
-            "Mega"
-        ],
-        "445": [
-            "Normal",
-            "Mega"
-        ],
-        "448": [
-            "Normal",
-            "Mega"
-        ],
-        "460": [
-            "Normal",
-            "Mega"
-        ],
-        "475": [
-            "Normal",
-            "Mega"
-        ],
-        "479": [
-            "Normal",
-            "Calor",
-            "Lavado",
-            "Frío",
-            "Ventilador",
-            "Corte"
-        ],
-        "487": [
-            "Modificada",
-            "Origen"
-        ],
-        "492": [
-            "Tierra",
-            "Cielo"
-        ],
-        "493": [
-            "Normal",
-            "Lucha",
-            "Volador",
-            "Veneno",
-            "Tierra",
-            "Roca",
-            "Bicho",
-            "Fantasma",
-            "Acero",
-            "Fuego",
-            "Agua",
-            "Planta",
-            "Eléctrico",
-            "Psíquico",
-            "Hielo",
-            "Dragón",
-            "Siniestro",
-            "Hada"
-        ],
-        "531": [
-            "Normal",
-            "Mega"
-        ],
-        "550": [
-            "Raya Roja",
-            "Raya Azul"
-        ],
-        "555": [
-            "Normal",
-            "Daruma"
-        ],
-        "585": [
-            "Otoño",
-            "Invierno",
-            "Tótem",
-            "Tótem"
-        ],
-        "586": [
-            "Otoño",
-            "Invierno",
-            "Tótem",
-            "Tótem"
-        ],
-        "641": [
-            "Avatar",
-            "Tótem"
-        ],
-        "642": [
-            "Avatar",
-            "Tótem"
-        ],
-        "645": [
-            "Avatar",
-            "Tótem"
-        ],
-        "646": [
-            "Normal",
-            "Blanco",
-            "Negro"
-        ],
-        "647": [
-            "Habitual",
-            "Brío"
-        ],
-        "648": [
-            "Lírica",
-            "Danza"
-        ],
-        "649": [
-            "Normal",
-            "Acero",
-            "Agua",
-            "Fuego",
-            "Eléctrico"
-        ],
-        "658": [
-            "Normal",
-            "Ash",
-            "Activo"
-        ],
-        "664": [
-            "Polar",
-            "Taiga",
-            "Tundra",
-            "Continental",
-            "Vergel",
-            "Oriental",
-            "Floral",
-            "Jungla",
-            "Marino",
-            "Isleño",
-            "Estepa",
-            "Desierto",
-            "Oasis",
-            "Monzón",
-            "Pantano",
-            "Solar",
-            "Océano",
-            "Blanca",
-            "Fantasía",
-            "Poké Ball"
-        ],
-        "665": [
-            "Polar",
-            "Taiga",
-            "Tundra",
-            "Continental",
-            "Vergel",
-            "Oriental",
-            "Floral",
-            "Jungla",
-            "Marino",
-            "Isleño",
-            "Estepa",
-            "Desierto",
-            "Oasis",
-            "Monzón",
-            "Pantano",
-            "Solar",
-            "Océano",
-            "Blanca",
-            "Fantasía",
-            "Poké Ball"
-        ],
-        "666": [
-            "Polar",
-            "Taiga",
-            "Tundra",
-            "Continental",
-            "Vergel",
-            "Oriental",
-            "Floral",
-            "Jungla",
-            "Marino",
-            "Isleño",
-            "Estepa",
-            "Desierto",
-            "Oasis",
-            "Monzón",
-            "Pantano",
-            "Solar",
-            "Océano",
-            "Blanca",
-            "Fantasía",
-            "Poké Ball"
-        ],
-        "669": [
-            "Blanca",
-            "Amarilla",
-            "Naranja",
-            "Azul",
-            "Blanca"
-        ],
-        "670": [
-            "Blanca",
-            "Amarilla",
-            "Naranja",
-            "Azul",
-            "Blanca",
-            "Eterna"
-        ],
-        "671": [
-            "Blanca",
-            "Amarilla",
-            "Naranja",
-            "Azul",
-            "Blanca"
-        ],
-        "676": [
-            "Blanca",
-            "Corazón",
-            "Estrella",
-            "Rombo",
-            "Señorita",
-            "Dama",
-            "Caballero",
-            "Aristocrático",
-            "Kabuki",
-            "Faraónico"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "Escudo",
-            "Filo"
-        ],
-        "710": [
-            "Normal",
-            "Pequeño",
-            "Grande",
-            "Extragrande"
-        ],
-        "711": [
-            "Normal",
-            "Pequeño",
-            "Grande",
-            "Extragrande"
-        ],
-        "716": [
-            "Normal",
-            "Activo"
-        ],
-        "718": [
-            "Normal",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "Normal",
-            "Mega"
-        ],
-        "720": [
-            "Normal",
-            "Desatado"
-        ],
-        "741": [
-            "Apasionado",
-            "Animado",
-            "Plácido",
-            "Refinado"
-        ],
-        "745": [
-            "Diurna",
-            "Nocturna"
-        ],
-        "746": [
-            "Individual",
-            "Banco"
-        ],
-        "773": [
-            "Normal",
-            "Lucha",
-            "Volador",
-            "Veneno",
-            "Tierra",
-            "Roca",
-            "Bicho",
-            "Fantasma",
-            "Acero",
-            "Fuego",
-            "Agua",
-            "Planta",
-            "Eléctrico",
-            "Psíquico",
-            "Hielo",
-            "Dragón",
-            "Siniestro",
-            "Hada"
-        ],
-        "774": [
-            "M-Rojo",
-            "M-Naranja",
-            "M-Amarillo",
-            "M-Verde",
-            "M-Azul",
-            "M-Añil",
-            "M-Violeta",
-            "N-Rojo",
-            "N-Naranja",
-            "N-Amarillo",
-            "N-Verde",
-            "N-Azul",
-            "N-Añil",
-            "N-Violeta"
-        ],
-        "778": [
-            "Normal",
-            "Descubierta"
-        ]
+        "3": {
+            "1": "Mega"
+        },
+        "6": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "9": {
+            "1": "Mega"
+        },
+        "15": {
+            "1": "Mega"
+        },
+        "18": {
+            "1": "Mega"
+        },
+        "19": {
+            "1": "Alola"
+        },
+        "20": {
+            "1": "Alola"
+        },
+        "25": {
+            "1": "Kanto",
+            "2": "Hoenn",
+            "3": "Sinnoh",
+            "4": "Teselia",
+            "5": "Kalos",
+            "6": "Alola"
+        },
+        "26": {
+            "1": "Alola"
+        },
+        "27": {
+            "1": "Alola"
+        },
+        "28": {
+            "1": "Alola"
+        },
+        "37": {
+            "1": "Alola"
+        },
+        "38": {
+            "1": "Alola"
+        },
+        "50": {
+            "1": "Alola"
+        },
+        "51": {
+            "1": "Alola"
+        },
+        "52": {
+            "1": "Alola"
+        },
+        "53": {
+            "1": "Mega"
+        },
+        "65": {
+            "1": "Mega"
+        },
+        "74": {
+            "1": "Alola"
+        },
+        "75": {
+            "1": "Alola"
+        },
+        "76": {
+            "1": "Alola"
+        },
+        "80": {
+            "1": "Mega"
+        },
+        "88": {
+            "1": "Alola"
+        },
+        "89": {
+            "1": "Alola"
+        },
+        "94": {
+            "1": "Mega"
+        },
+        "103": {
+            "1": "Alola"
+        },
+        "105": {
+            "1": "Alola"
+        },
+        "115": {
+            "1": "Mega"
+        },
+        "127": {
+            "1": "Mega"
+        },
+        "130": {
+            "1": "Mega"
+        },
+        "142": {
+            "1": "Mega"
+        },
+        "150": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "181": {
+            "1": "Mega"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "Mega"
+        },
+        "212": {
+            "1": "Mega"
+        },
+        "214": {
+            "1": "Mega"
+        },
+        "229": {
+            "1": "Mega"
+        },
+        "248": {
+            "1": "Mega"
+        },
+        "254": {
+            "1": "Mega"
+        },
+        "257": {
+            "1": "Mega"
+        },
+        "260": {
+            "1": "Mega"
+        },
+        "282": {
+            "1": "Mega"
+        },
+        "302": {
+            "1": "Mega"
+        },
+        "303": {
+            "1": "Mega"
+        },
+        "306": {
+            "1": "Mega"
+        },
+        "308": {
+            "1": "Mega"
+        },
+        "310": {
+            "1": "Mega"
+        },
+        "319": {
+            "1": "Mega"
+        },
+        "323": {
+            "1": "Mega"
+        },
+        "334": {
+            "1": "Mega"
+        },
+        "351": {
+            "1": "Forma Sol",
+            "2": "Forma Lluvia",
+            "3": "Forma Nieve"
+        },
+        "354": {
+            "1": "Mega"
+        },
+        "359": {
+            "1": "Mega"
+        },
+        "362": {
+            "1": "Mega"
+        },
+        "373": {
+            "1": "Mega"
+        },
+        "376": {
+            "1": "Mega"
+        },
+        "380": {
+            "1": "Mega"
+        },
+        "381": {
+            "1": "Mega"
+        },
+        "382": {
+            "1": "Primigenio"
+        },
+        "383": {
+            "1": "Primigenio"
+        },
+        "384": {
+            "1": "Mega"
+        },
+        "386": {
+            "0": "Forma Normal",
+            "1": "Forma Ataque",
+            "2": "Forma Defensa",
+            "3": "Forma Velocidad"
+        },
+        "412": {
+            "0": "Tronco Planta",
+            "1": "Tronco Arena",
+            "2": "Tronco Basura"
+        },
+        "413": {
+            "0": "Tronco Planta",
+            "1": "Tronco Arena",
+            "2": "Tronco Basura"
+        },
+        "421": {
+            "0": "Forma Encapotado",
+            "1": "Forma Soleado"
+        },
+        "422": {
+            "0": "Mar Oeste",
+            "1": "Mar Este"
+        },
+        "423": {
+            "0": "Mar Oeste",
+            "1": "Mar Este"
+        },
+        "428": {
+            "1": "Mega"
+        },
+        "445": {
+            "1": "Mega"
+        },
+        "448": {
+            "1": "Mega"
+        },
+        "460": {
+            "1": "Mega"
+        },
+        "475": {
+            "1": "Mega"
+        },
+        "479": {
+            "1": "Calor",
+            "2": "Lavado",
+            "3": "Frío",
+            "4": "Ventilador",
+            "5": "Corte"
+        },
+        "487": {
+            "0": "Forma Modificada",
+            "1": "Forma Origen"
+        },
+        "492": {
+            "0": "Forma Tierra",
+            "1": "Forma Cielo"
+        },
+        "493": {
+            "0": "Normal",
+            "1": "Lucha",
+            "2": "Volador",
+            "3": "Veneno",
+            "4": "Tierra",
+            "5": "Roca",
+            "6": "Bicho",
+            "7": "Fantasma",
+            "8": "Acero",
+            "9": "Fuego",
+            "10": "Agua",
+            "11": "Planta",
+            "12": "Eléctrico",
+            "13": "Psíquico",
+            "14": "Hielo",
+            "15": "Dragón",
+            "16": "Siniestro",
+            "17": "Hada"
+        },
+        "531": {
+            "1": "Mega"
+        },
+        "550": {
+            "0": "Forma Raya Roja",
+            "1": "Forma Raya Azul"
+        },
+        "555": {
+            "0": "Modo Normal",
+            "1": "Modo Daruma"
+        },
+        "585": {
+            "0": "Forma Primavera",
+            "1": "Forma Verano",
+            "2": "Forma Otoño",
+            "3": "Forma Invierno"
+        },
+        "586": {
+            "0": "Forma Primavera",
+            "1": "Forma Verano",
+            "2": "Forma Otoño",
+            "3": "Forma Invierno"
+        },
+        "641": {
+            "0": "Forma Avatar",
+            "1": "Forma Tótem"
+        },
+        "642": {
+            "0": "Forma Avatar",
+            "1": "Forma Tótem"
+        },
+        "645": {
+            "0": "Forma Avatar",
+            "1": "Forma Tótem"
+        },
+        "646": {
+            "1": "Kyurem Negro",
+            "2": "Kyurem Blanco"
+        },
+        "647": {
+            "0": "Forma Habitual",
+            "1": "Forma Brío"
+        },
+        "648": {
+            "0": "Forma Lírica",
+            "1": "Forma Danza"
+        },
+        "649": {
+            "1": "HidroROM",
+            "2": "FulgoROM",
+            "3": "PiroROM",
+            "4": "CrioROM"
+        },
+        "658": {
+            "1": "Ash"
+        },
+        "664": {
+            "0": "Motivo Polar",
+            "1": "Motivo Taiga",
+            "2": "Motivo Tundra",
+            "3": "Motivo Continental",
+            "4": "Motivo Vergel",
+            "5": "Motivo Oriental",
+            "6": "Motivo Floral",
+            "7": "Motivo Moderno",
+            "8": "Motivo Marino",
+            "9": "Motivo Isleño",
+            "10": "Motivo Estepa",
+            "11": "Motivo Desierto",
+            "12": "Motivo Oasis",
+            "13": "Motivo Monzón",
+            "14": "Motivo Pantano",
+            "15": "Motivo Solar",
+            "16": "Motivo Océano",
+            "17": "Motivo Jungla",
+            "18": "Motivo Fantasía",
+            "19": "Motivo Poké Ball"
+        },
+        "665": {
+            "0": "Motivo Polar",
+            "1": "Motivo Taiga",
+            "2": "Motivo Tundra",
+            "3": "Motivo Continental",
+            "4": "Motivo Vergel",
+            "5": "Motivo Oriental",
+            "6": "Motivo Floral",
+            "7": "Motivo Moderno",
+            "8": "Motivo Marino",
+            "9": "Motivo Isleño",
+            "10": "Motivo Estepa",
+            "11": "Motivo Desierto",
+            "12": "Motivo Oasis",
+            "13": "Motivo Monzón",
+            "14": "Motivo Pantano",
+            "15": "Motivo Solar",
+            "16": "Motivo Océano",
+            "17": "Motivo Jungla",
+            "18": "Motivo Fantasía",
+            "19": "Motivo Poké Ball"
+        },
+        "666": {
+            "0": "Motivo Polar",
+            "1": "Motivo Taiga",
+            "2": "Motivo Tundra",
+            "3": "Motivo Continental",
+            "4": "Motivo Vergel",
+            "5": "Motivo Oriental",
+            "6": "Motivo Floral",
+            "7": "Motivo Moderno",
+            "8": "Motivo Marino",
+            "9": "Motivo Isleño",
+            "10": "Motivo Estepa",
+            "11": "Motivo Desierto",
+            "12": "Motivo Oasis",
+            "13": "Motivo Monzón",
+            "14": "Motivo Pantano",
+            "15": "Motivo Solar",
+            "16": "Motivo Océano",
+            "17": "Motivo Jungla",
+            "18": "Motivo Fantasía",
+            "19": "Motivo Poké Ball"
+        },
+        "669": {
+            "0": "Flor Roja",
+            "1": "Flor Amarilla",
+            "2": "Flor Naranja",
+            "3": "Flor Azul",
+            "4": "Flor Blanca"
+        },
+        "670": {
+            "0": "Flor Roja",
+            "1": "Flor Amarilla",
+            "2": "Flor Naranja",
+            "3": "Flor Azul",
+            "4": "Flor Blanca",
+            "5": "Flor Eterna"
+        },
+        "671": {
+            "0": "Flor Roja",
+            "1": "Flor Amarilla",
+            "2": "Flor Naranja",
+            "3": "Flor Azul",
+            "4": "Flor Blanca"
+        },
+        "676": {
+            "0": "Forma Salvaje",
+            "1": "Corte Corazón",
+            "2": "Corte Estrella",
+            "3": "Corte Rombo",
+            "4": "Corte Aristocrático",
+            "5": "Corte Kabuki",
+            "6": "Corte Faraónico",
+            "7": "Corte Señorita",
+            "8": "Corte Dama",
+            "9": "Corte Caballero"
+        },
+        "678": {
+            "0": "Macho",
+            "1": "Hembra"
+        },
+        "681": {
+            "0": "Forma Escudo",
+            "1": "Forma Filo"
+        },
+        "710": {
+            "0": "Tamaño Pequeño",
+            "1": "Tamaño Normal",
+            "2": "Tamaño Grande",
+            "3": "Tamaño Extragrande"
+        },
+        "711": {
+            "0": "Tamaño Pequeño",
+            "1": "Tamaño Normal",
+            "2": "Tamaño Grande",
+            "3": "Tamaño Extragrande"
+        },
+        "716": {
+            "0": "Modo Relajado",
+            "1": "Modo Activo"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "Mega"
+        },
+        "720": {
+            "1": "Desatado"
+        },
+        "741": {
+            "0": "Apasionado",
+            "1": "Animado",
+            "2": "Plácido",
+            "3": "Refinado"
+        },
+        "745": {
+            "0": "Diurna",
+            "1": "Nocturna"
+        },
+        "773": {
+            "0": "Normal",
+            "1": "Lucha",
+            "2": "Volador",
+            "3": "Veneno",
+            "4": "Tierra",
+            "5": "Roca",
+            "6": "Bicho",
+            "7": "Fantasma",
+            "8": "Acero",
+            "9": "Fuego",
+            "10": "Agua",
+            "11": "Planta",
+            "12": "Eléctrico",
+            "13": "Psíquico",
+            "14": "Hielo",
+            "15": "Dragón",
+            "16": "Siniestro",
+            "17": "Hada"
+        },
+        "774": {
+            "7": "Rojo",
+            "8": "Naranja",
+            "9": "Amarillo",
+            "10": "Verde",
+            "11": "Azul",
+            "12": "Añil",
+            "13": "Violeta"
+        },
+        "801": {
+            "1": "Vetusto"
+        }
     },
     "fr": {
-        "3": [
-            "Normal",
-            "Méga"
-        ],
-        "6": [
-            "Normal",
-            "Méga X",
-            "Méga Y"
-        ],
-        "9": [
-            "Normal",
-            "Méga"
-        ],
-        "13": [
-            "Normal",
-            "Méga"
-        ],
-        "18": [
-            "Normal",
-            "Méga"
-        ],
-        "19": [
-            "Normal",
-            "Alola"
-        ],
-        "20": [
-            "Normal",
-            "Alola"
-        ],
-        "21": [
-            "Normal",
-            "Originale",
-            "Hoenn",
-            "Sinnoh",
-            "Unys",
-            "Kalos",
-            "Alola"
-        ],
-        "26": [
-            "Normal",
-            "Alola"
-        ],
-        "27": [
-            "Normal",
-            "Alola"
-        ],
-        "28": [
-            "Normal",
-            "Alola"
-        ],
-        "37": [
-            "Normal",
-            "Alola"
-        ],
-        "38": [
-            "Normal",
-            "Alola"
-        ],
-        "50": [
-            "Normal",
-            "Alola"
-        ],
-        "51": [
-            "Normal",
-            "Alola"
-        ],
-        "52": [
-            "Normal",
-            "Alola"
-        ],
-        "53": [
-            "Normal",
-            "Méga"
-        ],
-        "74": [
-            "Normal",
-            "Alola"
-        ],
-        "75": [
-            "Normal",
-            "Alola"
-        ],
-        "76": [
-            "Normal",
-            "Alola"
-        ],
-        "80": [
-            "Normal",
-            "Méga"
-        ],
-        "88": [
-            "Normal",
-            "Alola"
-        ],
-        "89": [
-            "Normal",
-            "Alola"
-        ],
-        "94": [
-            "Normal",
-            "Méga"
-        ],
-        "103": [
-            "Normal",
-            "Alola"
-        ],
-        "105": [
-            "Normal",
-            "Alola"
-        ],
-        "115": [
-            "Normal",
-            "Méga"
-        ],
-        "127": [
-            "Normal",
-            "Méga"
-        ],
-        "130": [
-            "Normal",
-            "Méga"
-        ],
-        "142": [
-            "Normal",
-            "Méga"
-        ],
-        "150": [
-            "Normal",
-            "Méga X",
-            "Méga Y"
-        ],
-        "181": [
-            "Normal",
-            "Méga"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "Normal",
-            "Méga"
-        ],
-        "212": [
-            "Normal",
-            "Méga"
-        ],
-        "214": [
-            "Normal",
-            "Méga"
-        ],
-        "229": [
-            "Normal",
-            "Méga"
-        ],
-        "248": [
-            "Normal",
-            "Méga"
-        ],
-        "254": [
-            "Normal",
-            "Méga"
-        ],
-        "257": [
-            "Normal",
-            "Méga"
-        ],
-        "260": [
-            "Normal",
-            "Méga"
-        ],
-        "282": [
-            "Normal",
-            "Méga"
-        ],
-        "302": [
-            "Normal",
-            "Méga"
-        ],
-        "303": [
-            "Normal",
-            "Méga"
-        ],
-        "306": [
-            "Normal",
-            "Méga"
-        ],
-        "308": [
-            "Normal",
-            "Méga"
-        ],
-        "310": [
-            "Normal",
-            "Méga"
-        ],
-        "319": [
-            "Normal",
-            "Méga"
-        ],
-        "323": [
-            "Normal",
-            "Méga"
-        ],
-        "334": [
-            "Normal",
-            "Méga"
-        ],
-        "351": [
-            "Normal",
-            "Solaire",
-            "Pluie",
-            "Blizzard"
-        ],
-        "354": [
-            "Normal",
-            "Méga"
-        ],
-        "359": [
-            "Normal",
-            "Méga"
-        ],
-        "362": [
-            "Normal",
-            "Méga"
-        ],
-        "373": [
-            "Normal",
-            "Méga"
-        ],
-        "376": [
-            "Normal",
-            "Méga"
-        ],
-        "380": [
-            "Normal",
-            "Méga"
-        ],
-        "381": [
-            "Normal",
-            "Méga"
-        ],
-        "382": [
-            "Normal",
-            "Primo"
-        ],
-        "383": [
-            "Normal",
-            "Primo"
-        ],
-        "384": [
-            "Normal",
-            "Méga"
-        ],
-        "386": [
-            "Normal",
-            "Attaque",
-            "Défense",
-            "Vitesse"
-        ],
-        "412": [
-            "Plante",
-            "Sable",
-            "Vitesse"
-        ],
-        "413": [
-            "Plante",
-            "Sable",
-            "Vitesse"
-        ],
-        "414": [
-            "Plante",
-            "Sable",
-            "Vitesse"
-        ],
-        "421": [
-            "Temps",
-            "Solei"
-        ],
-        "422": [
-            "Occident",
-            "Orient"
-        ],
-        "423": [
-            "Occident",
-            "Orient"
-        ],
-        "428": [
-            "Normal",
-            "Méga"
-        ],
-        "445": [
-            "Normal",
-            "Méga"
-        ],
-        "448": [
-            "Normal",
-            "Méga"
-        ],
-        "460": [
-            "Normal",
-            "Méga"
-        ],
-        "475": [
-            "Normal",
-            "Méga"
-        ],
-        "479": [
-            "Normal",
-            "Chaleur",
-            "Lavage",
-            "Froid",
-            "Hélice",
-            "Tonte"
-        ],
-        "487": [
-            "Alternative",
-            "Originelle"
-        ],
-        "492": [
-            "Terrestre",
-            "Céleste"
-        ],
-        "493": [
-            "Normal",
-            "Combat",
-            "Vol",
-            "Poison",
-            "Sol",
-            "Roche",
-            "Insecte",
-            "Spectre",
-            "Acier",
-            "Feu",
-            "Eau",
-            "Plante",
-            "Électrik",
-            "Psy",
-            "Glace",
-            "Dragon",
-            "Ténèbres",
-            "Fée"
-        ],
-        "531": [
-            "Normal",
-            "Méga"
-        ],
-        "550": [
-            "Rouge",
-            "Bleu"
-        ],
-        "555": [
-            "Normal",
-            "Transe"
-        ],
-        "585": [
-            "Automne",
-            "Hiver",
-            "Totémique",
-            "Totémique"
-        ],
-        "586": [
-            "Automne",
-            "Hiver",
-            "Totémique",
-            "Totémique"
-        ],
-        "641": [
-            "Avatar",
-            "Totémique"
-        ],
-        "642": [
-            "Avatar",
-            "Totémique"
-        ],
-        "645": [
-            "Avatar",
-            "Totémique"
-        ],
-        "646": [
-            "Normal",
-            "Blanc",
-            "Noir"
-        ],
-        "647": [
-            "Normal",
-            "Décidé"
-        ],
-        "648": [
-            "Chant",
-            "Danse"
-        ],
-        "649": [
-            "Normal",
-            "Acier",
-            "Eau",
-            "Feu",
-            "Électrik"
-        ],
-        "658": [
-            "Normal",
-            "Sacha",
-            "Déchaîné"
-        ],
-        "664": [
-            "Blizzard",
-            "Banquise",
-            "Glace",
-            "Continent",
-            "Verdure",
-            "Monarchie",
-            "Floraison",
-            "Jungle",
-            "Rivage",
-            "Archipel",
-            "Sécheresse",
-            "Sable",
-            "Delta",
-            "Cyclone",
-            "Mangrove",
-            "Zénith",
-            "Soleil",
-            "Blanche",
-            "Fantaisie",
-            "Poké Ball"
-        ],
-        "665": [
-            "Blizzard",
-            "Banquise",
-            "Glace",
-            "Continent",
-            "Verdure",
-            "Monarchie",
-            "Floraison",
-            "Jungle",
-            "Rivage",
-            "Archipel",
-            "Sécheresse",
-            "Sable",
-            "Delta",
-            "Cyclone",
-            "Mangrove",
-            "Zénith",
-            "Soleil",
-            "Blanche",
-            "Fantaisie",
-            "Poké Ball"
-        ],
-        "666": [
-            "Blizzard",
-            "Banquise",
-            "Glace",
-            "Continent",
-            "Verdure",
-            "Monarchie",
-            "Floraison",
-            "Jungle",
-            "Rivage",
-            "Archipel",
-            "Sécheresse",
-            "Sable",
-            "Delta",
-            "Cyclone",
-            "Mangrove",
-            "Zénith",
-            "Soleil",
-            "Blanche",
-            "Fantaisie",
-            "Poké Ball"
-        ],
-        "669": [
-            "Blanche",
-            "Jaune",
-            "Orange",
-            "Bleue",
-            "Blanche"
-        ],
-        "670": [
-            "Blanche",
-            "Jaune",
-            "Orange",
-            "Bleue",
-            "Blanche",
-            "Éternelle"
-        ],
-        "671": [
-            "Blanche",
-            "Jaune",
-            "Orange",
-            "Bleue",
-            "Blanche"
-        ],
-        "676": [
-            "Blanche",
-            "Cœur",
-            "Étoile",
-            "Diamant",
-            "Demoiselle",
-            "Madame",
-            "Monsieur",
-            "Reine",
-            "Kabuki",
-            "Pharaon"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "Parade",
-            "Assaut"
-        ],
-        "710": [
-            "Normale",
-            "Mini",
-            "Maxi",
-            "Ultra"
-        ],
-        "711": [
-            "Normale",
-            "Mini",
-            "Maxi",
-            "Ultra"
-        ],
-        "716": [
-            "Normal",
-            "Déchaîné"
-        ],
-        "718": [
-            "Normal",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "Normal",
-            "Méga"
-        ],
-        "720": [
-            "Normal",
-            "Déchaîné"
-        ],
-        "741": [
-            "Flamenco",
-            "Pom-Pom",
-            "Hula",
-            "Buyō"
-        ],
-        "745": [
-            "Diurne",
-            "Nocturne"
-        ],
-        "746": [
-            "Solitaire",
-            "Banc"
-        ],
-        "773": [
-            "Normal",
-            "Combat",
-            "Vol",
-            "Poison",
-            "Sol",
-            "Roche",
-            "Insecte",
-            "Spectre",
-            "Acier",
-            "Feu",
-            "Eau",
-            "Plante",
-            "Électrik",
-            "Psy",
-            "Glace",
-            "Dragon",
-            "Ténèbres",
-            "Fée"
-        ],
-        "774": [
-            "M-Rouge",
-            "M-Orange",
-            "M-Jaune",
-            "M-Vert",
-            "M-Bleu",
-            "M-Indigo",
-            "M-Violet",
-            "N-Rouge",
-            "N-Orange",
-            "N-Jaune",
-            "N-Vert",
-            "N-Bleu",
-            "N-Indigo",
-            "N-Violet"
-        ],
-        "778": [
-            "Normal",
-            "Démasquée"
-        ]
+        "3": {
+            "1": "Méga"
+        },
+        "6": {
+            "1": "Méga X",
+            "2": "Méga Y"
+        },
+        "9": {
+            "1": "Méga"
+        },
+        "15": {
+            "1": "Méga"
+        },
+        "18": {
+            "1": "Méga"
+        },
+        "19": {
+            "1": "Alola"
+        },
+        "20": {
+            "1": "Alola"
+        },
+        "25": {
+            "1": "Kanto",
+            "2": "Hoenn",
+            "3": "Sinnoh",
+            "4": "Unys",
+            "5": "Kalos",
+            "6": "Alola"
+        },
+        "26": {
+            "1": "Alola"
+        },
+        "27": {
+            "1": "Alola"
+        },
+        "28": {
+            "1": "Alola"
+        },
+        "37": {
+            "1": "Alola"
+        },
+        "38": {
+            "1": "Alola"
+        },
+        "50": {
+            "1": "Alola"
+        },
+        "51": {
+            "1": "Alola"
+        },
+        "52": {
+            "1": "Alola"
+        },
+        "53": {
+            "1": "Méga"
+        },
+        "65": {
+            "1": "Méga"
+        },
+        "74": {
+            "1": "Alola"
+        },
+        "75": {
+            "1": "Alola"
+        },
+        "76": {
+            "1": "Alola"
+        },
+        "80": {
+            "1": "Méga"
+        },
+        "88": {
+            "1": "Alola"
+        },
+        "89": {
+            "1": "Alola"
+        },
+        "94": {
+            "1": "Méga"
+        },
+        "103": {
+            "1": "Alola"
+        },
+        "105": {
+            "1": "Alola"
+        },
+        "115": {
+            "1": "Méga"
+        },
+        "127": {
+            "1": "Méga"
+        },
+        "130": {
+            "1": "Méga"
+        },
+        "142": {
+            "1": "Méga"
+        },
+        "150": {
+            "1": "Méga X",
+            "2": "Méga Y"
+        },
+        "181": {
+            "1": "Méga"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "Méga"
+        },
+        "212": {
+            "1": "Méga"
+        },
+        "214": {
+            "1": "Méga"
+        },
+        "229": {
+            "1": "Méga"
+        },
+        "248": {
+            "1": "Méga"
+        },
+        "254": {
+            "1": "Méga"
+        },
+        "257": {
+            "1": "Méga"
+        },
+        "260": {
+            "1": "Méga"
+        },
+        "282": {
+            "1": "Méga"
+        },
+        "302": {
+            "1": "Méga"
+        },
+        "303": {
+            "1": "Méga"
+        },
+        "306": {
+            "1": "Méga"
+        },
+        "308": {
+            "1": "Méga"
+        },
+        "310": {
+            "1": "Méga"
+        },
+        "319": {
+            "1": "Méga"
+        },
+        "323": {
+            "1": "Méga"
+        },
+        "334": {
+            "1": "Méga"
+        },
+        "351": {
+            "1": "Forme Solaire",
+            "2": "Forme Eau de Pluie",
+            "3": "Forme Blizzard"
+        },
+        "354": {
+            "1": "Méga"
+        },
+        "359": {
+            "1": "Méga"
+        },
+        "362": {
+            "1": "Méga"
+        },
+        "373": {
+            "1": "Méga"
+        },
+        "376": {
+            "1": "Méga"
+        },
+        "380": {
+            "1": "Méga"
+        },
+        "381": {
+            "1": "Méga"
+        },
+        "382": {
+            "1": "Primo"
+        },
+        "383": {
+            "1": "Primo"
+        },
+        "384": {
+            "1": "Méga"
+        },
+        "386": {
+            "0": "Forme Normale",
+            "1": "Forme Attaque",
+            "2": "Forme Défense",
+            "3": "Forme Vitesse"
+        },
+        "412": {
+            "0": "Cape Plante",
+            "1": "Cape Sable",
+            "2": "Cape Déchet"
+        },
+        "413": {
+            "0": "Cape Plante",
+            "1": "Cape Sable",
+            "2": "Cape Déchet"
+        },
+        "421": {
+            "0": "Temps Couvert",
+            "1": "Temps Ensoleillé"
+        },
+        "422": {
+            "0": "Mer Occident",
+            "1": "Mer Orient"
+        },
+        "423": {
+            "0": "Mer Occident",
+            "1": "Mer Orient"
+        },
+        "428": {
+            "1": "Méga"
+        },
+        "445": {
+            "1": "Méga"
+        },
+        "448": {
+            "1": "Méga"
+        },
+        "460": {
+            "1": "Méga"
+        },
+        "475": {
+            "1": "Méga"
+        },
+        "479": {
+            "1": "Chaleur",
+            "2": "Lavage",
+            "3": "Froid",
+            "4": "Hélice",
+            "5": "Tonte"
+        },
+        "487": {
+            "0": "Forme Alternative",
+            "1": "Forme Originelle"
+        },
+        "492": {
+            "0": "Forme Terrestre",
+            "1": "Forme Céleste"
+        },
+        "493": {
+            "0": "Normal",
+            "1": "Combat",
+            "2": "Vol",
+            "3": "Poison",
+            "4": "Sol",
+            "5": "Roche",
+            "6": "Insecte",
+            "7": "Spectre",
+            "8": "Acier",
+            "9": "Feu",
+            "10": "Eau",
+            "11": "Plante",
+            "12": "Électrik",
+            "13": "Psy",
+            "14": "Glace",
+            "15": "Dragon",
+            "16": "Ténèbres",
+            "17": "Fée"
+        },
+        "531": {
+            "1": "Méga"
+        },
+        "550": {
+            "0": "Motif Rouge",
+            "1": "Motif Bleu"
+        },
+        "555": {
+            "0": "Mode Normal",
+            "1": "Mode Transe"
+        },
+        "585": {
+            "0": "Forme Printemps",
+            "1": "Forme Été",
+            "2": "Forme Automne",
+            "3": "Forme Hiver"
+        },
+        "586": {
+            "0": "Forme Printemps",
+            "1": "Forme Été",
+            "2": "Forme Automne",
+            "3": "Forme Hiver"
+        },
+        "641": {
+            "0": "Forme Avatar",
+            "1": "Forme Totémique"
+        },
+        "642": {
+            "0": "Forme Avatar",
+            "1": "Forme Totémique"
+        },
+        "645": {
+            "0": "Forme Avatar",
+            "1": "Forme Totémique"
+        },
+        "646": {
+            "1": "Noir",
+            "2": "Blanc"
+        },
+        "647": {
+            "0": "Aspect Normal",
+            "1": "Aspect Décidé"
+        },
+        "648": {
+            "0": "Forme Chant",
+            "1": "Forme Danse"
+        },
+        "649": {
+            "1": "Module Aqua",
+            "2": "Module Choc",
+            "3": "Module Pyro",
+            "4": "Module Cryo"
+        },
+        "658": {
+            "1": "Sacha"
+        },
+        "664": {
+            "0": "Motif Blizzard",
+            "1": "Motif Banquise",
+            "2": "Motif Glace",
+            "3": "Motif Continent",
+            "4": "Motif Verdure",
+            "5": "Motif Monarchie",
+            "6": "Motif Floraison",
+            "7": "Motif Métropole",
+            "8": "Motif Rivage",
+            "9": "Motif Archipel",
+            "10": "Motif Sécheresse",
+            "11": "Motif Sable",
+            "12": "Motif Delta",
+            "13": "Motif Cyclone",
+            "14": "Motif Mangrove",
+            "15": "Motif Zénith",
+            "16": "Motif Soleil Levant",
+            "17": "Motif Jungle",
+            "18": "Motif Fantaisie",
+            "19": "Motif Poké Ball"
+        },
+        "665": {
+            "0": "Motif Blizzard",
+            "1": "Motif Banquise",
+            "2": "Motif Glace",
+            "3": "Motif Continent",
+            "4": "Motif Verdure",
+            "5": "Motif Monarchie",
+            "6": "Motif Floraison",
+            "7": "Motif Métropole",
+            "8": "Motif Rivage",
+            "9": "Motif Archipel",
+            "10": "Motif Sécheresse",
+            "11": "Motif Sable",
+            "12": "Motif Delta",
+            "13": "Motif Cyclone",
+            "14": "Motif Mangrove",
+            "15": "Motif Zénith",
+            "16": "Motif Soleil Levant",
+            "17": "Motif Jungle",
+            "18": "Motif Fantaisie",
+            "19": "Motif Poké Ball"
+        },
+        "666": {
+            "0": "Motif Blizzard",
+            "1": "Motif Banquise",
+            "2": "Motif Glace",
+            "3": "Motif Continent",
+            "4": "Motif Verdure",
+            "5": "Motif Monarchie",
+            "6": "Motif Floraison",
+            "7": "Motif Métropole",
+            "8": "Motif Rivage",
+            "9": "Motif Archipel",
+            "10": "Motif Sécheresse",
+            "11": "Motif Sable",
+            "12": "Motif Delta",
+            "13": "Motif Cyclone",
+            "14": "Motif Mangrove",
+            "15": "Motif Zénith",
+            "16": "Motif Soleil Levant",
+            "17": "Motif Jungle",
+            "18": "Motif Fantaisie",
+            "19": "Motif Poké Ball"
+        },
+        "669": {
+            "0": "Fleur Rouge",
+            "1": "Fleur Jaune",
+            "2": "Fleur Orange",
+            "3": "Fleur Bleue",
+            "4": "Fleur Blanche"
+        },
+        "670": {
+            "0": "Fleur Rouge",
+            "1": "Fleur Jaune",
+            "2": "Fleur Orange",
+            "3": "Fleur Bleue",
+            "4": "Fleur Blanche",
+            "5": "Fleur Éternelle"
+        },
+        "671": {
+            "0": "Fleur Rouge",
+            "1": "Fleur Jaune",
+            "2": "Fleur Orange",
+            "3": "Fleur Bleue",
+            "4": "Fleur Blanche"
+        },
+        "676": {
+            "0": "Forme Sauvage",
+            "1": "Coupe Cœur",
+            "2": "Coupe Étoile",
+            "3": "Coupe Diamant",
+            "4": "Coupe Reine",
+            "5": "Coupe Kabuki",
+            "6": "Coupe Pharaon",
+            "7": "Coupe Demoiselle",
+            "8": "Coupe Madame",
+            "9": "Coupe Monsieur"
+        },
+        "678": {
+            "0": "Mâle",
+            "1": "Femelle"
+        },
+        "681": {
+            "0": "Forme Parade",
+            "1": "Forme Assaut"
+        },
+        "710": {
+            "0": "Taille Mini",
+            "1": "Taille Normale",
+            "2": "Taille Maxi",
+            "3": "Taille Ultra"
+        },
+        "711": {
+            "0": "Taille Mini",
+            "1": "Taille Normale",
+            "2": "Taille Maxi",
+            "3": "Taille Ultra"
+        },
+        "716": {
+            "0": "Mode Paisible",
+            "1": "Mode Déchaîné"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "Méga"
+        },
+        "720": {
+            "1": "Déchaîné"
+        },
+        "741": {
+            "0": "Flamenco",
+            "1": "Pom-Pom",
+            "2": "Hula",
+            "3": "Buyō"
+        },
+        "745": {
+            "0": "Diurne",
+            "1": "Nocturne"
+        },
+        "773": {
+            "0": "Normal",
+            "1": "Combat",
+            "2": "Vol",
+            "3": "Poison",
+            "4": "Sol",
+            "5": "Roche",
+            "6": "Insecte",
+            "7": "Spectre",
+            "8": "Acier",
+            "9": "Feu",
+            "10": "Eau",
+            "11": "Plante",
+            "12": "Électrik",
+            "13": "Psy",
+            "14": "Glace",
+            "15": "Dragon",
+            "16": "Ténèbres",
+            "17": "Fée"
+        },
+        "774": {
+            "7": "Rouge",
+            "8": "Orange",
+            "9": "Jaune",
+            "10": "Vert",
+            "11": "Bleu",
+            "12": "Indigo",
+            "13": "Violet"
+        },
+        "801": {
+            "1": "Passé"
+        }
     },
     "it": {
-        "3": [
-            "Normale",
-            "Mega"
-        ],
-        "6": [
-            "Normale",
-            "Mega X",
-            "Mega Y"
-        ],
-        "9": [
-            "Normale",
-            "Mega"
-        ],
-        "13": [
-            "Normale",
-            "Mega"
-        ],
-        "18": [
-            "Normale",
-            "Mega"
-        ],
-        "19": [
-            "Normale",
-            "Alola"
-        ],
-        "20": [
-            "Normale",
-            "Alola"
-        ],
-        "21": [
-            "Normale",
-            "Originale",
-            "Hoenn",
-            "Sinnoh",
-            "Unima",
-            "Kalos",
-            "Alola"
-        ],
-        "26": [
-            "Normale",
-            "Alola"
-        ],
-        "27": [
-            "Normale",
-            "Alola"
-        ],
-        "28": [
-            "Normale",
-            "Alola"
-        ],
-        "37": [
-            "Normale",
-            "Alola"
-        ],
-        "38": [
-            "Normale",
-            "Alola"
-        ],
-        "50": [
-            "Normale",
-            "Alola"
-        ],
-        "51": [
-            "Normale",
-            "Alola"
-        ],
-        "52": [
-            "Normale",
-            "Alola"
-        ],
-        "53": [
-            "Normale",
-            "Mega"
-        ],
-        "74": [
-            "Normale",
-            "Alola"
-        ],
-        "75": [
-            "Normale",
-            "Alola"
-        ],
-        "76": [
-            "Normale",
-            "Alola"
-        ],
-        "80": [
-            "Normale",
-            "Mega"
-        ],
-        "88": [
-            "Normale",
-            "Alola"
-        ],
-        "89": [
-            "Normale",
-            "Alola"
-        ],
-        "94": [
-            "Normale",
-            "Mega"
-        ],
-        "103": [
-            "Normale",
-            "Alola"
-        ],
-        "105": [
-            "Normale",
-            "Alola"
-        ],
-        "115": [
-            "Normale",
-            "Mega"
-        ],
-        "127": [
-            "Normale",
-            "Mega"
-        ],
-        "130": [
-            "Normale",
-            "Mega"
-        ],
-        "142": [
-            "Normale",
-            "Mega"
-        ],
-        "150": [
-            "Normale",
-            "Mega X",
-            "Mega Y"
-        ],
-        "181": [
-            "Normale",
-            "Mega"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "Normale",
-            "Mega"
-        ],
-        "212": [
-            "Normale",
-            "Mega"
-        ],
-        "214": [
-            "Normale",
-            "Mega"
-        ],
-        "229": [
-            "Normale",
-            "Mega"
-        ],
-        "248": [
-            "Normale",
-            "Mega"
-        ],
-        "254": [
-            "Normale",
-            "Mega"
-        ],
-        "257": [
-            "Normale",
-            "Mega"
-        ],
-        "260": [
-            "Normale",
-            "Mega"
-        ],
-        "282": [
-            "Normale",
-            "Mega"
-        ],
-        "302": [
-            "Normale",
-            "Mega"
-        ],
-        "303": [
-            "Normale",
-            "Mega"
-        ],
-        "306": [
-            "Normale",
-            "Mega"
-        ],
-        "308": [
-            "Normale",
-            "Mega"
-        ],
-        "310": [
-            "Normale",
-            "Mega"
-        ],
-        "319": [
-            "Normale",
-            "Mega"
-        ],
-        "323": [
-            "Normale",
-            "Mega"
-        ],
-        "334": [
-            "Normale",
-            "Mega"
-        ],
-        "351": [
-            "Normale",
-            "Sole",
-            "Pioggia",
-            "La Neve"
-        ],
-        "354": [
-            "Normale",
-            "Mega"
-        ],
-        "359": [
-            "Normale",
-            "Mega"
-        ],
-        "362": [
-            "Normale",
-            "Mega"
-        ],
-        "373": [
-            "Normale",
-            "Mega"
-        ],
-        "376": [
-            "Normale",
-            "Mega"
-        ],
-        "380": [
-            "Normale",
-            "Mega"
-        ],
-        "381": [
-            "Normale",
-            "Mega"
-        ],
-        "382": [
-            "Normale",
-            "Archeo."
-        ],
-        "383": [
-            "Normale",
-            "Archeo."
-        ],
-        "384": [
-            "Normale",
-            "Mega"
-        ],
-        "386": [
-            "Normale",
-            "Attacco",
-            "Difesa",
-            "Velocità"
-        ],
-        "412": [
-            "Pianta",
-            "Sabbia",
-            "Velocità"
-        ],
-        "413": [
-            "Pianta",
-            "Sabbia",
-            "Velocità"
-        ],
-        "414": [
-            "Pianta",
-            "Sabbia",
-            "Velocità"
-        ],
-        "421": [
-            "Nuvola",
-            "Splendore"
-        ],
-        "422": [
-            "Ovest",
-            "Est"
-        ],
-        "423": [
-            "Ovest",
-            "Est"
-        ],
-        "428": [
-            "Normale",
-            "Mega"
-        ],
-        "445": [
-            "Normale",
-            "Mega"
-        ],
-        "448": [
-            "Normale",
-            "Mega"
-        ],
-        "460": [
-            "Normale",
-            "Mega"
-        ],
-        "475": [
-            "Normale",
-            "Mega"
-        ],
-        "479": [
-            "Normale",
-            "Calore",
-            "Lavaggio",
-            "Gelo",
-            "Vortice",
-            "Taglio"
-        ],
-        "487": [
-            "Alterata",
-            "Originale"
-        ],
-        "492": [
-            "Terra",
-            "Cielo"
-        ],
-        "493": [
-            "Normale",
-            "Lotta",
-            "Volante",
-            "Veleno",
-            "Terra",
-            "Roccia",
-            "Coleottero",
-            "Spettro",
-            "Acciaio",
-            "Fuoco",
-            "Acqua",
-            "Erba",
-            "Elettro",
-            "Psico",
-            "Ghiaccio",
-            "Drago",
-            "Buio",
-            "Folletto"
-        ],
-        "531": [
-            "Normale",
-            "Mega"
-        ],
-        "550": [
-            "Linearossa",
-            "Lineablu"
-        ],
-        "555": [
-            "Stato Normale",
-            "Stato Zen"
-        ],
-        "585": [
-            "Autunno",
-            "Inverno",
-            "Totem",
-            "Totem"
-        ],
-        "586": [
-            "Autunno",
-            "Inverno",
-            "Totem",
-            "Totem"
-        ],
-        "641": [
-            "Incarnazione",
-            "Totem"
-        ],
-        "642": [
-            "Incarnazione",
-            "Totem"
-        ],
-        "645": [
-            "Incarnazione",
-            "Totem"
-        ],
-        "646": [
-            "Normale",
-            "Bianco",
-            "Nero"
-        ],
-        "647": [
-            "Normale",
-            "Risoluta"
-        ],
-        "648": [
-            "Canto",
-            "Danza"
-        ],
-        "649": [
-            "Normale",
-            "Acciaio",
-            "Acqua",
-            "Fuoco",
-            "Elettro"
-        ],
-        "658": [
-            "Normale",
-            "Ash",
-            "Attivo"
-        ],
-        "664": [
-            "Nevi Perenni",
-            "Nordico",
-            "Manto di Neve",
-            "Continentale",
-            "Prato",
-            "Eleganza",
-            "Giardinfiore",
-            "Giungla",
-            "Marino",
-            "Arcipelago",
-            "Deserto",
-            "Sabbia",
-            "Fluviale",
-            "Pluviale",
-            "Savana",
-            "Solare",
-            "Oceanico",
-            "Bianco",
-            "Sbarazzino",
-            "Poké Ball"
-        ],
-        "665": [
-            "Nevi Perenni",
-            "Nordico",
-            "Manto di Neve",
-            "Continentale",
-            "Prato",
-            "Eleganza",
-            "Giardinfiore",
-            "Giungla",
-            "Marino",
-            "Arcipelago",
-            "Deserto",
-            "Sabbia",
-            "Fluviale",
-            "Pluviale",
-            "Savana",
-            "Solare",
-            "Oceanico",
-            "Bianco",
-            "Sbarazzino",
-            "Poké Ball"
-        ],
-        "666": [
-            "Nevi Perenni",
-            "Nordico",
-            "Manto di Neve",
-            "Continentale",
-            "Prato",
-            "Eleganza",
-            "Giardinfiore",
-            "Giungla",
-            "Marino",
-            "Arcipelago",
-            "Deserto",
-            "Sabbia",
-            "Fluviale",
-            "Pluviale",
-            "Savana",
-            "Solare",
-            "Oceanico",
-            "Bianco",
-            "Sbarazzino",
-            "Poké Ball"
-        ],
-        "669": [
-            "Bianco",
-            "Giallo",
-            "Arancione",
-            "Blu",
-            "Bianco"
-        ],
-        "670": [
-            "Bianco",
-            "Giallo",
-            "Arancione",
-            "Blu",
-            "Bianco",
-            "Eterno"
-        ],
-        "671": [
-            "Bianco",
-            "Giallo",
-            "Arancione",
-            "Blu",
-            "Bianco"
-        ],
-        "676": [
-            "Bianco",
-            "Cuore",
-            "Stella",
-            "Diamante",
-            "Signorina",
-            "Gentildonna",
-            "Gentiluomo",
-            "Regina",
-            "Kabuki",
-            "Faraone"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "Scudo",
-            "Spada"
-        ],
-        "710": [
-            "Normale",
-            "Mini",
-            "Grande",
-            "Maxi"
-        ],
-        "711": [
-            "Normale",
-            "Mini",
-            "Grande",
-            "Maxi"
-        ],
-        "716": [
-            "Normale",
-            "Attivo"
-        ],
-        "718": [
-            "Normale",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "Normale",
-            "Mega"
-        ],
-        "720": [
-            "Normale",
-            "Libero"
-        ],
-        "741": [
-            "Flamenco",
-            "Cheerdance",
-            "Hula",
-            "Buyō"
-        ],
-        "745": [
-            "Giorno",
-            "Notte"
-        ],
-        "746": [
-            "Individuale",
-            "Banco"
-        ],
-        "773": [
-            "Normale",
-            "Lotta",
-            "Volante",
-            "Veleno",
-            "Terra",
-            "Roccia",
-            "Coleottero",
-            "Spettro",
-            "Acciaio",
-            "Fuoco",
-            "Acqua",
-            "Erba",
-            "Elettro",
-            "Psico",
-            "Ghiaccio",
-            "Drago",
-            "Buio",
-            "Folletto"
-        ],
-        "774": [
-            "M-Rosso",
-            "M-Arancione",
-            "M-Giallo",
-            "M-Verde",
-            "M-Azzurro",
-            "M-Indaco",
-            "M-Violetto",
-            "N-Rosso",
-            "N-Arancione",
-            "N-Giallo",
-            "N-Verde",
-            "N-Azzurro",
-            "N-Indaco",
-            "N-Violetto"
-        ],
-        "778": [
-            "Normale",
-            "Smascherata"
-        ]
+        "3": {
+            "1": "Mega"
+        },
+        "6": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "9": {
+            "1": "Mega"
+        },
+        "15": {
+            "1": "Mega"
+        },
+        "18": {
+            "1": "Mega"
+        },
+        "19": {
+            "1": "Alola"
+        },
+        "20": {
+            "1": "Alola"
+        },
+        "25": {
+            "1": "Kanto",
+            "2": "Hoenn",
+            "3": "Sinnoh",
+            "4": "Unima",
+            "5": "Kalos",
+            "6": "Alola"
+        },
+        "26": {
+            "1": "Alola"
+        },
+        "27": {
+            "1": "Alola"
+        },
+        "28": {
+            "1": "Alola"
+        },
+        "37": {
+            "1": "Alola"
+        },
+        "38": {
+            "1": "Alola"
+        },
+        "50": {
+            "1": "Alola"
+        },
+        "51": {
+            "1": "Alola"
+        },
+        "52": {
+            "1": "Alola"
+        },
+        "53": {
+            "1": "Mega"
+        },
+        "65": {
+            "1": "Mega"
+        },
+        "74": {
+            "1": "Alola"
+        },
+        "75": {
+            "1": "Alola"
+        },
+        "76": {
+            "1": "Alola"
+        },
+        "80": {
+            "1": "Mega"
+        },
+        "88": {
+            "1": "Alola"
+        },
+        "89": {
+            "1": "Alola"
+        },
+        "94": {
+            "1": "Mega"
+        },
+        "103": {
+            "1": "Alola"
+        },
+        "105": {
+            "1": "Alola"
+        },
+        "115": {
+            "1": "Mega"
+        },
+        "127": {
+            "1": "Mega"
+        },
+        "130": {
+            "1": "Mega"
+        },
+        "142": {
+            "1": "Mega"
+        },
+        "150": {
+            "1": "Mega X",
+            "2": "Mega Y"
+        },
+        "181": {
+            "1": "Mega"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "Mega"
+        },
+        "212": {
+            "1": "Mega"
+        },
+        "214": {
+            "1": "Mega"
+        },
+        "229": {
+            "1": "Mega"
+        },
+        "248": {
+            "1": "Mega"
+        },
+        "254": {
+            "1": "Mega"
+        },
+        "257": {
+            "1": "Mega"
+        },
+        "260": {
+            "1": "Mega"
+        },
+        "282": {
+            "1": "Mega"
+        },
+        "302": {
+            "1": "Mega"
+        },
+        "303": {
+            "1": "Mega"
+        },
+        "306": {
+            "1": "Mega"
+        },
+        "308": {
+            "1": "Mega"
+        },
+        "310": {
+            "1": "Mega"
+        },
+        "319": {
+            "1": "Mega"
+        },
+        "323": {
+            "1": "Mega"
+        },
+        "334": {
+            "1": "Mega"
+        },
+        "351": {
+            "1": "Forma Sole",
+            "2": "Forma Pioggia",
+            "3": "Forma Nuvola di Neve"
+        },
+        "354": {
+            "1": "Mega"
+        },
+        "359": {
+            "1": "Mega"
+        },
+        "362": {
+            "1": "Mega"
+        },
+        "373": {
+            "1": "Mega"
+        },
+        "376": {
+            "1": "Mega"
+        },
+        "380": {
+            "1": "Mega"
+        },
+        "381": {
+            "1": "Mega"
+        },
+        "382": {
+            "1": "Archeo"
+        },
+        "383": {
+            "1": "Archeo"
+        },
+        "384": {
+            "1": "Mega"
+        },
+        "386": {
+            "0": "Forma Normale",
+            "1": "Forma Attacco",
+            "2": "Forma Difesa",
+            "3": "Forma Velocità"
+        },
+        "412": {
+            "0": "Manto Pianta",
+            "1": "Manto Sabbia",
+            "2": "Manto Scarti"
+        },
+        "413": {
+            "0": "Manto Pianta",
+            "1": "Manto Sabbia",
+            "2": "Manto Scarti"
+        },
+        "421": {
+            "0": "Forma Nuvola",
+            "1": "Forma Splendore"
+        },
+        "422": {
+            "0": "Mare Ovest",
+            "1": "Mare Est"
+        },
+        "423": {
+            "0": "Mare Ovest",
+            "1": "Mare Est"
+        },
+        "428": {
+            "1": "Mega"
+        },
+        "445": {
+            "1": "Mega"
+        },
+        "448": {
+            "1": "Mega"
+        },
+        "460": {
+            "1": "Mega"
+        },
+        "475": {
+            "1": "Mega"
+        },
+        "479": {
+            "1": "Calore",
+            "2": "Lavaggio",
+            "3": "Gelo",
+            "4": "Vortice",
+            "5": "Taglio"
+        },
+        "487": {
+            "0": "Forma Alterata",
+            "1": "Forma Originale"
+        },
+        "492": {
+            "0": "Forma Terra",
+            "1": "Forma Cielo"
+        },
+        "493": {
+            "0": "Normale",
+            "1": "Lotta",
+            "2": "Volante",
+            "3": "Veleno",
+            "4": "Terra",
+            "5": "Roccia",
+            "6": "Coleottero",
+            "7": "Spettro",
+            "8": "Acciaio",
+            "9": "Fuoco",
+            "10": "Acqua",
+            "11": "Erba",
+            "12": "Elettro",
+            "13": "Psico",
+            "14": "Ghiaccio",
+            "15": "Drago",
+            "16": "Buio",
+            "17": "Folletto"
+        },
+        "531": {
+            "1": "Mega"
+        },
+        "550": {
+            "0": "Forma Linearossa",
+            "1": "Forma Lineablu"
+        },
+        "555": {
+            "0": "Forma Normalità",
+            "1": "Stato Zen"
+        },
+        "585": {
+            "0": "Forma Primavera",
+            "1": "Forma Estate",
+            "2": "Forma Autunno",
+            "3": "Forma Inverno"
+        },
+        "586": {
+            "0": "Forma Primavera",
+            "1": "Forma Estate",
+            "2": "Forma Autunno",
+            "3": "Forma Inverno"
+        },
+        "641": {
+            "0": "Forma Incarnazione",
+            "1": "Forma Totem"
+        },
+        "642": {
+            "0": "Forma Incarnazione",
+            "1": "Forma Totem"
+        },
+        "645": {
+            "0": "Forma Incarnazione",
+            "1": "Forma Totem"
+        },
+        "646": {
+            "1": "Nero",
+            "2": "Bianco"
+        },
+        "647": {
+            "0": "Forma Normale",
+            "1": "Forma Risoluta"
+        },
+        "648": {
+            "0": "Forma Canto",
+            "1": "Forma Danza"
+        },
+        "649": {
+            "1": "Idromodulo",
+            "2": "Voltmodulo",
+            "3": "Piromodulo",
+            "4": "Gelomodulo"
+        },
+        "658": {
+            "1": "Ash"
+        },
+        "664": {
+            "0": "Motivo Nevi Perenni",
+            "1": "Motivo Nordico",
+            "2": "Motivo Manto di Neve",
+            "3": "Motivo Continentale",
+            "4": "Motivo Prato",
+            "5": "Motivo Eleganza",
+            "6": "Motivo Giardinfiore",
+            "7": "Motivo Trendy",
+            "8": "Motivo Marino",
+            "9": "Motivo Arcipelago",
+            "10": "Motivo Deserto",
+            "11": "Motivo Sabbia",
+            "12": "Motivo Fluviale",
+            "13": "Motivo Pluviale",
+            "14": "Motivo Savana",
+            "15": "Motivo Solare",
+            "16": "Motivo Oceanico",
+            "17": "Motivo Giungla",
+            "18": "Motivo Sbarazzino",
+            "19": "Motivo Poké Ball"
+        },
+        "665": {
+            "0": "Motivo Nevi Perenni",
+            "1": "Motivo Nordico",
+            "2": "Motivo Manto di Neve",
+            "3": "Motivo Continentale",
+            "4": "Motivo Prato",
+            "5": "Motivo Eleganza",
+            "6": "Motivo Giardinfiore",
+            "7": "Motivo Trendy",
+            "8": "Motivo Marino",
+            "9": "Motivo Arcipelago",
+            "10": "Motivo Deserto",
+            "11": "Motivo Sabbia",
+            "12": "Motivo Fluviale",
+            "13": "Motivo Pluviale",
+            "14": "Motivo Savana",
+            "15": "Motivo Solare",
+            "16": "Motivo Oceanico",
+            "17": "Motivo Giungla",
+            "18": "Motivo Sbarazzino",
+            "19": "Motivo Poké Ball"
+        },
+        "666": {
+            "0": "Motivo Nevi Perenni",
+            "1": "Motivo Nordico",
+            "2": "Motivo Manto di Neve",
+            "3": "Motivo Continentale",
+            "4": "Motivo Prato",
+            "5": "Motivo Eleganza",
+            "6": "Motivo Giardinfiore",
+            "7": "Motivo Trendy",
+            "8": "Motivo Marino",
+            "9": "Motivo Arcipelago",
+            "10": "Motivo Deserto",
+            "11": "Motivo Sabbia",
+            "12": "Motivo Fluviale",
+            "13": "Motivo Pluviale",
+            "14": "Motivo Savana",
+            "15": "Motivo Solare",
+            "16": "Motivo Oceanico",
+            "17": "Motivo Giungla",
+            "18": "Motivo Sbarazzino",
+            "19": "Motivo Poké Ball"
+        },
+        "669": {
+            "0": "Fiore Rosso",
+            "1": "Fiore Giallo",
+            "2": "Fiore Arancione",
+            "3": "Fiore Blu",
+            "4": "Fiore Bianco"
+        },
+        "670": {
+            "0": "Fiore Rosso",
+            "1": "Fiore Giallo",
+            "2": "Fiore Arancione",
+            "3": "Fiore Blu",
+            "4": "Fiore Bianco",
+            "5": "Fiore Eterno"
+        },
+        "671": {
+            "0": "Fiore Rosso",
+            "1": "Fiore Giallo",
+            "2": "Fiore Arancione",
+            "3": "Fiore Blu",
+            "4": "Fiore Bianco"
+        },
+        "676": {
+            "0": "Forma Selvatica",
+            "1": "Taglio Cuore",
+            "2": "Taglio Stella",
+            "3": "Taglio Diamante",
+            "4": "Taglio Regina",
+            "5": "Taglio Kabuki",
+            "6": "Taglio Faraone",
+            "7": "Taglio Signorina",
+            "8": "Taglio Gentildonna",
+            "9": "Taglio Gentiluomo"
+        },
+        "678": {
+            "0": "Maschio",
+            "1": "Femmina"
+        },
+        "681": {
+            "0": "Forma Scudo",
+            "1": "Forma Spada"
+        },
+        "710": {
+            "0": "Mini",
+            "1": "Normale",
+            "2": "Grande",
+            "3": "Maxi"
+        },
+        "711": {
+            "0": "Mini",
+            "1": "Normale",
+            "2": "Grande",
+            "3": "Maxi"
+        },
+        "716": {
+            "0": "Modo Relax",
+            "1": "Modo Attivo"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "Mega"
+        },
+        "720": {
+            "1": "Libero"
+        },
+        "741": {
+            "0": "Flamenco",
+            "1": "Cheerdance",
+            "2": "Hula",
+            "3": "Buyō"
+        },
+        "745": {
+            "0": "Giorno",
+            "1": "Notte"
+        },
+        "773": {
+            "0": "Normale",
+            "1": "Lotta",
+            "2": "Volante",
+            "3": "Veleno",
+            "4": "Terra",
+            "5": "Roccia",
+            "6": "Coleottero",
+            "7": "Spettro",
+            "8": "Acciaio",
+            "9": "Fuoco",
+            "10": "Acqua",
+            "11": "Erba",
+            "12": "Elettro",
+            "13": "Psico",
+            "14": "Ghiaccio",
+            "15": "Drago",
+            "16": "Buio",
+            "17": "Folletto"
+        },
+        "774": {
+            "7": "Rosso",
+            "8": "Arancione",
+            "9": "Giallo",
+            "10": "Verde",
+            "11": "Azzurro",
+            "12": "Indaco",
+            "13": "Violetto"
+        },
+        "801": {
+            "1": "Colore Antico"
+        }
     },
     "ja": {
-        "3": [
-            "ノーマル",
-            "メガ"
-        ],
-        "6": [
-            "ノーマル",
-            "メガ Ｘ",
-            "メガ Ｙ"
-        ],
-        "9": [
-            "ノーマル",
-            "メガ"
-        ],
-        "13": [
-            "ノーマル",
-            "メガ"
-        ],
-        "18": [
-            "ノーマル",
-            "メガ"
-        ],
-        "19": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "20": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "21": [
-            "ノーマル",
-            "オリジナルキャップ",
-            "ホウエンキャップ",
-            "シンオウキャップ",
-            "イッシュキャップ",
-            "カロスキャップ",
-            "アローラキャップ"
-        ],
-        "26": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "27": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "28": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "37": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "38": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "50": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "51": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "52": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "53": [
-            "ノーマル",
-            "メガ"
-        ],
-        "74": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "75": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "76": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "80": [
-            "ノーマル",
-            "メガ"
-        ],
-        "88": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "89": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "94": [
-            "ノーマル",
-            "メガ"
-        ],
-        "103": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "105": [
-            "ノーマル",
-            "アローラのすがた"
-        ],
-        "115": [
-            "ノーマル",
-            "メガ"
-        ],
-        "127": [
-            "ノーマル",
-            "メガ"
-        ],
-        "130": [
-            "ノーマル",
-            "メガ"
-        ],
-        "142": [
-            "ノーマル",
-            "メガ"
-        ],
-        "150": [
-            "ノーマル",
-            "メガ Ｘ",
-            "メガ Ｙ"
-        ],
-        "181": [
-            "ノーマル",
-            "メガ"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "ノーマル",
-            "メガ"
-        ],
-        "212": [
-            "ノーマル",
-            "メガ"
-        ],
-        "214": [
-            "ノーマル",
-            "メガ"
-        ],
-        "229": [
-            "ノーマル",
-            "メガ"
-        ],
-        "248": [
-            "ノーマル",
-            "メガ"
-        ],
-        "254": [
-            "ノーマル",
-            "メガ"
-        ],
-        "257": [
-            "ノーマル",
-            "メガ"
-        ],
-        "260": [
-            "ノーマル",
-            "メガ"
-        ],
-        "282": [
-            "ノーマル",
-            "メガ"
-        ],
-        "302": [
-            "ノーマル",
-            "メガ"
-        ],
-        "303": [
-            "ノーマル",
-            "メガ"
-        ],
-        "306": [
-            "ノーマル",
-            "メガ"
-        ],
-        "308": [
-            "ノーマル",
-            "メガ"
-        ],
-        "310": [
-            "ノーマル",
-            "メガ"
-        ],
-        "319": [
-            "ノーマル",
-            "メガ"
-        ],
-        "323": [
-            "ノーマル",
-            "メガ"
-        ],
-        "334": [
-            "ノーマル",
-            "メガ"
-        ],
-        "351": [
-            "ノーマル",
-            "たいようのすがた",
-            "あまみずのすがた",
-            "ゆきぐものすがた"
-        ],
-        "354": [
-            "ノーマル",
-            "メガ"
-        ],
-        "359": [
-            "ノーマル",
-            "メガ"
-        ],
-        "362": [
-            "ノーマル",
-            "メガ"
-        ],
-        "373": [
-            "ノーマル",
-            "メガ"
-        ],
-        "376": [
-            "ノーマル",
-            "メガ"
-        ],
-        "380": [
-            "ノーマル",
-            "メガ"
-        ],
-        "381": [
-            "ノーマル",
-            "メガ"
-        ],
-        "382": [
-            "ノーマル",
-            "ゲンシカイキのすがた"
-        ],
-        "383": [
-            "ノーマル",
-            "ゲンシカイキのすがた"
-        ],
-        "384": [
-            "ノーマル",
-            "メガ"
-        ],
-        "386": [
-            "ノーマル",
-            "アタックフォルム",
-            "ディフェンスフォルム",
-            "スピードフォルム"
-        ],
-        "412": [
-            "くさきのミノ",
-            "すなちのミノ",
-            "スピードフォルム"
-        ],
-        "413": [
-            "くさきのミノ",
-            "すなちのミノ",
-            "スピードフォルム"
-        ],
-        "414": [
-            "くさきのミノ",
-            "すなちのミノ",
-            "スピードフォルム"
-        ],
-        "421": [
-            "ネガフォルム",
-            "ポジフォルム"
-        ],
-        "422": [
-            "にしのうみ",
-            "ひがしのうみ"
-        ],
-        "423": [
-            "にしのうみ",
-            "ひがしのうみ"
-        ],
-        "428": [
-            "ノーマル",
-            "メガ"
-        ],
-        "445": [
-            "ノーマル",
-            "メガ"
-        ],
-        "448": [
-            "ノーマル",
-            "メガ"
-        ],
-        "460": [
-            "ノーマル",
-            "メガ"
-        ],
-        "475": [
-            "ノーマル",
-            "メガ"
-        ],
-        "479": [
-            "ノーマル",
-            "ヒートロトム",
-            "ウォッシュロトム",
-            "フロストロトム",
-            "スピンロトム",
-            "カットロトム"
-        ],
-        "487": [
-            "アナザーフォルム",
-            "オリジンフォルム"
-        ],
-        "492": [
-            "ランドフォルム",
-            "スカイフォルム"
-        ],
-        "493": [
-            "ノーマル",
-            "かくとう",
-            "ひこう",
-            "どく",
-            "じめん",
-            "いわ",
-            "むし",
-            "ゴースト",
-            "はがね",
-            "ほのお",
-            "みず",
-            "くさ",
-            "でんき",
-            "エスパー",
-            "こおり",
-            "ドラゴン",
-            "あく",
-            "フェアリー"
-        ],
-        "531": [
-            "ノーマル",
-            "メガ"
-        ],
-        "550": [
-            "あかすじのすがた",
-            "あおすじのすがた"
-        ],
-        "555": [
-            "ノーマルモード",
-            "ダルマモード"
-        ],
-        "585": [
-            "あきのすがた",
-            "ふゆのすがた",
-            "れいじゅうフォルム",
-            "れいじゅうフォルム"
-        ],
-        "586": [
-            "あきのすがた",
-            "ふゆのすがた",
-            "れいじゅうフォルム",
-            "れいじゅうフォルム"
-        ],
-        "641": [
-            "けしんフォルム",
-            "れいじゅうフォルム"
-        ],
-        "642": [
-            "けしんフォルム",
-            "れいじゅうフォルム"
-        ],
-        "645": [
-            "けしんフォルム",
-            "れいじゅうフォルム"
-        ],
-        "646": [
-            "ノーマル",
-            "ホワイトキュレム",
-            "ブラックキュレム"
-        ],
-        "647": [
-            "いつものすがた",
-            "かくごのすがた"
-        ],
-        "648": [
-            "ボイスフォルム",
-            "ステップフォルム"
-        ],
-        "649": [
-            "ノーマル",
-            "はがね",
-            "みず",
-            "ほのお",
-            "でんき"
-        ],
-        "658": [
-            "ノーマル",
-            "サトシゲッコウガ",
-            "アクティブモード"
-        ],
-        "664": [
-            "ひょうせつのもよう",
-            "ゆきぐにのもよう",
-            "せつげんのもよう",
-            "たいりくのもよう",
-            "ていえんのもよう",
-            "みやびなもよう",
-            "はなぞののもよう",
-            "ジャングルのもよう",
-            "マリンのもよう",
-            "ぐんとうのもよう",
-            "こうやのもよう",
-            "さじんのもよう",
-            "たいがのもよう",
-            "スコールのもよう",
-            "サバンナのもよう",
-            "たいようのもよう",
-            "オーシャンのもよう",
-            "しろいはな",
-            "ファンシーなもよう",
-            "ボールのもよう"
-        ],
-        "665": [
-            "ひょうせつのもよう",
-            "ゆきぐにのもよう",
-            "せつげんのもよう",
-            "たいりくのもよう",
-            "ていえんのもよう",
-            "みやびなもよう",
-            "はなぞののもよう",
-            "ジャングルのもよう",
-            "マリンのもよう",
-            "ぐんとうのもよう",
-            "こうやのもよう",
-            "さじんのもよう",
-            "たいがのもよう",
-            "スコールのもよう",
-            "サバンナのもよう",
-            "たいようのもよう",
-            "オーシャンのもよう",
-            "しろいはな",
-            "ファンシーなもよう",
-            "ボールのもよう"
-        ],
-        "666": [
-            "ひょうせつのもよう",
-            "ゆきぐにのもよう",
-            "せつげんのもよう",
-            "たいりくのもよう",
-            "ていえんのもよう",
-            "みやびなもよう",
-            "はなぞののもよう",
-            "ジャングルのもよう",
-            "マリンのもよう",
-            "ぐんとうのもよう",
-            "こうやのもよう",
-            "さじんのもよう",
-            "たいがのもよう",
-            "スコールのもよう",
-            "サバンナのもよう",
-            "たいようのもよう",
-            "オーシャンのもよう",
-            "しろいはな",
-            "ファンシーなもよう",
-            "ボールのもよう"
-        ],
-        "669": [
-            "しろいはな",
-            "きいろのはな",
-            "オレンジいろのはな",
-            "あおいはな",
-            "しろいはな"
-        ],
-        "670": [
-            "しろいはな",
-            "きいろのはな",
-            "オレンジいろのはな",
-            "あおいはな",
-            "しろいはな",
-            "えいえんのはな"
-        ],
-        "671": [
-            "しろいはな",
-            "きいろのはな",
-            "オレンジいろのはな",
-            "あおいはな",
-            "しろいはな"
-        ],
-        "676": [
-            "しろいはな",
-            "ハートカット",
-            "スターカット",
-            "ダイヤカット",
-            "レディカット",
-            "マダムカット",
-            "ジェントルカット",
-            "クイーンカット",
-            "カブキカット",
-            "キングダムカット"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "シールドフォルム",
-            "ブレードフォルム"
-        ],
-        "710": [
-            "ふつうのサイズ",
-            "ちいさいサイズ",
-            "おおきいサイズ",
-            "とくだいサイズ"
-        ],
-        "711": [
-            "ふつうのサイズ",
-            "ちいさいサイズ",
-            "おおきいサイズ",
-            "とくだいサイズ"
-        ],
-        "716": [
-            "ノーマル",
-            "アクティブモード"
-        ],
-        "718": [
-            "ノーマル",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "ノーマル",
-            "メガ"
-        ],
-        "720": [
-            "ノーマル",
-            "ときはなたれしフーパ"
-        ],
-        "741": [
-            "めらめらスタイル",
-            "ぱちぱちスタイル",
-            "ふらふらスタイル",
-            "まいまいスタイル"
-        ],
-        "745": [
-            "まひるのすがた",
-            "まよなかのすがた"
-        ],
-        "746": [
-            "たんどくのすがた",
-            "むれたすがた"
-        ],
-        "773": [
-            "ノーマル",
-            "かくとう",
-            "ひこう",
-            "どく",
-            "じめん",
-            "いわ",
-            "むし",
-            "ゴースト",
-            "はがね",
-            "ほのお",
-            "みず",
-            "くさ",
-            "でんき",
-            "エスパー",
-            "こおり",
-            "ドラゴン",
-            "あく",
-            "フェアリー"
-        ],
-        "774": [
-            "りゅうせいのすがた",
-            "りゅうせいのすがた",
-            "りゅうせいのすがた",
-            "りゅうせいのすがた",
-            "りゅうせいのすがた",
-            "りゅうせいのすがた",
-            "りゅうせいのすがた",
-            "あかいろのコア",
-            "だいだいいろのコア",
-            "きいろのコア",
-            "みどりいろのコア",
-            "みずいろのコア",
-            "あおいろのコア",
-            "むらさきいろのコア"
-        ],
-        "778": [
-            "ノーマル",
-            "ばれたすがた"
-        ]
+        "3": {
+            "1": "メガ"
+        },
+        "6": {
+            "1": "メガＸ",
+            "2": "メガＹ"
+        },
+        "9": {
+            "1": "メガ"
+        },
+        "15": {
+            "1": "メガ"
+        },
+        "18": {
+            "1": "メガ"
+        },
+        "19": {
+            "1": "アローラのすがた"
+        },
+        "20": {
+            "1": "アローラのすがた"
+        },
+        "25": {
+            "1": "オリジナルキャップ",
+            "2": "ホウエンキャップ",
+            "3": "シンオウキャップ",
+            "4": "イッシュキャップ",
+            "5": "カロスキャップ",
+            "6": "アローラキャップ"
+        },
+        "26": {
+            "1": "アローラのすがた"
+        },
+        "27": {
+            "1": "アローラのすがた"
+        },
+        "28": {
+            "1": "アローラのすがた"
+        },
+        "37": {
+            "1": "アローラのすがた"
+        },
+        "38": {
+            "1": "アローラのすがた"
+        },
+        "50": {
+            "1": "アローラのすがた"
+        },
+        "51": {
+            "1": "アローラのすがた"
+        },
+        "52": {
+            "1": "アローラのすがた"
+        },
+        "53": {
+            "1": "メガ"
+        },
+        "65": {
+            "1": "メガ"
+        },
+        "74": {
+            "1": "アローラのすがた"
+        },
+        "75": {
+            "1": "アローラのすがた"
+        },
+        "76": {
+            "1": "アローラのすがた"
+        },
+        "80": {
+            "1": "メガ"
+        },
+        "88": {
+            "1": "アローラのすがた"
+        },
+        "89": {
+            "1": "アローラのすがた"
+        },
+        "94": {
+            "1": "メガ"
+        },
+        "103": {
+            "1": "アローラのすがた"
+        },
+        "105": {
+            "1": "アローラのすがた"
+        },
+        "115": {
+            "1": "メガ"
+        },
+        "127": {
+            "1": "メガ"
+        },
+        "130": {
+            "1": "メガ"
+        },
+        "142": {
+            "1": "メガ"
+        },
+        "150": {
+            "1": "メガＸ",
+            "2": "メガＹ"
+        },
+        "181": {
+            "1": "メガ"
+        },
+        "201": {
+            "0": "Ａ",
+            "1": "Ｂ",
+            "2": "Ｃ",
+            "3": "Ｄ",
+            "4": "Ｅ",
+            "5": "Ｆ",
+            "6": "Ｇ",
+            "7": "Ｈ",
+            "8": "Ｉ",
+            "9": "Ｊ",
+            "10": "Ｋ",
+            "11": "Ｌ",
+            "12": "Ｍ",
+            "13": "Ｎ",
+            "14": "Ｏ",
+            "15": "Ｐ",
+            "16": "Ｑ",
+            "17": "Ｒ",
+            "18": "Ｓ",
+            "19": "Ｔ",
+            "20": "Ｕ",
+            "21": "Ｖ",
+            "22": "Ｗ",
+            "23": "Ｘ",
+            "24": "Ｙ",
+            "25": "Ｚ",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "メガ"
+        },
+        "212": {
+            "1": "メガ"
+        },
+        "214": {
+            "1": "メガ"
+        },
+        "229": {
+            "1": "メガ"
+        },
+        "248": {
+            "1": "メガ"
+        },
+        "254": {
+            "1": "メガ"
+        },
+        "257": {
+            "1": "メガ"
+        },
+        "260": {
+            "1": "メガ"
+        },
+        "282": {
+            "1": "メガ"
+        },
+        "302": {
+            "1": "メガ"
+        },
+        "303": {
+            "1": "メガ"
+        },
+        "306": {
+            "1": "メガ"
+        },
+        "308": {
+            "1": "メガ"
+        },
+        "310": {
+            "1": "メガ"
+        },
+        "319": {
+            "1": "メガ"
+        },
+        "323": {
+            "1": "メガ"
+        },
+        "334": {
+            "1": "メガ"
+        },
+        "351": {
+            "1": "たいようのすがた",
+            "2": "あまみずのすがた",
+            "3": "ゆきぐものすがた"
+        },
+        "354": {
+            "1": "メガ"
+        },
+        "359": {
+            "1": "メガ"
+        },
+        "362": {
+            "1": "メガ"
+        },
+        "373": {
+            "1": "メガ"
+        },
+        "376": {
+            "1": "メガ"
+        },
+        "380": {
+            "1": "メガ"
+        },
+        "381": {
+            "1": "メガ"
+        },
+        "382": {
+            "1": "ゲンシ"
+        },
+        "383": {
+            "1": "ゲンシ"
+        },
+        "384": {
+            "1": "メガ"
+        },
+        "386": {
+            "0": "ノーマルフォルム",
+            "1": "アタックフォルム",
+            "2": "ディフェンスフォルム",
+            "3": "スピードフォルム"
+        },
+        "412": {
+            "0": "くさきのミノ",
+            "1": "すなちのミノ",
+            "2": "ゴミのミノ"
+        },
+        "413": {
+            "0": "くさきのミノ",
+            "1": "すなちのミノ",
+            "2": "ゴミのミノ"
+        },
+        "421": {
+            "0": "ネガフォルム",
+            "1": "ポジフォルム"
+        },
+        "422": {
+            "0": "にしのうみ",
+            "1": "ひがしのうみ"
+        },
+        "423": {
+            "0": "にしのうみ",
+            "1": "ひがしのうみ"
+        },
+        "428": {
+            "1": "メガ"
+        },
+        "445": {
+            "1": "メガガブリアス"
+        },
+        "448": {
+            "1": "メガルカリオ"
+        },
+        "460": {
+            "1": "メガユキノオー"
+        },
+        "475": {
+            "1": "メガ"
+        },
+        "479": {
+            "1": "ヒート",
+            "2": "ウォッシュ",
+            "3": "フロスト",
+            "4": "スピン",
+            "5": "カット"
+        },
+        "487": {
+            "0": "アナザーフォルム",
+            "1": "オリジンフォルム"
+        },
+        "492": {
+            "0": "ランドフォルム",
+            "1": "スカイフォルム"
+        },
+        "493": {
+            "0": "ノーマル",
+            "1": "かくとう",
+            "2": "ひこう",
+            "3": "どく",
+            "4": "じめん",
+            "5": "いわ",
+            "6": "むし",
+            "7": "ゴースト",
+            "8": "はがね",
+            "9": "ほのお",
+            "10": "みず",
+            "11": "くさ",
+            "12": "でんき",
+            "13": "エスパー",
+            "14": "こおり",
+            "15": "ドラゴン",
+            "16": "あく",
+            "17": "フェアリー"
+        },
+        "531": {
+            "1": "メガ"
+        },
+        "550": {
+            "0": "あかすじのすがた",
+            "1": "あおすじのすがた"
+        },
+        "555": {
+            "0": "ノーマルモード",
+            "1": "ダルマモード"
+        },
+        "585": {
+            "0": "はるのすがた",
+            "1": "なつのすがた",
+            "2": "あきのすがた",
+            "3": "ふゆのすがた"
+        },
+        "586": {
+            "0": "はるのすがた",
+            "1": "なつのすがた",
+            "2": "あきのすがた",
+            "3": "ふゆのすがた"
+        },
+        "641": {
+            "0": "けしんフォルム",
+            "1": "れいじゅうフォルム"
+        },
+        "642": {
+            "0": "けしんフォルム",
+            "1": "れいじゅうフォルム"
+        },
+        "645": {
+            "0": "けしんフォルム",
+            "1": "れいじゅうフォルム"
+        },
+        "646": {
+            "1": "ブラック",
+            "2": "ホワイト"
+        },
+        "647": {
+            "0": "いつものすがた",
+            "1": "かくごのすがた"
+        },
+        "648": {
+            "0": "ボイスフォルム",
+            "1": "ステップフォルム"
+        },
+        "649": {
+            "1": "アクアカセット",
+            "2": "イナズマカセット",
+            "3": "ブレイズカセット",
+            "4": "フリーズカセット"
+        },
+        "658": {
+            "1": "サトシゲッコウガ"
+        },
+        "664": {
+            "0": "ひょうせつのもよう",
+            "1": "ゆきぐにのもよう",
+            "2": "せつげんのもよう",
+            "3": "たいりくのもよう",
+            "4": "ていえんのもよう",
+            "5": "みやびなもよう",
+            "6": "はなぞののもよう",
+            "7": "モダンなもよう",
+            "8": "マリンのもよう",
+            "9": "ぐんとうのもよう",
+            "10": "こうやのもよう",
+            "11": "さじんのもよう",
+            "12": "たいがのもよう",
+            "13": "スコールのもよう",
+            "14": "サバンナのもよう",
+            "15": "たいようのもよう",
+            "16": "オーシャンのもよう",
+            "17": "ジャングルのもよう",
+            "18": "ファンシーなもよう",
+            "19": "ボールのもよう"
+        },
+        "665": {
+            "0": "ひょうせつのもよう",
+            "1": "ゆきぐにのもよう",
+            "2": "せつげんのもよう",
+            "3": "たいりくのもよう",
+            "4": "ていえんのもよう",
+            "5": "みやびなもよう",
+            "6": "はなぞののもよう",
+            "7": "モダンなもよう",
+            "8": "マリンのもよう",
+            "9": "ぐんとうのもよう",
+            "10": "こうやのもよう",
+            "11": "さじんのもよう",
+            "12": "たいがのもよう",
+            "13": "スコールのもよう",
+            "14": "サバンナのもよう",
+            "15": "たいようのもよう",
+            "16": "オーシャンのもよう",
+            "17": "ジャングルのもよう",
+            "18": "ファンシーなもよう",
+            "19": "ボールのもよう"
+        },
+        "666": {
+            "0": "ひょうせつのもよう",
+            "1": "ゆきぐにのもよう",
+            "2": "せつげんのもよう",
+            "3": "たいりくのもよう",
+            "4": "ていえんのもよう",
+            "5": "みやびなもよう",
+            "6": "はなぞののもよう",
+            "7": "モダンなもよう",
+            "8": "マリンのもよう",
+            "9": "ぐんとうのもよう",
+            "10": "こうやのもよう",
+            "11": "さじんのもよう",
+            "12": "たいがのもよう",
+            "13": "スコールのもよう",
+            "14": "サバンナのもよう",
+            "15": "たいようのもよう",
+            "16": "オーシャンのもよう",
+            "17": "ジャングルのもよう",
+            "18": "ファンシーなもよう",
+            "19": "ボールのもよう"
+        },
+        "669": {
+            "0": "あかいはな",
+            "1": "きいろのはな",
+            "2": "オレンジいろのはな",
+            "3": "あおいはな",
+            "4": "しろいはな"
+        },
+        "670": {
+            "0": "あかいはな",
+            "1": "きいろのはな",
+            "2": "オレンジいろのはな",
+            "3": "あおいはな",
+            "4": "しろいはな",
+            "5": "えいえんのはな"
+        },
+        "671": {
+            "0": "あかいはな",
+            "1": "きいろのはな",
+            "2": "オレンジいろのはな",
+            "3": "あおいはな",
+            "4": "しろいはな"
+        },
+        "676": {
+            "0": "やせいのすがた",
+            "1": "ハートカット",
+            "2": "スターカット",
+            "3": "ダイヤカット",
+            "4": "クイーンカット",
+            "5": "カブキカット",
+            "6": "キングダムカット",
+            "7": "レディカット",
+            "8": "マダムカット",
+            "9": "ジェントルカット"
+        },
+        "678": {
+            "0": "オスのすがた",
+            "1": "メスのすがた"
+        },
+        "681": {
+            "0": "シールドフォルム",
+            "1": "ブレードフォルム"
+        },
+        "710": {
+            "0": "ちいさいサイズ",
+            "1": "ふつうのサイズ",
+            "2": "おおきいサイズ",
+            "3": "とくだいサイズ"
+        },
+        "711": {
+            "0": "ちいさいサイズ",
+            "1": "ふつうのサイズ",
+            "2": "おおきいサイズ",
+            "3": "とくだいサイズ"
+        },
+        "716": {
+            "0": "リラックスモード",
+            "1": "アクティブモード"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "メガ"
+        },
+        "720": {
+            "1": "ときはなたれし"
+        },
+        "741": {
+            "0": "めらめらスタイル",
+            "1": "ぱちぱちスタイル",
+            "2": "ふらふらスタイル",
+            "3": "まいまいスタイル"
+        },
+        "745": {
+            "0": "まひるのすがた",
+            "1": "まよなかのすがた"
+        },
+        "773": {
+            "0": "ノーマル",
+            "1": "かくとう",
+            "2": "ひこう",
+            "3": "どく",
+            "4": "じめん",
+            "5": "いわ",
+            "6": "むし",
+            "7": "ゴースト",
+            "8": "はがね",
+            "9": "ほのお",
+            "10": "みず",
+            "11": "くさ",
+            "12": "でんき",
+            "13": "エスパー",
+            "14": "こおり",
+            "15": "ドラゴン",
+            "16": "あく",
+            "17": "フェアリー"
+        },
+        "774": {
+            "7": "あかいろのコア",
+            "8": "だいだいいろのコア",
+            "9": "きいろのコア",
+            "10": "みどりいろのコア",
+            "11": "みずいろのコア",
+            "12": "あおいろのコア",
+            "13": "むらさきいろのコア"
+        },
+        "801": {
+            "1": "５００ねんまえのいろ"
+        }
     },
     "ko": {
-        "3": [
-            "노말",
-            "메가"
-        ],
-        "6": [
-            "노말",
-            "메가 X",
-            "메가 Y"
-        ],
-        "9": [
-            "노말",
-            "메가"
-        ],
-        "13": [
-            "노말",
-            "메가"
-        ],
-        "18": [
-            "노말",
-            "메가"
-        ],
-        "19": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "20": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "21": [
-            "노말",
-            "오리지널캡",
-            "호연캡",
-            "신오캡",
-            "하나캡",
-            "칼로스캡",
-            "알로라캡"
-        ],
-        "26": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "27": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "28": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "37": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "38": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "50": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "51": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "52": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "53": [
-            "노말",
-            "메가"
-        ],
-        "74": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "75": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "76": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "80": [
-            "노말",
-            "메가"
-        ],
-        "88": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "89": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "94": [
-            "노말",
-            "메가"
-        ],
-        "103": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "105": [
-            "노말",
-            "알로라의 모습"
-        ],
-        "115": [
-            "노말",
-            "메가"
-        ],
-        "127": [
-            "노말",
-            "메가"
-        ],
-        "130": [
-            "노말",
-            "메가"
-        ],
-        "142": [
-            "노말",
-            "메가"
-        ],
-        "150": [
-            "노말",
-            "메가 X",
-            "메가 Y"
-        ],
-        "181": [
-            "노말",
-            "메가"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "노말",
-            "메가"
-        ],
-        "212": [
-            "노말",
-            "메가"
-        ],
-        "214": [
-            "노말",
-            "메가"
-        ],
-        "229": [
-            "노말",
-            "메가"
-        ],
-        "248": [
-            "노말",
-            "메가"
-        ],
-        "254": [
-            "노말",
-            "메가"
-        ],
-        "257": [
-            "노말",
-            "메가"
-        ],
-        "260": [
-            "노말",
-            "메가"
-        ],
-        "282": [
-            "노말",
-            "메가"
-        ],
-        "302": [
-            "노말",
-            "메가"
-        ],
-        "303": [
-            "노말",
-            "메가"
-        ],
-        "306": [
-            "노말",
-            "메가"
-        ],
-        "308": [
-            "노말",
-            "메가"
-        ],
-        "310": [
-            "노말",
-            "메가"
-        ],
-        "319": [
-            "노말",
-            "메가"
-        ],
-        "323": [
-            "노말",
-            "메가"
-        ],
-        "334": [
-            "노말",
-            "메가"
-        ],
-        "351": [
-            "노말",
-            "태양의 모습",
-            "빗방울의 모습",
-            "설운의 모습"
-        ],
-        "354": [
-            "노말",
-            "메가"
-        ],
-        "359": [
-            "노말",
-            "메가"
-        ],
-        "362": [
-            "노말",
-            "메가"
-        ],
-        "373": [
-            "노말",
-            "메가"
-        ],
-        "376": [
-            "노말",
-            "메가"
-        ],
-        "380": [
-            "노말",
-            "메가"
-        ],
-        "381": [
-            "노말",
-            "메가"
-        ],
-        "382": [
-            "노말",
-            "원시회귀의"
-        ],
-        "383": [
-            "노말",
-            "원시회귀의"
-        ],
-        "384": [
-            "노말",
-            "메가"
-        ],
-        "386": [
-            "노말",
-            "어택폼",
-            "디펜스폼",
-            "스피드폼"
-        ],
-        "412": [
-            "초목도롱",
-            "모래땅도롱",
-            "스피드폼"
-        ],
-        "413": [
-            "초목도롱",
-            "모래땅도롱",
-            "스피드폼"
-        ],
-        "414": [
-            "초목도롱",
-            "모래땅도롱",
-            "스피드폼"
-        ],
-        "421": [
-            "네거폼",
-            "포지폼"
-        ],
-        "422": [
-            "서쪽바다",
-            "동쪽바다"
-        ],
-        "423": [
-            "서쪽바다",
-            "동쪽바다"
-        ],
-        "428": [
-            "노말",
-            "메가"
-        ],
-        "445": [
-            "노말",
-            "메가"
-        ],
-        "448": [
-            "노말",
-            "메가"
-        ],
-        "460": [
-            "노말",
-            "메가"
-        ],
-        "475": [
-            "노말",
-            "메가"
-        ],
-        "479": [
-            "노말",
-            "히트로토무",
-            "워시로토무",
-            "프로스트로토무",
-            "스핀로토무",
-            "커트로토무"
-        ],
-        "487": [
-            "어나더폼",
-            "오리진폼"
-        ],
-        "492": [
-            "랜드폼",
-            "스카이폼"
-        ],
-        "493": [
-            "노말",
-            "격투",
-            "비행",
-            "독",
-            "땅",
-            "바위",
-            "벌레",
-            "고스트",
-            "강철",
-            "불꽃",
-            "물",
-            "풀",
-            "전기",
-            "에스퍼",
-            "얼음",
-            "드래곤",
-            "악",
-            "페어리"
-        ],
-        "531": [
-            "노말",
-            "메가"
-        ],
-        "550": [
-            "적색근의 모습",
-            "청색근의 모습"
-        ],
-        "555": [
-            "노말모드",
-            "달마모드"
-        ],
-        "585": [
-            "가을의 모습",
-            "겨울의 모습",
-            "영물폼",
-            "영물폼"
-        ],
-        "586": [
-            "가을의 모습",
-            "겨울의 모습",
-            "영물폼",
-            "영물폼"
-        ],
-        "641": [
-            "화신폼",
-            "영물폼"
-        ],
-        "642": [
-            "화신폼",
-            "영물폼"
-        ],
-        "645": [
-            "화신폼",
-            "영물폼"
-        ],
-        "646": [
-            "노말",
-            "화이트큐레무",
-            "블랙큐레무"
-        ],
-        "647": [
-            "평상시 모습",
-            "각오의 모습"
-        ],
-        "648": [
-            "보이스폼",
-            "스텝폼"
-        ],
-        "649": [
-            "노말",
-            "강철",
-            "물",
-            "불꽃",
-            "전기"
-        ],
-        "658": [
-            "노말",
-            "지우개굴닌자",
-            "액티브모드"
-        ],
-        "664": [
-            "빙설의 모양",
-            "설국의 모양",
-            "설원의 모양",
-            "대륙의 모양",
-            "정원의 모양",
-            "우아한 모양",
-            "화원의 모양",
-            "정글의 모양",
-            "마린의 모양",
-            "군도의 모양",
-            "황야의 모양",
-            "사진의 모양",
-            "대하의 모양",
-            "스콜의 모양",
-            "사바나의 모양",
-            "태양의 모양",
-            "오션의 모양",
-            "하얀 꽃",
-            "팬시한 모양",
-            "볼의 모양"
-        ],
-        "665": [
-            "빙설의 모양",
-            "설국의 모양",
-            "설원의 모양",
-            "대륙의 모양",
-            "정원의 모양",
-            "우아한 모양",
-            "화원의 모양",
-            "정글의 모양",
-            "마린의 모양",
-            "군도의 모양",
-            "황야의 모양",
-            "사진의 모양",
-            "대하의 모양",
-            "스콜의 모양",
-            "사바나의 모양",
-            "태양의 모양",
-            "오션의 모양",
-            "하얀 꽃",
-            "팬시한 모양",
-            "볼의 모양"
-        ],
-        "666": [
-            "빙설의 모양",
-            "설국의 모양",
-            "설원의 모양",
-            "대륙의 모양",
-            "정원의 모양",
-            "우아한 모양",
-            "화원의 모양",
-            "정글의 모양",
-            "마린의 모양",
-            "군도의 모양",
-            "황야의 모양",
-            "사진의 모양",
-            "대하의 모양",
-            "스콜의 모양",
-            "사바나의 모양",
-            "태양의 모양",
-            "오션의 모양",
-            "하얀 꽃",
-            "팬시한 모양",
-            "볼의 모양"
-        ],
-        "669": [
-            "하얀 꽃",
-            "노란 꽃",
-            "오렌지색 꽃",
-            "파란 꽃",
-            "하얀 꽃"
-        ],
-        "670": [
-            "하얀 꽃",
-            "노란 꽃",
-            "오렌지색 꽃",
-            "파란 꽃",
-            "하얀 꽃",
-            "영원의 꽃"
-        ],
-        "671": [
-            "하얀 꽃",
-            "노란 꽃",
-            "오렌지색 꽃",
-            "파란 꽃",
-            "하얀 꽃"
-        ],
-        "676": [
-            "하얀 꽃",
-            "하트컷",
-            "스타컷",
-            "다이아컷",
-            "레이디컷",
-            "마담컷",
-            "젠틀컷",
-            "퀸컷",
-            "가부키컷",
-            "킹덤컷"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "실드폼",
-            "블레이드폼"
-        ],
-        "710": [
-            "보통 사이즈",
-            "작은 사이즈",
-            "큰 사이즈",
-            "특대 사이즈"
-        ],
-        "711": [
-            "보통 사이즈",
-            "작은 사이즈",
-            "큰 사이즈",
-            "특대 사이즈"
-        ],
-        "716": [
-            "노말",
-            "액티브모드"
-        ],
-        "718": [
-            "노말",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "노말",
-            "메가"
-        ],
-        "720": [
-            "노말",
-            "굴레를 벗어난 후파"
-        ],
-        "741": [
-            "이글이글스타일",
-            "파칙파칙스타일",
-            "훌라훌라스타일",
-            "하늘하늘스타일"
-        ],
-        "745": [
-            "한낮의 모습",
-            "한밤중의 모습"
-        ],
-        "746": [
-            "단독의 모습",
-            "군집의 모습"
-        ],
-        "773": [
-            "노말",
-            "격투",
-            "비행",
-            "독",
-            "땅",
-            "바위",
-            "벌레",
-            "고스트",
-            "강철",
-            "불꽃",
-            "물",
-            "풀",
-            "전기",
-            "에스퍼",
-            "얼음",
-            "드래곤",
-            "악",
-            "페어리"
-        ],
-        "774": [
-            "유성의 모습",
-            "유성의 모습",
-            "유성의 모습",
-            "유성의 모습",
-            "유성의 모습",
-            "유성의 모습",
-            "유성의 모습",
-            "빨간색 코어",
-            "주황색 코어",
-            "노란색 코어",
-            "초록색 코어",
-            "옥색 코어",
-            "파란색 코어",
-            "보라색 코어"
-        ],
-        "778": [
-            "노말",
-            "들킨 모습"
-        ]
+        "3": {
+            "1": "메가"
+        },
+        "6": {
+            "1": "메가X",
+            "2": "메가Y"
+        },
+        "9": {
+            "1": "메가"
+        },
+        "15": {
+            "1": "메가"
+        },
+        "18": {
+            "1": "메가"
+        },
+        "19": {
+            "1": "알로라의 모습"
+        },
+        "20": {
+            "1": "알로라의 모습"
+        },
+        "25": {
+            "1": "오리지널캡",
+            "2": "호연캡",
+            "3": "신오캡",
+            "4": "하나캡",
+            "5": "칼로스캡",
+            "6": "알로라캡"
+        },
+        "26": {
+            "1": "알로라의 모습"
+        },
+        "27": {
+            "1": "알로라의 모습"
+        },
+        "28": {
+            "1": "알로라의 모습"
+        },
+        "37": {
+            "1": "알로라의 모습"
+        },
+        "38": {
+            "1": "알로라의 모습"
+        },
+        "50": {
+            "1": "알로라의 모습"
+        },
+        "51": {
+            "1": "알로라의 모습"
+        },
+        "52": {
+            "1": "알로라의 모습"
+        },
+        "53": {
+            "1": "메가"
+        },
+        "65": {
+            "1": "메가"
+        },
+        "74": {
+            "1": "알로라의 모습"
+        },
+        "75": {
+            "1": "알로라의 모습"
+        },
+        "76": {
+            "1": "알로라의 모습"
+        },
+        "80": {
+            "1": "메가"
+        },
+        "88": {
+            "1": "알로라의 모습"
+        },
+        "89": {
+            "1": "알로라의 모습"
+        },
+        "94": {
+            "1": "메가"
+        },
+        "103": {
+            "1": "알로라의 모습"
+        },
+        "105": {
+            "1": "알로라의 모습"
+        },
+        "115": {
+            "1": "메가"
+        },
+        "127": {
+            "1": "메가"
+        },
+        "130": {
+            "1": "메가"
+        },
+        "142": {
+            "1": "메가"
+        },
+        "150": {
+            "1": "메가X",
+            "2": "메가Y"
+        },
+        "181": {
+            "1": "메가"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "메가"
+        },
+        "212": {
+            "1": "메가"
+        },
+        "214": {
+            "1": "메가"
+        },
+        "229": {
+            "1": "메가"
+        },
+        "248": {
+            "1": "메가"
+        },
+        "254": {
+            "1": "메가"
+        },
+        "257": {
+            "1": "메가"
+        },
+        "260": {
+            "1": "메가"
+        },
+        "282": {
+            "1": "메가"
+        },
+        "302": {
+            "1": "메가"
+        },
+        "303": {
+            "1": "메가"
+        },
+        "306": {
+            "1": "메가"
+        },
+        "308": {
+            "1": "메가"
+        },
+        "310": {
+            "1": "메가"
+        },
+        "319": {
+            "1": "메가"
+        },
+        "323": {
+            "1": "메가"
+        },
+        "334": {
+            "1": "메가"
+        },
+        "351": {
+            "1": "태양의 모습",
+            "2": "빗방울의 모습",
+            "3": "설운의 모습"
+        },
+        "354": {
+            "1": "메가"
+        },
+        "359": {
+            "1": "메가"
+        },
+        "362": {
+            "1": "메가"
+        },
+        "373": {
+            "1": "메가"
+        },
+        "376": {
+            "1": "메가"
+        },
+        "380": {
+            "1": "메가"
+        },
+        "381": {
+            "1": "메가"
+        },
+        "382": {
+            "1": "원시"
+        },
+        "383": {
+            "1": "원시"
+        },
+        "384": {
+            "1": "메가"
+        },
+        "386": {
+            "0": "노말폼",
+            "1": "어택폼",
+            "2": "디펜스폼",
+            "3": "스피드폼"
+        },
+        "412": {
+            "0": "초목도롱",
+            "1": "모래땅도롱",
+            "2": "슈레도롱"
+        },
+        "413": {
+            "0": "초목도롱",
+            "1": "모래땅도롱",
+            "2": "슈레도롱"
+        },
+        "421": {
+            "0": "네거폼",
+            "1": "포지폼"
+        },
+        "422": {
+            "0": "서쪽바다",
+            "1": "동쪽바다"
+        },
+        "423": {
+            "0": "서쪽바다",
+            "1": "동쪽바다"
+        },
+        "428": {
+            "1": "메가"
+        },
+        "445": {
+            "1": "메가"
+        },
+        "448": {
+            "1": "메가"
+        },
+        "460": {
+            "1": "메가"
+        },
+        "475": {
+            "1": "메가"
+        },
+        "479": {
+            "1": "히트",
+            "2": "워시",
+            "3": "프로스트",
+            "4": "스핀",
+            "5": "커트"
+        },
+        "487": {
+            "0": "어나더폼",
+            "1": "오리진폼"
+        },
+        "492": {
+            "0": "랜드폼",
+            "1": "스카이폼"
+        },
+        "493": {
+            "0": "노말",
+            "1": "격투",
+            "2": "비행",
+            "3": "독",
+            "4": "땅",
+            "5": "바위",
+            "6": "벌레",
+            "7": "고스트",
+            "8": "강철",
+            "9": "불꽃",
+            "10": "물",
+            "11": "풀",
+            "12": "전기",
+            "13": "에스퍼",
+            "14": "얼음",
+            "15": "드래곤",
+            "16": "악",
+            "17": "페어리"
+        },
+        "531": {
+            "1": "메가"
+        },
+        "550": {
+            "0": "적색근의 모습",
+            "1": "청색근의 모습"
+        },
+        "555": {
+            "0": "노말모드",
+            "1": "달마모드"
+        },
+        "585": {
+            "0": "봄의 모습",
+            "1": "여름의 모습",
+            "2": "가을의 모습",
+            "3": "겨울의 모습"
+        },
+        "586": {
+            "0": "봄의 모습",
+            "1": "여름의 모습",
+            "2": "가을의 모습",
+            "3": "겨울의 모습"
+        },
+        "641": {
+            "0": "화신폼",
+            "1": "영물폼"
+        },
+        "642": {
+            "0": "화신폼",
+            "1": "영물폼"
+        },
+        "645": {
+            "0": "화신폼",
+            "1": "영물폼"
+        },
+        "646": {
+            "1": "블랙",
+            "2": "화이트"
+        },
+        "647": {
+            "0": "평상시 모습",
+            "1": "각오의 모습"
+        },
+        "648": {
+            "0": "보이스폼",
+            "1": "스텝폼"
+        },
+        "649": {
+            "1": "아쿠아카세트",
+            "2": "번개카세트",
+            "3": "블레이즈카세트",
+            "4": "프리즈카세트"
+        },
+        "658": {
+            "1": "지우개굴닌자"
+        },
+        "664": {
+            "0": "빙설의 모양",
+            "1": "설국의 모양",
+            "2": "설원의 모양",
+            "3": "대륙의 모양",
+            "4": "정원의 모양",
+            "5": "우아한 모양",
+            "6": "화원의 모양",
+            "7": "모던한 모양",
+            "8": "마린의 모양",
+            "9": "군도의 모양",
+            "10": "황야의 모양",
+            "11": "사진의 모양",
+            "12": "대하의 모양",
+            "13": "스콜의 모양",
+            "14": "사바나의 모양",
+            "15": "태양의 모양",
+            "16": "오션의 모양",
+            "17": "정글의 모양",
+            "18": "팬시한 모양",
+            "19": "볼의 모양"
+        },
+        "665": {
+            "0": "빙설의 모양",
+            "1": "설국의 모양",
+            "2": "설원의 모양",
+            "3": "대륙의 모양",
+            "4": "정원의 모양",
+            "5": "우아한 모양",
+            "6": "화원의 모양",
+            "7": "모던한 모양",
+            "8": "마린의 모양",
+            "9": "군도의 모양",
+            "10": "황야의 모양",
+            "11": "사진의 모양",
+            "12": "대하의 모양",
+            "13": "스콜의 모양",
+            "14": "사바나의 모양",
+            "15": "태양의 모양",
+            "16": "오션의 모양",
+            "17": "정글의 모양",
+            "18": "팬시한 모양",
+            "19": "볼의 모양"
+        },
+        "666": {
+            "0": "빙설의 모양",
+            "1": "설국의 모양",
+            "2": "설원의 모양",
+            "3": "대륙의 모양",
+            "4": "정원의 모양",
+            "5": "우아한 모양",
+            "6": "화원의 모양",
+            "7": "모던한 모양",
+            "8": "마린의 모양",
+            "9": "군도의 모양",
+            "10": "황야의 모양",
+            "11": "사진의 모양",
+            "12": "대하의 모양",
+            "13": "스콜의 모양",
+            "14": "사바나의 모양",
+            "15": "태양의 모양",
+            "16": "오션의 모양",
+            "17": "정글의 모양",
+            "18": "팬시한 모양",
+            "19": "볼의 모양"
+        },
+        "669": {
+            "0": "빨간 꽃",
+            "1": "노란 꽃",
+            "2": "오렌지색 꽃",
+            "3": "파란 꽃",
+            "4": "하얀 꽃"
+        },
+        "670": {
+            "0": "빨간 꽃",
+            "1": "노란 꽃",
+            "2": "오렌지색 꽃",
+            "3": "파란 꽃",
+            "4": "하얀 꽃",
+            "5": "영원의 꽃"
+        },
+        "671": {
+            "0": "빨간 꽃",
+            "1": "노란 꽃",
+            "2": "오렌지색 꽃",
+            "3": "파란 꽃",
+            "4": "하얀 꽃"
+        },
+        "676": {
+            "0": "야생의 모습",
+            "1": "하트컷",
+            "2": "스타컷",
+            "3": "다이아컷",
+            "4": "퀸컷",
+            "5": "가부키컷",
+            "6": "킹덤컷",
+            "7": "레이디컷",
+            "8": "마담컷",
+            "9": "젠틀컷"
+        },
+        "678": {
+            "0": "수컷의 모습",
+            "1": "암컷의 모습"
+        },
+        "681": {
+            "0": "실드폼",
+            "1": "블레이드폼"
+        },
+        "710": {
+            "0": "작은 사이즈",
+            "1": "보통 사이즈",
+            "2": "큰 사이즈",
+            "3": "특대 사이즈"
+        },
+        "711": {
+            "0": "작은 사이즈",
+            "1": "보통 사이즈",
+            "2": "큰 사이즈",
+            "3": "특대 사이즈"
+        },
+        "716": {
+            "0": "릴랙스모드",
+            "1": "액티브모드"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "메가"
+        },
+        "720": {
+            "1": "굴레를 벗어난"
+        },
+        "741": {
+            "0": "이글이글스타일",
+            "1": "파칙파칙스타일",
+            "2": "훌라훌라스타일",
+            "3": "하늘하늘스타일"
+        },
+        "745": {
+            "0": "한낮의 모습",
+            "1": "한밤중의 모습"
+        },
+        "773": {
+            "0": "노말",
+            "1": "격투",
+            "2": "비행",
+            "3": "독",
+            "4": "땅",
+            "5": "바위",
+            "6": "벌레",
+            "7": "고스트",
+            "8": "강철",
+            "9": "불꽃",
+            "10": "물",
+            "11": "풀",
+            "12": "전기",
+            "13": "에스퍼",
+            "14": "얼음",
+            "15": "드래곤",
+            "16": "악",
+            "17": "페어리"
+        },
+        "774": {
+            "7": "빨간색",
+            "8": "주황색",
+            "9": "노란색",
+            "10": "초록색",
+            "11": "옥색",
+            "12": "파란색",
+            "13": "보라색"
+        },
+        "801": {
+            "1": "500년 전의 색"
+        }
     },
     "zh": {
-        "3": [
-            "正常",
-            "超级"
-        ],
-        "6": [
-            "正常",
-            "超级 Ｘ",
-            "超级 Ｙ"
-        ],
-        "9": [
-            "正常",
-            "超级"
-        ],
-        "13": [
-            "正常",
-            "超级"
-        ],
-        "18": [
-            "正常",
-            "超级"
-        ],
-        "19": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "20": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "21": [
-            "正常",
-            "初始帽子",
-            "丰缘帽子",
-            "神奥帽子",
-            "合众帽子",
-            "卡洛斯帽子",
-            "阿罗拉帽子"
-        ],
-        "26": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "27": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "28": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "37": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "38": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "50": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "51": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "52": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "53": [
-            "正常",
-            "超级"
-        ],
-        "74": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "75": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "76": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "80": [
-            "正常",
-            "超级"
-        ],
-        "88": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "89": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "94": [
-            "正常",
-            "超级"
-        ],
-        "103": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "105": [
-            "正常",
-            "阿罗拉的样子"
-        ],
-        "115": [
-            "正常",
-            "超级"
-        ],
-        "127": [
-            "正常",
-            "超级"
-        ],
-        "130": [
-            "正常",
-            "超级"
-        ],
-        "142": [
-            "正常",
-            "超级"
-        ],
-        "150": [
-            "正常",
-            "超级 Ｘ",
-            "超级 Ｙ"
-        ],
-        "181": [
-            "正常",
-            "超级"
-        ],
-        "201": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "!",
-            "?"
-        ],
-        "208": [
-            "正常",
-            "超级"
-        ],
-        "212": [
-            "正常",
-            "超级"
-        ],
-        "214": [
-            "正常",
-            "超级"
-        ],
-        "229": [
-            "正常",
-            "超级"
-        ],
-        "248": [
-            "正常",
-            "超级"
-        ],
-        "254": [
-            "正常",
-            "超级"
-        ],
-        "257": [
-            "正常",
-            "超级"
-        ],
-        "260": [
-            "正常",
-            "超级"
-        ],
-        "282": [
-            "正常",
-            "超级"
-        ],
-        "302": [
-            "正常",
-            "超级"
-        ],
-        "303": [
-            "正常",
-            "超级"
-        ],
-        "306": [
-            "正常",
-            "超级"
-        ],
-        "308": [
-            "正常",
-            "超级"
-        ],
-        "310": [
-            "正常",
-            "超级"
-        ],
-        "319": [
-            "正常",
-            "超级"
-        ],
-        "323": [
-            "正常",
-            "超级"
-        ],
-        "334": [
-            "正常",
-            "超级"
-        ],
-        "351": [
-            "正常",
-            "太阳的样子",
-            "雨水的样子",
-            "雪云的样子"
-        ],
-        "354": [
-            "正常",
-            "超级"
-        ],
-        "359": [
-            "正常",
-            "超级"
-        ],
-        "362": [
-            "正常",
-            "超级"
-        ],
-        "373": [
-            "正常",
-            "超级"
-        ],
-        "376": [
-            "正常",
-            "超级"
-        ],
-        "380": [
-            "正常",
-            "超级"
-        ],
-        "381": [
-            "正常",
-            "超级"
-        ],
-        "382": [
-            "正常",
-            "原始回归"
-        ],
-        "383": [
-            "正常",
-            "原始回归"
-        ],
-        "384": [
-            "正常",
-            "超级"
-        ],
-        "386": [
-            "正常",
-            "攻击形态",
-            "防御形态",
-            "速度形态"
-        ],
-        "412": [
-            "草木蓑衣",
-            "砂土蓑衣",
-            "速度形态"
-        ],
-        "413": [
-            "草木蓑衣",
-            "砂土蓑衣",
-            "速度形态"
-        ],
-        "414": [
-            "草木蓑衣",
-            "砂土蓑衣",
-            "速度形态"
-        ],
-        "421": [
-            "阴天形态",
-            "晴天形态"
-        ],
-        "422": [
-            "西海",
-            "东海"
-        ],
-        "423": [
-            "西海",
-            "东海"
-        ],
-        "428": [
-            "正常",
-            "超级"
-        ],
-        "445": [
-            "正常",
-            "超级"
-        ],
-        "448": [
-            "正常",
-            "超级"
-        ],
-        "460": [
-            "正常",
-            "超级"
-        ],
-        "475": [
-            "正常",
-            "超级"
-        ],
-        "479": [
-            "正常",
-            "加热洛托姆",
-            "清洗洛托姆",
-            "结冰洛托姆",
-            "旋转洛托姆",
-            "切割洛托姆"
-        ],
-        "487": [
-            "别种形态",
-            "起源形态"
-        ],
-        "492": [
-            "陆上形态",
-            "天空形态"
-        ],
-        "493": [
-            "正常",
-            "格斗",
-            "飞行",
-            "毒",
-            "地面",
-            "岩石",
-            "虫",
-            "幽灵",
-            "钢",
-            "炎",
-            "水",
-            "草",
-            "电",
-            "超能力",
-            "冰",
-            "龙",
-            "恶",
-            "妖精"
-        ],
-        "531": [
-            "正常",
-            "超级"
-        ],
-        "550": [
-            "红条纹的样子",
-            "蓝条纹的样子"
-        ],
-        "555": [
-            "普通模式",
-            "达摩模式"
-        ],
-        "585": [
-            "秋天的样子",
-            "冬天的样子",
-            "灵兽形态",
-            "灵兽形态"
-        ],
-        "586": [
-            "秋天的样子",
-            "冬天的样子",
-            "灵兽形态",
-            "灵兽形态"
-        ],
-        "641": [
-            "化身形态",
-            "灵兽形态"
-        ],
-        "642": [
-            "化身形态",
-            "灵兽形态"
-        ],
-        "645": [
-            "化身形态",
-            "灵兽形态"
-        ],
-        "646": [
-            "正常",
-            "焰白酋雷姆",
-            "暗黑酋雷姆"
-        ],
-        "647": [
-            "平常的样子",
-            "觉悟的样子"
-        ],
-        "648": [
-            "歌声形态",
-            "舞步形态"
-        ],
-        "649": [
-            "正常",
-            "钢",
-            "水",
-            "炎",
-            "电"
-        ],
-        "658": [
-            "正常",
-            "小智版甲贺忍蛙",
-            "活跃模式"
-        ],
-        "664": [
-            "冰雪花纹",
-            "雪国花纹",
-            "雪原花纹",
-            "大陆花纹",
-            "庭园花纹",
-            "高雅花纹",
-            "花园花纹",
-            "热带雨林花纹",
-            "大海花纹",
-            "群岛花纹",
-            "荒野花纹",
-            "沙尘花纹",
-            "大河花纹",
-            "骤雨花纹",
-            "热带草原花纹",
-            "太阳花纹",
-            "大洋花纹",
-            "白花",
-            "幻彩花纹",
-            "球球花纹"
-        ],
-        "665": [
-            "冰雪花纹",
-            "雪国花纹",
-            "雪原花纹",
-            "大陆花纹",
-            "庭园花纹",
-            "高雅花纹",
-            "花园花纹",
-            "热带雨林花纹",
-            "大海花纹",
-            "群岛花纹",
-            "荒野花纹",
-            "沙尘花纹",
-            "大河花纹",
-            "骤雨花纹",
-            "热带草原花纹",
-            "太阳花纹",
-            "大洋花纹",
-            "白花",
-            "幻彩花纹",
-            "球球花纹"
-        ],
-        "666": [
-            "冰雪花纹",
-            "雪国花纹",
-            "雪原花纹",
-            "大陆花纹",
-            "庭园花纹",
-            "高雅花纹",
-            "花园花纹",
-            "热带雨林花纹",
-            "大海花纹",
-            "群岛花纹",
-            "荒野花纹",
-            "沙尘花纹",
-            "大河花纹",
-            "骤雨花纹",
-            "热带草原花纹",
-            "太阳花纹",
-            "大洋花纹",
-            "白花",
-            "幻彩花纹",
-            "球球花纹"
-        ],
-        "669": [
-            "白花",
-            "黄花",
-            "橙花",
-            "蓝花",
-            "白花"
-        ],
-        "670": [
-            "白花",
-            "黄花",
-            "橙花",
-            "蓝花",
-            "白花",
-            "永恒之花"
-        ],
-        "671": [
-            "白花",
-            "黄花",
-            "橙花",
-            "蓝花",
-            "白花"
-        ],
-        "676": [
-            "白花",
-            "心形造型",
-            "星形造型",
-            "菱形造型",
-            "淑女造型",
-            "贵妇造型",
-            "绅士造型",
-            "女王造型",
-            "歌舞伎造型",
-            "国王造型"
-        ],
-        "678": [
-            "♂",
-            "♀"
-        ],
-        "681": [
-            "盾牌形态",
-            "刀剑形态"
-        ],
-        "710": [
-            "普通尺寸",
-            "小尺寸",
-            "大尺寸",
-            "特大尺寸"
-        ],
-        "711": [
-            "普通尺寸",
-            "小尺寸",
-            "大尺寸",
-            "特大尺寸"
-        ],
-        "716": [
-            "正常",
-            "活跃模式"
-        ],
-        "718": [
-            "正常",
-            "10%",
-            "10%-C",
-            "50%-C",
-            "100%-C"
-        ],
-        "719": [
-            "正常",
-            "超级"
-        ],
-        "720": [
-            "正常",
-            "解放胡帕"
-        ],
-        "741": [
-            "热辣热辣风格",
-            "啪滋啪滋风格",
-            "呼拉呼拉风格",
-            "轻盈轻盈风格"
-        ],
-        "745": [
-            "白昼的样子",
-            "黑夜的样子"
-        ],
-        "746": [
-            "单独的样子",
-            "鱼群的样子"
-        ],
-        "773": [
-            "正常",
-            "格斗",
-            "飞行",
-            "毒",
-            "地面",
-            "岩石",
-            "虫",
-            "幽灵",
-            "钢",
-            "炎",
-            "水",
-            "草",
-            "电",
-            "超能力",
-            "冰",
-            "龙",
-            "恶",
-            "妖精"
-        ],
-        "774": [
-            "流星的样子",
-            "流星的样子",
-            "流星的样子",
-            "流星的样子",
-            "流星的样子",
-            "流星的样子",
-            "流星的样子",
-            "红色核心",
-            "橙色核心",
-            "黄色核心",
-            "绿色核心",
-            "浅蓝色核心",
-            "蓝色核心",
-            "紫色核心"
-        ],
-        "778": [
-            "正常",
-            "现形的样子"
-        ]
+        "3": {
+            "1": "超级"
+        },
+        "6": {
+            "1": "超级 Ｘ",
+            "2": "超级 Ｙ"
+        },
+        "9": {
+            "1": "超级"
+        },
+        "15": {
+            "1": "超级大针蜂"
+        },
+        "18": {
+            "1": "超级大比鸟"
+        },
+        "19": {
+            "1": "阿罗拉的样子"
+        },
+        "20": {
+            "1": "阿罗拉的样子"
+        },
+        "25": {
+            "1": "初始帽子",
+            "2": "丰缘帽子",
+            "3": "神奥帽子",
+            "4": "合众帽子",
+            "5": "卡洛斯帽子",
+            "6": "阿罗拉帽子"
+        },
+        "26": {
+            "1": "阿罗拉的样子"
+        },
+        "27": {
+            "1": "阿罗拉的样子"
+        },
+        "28": {
+            "1": "阿罗拉的样子"
+        },
+        "37": {
+            "1": "阿罗拉的样子"
+        },
+        "38": {
+            "1": "阿罗拉的样子"
+        },
+        "50": {
+            "1": "阿罗拉的样子"
+        },
+        "51": {
+            "1": "阿罗拉的样子"
+        },
+        "52": {
+            "1": "阿罗拉的样子"
+        },
+        "53": {
+            "1": "阿罗拉的样子"
+        },
+        "65": {
+            "1": "超级"
+        },
+        "74": {
+            "1": "阿罗拉的样子"
+        },
+        "75": {
+            "1": "阿罗拉的样子"
+        },
+        "76": {
+            "1": "阿罗拉的样子"
+        },
+        "80": {
+            "1": "超级"
+        },
+        "88": {
+            "1": "阿罗拉的样子"
+        },
+        "89": {
+            "1": "阿罗拉的样子"
+        },
+        "94": {
+            "1": "超级"
+        },
+        "103": {
+            "1": "阿罗拉的样子"
+        },
+        "105": {
+            "1": "阿罗拉的样子"
+        },
+        "115": {
+            "1": "超级"
+        },
+        "127": {
+            "1": "超级"
+        },
+        "130": {
+            "1": "超级"
+        },
+        "142": {
+            "1": "超级"
+        },
+        "150": {
+            "1": "超级 Ｘ",
+            "2": "超级 Ｙ"
+        },
+        "181": {
+            "1": "超级"
+        },
+        "201": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D",
+            "4": "E",
+            "5": "F",
+            "6": "G",
+            "7": "H",
+            "8": "I",
+            "9": "J",
+            "10": "K",
+            "11": "L",
+            "12": "M",
+            "13": "N",
+            "14": "O",
+            "15": "P",
+            "16": "Q",
+            "17": "R",
+            "18": "S",
+            "19": "T",
+            "20": "U",
+            "21": "V",
+            "22": "W",
+            "23": "X",
+            "24": "Y",
+            "25": "Z",
+            "26": "!",
+            "27": "?"
+        },
+        "208": {
+            "1": "超级"
+        },
+        "212": {
+            "1": "超级"
+        },
+        "214": {
+            "1": "超级"
+        },
+        "229": {
+            "1": "超级"
+        },
+        "248": {
+            "1": "超级"
+        },
+        "254": {
+            "1": "超级"
+        },
+        "257": {
+            "1": "超级"
+        },
+        "260": {
+            "1": "超级"
+        },
+        "282": {
+            "1": "超级"
+        },
+        "302": {
+            "1": "超级"
+        },
+        "303": {
+            "1": "超级"
+        },
+        "306": {
+            "1": "超级"
+        },
+        "308": {
+            "1": "超级"
+        },
+        "310": {
+            "1": "超级"
+        },
+        "319": {
+            "1": "超级"
+        },
+        "323": {
+            "1": "超级"
+        },
+        "334": {
+            "1": "超级"
+        },
+        "351": {
+            "1": "太阳的样子",
+            "2": "雨水的样子",
+            "3": "雪云的样子"
+        },
+        "354": {
+            "1": "超级"
+        },
+        "359": {
+            "1": "超级"
+        },
+        "362": {
+            "1": "超级"
+        },
+        "373": {
+            "1": "超级"
+        },
+        "376": {
+            "1": "超级"
+        },
+        "380": {
+            "1": "超级"
+        },
+        "381": {
+            "1": "超级"
+        },
+        "382": {
+            "1": "原始回归"
+        },
+        "383": {
+            "1": "原始回归的样子"
+        },
+        "384": {
+            "1": "超级"
+        },
+        "386": {
+            "0": "普通形态",
+            "1": "攻击形态",
+            "2": "防御形态",
+            "3": "速度形态"
+        },
+        "412": {
+            "0": "草木蓑衣",
+            "1": "砂土蓑衣",
+            "2": "垃圾蓑衣"
+        },
+        "413": {
+            "0": "草木蓑衣",
+            "1": "砂土蓑衣",
+            "2": "垃圾蓑衣"
+        },
+        "421": {
+            "0": "阴天",
+            "1": "晴天"
+        },
+        "422": {
+            "0": "西海",
+            "1": "东海"
+        },
+        "423": {
+            "0": "西海",
+            "1": "东海"
+        },
+        "428": {
+            "1": "超级"
+        },
+        "445": {
+            "1": "超级"
+        },
+        "448": {
+            "1": "超级"
+        },
+        "460": {
+            "1": "超级"
+        },
+        "475": {
+            "1": "超级"
+        },
+        "479": {
+            "1": "加热洛托姆",
+            "2": "清洗洛托姆",
+            "3": "結冰洛托姆",
+            "4": "旋转洛托姆",
+            "5": "切割洛托姆"
+        },
+        "487": {
+            "0": "别种形态",
+            "1": "起源形态"
+        },
+        "492": {
+            "0": "陆上形态",
+            "1": "天空形态"
+        },
+        "493": {
+            "0": "一般",
+            "1": "格斗",
+            "2": "飞行",
+            "3": "毒",
+            "4": "地面",
+            "5": "岩石",
+            "6": "虫",
+            "7": "幽灵",
+            "8": "钢",
+            "9": "火",
+            "10": "水",
+            "11": "草",
+            "12": "电",
+            "13": "超能力",
+            "14": "冰",
+            "15": "龙",
+            "16": "恶",
+            "17": "妖精"
+        },
+        "531": {
+            "1": "超级"
+        },
+        "550": {
+            "0": "红条纹的样子",
+            "1": "蓝条纹的样子"
+        },
+        "555": {
+            "0": "普通模式",
+            "1": "达摩模式"
+        },
+        "585": {
+            "0": "春天",
+            "1": "夏天",
+            "2": "秋天",
+            "3": "冬天"
+        },
+        "586": {
+            "0": "春天",
+            "1": "夏天",
+            "2": "秋天",
+            "3": "冬天"
+        },
+        "641": {
+            "0": "化身型态",
+            "1": "灵兽型态"
+        },
+        "642": {
+            "0": "化身型态",
+            "1": "灵兽型态"
+        },
+        "645": {
+            "0": "化身型态",
+            "1": "灵兽型态"
+        },
+        "646": {
+            "1": "闇黑酋雷姆",
+            "2": "焰白酋雷姆"
+        },
+        "647": {
+            "0": "平常的样子",
+            "1": "觉悟的样子"
+        },
+        "648": {
+            "0": "歌声形態",
+            "1": "舞步形態"
+        },
+        "649": {
+            "1": "海洋卡带",
+            "2": "雷电卡带",
+            "3": "火焰卡带",
+            "4": "冰冻卡带"
+        },
+        "658": {
+            "1": "小智版甲贺忍蛙"
+        },
+        "664": {
+            "0": "冰雪花纹",
+            "1": "雪國花纹",
+            "2": "雪原花纹",
+            "3": "大陆花纹",
+            "4": "庭園花纹",
+            "5": "高雅花纹",
+            "6": "花园花纹",
+            "7": "摩登花纹",
+            "8": "大海花纹",
+            "9": "群岛花纹",
+            "10": "荒野花纹",
+            "11": "沙塵花纹",
+            "12": "大河花纹",
+            "13": "驟雨花纹",
+            "14": "熱帶草原花纹",
+            "15": "太阳花纹",
+            "16": "大洋花纹",
+            "17": "熱帶雨林花纹",
+            "18": "幻彩花纹",
+            "19": "球球花纹"
+        },
+        "665": {
+            "0": "冰雪花纹",
+            "1": "雪國花纹",
+            "2": "雪原花纹",
+            "3": "大陆花纹",
+            "4": "庭園花纹",
+            "5": "高雅花纹",
+            "6": "花园花纹",
+            "7": "摩登花纹",
+            "8": "大海花纹",
+            "9": "群岛花纹",
+            "10": "荒野花纹",
+            "11": "沙塵花纹",
+            "12": "大河花纹",
+            "13": "驟雨花纹",
+            "14": "熱帶草原花纹",
+            "15": "太阳花纹",
+            "16": "大洋花纹",
+            "17": "熱帶雨林花纹",
+            "18": "幻彩花纹",
+            "19": "球球花纹"
+        },
+        "666": {
+            "0": "冰雪花纹",
+            "1": "雪國花纹",
+            "2": "雪原花纹",
+            "3": "大陆花纹",
+            "4": "庭園花纹",
+            "5": "高雅花纹",
+            "6": "花园花纹",
+            "7": "摩登花纹",
+            "8": "大海花纹",
+            "9": "群岛花纹",
+            "10": "荒野花纹",
+            "11": "沙塵花纹",
+            "12": "大河花纹",
+            "13": "驟雨花纹",
+            "14": "熱帶草原花纹",
+            "15": "太阳花纹",
+            "16": "大洋花纹",
+            "17": "熱帶雨林花纹",
+            "18": "幻彩花纹",
+            "19": "球球花纹"
+        },
+        "669": {
+            "0": "红色花朵",
+            "1": "橙色花朵",
+            "2": "蓝色花朵",
+            "3": "白色花朵",
+            "4": "黄色花朵"
+        },
+        "670": {
+            "0": "红色花朵",
+            "1": "橙色花朵",
+            "2": "蓝色花朵",
+            "3": "白色花朵",
+            "4": "黄色花朵",
+            "5": "永恒的花朵"
+        },
+        "671": {
+            "0": "红色花朵",
+            "1": "橙色花朵",
+            "2": "蓝色花朵",
+            "3": "白色花朵",
+            "4": "黄色花朵"
+        },
+        "676": {
+            "0": "自然髮型",
+            "1": "心型髮型",
+            "2": "星星髮型",
+            "3": "钻石髮型",
+            "4": "王后髮型",
+            "5": "歌舞伎髮型",
+            "6": "國王髮型",
+            "7": "淑女髮型",
+            "8": "貴婦髮型",
+            "9": "紳士髮型"
+        },
+        "678": {
+            "0": "雄性",
+            "1": "雌性"
+        },
+        "681": {
+            "0": "盾牌型态",
+            "1": "刀剑型态"
+        },
+        "710": {
+            "0": "小体型",
+            "1": "普通体型",
+            "2": "大体型",
+            "3": "特大体型"
+        },
+        "711": {
+            "0": "小体型",
+            "1": "普通体型",
+            "2": "大体型",
+            "3": "特大体型"
+        },
+        "716": {
+            "0": "緩和模式",
+            "1": "活躍模式"
+        },
+        "718": {
+            "0": "50%",
+            "1": "10%",
+            "2": "10%-C",
+            "3": "50%-C"
+        },
+        "719": {
+            "1": "超级"
+        },
+        "720": {
+            "1": "解放胡帕"
+        },
+        "741": {
+            "0": "热辣热辣风格",
+            "1": "啪滋啪滋风格",
+            "2": "呼拉呼拉风格",
+            "3": "轻盈轻盈风格"
+        },
+        "745": {
+            "0": "白昼的样子",
+            "1": "黑夜的样子"
+        },
+        "773": {
+            "0": "一般",
+            "1": "格斗",
+            "2": "飞行",
+            "3": "毒",
+            "4": "地面",
+            "5": "岩石",
+            "6": "虫",
+            "7": "幽灵",
+            "8": "钢",
+            "9": "火",
+            "10": "水",
+            "11": "草",
+            "12": "电",
+            "13": "超能力",
+            "14": "冰",
+            "15": "龙",
+            "16": "恶",
+            "17": "妖精"
+        },
+        "774": {
+            "7": "红色",
+            "8": "橙色",
+            "9": "黄色",
+            "10": "绿色",
+            "11": "浅蓝色",
+            "12": "蓝色",
+            "13": "紫色"
+        },
+        "801": {
+            "1": "５００年前的颜色"
+        }
     }
 }
