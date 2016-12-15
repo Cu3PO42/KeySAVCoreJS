@@ -48,7 +48,7 @@ export default class BattleVideoReader {
             return undefined;
         }
 
-        return PkBase.makePkm(pkx, 6, -1, slot, false);
+        return PkBase.makePkm(pkx, this.key.generation, -1, slot, false);
     }
 
     getAllPkx() {
