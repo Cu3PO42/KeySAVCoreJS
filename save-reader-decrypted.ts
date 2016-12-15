@@ -38,9 +38,13 @@ export default class SaveReaderDecrypted implements SaveReader {
             this.generation = 6;
             break;
         case "YABD":
+            this.generation = 7;
+            let ekx = sav.subarray(0, 232);
+            if (PkBase.verifyChk(PkBase.decrypt(ekx)))
+                break;
             this.generation = 6;
             this.offset = 4;
-            var ekx = sav.subarray(4, 236);
+            ekx = sav.subarray(4, 236);
             if (!PkBase.verifyChk(PkBase.decrypt(ekx)))
                 this.offset = 8;
             break;
