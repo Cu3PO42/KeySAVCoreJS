@@ -10,7 +10,7 @@ var readdirAsync = promisify(fs.readdir),
     statAsync = promisify(fs.stat),
     openAsync = promisify(fs.open),
     readAsync = promisify(fs.read),
-    writeAsync = promisify(fs.write) as (fd: number, buf: Buffer, offset: number, length: number, position: number) => Promise<void>,
+    writeAsync = promisify(fs.write as (fd: number, buf: Buffer, offset: number, length: number, position: number, callback: (err: Error) => void) => void),
     closeAsync = promisify(fs.close),
     unlinkAsync = promisify(fs.unlink);
 
