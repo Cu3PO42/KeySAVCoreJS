@@ -123,7 +123,7 @@ for (var i = 0; i < langs.length; ++i) {
 
     lang.getBallName = (function(lang) {
         return function(ball) {
-            var ballToItem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 492, 493, 494, 495, 496, 497, 498, 499, 576];
+            var ballToItem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 492, 493, 494, 495, 496, 497, 498, 499, 576, 851];
 
             return lang.items[ballToItem[ball]];
         };
