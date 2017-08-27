@@ -6,7 +6,7 @@ import PkBase from "./pkbase";
 export function level(pkm): number {
     let base = (pkm.version === 6 ? stats6 : stats7)[pkm.species-1];
     let rate = base[Math.min(base.length-1, pkm.form)].expGrowth;
-    for (var level = 1; pkm.exp >= expData.levels[level][rate]; ++level) {}
+    for (var level = 1; level <= 100 && pkm.exp >= expData.levels[level][rate]; ++level) {}
     return level - 1;
 }
 

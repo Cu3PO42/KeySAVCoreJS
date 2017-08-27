@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const pkhexPath = process.argv[2];
-const bytePath = path.join(pkhexPath, 'PKHeX', 'Resources', 'byte');
+const bytePath = path.join(pkhexPath, 'PKHeX.Core', 'Resources', 'byte');
 const localPath = path.join(__dirname, '..');
 
 function getDataBase(file, size) {
@@ -31,6 +31,8 @@ function getIndex(id, data, form) {
     return data.readUInt16LE(0x1C) + form - 1;
 }
 
+const expGrowthMap = [2, 0, 5, 3, 1, 4];
+
 function getBaseStats(id, is7) {
     const pkmBaseData = (is7 ? gen7Data : gen6Data)[id];
     const count = pkmBaseData.readUInt8(0x20);
@@ -56,7 +58,7 @@ function getBaseStats(id, is7) {
 
         stats.genderRatio = pkmData.getUint8(0x12);*/
 
-        stats.expGrowth = pkmData.readUInt8(0x15);
+        stats.expGrowth = expGrowthMap[pkmData.readUInt8(0x15)];
     }
     return res;
 }
