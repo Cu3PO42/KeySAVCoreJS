@@ -123,6 +123,7 @@ export default class PkBase {
     public enjoyment: number;
 
     public data: number[];
+    public ribbonData: number[];
 
     public nickname: string;
     public notOT: string;
@@ -168,6 +169,7 @@ export default class PkBase {
         this.ribbonSet2 = data.getUint16(0x32, true);
         this.ribbonSet3 = pkx[0x34];
         this.ribbonSet4 = pkx[0x35];
+        this.ribbonData = Array.from(pkx.subarray(0x30, 0x38));
         this.contestMemoryRibbonCount = pkx[0x38];
         this.battleMemoryRibbonCount = pkx[0x39];
         // TODO super training flags
