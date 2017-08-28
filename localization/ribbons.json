@@ -1,234 +1,6 @@
 {
-    "ja": {
-        "0": [
-            "カロス　チャンプリボン",
-            "チャンプリボン",
-            "シンオウ　チャンプリボン",
-            "なかよしリボン",
-            "しゅぎょうリボン",
-            "グレートバトルリボン",
-            "マスターバトルリボン",
-            "がんばリボン",
-            "しゃっきリボン",
-            "どっきリボン",
-            "しょんぼリボン",
-            "うっかリボン",
-            "すっきリボン",
-            "ぐっすリボン",
-            "にっこリボン"
-        ],
-        "1": [
-            "ゴージャスリボン",
-            "ロイヤルリボン",
-            "ゴージャスロイヤルリボン",
-            "ブロマイドリボン",
-            "あしあとリボン",
-            "レコードリボン",
-            "レジェンドリボン",
-            "カントリーリボン",
-            "ナショナルリボン",
-            "アースリボン",
-            "ワールドリボン",
-            "クラシックリボン",
-            "プレミアリボン",
-            "イベントリボン",
-            "バースデーリボン",
-            "スペシャルリボン"
-        ],
-        "2": [
-            "メモリアルリボン",
-            "ウィッシュリボン",
-            "バトルチャンプリボン",
-            "エリアチャンプリボン",
-            "ナショナルチャンプリボン",
-            "ワールドチャンプリボン",
-            null,
-            null,
-            "おもいでバトルリボン"
-        ],
-        "3": [
-            "ホウエン　チャンプリボン",
-            "コンテストスターリボン",
-            "かっこよさマスターリボン",
-            "うつくしさマスターリボン",
-            "かわいさマスターリボン",
-            "かしこさマスターリボン",
-            "たくましさマスターリボン"
-        ]
-    },
-    "en": {
-        "0": [
-            "Kalos Champion Ribbon",
-            "Champion Ribbon",
-            "Sinnoh Champion Ribbon",
-            "Best Friends Ribbon",
-            "Training Ribbon",
-            "Skillful Battler Ribbon",
-            "Expert Battler Ribbon",
-            "Effort Ribbon",
-            "Alert Ribbon",
-            "Shock Ribbon",
-            "Downcast Ribbon",
-            "Careless Ribbon",
-            "Relax Ribbon",
-            "Snooze Ribbon",
-            "Smile Ribbon"
-        ],
-        "1": [
-            "Gorgeous Ribbon",
-            "Royal Ribbon",
-            "Gorgeous Royal Ribbon",
-            "Artist Ribbon",
-            "Footprint Ribbon",
-            "Record Ribbon",
-            "Legend Ribbon",
-            "Country Ribbon",
-            "National Ribbon",
-            "Earth Ribbon",
-            "World Ribbon",
-            "Classic Ribbon",
-            "Premier Ribbon",
-            "Event Ribbon",
-            "Birthday Ribbon",
-            "Special Ribbon"
-        ],
-        "2": [
-            "Souvenir Ribbon",
-            "Wishing Ribbon",
-            "Battle Champion Ribbon",
-            "Regional Champion Ribbon",
-            "National Champion Ribbon",
-            "World Champion Ribbon",
-            null,
-            null,
-            "Battle Memory Ribbon"
-        ],
-        "3": [
-            "Hoenn Champion Ribbon",
-            "Contest Star Ribbon",
-            "Coolness Master Ribbon",
-            "Beauty Master Ribbon",
-            "Cuteness Master Ribbon",
-            "Cleverness Master Ribbon",
-            "Toughness Master Ribbon"
-        ]
-    },
-    "fr": {
-        "0": [
-            "Ruban Maître de Kalos",
-            "Ruban Maître",
-            "Ruban Maître de Sinnoh",
-            "Ruban Affection",
-            "Ruban Perfectionnement",
-            "Ruban Élite du Combat",
-            "Ruban Génie du Combat",
-            "Ruban Effort",
-            "Ruban Alerte",
-            "Ruban Choc",
-            "Ruban Déprime",
-            "Ruban Négligence",
-            "Ruban Détente",
-            "Ruban Sieste",
-            "Ruban Sourire"
-        ],
-        "1": [
-            "Ruban Sublime",
-            "Ruban Royal",
-            "Ruban Royal Sublime",
-            "Ruban Artiste",
-            "Ruban Empreinte",
-            "Ruban Record",
-            "Ruban Légende",
-            "Ruban Pays",
-            "Ruban National",
-            "Ruban Terre",
-            "Ruban Monde",
-            "Ruban Classique",
-            "Ruban Premier",
-            "Ruban Événement",
-            "Ruban Anniversaire",
-            "Ruban Spécial"
-        ],
-        "2": [
-            "Ruban Souvenir",
-            "Ruban Souhait",
-            "Ruban Vainqueur Championnat",
-            "Ruban Champion Régional",
-            "Ruban Champion National",
-            "Ruban Champion du Monde",
-            null,
-            null,
-            "Ruban Souvenir Combat"
-        ],
-        "3": [
-            "Ruban Maître de Hoenn",
-            "Ruban Star des Concours",
-            "Ruban Maître Sang-froid",
-            "Ruban Maître Beauté",
-            "Ruban Maître Grâce",
-            "Ruban Maître Intelligence",
-            "Ruban Maître Robustesse"
-        ]
-    },
-    "it": {
-        "0": [
-            "Fiocco Campione Kalos",
-            "Fiocco Campione",
-            "Fiocco Campione Sinnoh",
-            "Fiocco Amicizia",
-            "Fiocco Training",
-            "Fiocco Asso della Lotta",
-            "Fiocco Genio della Lotta",
-            "Fiocco Merito",
-            "Fiocco Allarme",
-            "Fiocco Stupore",
-            "Fiocco Sconforto",
-            "Fiocco Indolenza",
-            "Fiocco Relax",
-            "Fiocco Pisolino",
-            "Fiocco Sorriso"
-        ],
-        "1": [
-            "Fiocco Meraviglia",
-            "Fiocco Reale",
-            "Fiocco Meraviglia Reale",
-            "Fiocco Artista",
-            "Fiocco Orma",
-            "Fiocco Record",
-            "Fiocco Leggenda",
-            "Fiocco Paese",
-            "Fiocco Nazionale",
-            "Fiocco Geo",
-            "Fiocco Mondiale",
-            "Fiocco Classico",
-            "Fiocco Principale",
-            "Fiocco Evento",
-            "Fiocco Compleanno",
-            "Fiocco Speciale"
-        ],
-        "2": [
-            "Fiocco Ricordo",
-            "Fiocco Desiderio",
-            "Fiocco Campione Lotta",
-            "Fiocco Campione Locale",
-            "Fiocco Campione Nazionale",
-            "Fiocco Campione Mondiale",
-            null,
-            null,
-            "Fiocco Ricordo delle Lotte"
-        ],
-        "3": [
-            "Fiocco Campione Hoenn",
-            "Fiocco Stella delle Gare",
-            "Fiocco Classe Suprema",
-            "Fiocco Bellezza Suprema",
-            "Fiocco Grazia Suprema",
-            "Fiocco Acume Supremo",
-            "Fiocco Grinta Suprema"
-        ]
-    },
-    "de": {
-        "0": [
+    "de": [
+        [
             "Band des Kalos-Champs",
             "Band des Champs",
             "Band des Sinnoh-Champs",
@@ -236,17 +8,19 @@
             "Trainingsband",
             "Profikampfband",
             "Meisterkampfband",
-            "Fleiß-Band",
+            "Fleiß-Band"
+        ],
+        [
             "Band der Wachsamkeit",
             "Band des Schocks",
             "Band des Niederschlags",
             "Band der Sorglosigkeit",
             "Band der Entspannung",
             "Band des Schlafens",
-            "Band des Lächelns"
+            "Band des Lächelns",
+            "Hinreißendes Band"
         ],
-        "1": [
-            "Hinreißendes Band",
+        [
             "Königliches Band",
             "Hinreißendes Königliches Band",
             "Band des Künstlers",
@@ -254,17 +28,19 @@
             "Rekordband",
             "Band der Legende",
             "Band des Landes",
-            "Band der Nation",
+            "Band der Nation"
+        ],
+        [
             "Band der Erde",
             "Band der Welt",
             "Klassisches Band",
             "Premierband",
             "Veranstaltungsband",
             "Geburtstagsband",
-            "Sonderband"
+            "Sonderband",
+            "Gedenkband"
         ],
-        "2": [
-            "Gedenkband",
+        [
             "Wunschband",
             "Kampfmeisterband",
             "Regionalmeisterband",
@@ -274,7 +50,7 @@
             null,
             "Kampfgedenkband"
         ],
-        "3": [
+        [
             "Band des Hoenn-Champs",
             "Band des Wettbewerbsstars",
             "Coolnessmeisterband",
@@ -282,10 +58,111 @@
             "Putzigkeitsmeisterband",
             "Klugheitsmeisterband",
             "Stärkemeisterband"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         ]
-    },
-    "es": {
-        "0": [
+    ],
+    "en": [
+        [
+            "Kalos Champion Ribbon",
+            "Champion Ribbon",
+            "Sinnoh Champion Ribbon",
+            "Best Friends Ribbon",
+            "Training Ribbon",
+            "Skillful Battler Ribbon",
+            "Expert Battler Ribbon",
+            "Effort Ribbon"
+        ],
+        [
+            "Alert Ribbon",
+            "Shock Ribbon",
+            "Downcast Ribbon",
+            "Careless Ribbon",
+            "Relax Ribbon",
+            "Snooze Ribbon",
+            "Smile Ribbon",
+            "Gorgeous Ribbon"
+        ],
+        [
+            "Royal Ribbon",
+            "Gorgeous Royal Ribbon",
+            "Artist Ribbon",
+            "Footprint Ribbon",
+            "Record Ribbon",
+            "Legend Ribbon",
+            "Country Ribbon",
+            "National Ribbon"
+        ],
+        [
+            "Earth Ribbon",
+            "World Ribbon",
+            "Classic Ribbon",
+            "Premier Ribbon",
+            "Event Ribbon",
+            "Birthday Ribbon",
+            "Special Ribbon",
+            "Souvenir Ribbon"
+        ],
+        [
+            "Wishing Ribbon",
+            "Battle Champion Ribbon",
+            "Regional Champion Ribbon",
+            "National Champion Ribbon",
+            "World Champion Ribbon",
+            null,
+            null,
+            "Battle Memory Ribbon"
+        ],
+        [
+            "Hoenn Champion Ribbon",
+            "Contest Star Ribbon",
+            "Coolness Master Ribbon",
+            "Beauty Master Ribbon",
+            "Cuteness Master Ribbon",
+            "Cleverness Master Ribbon",
+            "Toughness Master Ribbon"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    ],
+    "es": [
+        [
             "Cinta Campeón de Kalos",
             "Cinta de Campeón",
             "Cinta Campeón de Sinnoh",
@@ -293,17 +170,19 @@
             "Cinta Ejercicio",
             "Cinta Figura del Combate",
             "Cinta As del Combate",
-            "Cinta Esfuerzo",
+            "Cinta Esfuerzo"
+        ],
+        [
             "Cinta Alerta",
             "Cinta Impacto",
             "Cinta Abatimiento",
             "Cinta Descuido",
             "Cinta Relax",
             "Cinta Cabezada",
-            "Cinta Sonrisa"
+            "Cinta Sonrisa",
+            "Cinta Maravilla"
         ],
-        "1": [
-            "Cinta Maravilla",
+        [
             "Cinta Realeza",
             "Cinta Realeza Maravilla",
             "Cinta Artista",
@@ -311,17 +190,19 @@
             "Cinta Récord",
             "Cinta Leyenda",
             "Cinta Campo",
-            "Cinta Nacional",
+            "Cinta Nacional"
+        ],
+        [
             "Cinta Planeta",
             "Cinta Mundo",
             "Cinta Clásica",
             "Cinta Principal",
             "Cinta Evento",
             "Cinta Cumpleaños",
-            "Cinta Especial"
+            "Cinta Especial",
+            "Cinta Recuerdo"
         ],
-        "2": [
-            "Cinta Recuerdo",
+        [
             "Cinta Deseo",
             "Cinta Campeón de Torneo",
             "Cinta Campeón de Área",
@@ -331,7 +212,7 @@
             null,
             "Cinta Recue. de Combate"
         ],
-        "3": [
+        [
             "Cinta Campeón de Hoenn",
             "Cinta Estelar de Concursos",
             "Cinta Estrella del Carisma",
@@ -339,63 +220,350 @@
             "Cinta Estrella de la Dulzura",
             "Cinta Estrella del Ingenio",
             "Cinta Estrella de la Dureza"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         ]
-    },
-    "ko": {
-        "0": [
-            "칼로스챔피언리본\r",
-            "챔피언리본\r",
-            "신오챔피언리본\r",
-            "절친리본\r",
-            "수행리본\r",
-            "그레이트배틀리본\r",
-            "마스터배틀리본\r",
-            "노력리본\r",
-            "뚝심리본\r",
-            "철렁리본\r",
-            "풀죽기리본\r",
-            "덜렁이리본\r",
-            "상쾌리본\r",
-            "잠보리본\r",
-            "방글방글리본\r"
+    ],
+    "fr": [
+        [
+            "Ruban Maître de Kalos",
+            "Ruban Maître",
+            "Ruban Maître de Sinnoh",
+            "Ruban Affection",
+            "Ruban Perfectionnement",
+            "Ruban Élite du Combat",
+            "Ruban Génie du Combat",
+            "Ruban Effort"
         ],
-        "1": [
-            "고저스리본\r",
-            "로열리본\r",
-            "고저스로열리본\r",
-            "브로마이드리본\r",
-            "발자국리본\r",
-            "레코드리본\r",
-            "레전드리본\r",
-            "컨트리리본\r",
-            "내셔널리본\r",
-            "어스리본\r",
-            "월드리본\r",
-            "클래식리본\r",
-            "프리미어리본\r",
-            "이벤트리본\r",
-            "버스데이리본\r",
-            "스페셜리본\r"
+        [
+            "Ruban Alerte",
+            "Ruban Choc",
+            "Ruban Déprime",
+            "Ruban Négligence",
+            "Ruban Détente",
+            "Ruban Sieste",
+            "Ruban Sourire",
+            "Ruban Sublime"
         ],
-        "2": [
-            "메모리얼리본\r",
-            "위시리본\r",
-            "배틀챔피언리본\r",
-            "에리어챔피언리본\r",
-            "내셔널챔피언리본\r",
-            "월드챔피언리본\r",
+        [
+            "Ruban Royal",
+            "Ruban Royal Sublime",
+            "Ruban Artiste",
+            "Ruban Empreinte",
+            "Ruban Record",
+            "Ruban Légende",
+            "Ruban Pays",
+            "Ruban National"
+        ],
+        [
+            "Ruban Terre",
+            "Ruban Monde",
+            "Ruban Classique",
+            "Ruban Premier",
+            "Ruban Événement",
+            "Ruban Anniversaire",
+            "Ruban Spécial",
+            "Ruban Souvenir"
+        ],
+        [
+            "Ruban Souhait",
+            "Ruban Vainqueur Championnat",
+            "Ruban Champion Régional",
+            "Ruban Champion National",
+            "Ruban Champion du Monde",
             null,
             null,
-            "추억배틀리본\r"
+            "Ruban Souvenir Combat"
         ],
-        "3": [
-            "호연챔피언리본\r",
-            "콘테스트스타리본\r",
-            "근사함마스터리본\r",
-            "아름다움마스터리본\r",
-            "귀여움마스터리본\r",
-            "슬기로움마스터리본\r",
+        [
+            "Ruban Maître de Hoenn",
+            "Ruban Star des Concours",
+            "Ruban Maître Sang-froid",
+            "Ruban Maître Beauté",
+            "Ruban Maître Grâce",
+            "Ruban Maître Intelligence",
+            "Ruban Maître Robustesse"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    ],
+    "it": [
+        [
+            "Fiocco Campione Kalos",
+            "Fiocco Campione",
+            "Fiocco Campione Sinnoh",
+            "Fiocco Amicizia",
+            "Fiocco Training",
+            "Fiocco Asso della Lotta",
+            "Fiocco Genio della Lotta",
+            "Fiocco Merito"
+        ],
+        [
+            "Fiocco Allarme",
+            "Fiocco Stupore",
+            "Fiocco Sconforto",
+            "Fiocco Indolenza",
+            "Fiocco Relax",
+            "Fiocco Pisolino",
+            "Fiocco Sorriso",
+            "Fiocco Meraviglia"
+        ],
+        [
+            "Fiocco Reale",
+            "Fiocco Meraviglia Reale",
+            "Fiocco Artista",
+            "Fiocco Orma",
+            "Fiocco Record",
+            "Fiocco Leggenda",
+            "Fiocco Paese",
+            "Fiocco Nazionale"
+        ],
+        [
+            "Fiocco Geo",
+            "Fiocco Mondiale",
+            "Fiocco Classico",
+            "Fiocco Principale",
+            "Fiocco Evento",
+            "Fiocco Compleanno",
+            "Fiocco Speciale",
+            "Fiocco Ricordo"
+        ],
+        [
+            "Fiocco Desiderio",
+            "Fiocco Campione Lotta",
+            "Fiocco Campione Locale",
+            "Fiocco Campione Nazionale",
+            "Fiocco Campione Mondiale",
+            null,
+            null,
+            "Fiocco Ricordo delle Lotte"
+        ],
+        [
+            "Fiocco Campione Hoenn",
+            "Fiocco Stella delle Gare",
+            "Fiocco Classe Suprema",
+            "Fiocco Bellezza Suprema",
+            "Fiocco Grazia Suprema",
+            "Fiocco Acume Supremo",
+            "Fiocco Grinta Suprema"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    ],
+    "ja": [
+        [
+            "カロス　チャンプリボン",
+            "チャンプリボン",
+            "シンオウ　チャンプリボン",
+            "なかよしリボン",
+            "しゅぎょうリボン",
+            "グレートバトルリボン",
+            "マスターバトルリボン",
+            "がんばリボン"
+        ],
+        [
+            "しゃっきリボン",
+            "どっきリボン",
+            "しょんぼリボン",
+            "うっかリボン",
+            "すっきリボン",
+            "ぐっすリボン",
+            "にっこリボン",
+            "ゴージャスリボン"
+        ],
+        [
+            "ロイヤルリボン",
+            "ゴージャスロイヤルリボン",
+            "ブロマイドリボン",
+            "あしあとリボン",
+            "レコードリボン",
+            "レジェンドリボン",
+            "カントリーリボン",
+            "ナショナルリボン"
+        ],
+        [
+            "アースリボン",
+            "ワールドリボン",
+            "クラシックリボン",
+            "プレミアリボン",
+            "イベントリボン",
+            "バースデーリボン",
+            "スペシャルリボン",
+            "メモリアルリボン"
+        ],
+        [
+            "ウィッシュリボン",
+            "バトルチャンプリボン",
+            "エリアチャンプリボン",
+            "ナショナルチャンプリボン",
+            "ワールドチャンプリボン",
+            null,
+            null,
+            "おもいでバトルリボン"
+        ],
+        [
+            "ホウエン　チャンプリボン",
+            "コンテストスターリボン",
+            "かっこよさマスターリボン",
+            "うつくしさマスターリボン",
+            "かわいさマスターリボン",
+            "かしこさマスターリボン",
+            "たくましさマスターリボン"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    ],
+    "ko": [
+        [
+            "칼로스챔피언리본",
+            "챔피언리본",
+            "신오챔피언리본",
+            "절친리본",
+            "수행리본",
+            "그레이트배틀리본",
+            "마스터배틀리본",
+            "노력리본"
+        ],
+        [
+            "뚝심리본",
+            "철렁리본",
+            "풀죽기리본",
+            "덜렁이리본",
+            "상쾌리본",
+            "잠보리본",
+            "방글방글리본",
+            "고저스리본"
+        ],
+        [
+            "로열리본",
+            "고저스로열리본",
+            "브로마이드리본",
+            "발자국리본",
+            "레코드리본",
+            "레전드리본",
+            "컨트리리본",
+            "내셔널리본"
+        ],
+        [
+            "어스리본",
+            "월드리본",
+            "클래식리본",
+            "프리미어리본",
+            "이벤트리본",
+            "버스데이리본",
+            "스페셜리본",
+            "메모리얼리본"
+        ],
+        [
+            "위시리본",
+            "배틀챔피언리본",
+            "에리어챔피언리본",
+            "내셔널챔피언리본",
+            "월드챔피언리본",
+            null,
+            null,
+            "추억배틀리본"
+        ],
+        [
+            "호연챔피언리본",
+            "콘테스트스타리본",
+            "근사함마스터리본",
+            "아름다움마스터리본",
+            "귀여움마스터리본",
+            "슬기로움마스터리본",
             "강인함마스터리본"
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         ]
-    }
+    ]
 }

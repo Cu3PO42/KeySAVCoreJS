@@ -106,12 +106,12 @@ for (var i = 0; i < langs.length; ++i) {
         return function(pkx) {
             var res = [];
 
-            for (var i = 0; i < 4; ++i) {
+            for (var i = 0; i < 8; ++i) {
                 var names = ribbonNames[i];
-                var ribbonSet = [pkx.ribbonSet1, pkx.ribbonSet2, pkx.ribbonSet3, pkx.ribbonSet4][i];
+                var ribbonSet = pkx.ribbonData[i];
 
                 for (var j = 0; ribbonSet > 0; ++j, ribbonSet >>= 1) {
-                    if (ribbonSet & 1) {
+                    if ((ribbonSet & 1) && names[j]) {
                         res.push(names[j]);
                     }
                 }
