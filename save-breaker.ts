@@ -15,6 +15,13 @@ function createNotASaveError() {
     return e;
 }
 
+/**
+ * Create and return a [[SaveReader]] for the given save file. The type of the file is automatically recognized and
+ * keys are retrieved from the global key store if neccessary.
+ * 
+ * @param input The save data to open
+ * @return A promise for the created [[SaveReader]]
+ */
 export async function load(input: Uint8Array): Promise<SaveReader> {
     var view = util.createDataView(input);
     switch (input.length) {
@@ -51,8 +58,23 @@ export async function load(input: Uint8Array): Promise<SaveReader> {
     }
 }
 
-
-
+/**
+ * This method may upgade an old-style key to a new-style key if possible with the given data.
+ * 
+ * An old-style key is such a key that can only decrypt one of the two saves contained in every save container.
+ * A new-style key can detect which of the two slots was used last and decrypts the appropriate one.
+ * In order for this upgrade to comlete successfully the following must hold:
+ * 
+ * * Save 1 has six Pokémon in the first six slots of box one. After saving the game was reset and saved again.
+ * * Save 2 has the same Pokémon moved to box 2. It was not saved twice.
+ * 
+ * @param key The save key that should be upgraded
+ * @param break1 The first save
+ * @param break2 The second save
+ * @return An object containing the result of this operation: 0 if the key was already a new-style key, 1 if the
+ *         upgrade was not successfull and 2 if it was successfull. In case of a successful upgrade it also
+ *         contains the pkx data for the first Pokémon in the box
+ */
 function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { result: number, pkx?: PkBase} {
     var reader1: SaveReader, reader2: SaveReader;
     var dataView1: DataView, dataView2: DataView;
@@ -100,7 +122,24 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     };
 }
 
-
+/**
+ * Create a new key for the given saves.
+ * 
+ * The two saves should satisfy the following:
+ * 
+ * * Save 1 has six Pokémon in the first six slots of box one. After saving the game was reset and saved again.
+ * * Save 2 has the same Pokémon moved to box 2. It was not saved twice.
+ * 
+ * If the second save was also saved twice, an old-style key will be created rather than a new-style key. This means
+ * that only one of the save slots in a save will be decrypted and the user will need to save twice on every save that
+ * should be dumped later.
+ * 
+ * After creation the key will be stored in the global key store.
+ * 
+ * @param break1 The first save
+ * @param break2 The second save
+ * @return "CREATED_NEW" if a new-style key was created, "CREATED_OLD" if an old-style key was created
+ */
 export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<string> {
     var emptyPkx = new Uint8Array(232);
     var emptyEkx = PkBase.encrypt(emptyPkx);
