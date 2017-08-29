@@ -1,27 +1,50 @@
 import { getStampBv, empty, copy, createDataView } from "./util";
 
+/**
+ * A key object that may be used for decryption of a single battle video slot.
+ */
 export default class BattleVideoKey {
+    /**
+     * The raw data for this key.
+     */
     public keyData: Uint8Array;
-    public _keyView: DataView;
+    private _keyView: DataView;
 
+    /**
+     * The unique stamp that identifies the slot that this key is for.
+     */
     get stamp(): string {
         return getStampBv(this.keyData, 0);
     }
 
+    /**
+     * The generation of the game that this key is for.
+     */
     get generation(): number {
         return this._keyView.getUint32(0x18, true);
     }
 
     private _teamKeys: Uint8Array[];
 
+    /**
+     * The keys (xorpads) for the various teams in the battle video.
+     */
     get teamKeys(): Uint8Array[] {
         return this._teamKeys;
     }
 
+    /**
+     * An array indicating which of the team keys are valid.
+     */
     get workingKeys(): boolean[] {
         return this._teamKeys.map(k => !empty(k));
     }
 
+    /**
+     * Create a BattleVideoKey from existing data or an empty key.
+     * 
+     * @param arg Existing key data or the generation the empty key is to be used for
+     */
     constructor(public arg: Uint8Array | number) {
         let keyData;
         if (arg instanceof Uint8Array) {
@@ -68,6 +91,12 @@ export default class BattleVideoKey {
         }
     }
 
+    /**
+     * Merge the information in the other key into this key. Any team tat is unlocked in the other key, but not this
+     * one will be copied. The other key will not be modified.
+     * 
+     * @param other Another key for the same slot as this key
+     */
     mergeKey(other: BattleVideoKey) {
         if (this.stamp !== other.stamp) {
             return;
