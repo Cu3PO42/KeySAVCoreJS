@@ -144,9 +144,6 @@ describe("SaveBreaker", function() {
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16SM, sav165SM).then(function(res) {
                 assert.equal("CREATED_NEW", res);
-                return SaveBreaker.load(sav16SM);
-            }).then(function(reader) {
-                console.log(reader.getPkx(0));
             });
         });
 

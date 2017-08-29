@@ -63,10 +63,7 @@ describe("Breaker", function() {
         it("should load a main file (Gen 7)", function () {
             var store = new KeyStoreMemory();
             setKeyStore(store);
-            return Breaker.loadSavOrBv(mainSm).then(function(reader) {
-                console.log(reader);
-                console.log(reader.reader.getPkx(0));
-            });
+            return Breaker.loadSavOrBv(mainSm);
         });
 
         it("should throw a NoKeyAvailableError if there is no key", function() {
