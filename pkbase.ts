@@ -3,10 +3,21 @@ import * as LCRNG from "./lcrng";
 
 const knownPkmImplementations: { [version: number]: { new(pkx: Uint8Array, box: number, slot: number, ghost: boolean): PkBase } } = {};
 
+/**
+ * Register an implementation of a generation specific specialization of [[PkBase]].
+ * 
+ * @param generation The generation this specialization is for
+ * @param impl The implementation of the specialization
+ */
 export function registerPkmImpl(generation: number, impl: { new(pkx: Uint8Array, box: number, slot: number, ghost: boolean): PkBase }) {
     knownPkmImplementations[generation] = impl;
 }
 
+/**
+ * The base class for all rerpresentations of a Pokémon.
+ * 
+ * It includes the common properties shared by Pokémon as well as some static helper methods for de- and encryption.
+ */
 export default class PkBase {
     public version: number;
 
@@ -129,6 +140,14 @@ export default class PkBase {
     public notOT: string;
     public ot: string;
 
+    /**
+     * Construct a new Pokémon representation.
+     * 
+     * @param pkx The raw Pkx data.
+     * @param box The box the Pokémon is located in.
+     * @param slot The slot in the box the Pokémon is located in.
+     * @param isGhost True if the Pokémon might be an artifact of bad decryption
+     */
     constructor(pkx: Uint8Array, box: number, slot: number, isGhost: boolean) {
         this.data = Array.from(pkx);
         this.box = box;
@@ -255,10 +274,30 @@ export default class PkBase {
         this.isShiny = (this.tsv == this.esv);
     }
 
+    /**
+     * Create a new Pokémon representation with the given data for the given generation.
+     * 
+     * A specialization for this generation must have been registered previously.
+     * 
+     * @param pkx The raw Pkx data.
+     * @param generation The generation the Pokémon is from.
+     * @param box The box the Pokémon is located in.
+     * @param slot The slot in the box the Pokémon is located in.
+     * @param isGhost True if the Pokémon might be an artifact of bad decryption
+     */
     static makePkm(pkx: Uint8Array, generation: number, box: number, slot: number, ghost: boolean) {
         return new knownPkmImplementations[generation](pkx, box, slot, ghost);
     }
 
+    /**
+     * Unshuffle the blocks in the given Pokémon data with the given shuffling value and return the new data.
+     * 
+     * The Pokémon data consists of four blocks. They are shuffled prior to encryption with an xorpad.
+     * 
+     * @param pkx The raw Pokémon data
+     * @param sv The shuffling value
+     * @return The unshuffled Pokémon data
+     */
     static deshuffle(pkx: Uint8Array, sv: number) {
         var ekx = new Uint8Array(pkx.length);
         util.copy(pkx, 0, ekx, 0, 8);
@@ -300,6 +339,15 @@ export default class PkBase {
         return ekx;
     }
 
+    /**
+     * Shuffle the blocks in the given Pokémon data with the given shuffling value and return the new data.
+     * 
+     * The Pokémon data consists of four blocks. They are shuffled prior to encryption with an xorpad.
+     * 
+     * @param pkx The raw Pokémon data
+     * @param sv The shuffling value
+     * @return The shuffled Pokémon data
+     */
     static shuffle(pkx: Uint8Array, sv: number) {
         var ekx = new Uint8Array(pkx.length);
         util.copy(pkx, 0, ekx, 0, 8);
@@ -341,6 +389,12 @@ export default class PkBase {
         return ekx;
     }
 
+    /**
+     * Decrypt the given ekx data and return the pkx.
+     * 
+     * @param ekx The data to decrypt
+     * @return The decrypted pkx
+     */
     static decrypt(ekx: Uint8Array) {
         var pkx = new Uint8Array(ekx.length);
         util.copy(ekx, 0, pkx, 0, ekx.length);
@@ -367,6 +421,12 @@ export default class PkBase {
         return pkx;
     }
 
+    /**
+     * Encrypt the given pkx and return the ekx.
+     * 
+     * @param pkx The pkx to encrypt
+     * @return The encrypted ekx
+     */
     static encrypt(pkx: Uint8Array) {
         var ekx = new Uint8Array(pkx.length);
         util.copy(pkx, 0, ekx, 0, ekx.length);
@@ -395,6 +455,11 @@ export default class PkBase {
         return ekx;
     }
 
+    /**
+     * Calculate the checksum of some pkx data and write the checksum to the data.
+     * 
+     * @param pkx The data whose checksum to fix
+     */
     static fixChk(pkx: Uint8Array) {
         var chk = 0;
         var pkx16 = util.createUint16Array(pkx);
@@ -404,6 +469,11 @@ export default class PkBase {
         pkx16[6/2] = chk & 0xFFFF;
     }
 
+    /**
+     * Calculate and verify the checksum of some pkx data.
+     * 
+     * @param pkx The data to verify
+     */
     static verifyChk(pkx: Uint8Array) {
         var chk = 0;
         var pkx16 = util.createUint16Array(pkx);
@@ -417,6 +487,12 @@ export default class PkBase {
         return (chk & 0xFFFF) == actualsum;
     }
 
+    /**
+     * Given an encryption constant calculate where the fourth block of Pokémon data will be located after shuffling.
+     * 
+     * @param ec The encryption constant
+     * @return The location of the fourth block
+     */
     static getDloc(ec: number) {
         return [ 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0 ][
         ((ec & 0x3E000) >> 0xD) % 24
