@@ -2,6 +2,13 @@ const add_const_lo = 0x6073;
 const mul_const_lo = 0x4E6D;
 const mul_const_hi = 0x41C6;
 
+/**
+ * Advance the linear congruential PRNG with the given seed. The parameters are hardcoded to what is used in the
+ * Pokémon games.
+ * 
+ * @param seed The seed to advance
+ * @return The next seed
+ */
 export function next(seed) {
     let seed_lo = seed & 0xFFFF;
     let seed_hi = seed >>> 0x10;
