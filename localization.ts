@@ -18,25 +18,116 @@ var forms6 = require("./localization/forms6.json"),
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
 
+/**
+ * The localization of all proper names used for one language.
+ */
 export interface LocalizationLanguage {
+    /**
+     * The names of all abilities accessible by their ID.
+     */
     abilities: string[];
+
+    /**
+     * The list of all countries a 3DS can be set to.
+     */
     countries: string[];
+
+    /**
+     * The list of all form names in generation 6, accessible by species, then form ID.
+     */
     forms6: string[][];
+
+    /**
+     * The list of all form names in generation 7, accessible by species, then form ID.
+     */
     forms7: string[][];
+
+    /**
+     * The names of the games, accessible by their ID.
+     */
     games: string[];
+
+    /**
+     * The name of all items, accessible by their ID.
+     */
     items: string[];
+
+    /**
+     * All language tags, accessible by their ID.
+     */
     languageTags: string[];
+
+    /**
+     * The names of all moves, accessible by their ID.
+     */
     moves: string[];
+
+    /**
+     * The names of all natures, accessible by their IDs.
+     */
     natures: string[];
+
+    /**
+     * The names of all regions a Pokémon can be from, accessible by their IDs.
+     */
     regions: string[];
+
+    /**
+     * The names of all species, accessible by their IDs.
+     */
     species: string[];
+
+    /**
+     * The names of all types, accessible by their IDs.
+     */
     types: string[];
 
+    /**
+     * Get the name of the location a Pokémon was caught.
+     * 
+     * @param pkm The Pokémon whose met location to retrieve
+     */
     getLocation(pkm: PkBase): string;
+
+    /**
+     * Get a location name from the given game version and location ID.
+     * 
+     * @param gameVersion The version ID the Pokémon was caught in
+     * @param location The location ID
+     * @return The location name
+     */
     getLocation(gameVersion: number, location: number): string;
+
+    /**
+     * Get the name of the egg location of a Pokémon.
+     * 
+     * @param pkm The Pokémon whose egg location to check
+     * @return The location name
+     */
     getEggLocation(pkm: PkBase): string;
+
+    /**
+     * Get a list of the names of all ribbons a Pokémon has.
+     * 
+     * @param pkm The Pokémon whose Ribbons to retrieve
+     * @return The list of ribbons
+     */
     getRibbons(pkm: PkBase): string[];
+
+    /**
+     * Get the name of the ball a Pokémon was captured in.
+     * 
+     * @param pkm The Pokémon whose ball to check
+     * @return The ball name
+     */
     getBallName(ball: number): string;
+
+    /**
+     * Get the description text of the characteristic a Pokémon has.
+     * 
+     * @param pkm The Pokémon whose characteristic to check
+     * @return The characteristic description
+     */
     getCharacteristic(pkm: PkBase): string;
 }
 
