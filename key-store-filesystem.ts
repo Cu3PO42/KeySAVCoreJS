@@ -41,6 +41,9 @@ function createNoKeyError(stamp: string, isSav: boolean) {
     return e;
 }
 
+/**
+ * An implementation of a [[KeyStore]] that saves all keys to a folder on the hard drive.
+ */
 export default class KeyStoreFileSystem implements KeyStore {
     private isScanning: boolean = false;
     private scan: Promise<void>;
@@ -49,6 +52,12 @@ export default class KeyStoreFileSystem implements KeyStore {
                                        kind: number,
                                        key: LazyValue<{ key: BattleVideoKey|SaveKey, hash: string }> } } = {};
 
+    /**
+     * Create a new [[KeyStoreFilesystem]] that stores its data in the given directory. No other data should be saved
+     * there.
+     * 
+     * @param path The directory to save the key files in.
+     */
     constructor(private path: string) {
         this.scan = this.scanSaveDirectory(this.path);
     }
