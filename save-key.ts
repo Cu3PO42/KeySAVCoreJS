@@ -83,13 +83,23 @@ class LegacySaveKey {
     }
 }
 
+/**
+ * A key that can be used to decrypt a save slot.
+ */
 export default class SaveKey {
     private _keyData: Uint8Array;
     private _keyView: DataView;
+
+    /**
+     * The raw key data.
+     */
     public get keyData(): Uint8Array {
         return this._keyData;
     }
 
+    /**
+     * The stamp uniquely identifying the save file.
+     */
     public get stamp(): string {
         return util.getStampSav(this._keyData, 0);
     }
@@ -118,6 +128,9 @@ export default class SaveKey {
         this._keyView.setUint16(0x16, val, true);
     }
 
+    /**
+     * The generation of the save file this key is for.
+     */
     public get generation(): number {
         return this._keyView.getUint32(0x18, true);
     }
@@ -130,6 +143,9 @@ export default class SaveKey {
         this._keyView.setUint32(0x18, val, true);
     }
 
+    /**
+     * The offset that box data is stored in in the key file.
+     */
     public get boxOffset(): number {
         return this._keyView.getUint32(0x1C, true);
     }
@@ -138,6 +154,9 @@ export default class SaveKey {
         this._keyView.setUint32(0x1C, val, true);
     }
 
+    /**
+     * The value a save file has at the slot 1 flag when data was saved to the first slot.
+     */
     public get slot1Flag(): number {
         return this._keyView.getUint32(0x20, true);
     }
@@ -147,6 +166,10 @@ export default class SaveKey {
     }
 
     private __blank: Uint8Array;
+
+    /**
+     * The blank Pokémon file for the save file.
+     */
     public get blank(): Uint8Array {
         return this.__blank;
     }
@@ -156,6 +179,10 @@ export default class SaveKey {
     }
 
     private __boxKey1: Uint8Array;
+
+    /**
+     * The first possible key for the boxes.
+     */
     public get boxKey1(): Uint8Array {
         return this.__boxKey1;
     }
@@ -169,6 +196,10 @@ export default class SaveKey {
     }
 
     private __boxKey2: Uint8Array;
+
+    /**
+     * The second possible key for the boxes.
+     */
     public get boxKey2(): Uint8Array {
         return this.__boxKey2;
     }
@@ -182,6 +213,10 @@ export default class SaveKey {
     }
 
     private __slot1Key: Uint8Array;
+
+    /**
+     * The key describing the difference between the two save slots.
+     */
     public get slot1Key(): Uint8Array {
         return this.__slot1Key;
     }
@@ -194,6 +229,9 @@ export default class SaveKey {
         util.copy(val, 0, this.__slot1Key, 0, 232 * 30 * (this.generation === 6 ? 31 : 32));
     }
 
+    /**
+     * Flag describing if this key is a new style key.
+     */
     public get isNewKey(): boolean {
         return this.__slot1Key.some(e => !!e);
     }
@@ -206,6 +244,11 @@ export default class SaveKey {
         return res;
     }
 
+    /**
+     * Construct a new save key from existing data or create an empty one.
+     * 
+     * @param arg Existing key data or the generation for which to create an empty key
+     */
     constructor(arg: Uint8Array | number) {
         if (arg instanceof Uint8Array) {
             this._keyData = arg;
@@ -265,6 +308,12 @@ export default class SaveKey {
         this.__slot1Key = this._keyData.subarray(offset, offset + keySize); offset += keySize;
     }
 
+    /**
+     * Merge the data from this save key with another save key. If the other key contains additional data it will be merged to this one.
+     * The other key will not be modified.
+     * 
+     * @param other Another save key for the same save file
+     */
     public mergeKey(other: SaveKey) {
         // upgrade to a new style key if possible
         if (!this.isNewKey && other.isNewKey) {
@@ -289,6 +338,11 @@ export default class SaveKey {
         }
     }
 
+    /**
+     * Set the raw stamp for this key.
+     * 
+     * @param arr The raw stamp data
+     */
     public setStamp(arr: Uint8Array) {
         util.copy(arr, 0x10, this._keyData, 0, 8);
     }
