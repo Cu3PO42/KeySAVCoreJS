@@ -3,6 +3,13 @@ import { breakKey as breakKeySav, load as loadSav } from "./save-breaker";
 import BattleVideoReader from "./battle-video-reader";
 import SaveReader from "./save-reader";
 
+/**
+ * Load a given file. The file may be either a battle video or a save file.
+ * 
+ * The appropriate key will be retrieved from the global keystore if possible, otherwise an error will be thrown.
+ * 
+ * @param file The file to load.
+ */
 export async function loadSavOrBv(file: Uint8Array): Promise<{type: string, reader: SaveReader|BattleVideoReader}> {
     try {
         return {
@@ -48,6 +55,15 @@ function checkSavLength(length: number) {
         length === 0x0fe000 || length === 0x0fe09c || length === 0x0fe19a;
 }
 
+/**
+ * Create or upgrade a key with the given files.
+ * 
+ * Both files must be of the same type (battle video or save) and satisfy the requirements outlined in the relevant
+ * breakKey function.
+ * 
+ * @param file1 The first file to use
+ * @param file2 The second file to use
+ */
 export async function breakSavOrBv(file1: Uint8Array, file2: Uint8Array): Promise<{ type: string, result: any }> {
     if (file1.length === 0x6E60 || file1.length === 0x6bc0) {
         if (file2.length === 0x6E60 || file1.length === 0x6bc0) {
