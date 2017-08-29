@@ -7,7 +7,17 @@ var zeros = new Uint8Array(232);
 var ezeros = PkBase.encrypt(zeros);
 
 export { default as SaveReader } from "./save-reader";
+
+/**
+ * An implementation of [[SaveReader]] for encrypted saves.
+ */
 export default class SaveReaderEncrypted implements SaveReader {
+
+    /**
+     * Get the offsets in save files for a supported generation.
+     * 
+     * @param generation The generation for which to get the offsets for you
+     */
     public static getOffsets(generation: number) {
         return {
             6: {
@@ -25,6 +35,11 @@ export default class SaveReaderEncrypted implements SaveReader {
         }[generation];
     }
 
+    /**
+     * Calculate and return the generation for a save file.
+     * 
+     * @param file The file for which to get the generation
+     */
     public static getGeneration(file: Uint8Array) {
         let length = file.length;
         if (length === 0x100000 || length === 0x10009C || length === 0x10019A) {
@@ -107,6 +122,13 @@ export default class SaveReaderEncrypted implements SaveReader {
         return res;
     }
 
+    /**
+     * Get the raw data for a Pokémon from the key and raw boxes data.
+     * 
+     * @param boxes The raw data of all boxes
+     * @param pos The position from which to get the Pokémon
+     * @param key The key to use
+     */
     public static getPkxRaw(boxes: Uint8Array, pos: number, key: SaveKey): [Uint8Array, boolean] {
         // Auto updates the keystream when it dumps important data!
         var pkx: Uint8Array;
