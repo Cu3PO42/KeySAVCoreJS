@@ -4,6 +4,12 @@ import * as util from "./util";
 import PkBase from "./pkbase";
 import BattleVideoKey from "./battle-video-key";
 
+/**
+ * Open a battle video in a reader. Get the key for this video from the global key store.
+ * 
+ * @param input The battle video to load
+ * @return A promise for the [[BattleVideoReader]] for the given video
+ */
 export async function load(input: Uint8Array): Promise<BattleVideoReader> {
     if (BattleVideoReader.getGeneration(input) === -1) {
         var e = new Error("The supplied data is not a valid battle video.") as any;
@@ -43,6 +49,22 @@ function breakParty(reader1: BattleVideoReader, reader2: BattleVideoReader, part
     return true;
 }
 
+/**
+ * Create or upgrade a key for a battle video slot using the supplied videos.
+ * 
+ * A key contains sub keys for the different teams that may be part of a battle. To unlock any such sub key the
+ * following must hold for the two provided videos:
+ * 
+ * * In video 1 the team contained only one Pokémon
+ * * In video 2 the team contained two Pokémon where the second one must be the same as the Pokémon in the first video
+ * 
+ * The operation will fail if the two provided are not from the same game and slot.
+ * 
+ * @param video1 The first battle video
+ * @param video2 The second battle video
+ * @return A Promise for an object containing a flag upgraded that is true if an existing key was upgraded rather than
+ *         a new one created and an array of flags indicating which sub keys are working
+ */
 export async function breakKey(video1: Uint8Array, video2: Uint8Array): Promise<{upgraded: boolean, workingKeys: boolean[]}> {
     const generation1 = BattleVideoReader.getGeneration(video1);
     if (generation1 === -1) {
