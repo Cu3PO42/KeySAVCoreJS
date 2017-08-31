@@ -8,3 +8,4 @@ test/data/
 test/data.zip
 !test/**/*.js
 !scripts/**/*.js
+doc/

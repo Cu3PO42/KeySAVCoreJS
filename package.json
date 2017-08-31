@@ -6,16 +6,16 @@
   "scripts": {
     "test": "mocha",
     "build": "tsc && tsc --declaration",
-    "publish": "publish"
+    "generate-documentation": "typedoc --mode modules --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --exclude util --theme minimal --name KeySAVCore --out doc"
   },
   "author": "Cu3PO42",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^6.0.48",
     "fs-extra": "^0.26.5",
     "mocha": "^2.4.5",
+    "typedoc": "^0.8.0",
     "typescript": "^2.0.10"
   }
 }
