@@ -4,17 +4,24 @@ node_js:
 sudo: false
 script:
 - npm run build
+- npm run generate-documentation
 - npm run test
 notifications:
   email: false
 deploy:
-  provider: npm
-  email: cu3po42@gmail.com
-  api_key:
-    secure: KANFtdk734y7nMeNPMpcd5LGo0RNeqC5Q5b7P0i9f4pn6ElzK3VVB8dghdNLcaW6Er7WrePMvaacIctmJy51m9qiHSZ3O+v9PHR9JAkqOEC+6btJ24rk1OTPgWfr1XXdplMZ8PbeTnKOIv2saDIK3LIAQpFcma7sSCVsJoedJe6kwHXmMyMgPwSa2OMBGOlt5+U9AYgzxXLVl7BGjMIeNTUBDVxum9/OtsmfbJBSLhgj1ECfItFFQtr7MpsEviiUPngMZLMuW+jtbvEZ7Rj4HzAbnzwH56jmaTABJCGsqJo3qVbBdlSt3Cj5fAJR40nn6uVVxdqdbEDGO2K6tJJ61j6H41EKjK6ZZBmBG57hqWJucapVDH12oDIRx+e73fKxwbX38DJkTwq8aZoaHICW8Dme9CDghYvOvBd2eysc6i2ZvbdzorkUpLnwShqNd2XkUY+U9M1S0BG7L6RAFO50yQuK5R+3g3cZgOjuvjgN50oTj/eoFMhH0jHMK8W5iKEaGwnH2zHD8AchoSTmcSGipn29gPcWAcrod5fSLnoyOvzaeYSHAd0JjXxLKmGFyy/XV+r7+fQabR8ic8decIskfJu/sk4pFfOHuInuw4EleyeaHhIkhVkQmIuxi4lVUxPmn/+SY92GTKKY4CQaYxLrJz6SfBqnVbhqipcks5XVKUI=
-  on:
-    tags: true
-    repo: Cu3PO42/KeySAVCoreJS
+  - provider: npm
+    email: cu3po42@gmail.com
+    api_key:
+      secure: KANFtdk734y7nMeNPMpcd5LGo0RNeqC5Q5b7P0i9f4pn6ElzK3VVB8dghdNLcaW6Er7WrePMvaacIctmJy51m9qiHSZ3O+v9PHR9JAkqOEC+6btJ24rk1OTPgWfr1XXdplMZ8PbeTnKOIv2saDIK3LIAQpFcma7sSCVsJoedJe6kwHXmMyMgPwSa2OMBGOlt5+U9AYgzxXLVl7BGjMIeNTUBDVxum9/OtsmfbJBSLhgj1ECfItFFQtr7MpsEviiUPngMZLMuW+jtbvEZ7Rj4HzAbnzwH56jmaTABJCGsqJo3qVbBdlSt3Cj5fAJR40nn6uVVxdqdbEDGO2K6tJJ61j6H41EKjK6ZZBmBG57hqWJucapVDH12oDIRx+e73fKxwbX38DJkTwq8aZoaHICW8Dme9CDghYvOvBd2eysc6i2ZvbdzorkUpLnwShqNd2XkUY+U9M1S0BG7L6RAFO50yQuK5R+3g3cZgOjuvjgN50oTj/eoFMhH0jHMK8W5iKEaGwnH2zHD8AchoSTmcSGipn29gPcWAcrod5fSLnoyOvzaeYSHAd0JjXxLKmGFyy/XV+r7+fQabR8ic8decIskfJu/sk4pFfOHuInuw4EleyeaHhIkhVkQmIuxi4lVUxPmn/+SY92GTKKY4CQaYxLrJz6SfBqnVbhqipcks5XVKUI=
+    on:
+      tags: true
+      repo: Cu3PO42/KeySAVCoreJS
+  - provider: pages
+    skip_cleanup: true
+    on:
+      branch: master
+    local_dir: ./doc
+    github_token: $GITHUB_TOKEN
 before_install:
 - openssl aes-256-cbc -K $encrypted_4281030c4abf_key -iv $encrypted_4281030c4abf_iv
   -in test/data.zip.enc -out test/data.zip -d
