@@ -15,7 +15,7 @@ function getDataBase(file, size) {
 }
 
 const gen6Data = getDataBase('personal_xy', 0x40);
-const gen7Data = getDataBase('personal_sm', 0x54);
+const gen7Data = getDataBase('personal_uu', 0x54);
 
 function getFormData(id, is7) {
     const pkmData = (is7 ? gen7Data : gen6Data)[id];
@@ -65,7 +65,7 @@ function getBaseStats(id, is7) {
 
 function generateAllBaseStats(is7) {
     const res = [];
-    for (let i = 1; i < (is7 ? gen7Data : gen6Data).length; ++i) {
+    for (let i = 1; i <= (is7 ? 807 : 721); ++i) {
         res.push(getBaseStats(i, is7));
     }
     return res;
