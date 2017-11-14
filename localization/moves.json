@@ -719,7 +719,16 @@
         "Elektropikser",
         "Naturzorn",
         "Multi-Angriff",
-        "Tausendfacher Donnerblitz"
+        "Tausendfacher Donnerblitz",
+        "Knallkopf",
+        "Plasmafäuste",
+        "Photonen-Geysir",
+        "Licht des Erlöschens",
+        "Schmetternde Sonnenwalze",
+        "Geballter Mondlaser",
+        "Herzliche Knuddelkloppe",
+        "Fataler Steinregen",
+        "Rasselnder Seelentanz"
     ],
     "en": [
         "———",
@@ -1441,7 +1450,16 @@
         "Zing Zap",
         "Nature’s Madness",
         "Multi-Attack",
-        "10,000,000 Volt Thunderbolt"
+        "10,000,000 Volt Thunderbolt",
+        "Mind Blown",
+        "Plasma Fists",
+        "Photon Geyser",
+        "Light That Burns the Sky",
+        "Searing Sunraze Smash",
+        "Menacing Moonraze Maelstrom",
+        "Let’s Snuggle Forever",
+        "Splintered Stormshards",
+        "Clangorous Soulblaze"
     ],
     "es": [
         "-",
@@ -2163,7 +2181,16 @@
         "Electropunzada",
         "Furia Natural",
         "Multiataque",
-        "Gigarrayo Fulminante"
+        "Gigarrayo Fulminante",
+        "Cabeza Sorpresa",
+        "Puños Plasma",
+        "Géiser Fotónico",
+        "Fotodestrucción Apocalíptica",
+        "Embestida Solar",
+        "Deflagración Lunar",
+        "Somanta Amistosa",
+        "Tempestad Rocosa",
+        "Estruendo Implacable"
     ],
     "fr": [
         "―――――",
@@ -2885,7 +2912,16 @@
         "Électrikipik",
         "Ire de la Nature",
         "Coup Varia-Type",
-        "Giga-Tonnerre"
+        "Giga-Tonnerre",
+        "Caboche-Kaboum",
+        "Plasma Punch",
+        "Photo-Geyser",
+        "Apocalypsis Luminis",
+        "Hélio-Choc Dévastateur",
+        "Rayons Séléno-Explosifs",
+        "Patati-Patattrape",
+        "Hurlement des Roches-Lames",
+        "Dracacophonie Flamboyante"
     ],
     "it": [
         "-----",
@@ -3607,7 +3643,16 @@
         "Elettropizzico",
         "Ira della Natura",
         "Multiattacco",
-        "Iperfulmine"
+        "Iperfulmine",
+        "Sbalorditesta",
+        "Pugni Plasma",
+        "Geyser Fotonico",
+        "Fotodistruzione Apocalittica",
+        "Supercollisione Solare",
+        "Deflagrazione Lunare",
+        "Dolcesacco di Botte",
+        "Litotempesta Radiale",
+        "Dracofonia Divampante"
     ],
     "ja": [
         "―――――",
@@ -4329,7 +4374,16 @@
         "びりびりちくちく",
         "しぜんのいかり",
         "マルチアタック",
-        "１０００まんボルト"
+        "１０００まんボルト",
+        "ビックリヘッド",
+        "プラズマフィスト",
+        "フォトンゲイザー",
+        "てんこがすめつぼうのひかり",
+        "サンシャインスマッシャー",
+        "ムーンライトブラスター",
+        "ぽかぼかフレンドタイム",
+        "ラジアルエッジストーム",
+        "ブレイジングソウルビート"
     ],
     "ko": [
         "―――――",
@@ -5051,7 +5105,16 @@
         "찌리리따끔따끔",
         "자연의분노",
         "멀티어택",
-        "1000만볼트"
+        "1000만볼트",
+        "깜짝헤드",
+        "플라스마피스트",
+        "포톤가이저",
+        "하늘을태우는멸망의빛",
+        "선샤인스매셔",
+        "문라이트블래스터",
+        "투닥투닥프렌드타임",
+        "레이디얼에지스톰",
+        "브레이징소울비트"
     ],
     "zh": [
         "―――――",
@@ -5773,6 +5836,15 @@
         "麻麻刺刺",
         "自然之怒",
         "多属性攻击",
-        "千万伏特"
+        "千万伏特",
+        "惊爆大头",
+        "等离子闪电拳",
+        "光子喷涌",
+        "焚天灭世炽光爆",
+        "日光回旋下苍穹",
+        "月华飞溅落灵霄",
+        "亲密无间大乱揍",
+        "狼啸石牙飓风暴",
+        "炽魂热舞烈音爆"
     ]
 }

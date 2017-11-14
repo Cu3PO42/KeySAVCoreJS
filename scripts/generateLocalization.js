@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const languages = ['de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'zh'];
 const pkhexPath = process.argv[2];
-const textPath = path.join(pkhexPath, 'PKHeX', 'Resources', 'text');
+const textPath = path.join(pkhexPath, 'PKHeX.Core', 'Resources', 'text');
 const localPath = path.join(__dirname, '..', 'localization');
 
 function generateBase(sourceName, destName) {
@@ -122,7 +122,7 @@ function generateLocations() {
 }
 
 function generateForms() {
-    const pkmFile = fs.readFileSync(path.join(pkhexPath, 'PKHeX', 'PKM', 'PKX.cs'), 'utf-8');
+    const pkmFile = fs.readFileSync(path.join(pkhexPath, 'PKHeX.Core', 'PKM', 'PKX.cs'), 'utf-8');
     const forms6 = require(path.join(localPath, 'forms6.json'));
     const startIndex = pkmFile.indexOf('public static string[] getFormList(int species, string[] t, string[] f, string[] g, int generation = 6)');
     const startOfCodeIndex = pkmFile.indexOf('{', startIndex);
@@ -183,7 +183,7 @@ function migrateLegacy() {
 }
 
 function generateAll() {
-    migrateLegacy();
+    //migrateLegacy();
     generateSpecies();
     generateItems();
     generateAbilities();
@@ -194,7 +194,7 @@ function generateAll() {
     generateCharacteristics();
     generateCountries();
     generateLocations();
-    generateForms();
+    //generateForms();
 }
 
 if (!module.parent) {

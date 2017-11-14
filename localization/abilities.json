@@ -232,7 +232,8 @@
         "Gras-Erzeuger",
         "Metallprotektor",
         "Phantomschutz",
-        "Prismarüstung"
+        "Prismarüstung",
+        "Zerebralmacht"
     ],
     "en": [
         "—",
@@ -467,7 +468,8 @@
         "Grassy Surge",
         "Full Metal Body",
         "Shadow Shield",
-        "Prism Armor"
+        "Prism Armor",
+        "Neuroforce"
     ],
     "es": [
         "-",
@@ -702,7 +704,8 @@
         "Herbogénesis",
         "Guardia Metálica",
         "Guardia Espectro",
-        "Armadura Prisma"
+        "Armadura Prisma",
+        "Fuerza Cerebral"
     ],
     "fr": [
         "",
@@ -937,7 +940,8 @@
         "Créa-Herbe",
         "Métallo-Garde",
         "Spectro-Bouclier",
-        "Prisme-Armure"
+        "Prisme-Armure",
+        "Cérébro-Force"
     ],
     "it": [
         "-",
@@ -1172,7 +1176,8 @@
         "Erbogenesi",
         "Metalprotezione",
         "Spettroguardia",
-        "Scudoprisma"
+        "Scudoprisma",
+        "Cerebroforza"
     ],
     "ja": [
         "―",
@@ -1407,7 +1412,8 @@
         "グラスメイカー",
         "メタルプロテクト",
         "ファントムガード",
-        "プリズムアーマー"
+        "プリズムアーマー",
+        "ブレインフォース"
     ],
     "ko": [
         "-",
@@ -1642,7 +1648,8 @@
         "그래스메이커",
         "메탈프로텍트",
         "스펙터가드",
-        "프리즘아머"
+        "프리즘아머",
+        "브레인포스"
     ],
     "zh": [
         "―",
@@ -1877,6 +1884,7 @@
         "青草制造者",
         "金属防护",
         "幻影防守",
-        "棱镜装甲"
+        "棱镜装甲",
+        "脑核之力"
     ]
 }
