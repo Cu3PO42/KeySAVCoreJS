@@ -44,6 +44,8 @@ var savFull1 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/full-1.bin"
 var savFull2 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/full-2.bin"));
 var sav16SM = bufferToUint8Array(fs.readFileSync(__dirname + "/data/16-sm.sav"));
 var sav165SM = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165-sm.sav"));
+var sav16USUM = bufferToUint8Array(fs.readFileSync(__dirname + "/data/16-usum.sav"));
+var sav165USUM = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165-usum.sav"));
 var keyNew = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-new.bin")));
 var keyOld = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-old.bin")));
 
@@ -56,7 +58,9 @@ describe("SaveReaderDecrypted", function() {
 
         it("should get a Pk7 from a raw save file (USUM)", function() {
             var reader = new SaveReaderDecrypted(mainUm, "USUM");
-            assert.notEqual(reader.getPkx(0), undefined);
+            var pkx = reader.getPkx(0);
+            assert.notEqual(pkx, undefined);
+            assert.equal(pkx.species, 725);
         });
     });
 });
@@ -149,6 +153,14 @@ describe("SaveBreaker", function() {
             var store = new KeyStoreMemory();
             setKeyStore(store);
             return SaveBreaker.breakKey(sav16SM, sav165SM).then(function(res) {
+                assert.equal("CREATED_NEW", res);
+            });
+        });
+
+        it("should create a new style key from two appropriate saves (Gen 7, USUM)", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return SaveBreaker.breakKey(sav16USUM, sav165USUM).then(function(res) {
                 assert.equal("CREATED_NEW", res);
             });
         });
