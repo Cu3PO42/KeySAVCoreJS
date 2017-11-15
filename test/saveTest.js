@@ -35,6 +35,7 @@ function keyEqual(key1, key2) {
 }
 
 var main = bufferToUint8Array(fs.readFileSync(__dirname + "/data/main"));
+var mainUm = bufferToUint8Array(fs.readFileSync(__dirname + "/data/main-um"));
 var mudkip = bufferToUint8Array(fs.readFileSync(__dirname + "/data/mudkip.pk6"));
 var sav16 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/16.bin"));
 var sav165 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/165.bin"));
@@ -48,9 +49,14 @@ var keyOld = new SaveKey((fs.readFileSync(__dirname + "/data/oras-key-old.bin"))
 
 describe("SaveReaderDecrypted", function() {
     describe("#getPkx()", function() {
-        it("should get a Pk6 from a raw save file", function() {
+        it("should get a Pk6 from a raw save file (ORAS)", function() {
             var reader = new SaveReaderDecrypted(main, "ORAS");
             assert.deepEqual(reader.getPkx(3), new Pk6(mudkip, 0, 3, false));
+        });
+
+        it("should get a Pk7 from a raw save file (USUM)", function() {
+            var reader = new SaveReaderDecrypted(mainUm, "USUM");
+            assert.notEqual(reader.getPkx(0), undefined);
         });
     });
 });

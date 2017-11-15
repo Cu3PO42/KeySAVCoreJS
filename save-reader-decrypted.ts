@@ -7,6 +7,7 @@ const xyOffset = 0x22600;
 const xyRamsavOffset = 0x1EF38;
 const orasRamsavOffset = 0x2F794;
 const smOffset = 0x04E00;
+const usumOffset = 0x05200;
 
 export { default as SaveReader } from "./save-reader";
 
@@ -72,6 +73,9 @@ export default class SaveReaderDecrypted implements SaveReader {
             this.generation = 7;
             this.offset = smOffset;
             break;
+        case "USUM":
+            this.generation = 7;
+            this.offset = usumOffset;
         }
     }
 
