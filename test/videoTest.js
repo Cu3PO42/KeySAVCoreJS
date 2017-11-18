@@ -33,6 +33,8 @@ var video5 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-1-sm
 var video6 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-2-sm"));
 var video7 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/-1"));
 var video8 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/-2"));
+var video9 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/bv1-usum"));
+var video10 = bufferToUint8Array(fs.readFileSync(__dirname + "/data/bv2-usum"));
 var key = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-with-opponent.bin")));
 var keyWithoutOpponent = new BattleVideoKey(bufferToUint8Array(fs.readFileSync(__dirname + "/data/00000003-key-without-opponent.bin")));
 var honedge = new Pk6(bufferToUint8Array(fs.readFileSync(__dirname + "/data/honedge.pk6")), -1, 0, false);
@@ -99,6 +101,14 @@ describe("BattleVideoBreaker", function() {
             return BattleVideoBreaker.breakKey(video5, video6).then(function(res) {
                 assert.deepEqual({upgraded: undefined, workingKeys: [true, true, false, false]}, res)
             });
+        });
+
+        it("should break a key (Gen 7, USUM)", function() {
+            var store = new KeyStoreMemory();
+            setKeyStore(store);
+            return BattleVideoBreaker.breakKey(video9, video10).then(function(res) {
+                assert.deepEqual({upgraded: undefined, workingKeys: [true, true, false, false]}, res);
+            })
         });
     });
 
