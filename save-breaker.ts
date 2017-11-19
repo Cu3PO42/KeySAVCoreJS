@@ -243,9 +243,8 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
 
         if (err < 56) {
             offset = i + offsets.base2; // Add the offset for the actual save inside the save file
-            // TODO break for 32 boxes in gen 7
-            boxes1 = boxes1.subarray(i, i + 232 * 30 * 31);
-            boxes2 = boxes2.subarray(i, i + 232 * 30 * 31);
+            boxes1 = boxes1.subarray(i, i + 232 * 30 * (generation1 === 6 ? 31 : 32));
+            boxes2 = boxes2.subarray(i, i + 232 * 30 * (generation1 === 6 ? 31 : 32));
             break;
         }
     }
