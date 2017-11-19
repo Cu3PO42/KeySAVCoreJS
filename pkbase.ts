@@ -191,7 +191,6 @@ export default class PkBase {
         this.ribbonData = Array.from(pkx.subarray(0x30, 0x38));
         this.contestMemoryRibbonCount = pkx[0x38];
         this.battleMemoryRibbonCount = pkx[0x39];
-        // TODO super training flags
 
         // Block B
         this.nickname = util.decodeUnicode16LE(pkx, 0x40, 24);
@@ -212,9 +211,6 @@ export default class PkBase {
         this.eggMove2 = data.getUint16(0x6c, true);
         this.eggMove3 = data.getUint16(0x6e, true);
         this.eggMove4 = data.getUint16(0x70, true);
-
-        // TODO dump EVERYTHING
-        // TODO 0x72 - Super Training Flag - Passed with pkx to new form
 
         var IV32 = data.getUint32(0x74, true);
         this.ivHp = IV32 & 31;

@@ -7,6 +7,7 @@ import PkBase, { registerPkmImpl } from "./pkbase";
 export default class Pk6 extends PkBase {
     // Uints
     public trainingBagHitsRemaining: number;
+    public superTrainingFlag: number;
 
     /**
      * Construct a new Pk6 representation.
@@ -25,9 +26,7 @@ export default class Pk6 extends PkBase {
 
         this.trainingBagHitsRemaining = data.getUint16(0x16, true);
         this.markings = pkx[0x2a];
-
-        // TODO dump EVERYTHING
-        // TODO 0x72 - Super Training Flag - Passed with pkx to new form
+        this.superTrainingFlag = pkx[0x72];
     }
 }
 
