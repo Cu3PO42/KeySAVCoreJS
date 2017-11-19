@@ -16,6 +16,7 @@ deploy:
     on:
       tags: true
       repo: Cu3PO42/KeySAVCoreJS
+    skip_cleanup: true
   - provider: pages
     skip_cleanup: true
     on:
