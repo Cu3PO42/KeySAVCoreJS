@@ -1,7 +1,6 @@
 export { load as loadBv, breakKey as breakBv } from "./battle-video-breaker";
 export { default as BattleVideoReader } from "./battle-video-reader";
 import * as Calc from "./calculator"; export var Calculator = Calc;
-export { default as KeyStoreFileSystem } from "./key-store-filesystem";
 export { default as KeyStore, setKeyStore } from "./key-store";
 export { default as Localization } from "./localization";
 export { default as PkBase } from "./pkbase";
