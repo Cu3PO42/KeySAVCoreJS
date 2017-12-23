@@ -49,17 +49,30 @@ for (let key in specialCharMap) {
 }
 
 export function decodeUnicode16LE(arr: Uint8Array, offset: number, length: number) {
-    var buf = new Buffer(arr.buffer).slice(offset + arr.byteOffset, offset + arr.byteOffset + length);
-    return trimCString(buf.toString("ucs2").replace(/./g, function(m) {
+    let res = '';
+    const end = offset + length;
+    for (let i = offset; i < end; i += 2) {
+      res += String.fromCharCode(arr[i] | (arr[i + 1] << 8));
+    }
+    return res.replace(/./g, function(m) {
         return specialCharMap[m] || m;
-    }));
+    });
 }
 
 export function encodeUnicode16LE(str: string) {
-    var tmp = new Buffer(str.replace(/./g, function(m) {
+    const patchedString = str.replace(/./g, function(m) {
         return specialCharMapReverse[m] || m;
-    }), "ucs2");
-    return new Uint8Array(tmp.buffer, tmp.byteOffset, tmp.byteLength);
+    });
+    const byteArray = [];
+    for (var i = 0; i < str.length; ++i) {
+      const c = patchedString.charCodeAt(i);
+      const hi = c >> 8;
+      const lo = c & 0xFF;
+      byteArray.push(lo);
+      byteArray.push(hi);
+    }
+  
+    return byteArray;
 }
 
 export function createDataView(arr): DataView {
