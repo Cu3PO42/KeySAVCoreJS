@@ -48,18 +48,18 @@ for (let key in specialCharMap) {
     }
 }
 
-export function decodeUnicode16LE(arr: Uint8Array, offset: number, length: number) {
+export function decodeUnicode16LE(arr: Uint8Array, offset: number, length: number): string {
     let res = '';
     const end = offset + length;
     for (let i = offset; i < end; i += 2) {
       res += String.fromCharCode(arr[i] | (arr[i + 1] << 8));
     }
-    return res.replace(/./g, function(m) {
+    return trimCString(res.replace(/./g, function(m) {
         return specialCharMap[m] || m;
-    });
+    }));
 }
 
-export function encodeUnicode16LE(str: string) {
+export function encodeUnicode16LE(str: string): Uint8Array {
     const patchedString = str.replace(/./g, function(m) {
         return specialCharMapReverse[m] || m;
     });
@@ -72,7 +72,7 @@ export function encodeUnicode16LE(str: string) {
       byteArray.push(hi);
     }
   
-    return byteArray;
+    return new Uint8Array(byteArray);
 }
 
 export function createDataView(arr): DataView {
