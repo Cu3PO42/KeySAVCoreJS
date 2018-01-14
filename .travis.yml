@@ -3,9 +3,9 @@ node_js:
 - '6'
 sudo: false
 script:
-- npm run build
-- npm run generate-documentation
-- npm run test
+- yarn run build
+- yarn run generate-documentation
+- yarn run test
 notifications:
   email: false
 deploy:
