@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "build": "tsc --pretty",
-    "generate-documentation": "typedoc --mode file --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --exclude util --theme minimal --name KeySAVCore --out doc"
+    "generate-documentation": "typedoc --mode file --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --theme minimal --name KeySAVCore --out doc *.ts"
   },
   "author": "Cu3PO42",
   "license": "MIT",
