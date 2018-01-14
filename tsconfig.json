@@ -7,20 +7,14 @@
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "declaration": false,
+        "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true
     },
-    "compileOnSave": true,
-    "buildOnSave": false,
     "include": [
-      "*.ts",
-      "node_modules/@types/**/*.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+      "*.ts"
+    ]
 }
