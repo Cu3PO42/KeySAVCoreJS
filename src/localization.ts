@@ -1,20 +1,19 @@
+import * as forms6 from "../localization/forms6.json";
+import * as forms7 from "../localization/forms7.json";
+import * as locations from "../localization/locations.json";
+import * as characteristics from "../localization/characteristics.json";
+import * as ribbons from "../localization/ribbons.json";
+import * as abilities from "../localization/abilities.json";
+import * as items from "../localization/items.json";
+import * as species from "../localization/species.json";
+import * as moves from "../localization/moves.json";
+import * as games from "../localization/games.json";
+import * as types from "../localization/types.json";
+import * as natures from "../localization/natures.json";
+import * as countries from "../localization/countries.json";
+import * as languageTags from "../localization/languageTags.json";
+import * as regions from "../localization/regions.json";
 import PkBase from "./pkbase";
-
-var forms6 = require("../localization/forms6.json"),
-  forms7 = require("../localization/forms7.json"),
-  locations = require("../localization/locations.json"),
-  characteristics = require("../localization/characteristics.json"),
-  ribbons = require("../localization/ribbons.json"),
-  abilities = require("../localization/abilities.json"),
-  items = require("../localization/items.json"),
-  species = require("../localization/species.json"),
-  moves = require("../localization/moves.json"),
-  games = require("../localization/games.json"),
-  types = require("../localization/types.json"),
-  natures = require("../localization/natures.json"),
-  countries = require("../localization/countries.json"),
-  languageTags = require("../localization/languageTags.json"),
-  regions = require("../localization/regions.json");
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
 

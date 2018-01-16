@@ -1,6 +1,6 @@
-var expData = require("../stats/expData.json");
-var stats6 = require("../stats/stats6.json");
-var stats7 = require("../stats/stats7.json");
+import * as expData from "../stats/expData.json";
+import * as stats6 from "../stats/stats6.json";
+import * as stats7 from "../stats/stats7.json";
 import PkBase from "./pkbase";
 
 /**
