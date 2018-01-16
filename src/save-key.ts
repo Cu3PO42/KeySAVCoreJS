@@ -2,6 +2,7 @@ import PkBase from "./pkbase";
 import * as util from "./util";
 import { eggnames } from "./save-breaker";
 import SaveReaderEncrypted from "./save-reader-encrypted";
+import { KeyStore } from "./key-store";
 
 class LegacySaveKey {
   public boxKey1: Uint8Array;
@@ -344,5 +345,23 @@ export default class SaveKey {
    */
   public setStamp(arr: Uint8Array) {
     util.copy(arr, 0x10, this._keyData, 0, 8);
+  }
+
+  private keyStore: KeyStore;
+
+  /**
+   * Set the key store that manages this key. This method is called by the store and should not be used manually.
+   * 
+   * @param store The owning key store
+   */
+  public setKeyStore(store: KeyStore) {
+    this.keyStore = store;
+  }
+
+  /**
+   * Persist this key to the key store. This should be called everytime the key is updated.
+   */
+  public persist() {
+    this.keyStore.persistSaveKey(this);
   }
 }

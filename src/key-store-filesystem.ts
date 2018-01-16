@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { createHash } from "crypto";
-import KeyStore, { getStampAndKindFromKey } from "./key-store";
+import KeyStore, { getStampAndKindFromKey, createNoKeyError, createNotStoredKeyError } from "./key-store";
 import { join } from "path";
 import SaveKey from "./save-key";
 import { createUint8Array, createBuffer, promisify } from "./util";
@@ -38,14 +38,6 @@ class LazyValue<T> {
   get isInitialized() {
     return this.evaluated;
   }
-}
-
-function createNoKeyError(stamp: string, isSav: boolean) {
-  var e = new Error(`No key for ${isSav ? "save" : "battle video"} with stamp ${stamp} available.`) as any;
-  e.name = "NoKeyAvailableError";
-  e.stamp = stamp;
-  e.keyType = isSav ? "SAV" : "BV";
-  return e;
 }
 
 /**
@@ -123,10 +115,12 @@ export default class KeyStoreFileSystem implements KeyStore {
           var hash = createHash("sha256")
             .update(buf)
             .digest("hex");
-          return {
+          const res = {
             key: kind === 0 ? new SaveKey(ui8) : new BattleVideoKey(ui8),
             hash: hash,
           };
+          res.key.setKeyStore(this);
+          return res;
         }),
       };
     }
@@ -207,6 +201,7 @@ export default class KeyStoreFileSystem implements KeyStore {
           return { key: key, hash: hash };
         }),
       };
+      key.setKeyStore(this);
     } catch (e) {
       var e = new Error("There was an error saving the key.") as any;
       e.name = "KeySavingError";
@@ -238,5 +233,36 @@ export default class KeyStoreFileSystem implements KeyStore {
     } catch (e) {
       await this.setSaveKey(key);
     }
+  }
+
+  private async persist(key: SaveKey | BattleVideoKey, kind: number) {
+    const storedKey = this.keys[key.stamp];
+    if ( storedKey === undefined)
+      throw createNoKeyError(key.stamp, !kind);
+
+    if (storedKey.kind !== kind)
+      throw createNoKeyError(key.stamp, !kind);
+
+    if (!storedKey.key.isInitialized)
+      throw createNotStoredKeyError(key.stamp, !kind);
+
+    if ((await storedKey.key.get()).key !== key)
+      throw createNotStoredKeyError(key.stamp, !kind);
+
+    const buf = createBuffer(key.keyData);
+    const hash = createHash("sha256")
+      .update(buf)
+      .digest("hex");
+    (await storedKey.key.get()).hash = hash;
+    var fd = <number>await openAsync(join(this.path, name), "w+");
+    await writeAsync(fd, buf, 0, buf.length, 0);
+  }
+
+  async persistSaveKey(key: SaveKey) {
+    return await this.persist(key, 0);
+  }
+
+  async persistBvKey(key: BattleVideoKey) {
+    return await this.persist(key, 1);
   }
 }

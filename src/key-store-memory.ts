@@ -1,6 +1,6 @@
 import SaveKey from "./save-key";
 import BattleVideoKey from "./battle-video-key";
-import { KeyStore } from "./key-store";
+import { KeyStore, createNoKeyError, createNotStoredKeyError } from "./key-store";
 
 export default class KeyStoreMemory implements KeyStore {
   private saveKeys: { [stamp: string]: SaveKey } = {};
@@ -8,16 +8,17 @@ export default class KeyStoreMemory implements KeyStore {
 
   getSaveKey(stamp: string) {
     if (this.saveKeys[stamp] !== undefined) return Promise.resolve(this.saveKeys[stamp]);
-    return Promise.reject({ name: "NoKeyAvailableError" });
+    return Promise.reject(createNoKeyError(stamp, true));
   }
 
   getBvKey(stamp: string) {
     if (this.bvKeys[stamp] !== undefined) return Promise.resolve(this.bvKeys[stamp]);
-    return Promise.reject({ name: "NoKeyAvailableError" });
+    return Promise.reject(createNoKeyError(stamp, true));
   }
 
   setSaveKey(key: SaveKey) {
     this.saveKeys[key.stamp] = key;
+    key.setKeyStore(this);
     return Promise.resolve();
   }
 
@@ -25,12 +26,13 @@ export default class KeyStoreMemory implements KeyStore {
     if (this.saveKeys[key.stamp])
       this.saveKeys[key.stamp].mergeKey(key);
     else
-      this.saveKeys[key.stamp] = key;
+      this.setSaveKey(key);
     return Promise.resolve();
   }
 
   setBvKey(key) {
     this.bvKeys[key.stamp] = key;
+    key.setKeyStore(this);
     return Promise.resolve();
   }
 
@@ -38,7 +40,21 @@ export default class KeyStoreMemory implements KeyStore {
     if (this.bvKeys[key.stamp])
       this.bvKeys[key.stamp].mergeKey(key);
     else
-      this.bvKeys[key.stamp] = key;
+      this.setBvKey(key);
     return Promise.resolve();
+  }
+
+  persistSaveKey(key: SaveKey) {
+    return this.getSaveKey(key.stamp).then(storedKey => {
+      if (key !== storedKey)
+        throw createNotStoredKeyError(key.stamp, true);
+    });
+  }
+
+  persistBvKey(key: BattleVideoKey) {
+    return this.getBvKey(key.stamp).then(storedKey => {
+      if (key !== storedKey)
+        throw createNotStoredKeyError(key.stamp, false);
+    });
   }
 }

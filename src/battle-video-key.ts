@@ -1,4 +1,5 @@
 import { getStampBv, empty, copy, createDataView } from "./util";
+import { KeyStore } from "./key-store";
 
 /**
  * A key object that may be used for decryption of a single battle video slot.
@@ -114,5 +115,23 @@ export default class BattleVideoKey {
         copy(other.teamKeys[i], 0, this.teamKeys[i], 0, 260 * 6);
       }
     }
+  }
+
+  private keyStore: KeyStore;
+
+  /**
+   * Set the key store that manages this key. This method is called by the store and should not be used manually.
+   * 
+   * @param store The owning key store
+   */
+  public setKeyStore(store: KeyStore) {
+    this.keyStore = store;
+  }
+
+  /**
+   * Persist this key to the key store. This should be called everytime the key is updated.
+   */
+  public persist() {
+    this.keyStore.persistBvKey(this);
   }
 }

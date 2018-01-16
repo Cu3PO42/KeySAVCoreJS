@@ -55,6 +55,20 @@ export interface KeyStore {
    * @return A promise that resolves when the operation is complete
    */
   setOrMergeBvKey(key: BattleVideoKey): Promise<void>;
+
+  /**
+   * Write a key that has already been added to the store to persistent storage.
+   * 
+   * @param key The key to persist
+   */
+  persistSaveKey(key: SaveKey): Promise<void>;
+
+  /**
+   * Write a key that has already been added to the store to persistent storage.
+   * 
+   * @param key The key to persist
+   */
+  persistBvKey(key: BattleVideoKey): Promise<void>;
 }
 
 var currentKeyStore: KeyStore = undefined;
@@ -109,4 +123,20 @@ export function getStampAndKindFromKey(arr: Uint8Array, size: number): { stamp: 
   }
 
   return { stamp: "", kind: -1 };
+}
+
+export function createNoKeyError(stamp: string, isSav: boolean): Error {
+  let e = new Error(`No key for ${isSav ? "save" : "battle video"} with stamp ${stamp} available.`) as any;
+  e.name = "NoKeyAvailableError";
+  e.stamp = stamp;
+  e.keyType = isSav ? "SAV" : "BV";
+  return e;
+}
+
+export function createNotStoredKeyError(stamp: string, isSav: boolean): Error {
+  let e = new Error(`The stored key for ${isSav ? "save" : "battle video"} with stamp ${stamp} is not the same as passed to persist.`) as any;
+  e.name = "NotStoredKeyError";
+  e.stamp = stamp;
+  e.keyType = isSav ? "SAV" : "BV";
+  return e;
 }
