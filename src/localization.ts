@@ -15,12 +15,41 @@ import * as languageTags from "../localization/languageTags.json";
 import * as regions from "../localization/regions.json";
 import PkBase from "./pkbase";
 
-var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
+const langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
+const ballToItem = [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  492,
+  493,
+  494,
+  495,
+  496,
+  497,
+  498,
+  499,
+  576,
+  851,
+];
 
 /**
  * The localization of all proper names used for one language.
  */
-export interface LocalizationLanguage {
+export class LocalizationLanguage {
   /**
    * The names of all abilities accessible by their ID.
    */
@@ -82,6 +111,25 @@ export interface LocalizationLanguage {
   types: string[];
 
   /**
+   * The names of all locations in the games, accessible by generation and IDs.
+   */
+  locations: { bw2: string[], xy: string[], sm: string[] };
+
+  /**
+   * The names of all ribbons in Gen 6 and 7 games by set and flag position.
+   */
+  ribbonNames: string[][];
+
+  /**
+   * The characteristics a Pokémon can have, by type and alternative.
+   */
+  characteristics: string[][];
+
+  constructor(public lang: string, local: any) {
+    Object.assign(this, local);
+  }
+
+  /**
    * Get the name of the location a Pokémon was caught.
    *
    * @param pkm The Pokémon whose met location to retrieve
@@ -91,11 +139,32 @@ export interface LocalizationLanguage {
   /**
    * Get a location name from the given game version and location ID.
    *
-   * @param gameVersion The version ID the Pokémon was caught in
+   * @param originGame The version ID the Pokémon was caught in
    * @param location The location ID
    * @return The location name
    */
-  getLocation(gameVersion: number, location: number): string;
+  getLocation(originGame: number, location: number): string;
+
+  getLocation(originGame: number | PkBase, location?: number): string {
+    if (location === undefined) {
+      const pkm = originGame as PkBase;
+      if (pkm.metLocation && pkm.gameVersion && pkm.eggLocation !== undefined) {
+        location = pkm.metLocation;
+        originGame = pkm.gameVersion;
+      } else {
+        return "";
+      }
+    }
+    if (originGame < 24) {
+      return this.locations.bw2[location];
+    }
+    if (originGame > 23) {
+      return this.locations.xy[location];
+    }
+    if (originGame > 27) {
+      return this.locations.sm[location];
+    }
+  }
 
   /**
    * Get the name of the egg location of a Pokémon.
@@ -103,7 +172,10 @@ export interface LocalizationLanguage {
    * @param pkm The Pokémon whose egg location to check
    * @return The location name
    */
-  getEggLocation(pkm: PkBase): string;
+  getEggLocation(pkm: PkBase): string {
+    if (pkm.eggLocation === undefined || pkm.gameVersion === undefined) return "";
+    return this.getLocation(pkm.gameVersion, pkm.eggLocation);
+  }
 
   /**
    * Get a list of the names of all ribbons a Pokémon has.
@@ -111,7 +183,22 @@ export interface LocalizationLanguage {
    * @param pkm The Pokémon whose Ribbons to retrieve
    * @return The list of ribbons
    */
-  getRibbons(pkm: PkBase): string[];
+  getRibbons(pkm: PkBase): string[] {
+    const res = [];
+
+    for (let i = 0; i < 8; ++i) {
+      const names = this.ribbonNames[i];
+      let ribbonSet = pkm.ribbonData[i];
+
+      for (let j = 0; ribbonSet > 0; ++j, ribbonSet >>= 1) {
+        if (ribbonSet & 1 && names[j]) {
+          res.push(names[j]);
+        }
+      }
+    }
+
+    return res;
+  }
 
   /**
    * Get the name of the ball a Pokémon was captured in.
@@ -119,7 +206,9 @@ export interface LocalizationLanguage {
    * @param pkm The Pokémon whose ball to check
    * @return The ball name
    */
-  getBallName(ball: number): string;
+  getBallName(ball: number): string {
+    return this.items[ballToItem[ball]];
+  }
 
   /**
    * Get the description text of the characteristic a Pokémon has.
@@ -127,144 +216,23 @@ export interface LocalizationLanguage {
    * @param pkm The Pokémon whose characteristic to check
    * @return The characteristic description
    */
-  getCharacteristic(pkm: PkBase): string;
+  getCharacteristic(pkm: PkBase): string {
+    const ivs = [pkm.ivHp, pkm.ivAtk, pkm.ivDef, pkm.ivSpe, pkm.ivSpAtk, pkm.ivSpDef];
+    const max = Math.max.apply(Math, ivs);
+    const maxVals = ivs.map(iv => (iv === max ? max : undefined));
+
+    for (let index = pkm.pid % 6; ; index = (index + 1) % 6) {
+      if (maxVals[index] !== undefined) {
+        return this.characteristics[index][max % 5];
+      }
+    }
+  }
 }
 
-export interface Localization {
-  de: LocalizationLanguage;
-  en: LocalizationLanguage;
-  es: LocalizationLanguage;
-  fr: LocalizationLanguage;
-  it: LocalizationLanguage;
-  ja: LocalizationLanguage;
-  ko: LocalizationLanguage;
-  [lang: string]: LocalizationLanguage;
+export default function loadLocalization(language: string) {
+  if (langs.indexOf(language) === -1)
+    return Promise.reject(new Error('Language not supported.'));
+  return import('../localization/' + language + '/').then(function (local) {
+    return new LocalizationLanguage(language, local);
+  });
 }
-
-var names: Localization = <any>{};
-
-for (var i = 0; i < langs.length; ++i) {
-  var lang = (names[langs[i]] = <any>{});
-
-  lang.forms6 = forms6[langs[i]];
-  lang.forms7 = forms7[langs[i]];
-  lang.abilities = abilities[langs[i]];
-  lang.items = items[langs[i]];
-  lang.moves = moves[langs[i]];
-  lang.species = species[langs[i]];
-  lang.moves = moves[langs[i]];
-  lang.games = games[langs[i]];
-  lang.types = types[langs[i]];
-  lang.natures = natures[langs[i]];
-  lang.countries = countries[langs[i]];
-  lang.languageTags = languageTags[langs[i]];
-  lang.regions = regions[langs[i]];
-
-  lang.getLocation = (function(lang) {
-    return function(originGame, location) {
-      if (location === undefined) {
-        if (originGame.metLocation && originGame.gameVersion && originGame.eggLocation !== undefined) {
-          location = originGame.metLocation;
-          originGame = originGame.gameVersion;
-        } else {
-          return "";
-        }
-      }
-      if (originGame < 24) {
-        return locations[lang].bw2[location];
-      }
-      if (originGame > 23) {
-        return locations[lang].xy[location];
-      }
-      if (originGame > 27) {
-        return locations[lang].sm[location];
-      }
-    };
-  })(langs[i]);
-
-  lang.getEggLocation = (function(lang) {
-    return function(pkm) {
-      if (pkm.eggLocation === undefined || pkm.gameVersion === undefined) return "";
-      return lang.getLocation(pkm.gameVersion, pkm.eggLocation);
-    };
-  })(lang);
-
-  lang.getRibbons = (function(lang) {
-    var ribbonNames = ribbons[lang];
-    return function(pkx) {
-      var res = [];
-
-      for (var i = 0; i < 8; ++i) {
-        var names = ribbonNames[i];
-        var ribbonSet = pkx.ribbonData[i];
-
-        for (var j = 0; ribbonSet > 0; ++j, ribbonSet >>= 1) {
-          if (ribbonSet & 1 && names[j]) {
-            res.push(names[j]);
-          }
-        }
-      }
-
-      return res;
-    };
-  })(langs[i]);
-
-  lang.getBallName = (function(lang) {
-    return function(ball) {
-      var ballToItem = [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        492,
-        493,
-        494,
-        495,
-        496,
-        497,
-        498,
-        499,
-        576,
-        851,
-      ];
-
-      return lang.items[ballToItem[ball]];
-    };
-  })(lang);
-
-  lang.getCharacteristic = (function(lang) {
-    return function(pkx: PkBase) {
-      const ivs = [pkx.ivHp, pkx.ivAtk, pkx.ivDef, pkx.ivSpe, pkx.ivSpAtk, pkx.ivSpDef];
-      const max = Math.max.apply(Math, ivs);
-      const maxVals = ivs.map(iv => (iv === max ? max : undefined));
-
-      for (let index = pkx.pid % 6; ; index = (index + 1) % 6) {
-        if (maxVals[index] !== undefined) {
-          return characteristics[lang][index][max % 5];
-        }
-      }
-    };
-  })(langs[i]);
-}
-
-export var de = names["de"];
-export var en = names["en"];
-export var es = names["es"];
-export var fr = names["fr"];
-export var it = names["it"];
-export var ja = names["ja"];
-export var ko = names["ko"];
-export default names;
