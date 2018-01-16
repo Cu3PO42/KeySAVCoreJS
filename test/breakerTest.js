@@ -1,9 +1,9 @@
 var assert = require("assert");
 var KeyStoreMemory = require("./support/key-store-memory").default;
-var Breaker = require("../breaker");
-var setKeyStore = require("../key-store").setKeyStore;
-var SaveKey = require("../save-key").default;
-var BattleVideoKey = require("../battle-video-key").default;
+var Breaker = require("../lib/breaker");
+var setKeyStore = require("../lib/key-store").setKeyStore;
+var SaveKey = require("../lib/save-key").default;
+var BattleVideoKey = require("../lib/battle-video-key").default;
 var fs = require("fs");
 
 function bufferToUint8Array(buf) {

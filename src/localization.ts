@@ -1,20 +1,20 @@
 import PkBase from "./pkbase";
 
-var forms6 = require("./localization/forms6.json"),
-  forms7 = require("./localization/forms7.json"),
-  locations = require("./localization/locations.json"),
-  characteristics = require("./localization/characteristics.json"),
-  ribbons = require("./localization/ribbons.json"),
-  abilities = require("./localization/abilities.json"),
-  items = require("./localization/items.json"),
-  species = require("./localization/species.json"),
-  moves = require("./localization/moves.json"),
-  games = require("./localization/games.json"),
-  types = require("./localization/types.json"),
-  natures = require("./localization/natures.json"),
-  countries = require("./localization/countries.json"),
-  languageTags = require("./localization/languageTags.json"),
-  regions = require("./localization/regions.json");
+var forms6 = require("../localization/forms6.json"),
+  forms7 = require("../localization/forms7.json"),
+  locations = require("../localization/locations.json"),
+  characteristics = require("../localization/characteristics.json"),
+  ribbons = require("../localization/ribbons.json"),
+  abilities = require("../localization/abilities.json"),
+  items = require("../localization/items.json"),
+  species = require("../localization/species.json"),
+  moves = require("../localization/moves.json"),
+  games = require("../localization/games.json"),
+  types = require("../localization/types.json"),
+  natures = require("../localization/natures.json"),
+  countries = require("../localization/countries.json"),
+  languageTags = require("../localization/languageTags.json"),
+  regions = require("../localization/regions.json");
 
 var langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];
 

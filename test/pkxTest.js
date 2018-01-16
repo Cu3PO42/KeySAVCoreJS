@@ -1,7 +1,7 @@
 var assert = require("assert");
-var PkBase = require("../pkbase").default;
-var Pk6 = require("../pk6").default;
-var Pk7 = require("../pk7").default;
+var PkBase = require("../lib/pkbase").default;
+var Pk6 = require("../lib/pk6").default;
+var Pk7 = require("../lib/pk7").default;
 var fs = require("fs");
 
 function bufferToUint8Array(buf) {

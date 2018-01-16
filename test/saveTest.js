@@ -1,14 +1,14 @@
 var assert = require("assert");
-var SaveReaderDecrypted = require("../save-reader-decrypted").default;
-var SaveReaderEncrypted = require("../save-reader-encrypted").default;
-var SaveBreaker = require("../save-breaker");
-var PkBase = require("../pkbase").default;
-var Pk6 = require("../pk6").default;
+var SaveReaderDecrypted = require("../lib/save-reader-decrypted").default;
+var SaveReaderEncrypted = require("../lib/save-reader-encrypted").default;
+var SaveBreaker = require("../lib/save-breaker");
+var PkBase = require("../lib/pkbase").default;
+var Pk6 = require("../lib/pk6").default;
 var fs = require("fs");
 var KeyStoreMemory = require("./support/key-store-memory").default;
-var setKeyStore = require("../key-store").setKeyStore;
-var SaveKey = require("../save-key").default;
-var util = require("../util");
+var setKeyStore = require("../lib/key-store").setKeyStore;
+var SaveKey = require("../lib/save-key").default;
+var util = require("../lib/util");
 
 function bufferToUint8Array(buf) {
     return new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);

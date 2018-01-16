@@ -1,12 +1,12 @@
 var assert = require("assert");
-var Pk6 = require("../pk6").default;
-var BattleVideoBreaker = require("../battle-video-breaker");
+var Pk6 = require("../lib/pk6").default;
+var BattleVideoBreaker = require("../lib/battle-video-breaker");
 var fs = require("fs");
 var KeyStoreMemory = require("./support/key-store-memory").default;
-var setKeyStore = require("../key-store").setKeyStore;
-var BattleVideoKey = require("../battle-video-key").default;
-var BattleVideoReader = require("../battle-video-reader").default;
-var util = require("../util");
+var setKeyStore = require("../lib/key-store").setKeyStore;
+var BattleVideoKey = require("../lib/battle-video-key").default;
+var BattleVideoReader = require("../lib/battle-video-reader").default;
+var util = require("../lib/util");
 
 function bufferToUint8Array(buf) {
     return new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);

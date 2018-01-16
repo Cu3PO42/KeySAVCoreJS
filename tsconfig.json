@@ -12,9 +12,11 @@
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "lib"
     },
     "include": [
-      "*.ts"
+      "src/*.ts",
+      "typings/**/*.d.ts"
     ]
 }

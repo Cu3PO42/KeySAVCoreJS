@@ -9,3 +9,6 @@ test/data.zip
 !test/**/*.js
 !scripts/**/*.js
 doc/
+yarn-error.log
+lib/
+lib-module/

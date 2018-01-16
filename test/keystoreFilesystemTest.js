@@ -1,11 +1,11 @@
 var assert = require("assert");
-var KeyStoreFileSystem = require("../key-store-filesystem").default;
-var SaveKey = require("../save-key").default;
-var BattleVideoKey = require("../battle-video-key").default;
+var KeyStoreFileSystem = require("../lib/key-store-filesystem").default;
+var SaveKey = require("../lib/save-key").default;
+var BattleVideoKey = require("../lib/battle-video-key").default;
 var fs = require("fs-extra");
-var util = require("../util");
-var PkBase = require("../pkbase").default;
-var Pk6 = require("../pk6").default;
+var util = require("../lib/util");
+var PkBase = require("../lib/pkbase").default;
+var Pk6 = require("../lib/pk6").default;
 
 var mkdir = util.promisify(fs.mkdir),
     unlink = util.promisify(fs.unlink),

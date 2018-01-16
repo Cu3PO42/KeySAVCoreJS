@@ -1,5 +1,5 @@
 var assert = require("assert");
-var util = require("../util");
+var util = require("../lib/util");
 
 describe("util", function() {
     describe("#copy()", function() {
