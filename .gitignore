@@ -12,3 +12,4 @@ doc/
 yarn-error.log
 lib/
 lib-module/
+!localization/**/*.js

@@ -1,0 +1,434 @@
+{
+    "3": {
+        "1": "Mega"
+    },
+    "6": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "9": {
+        "1": "Mega"
+    },
+    "15": {
+        "1": "Mega"
+    },
+    "18": {
+        "1": "Mega"
+    },
+    "25": {
+        "1": "Rockstar",
+        "2": "Damigella",
+        "3": "Confetto",
+        "4": "Scienziata",
+        "5": "Wrestler",
+        "6": "Cosplay"
+    },
+    "65": {
+        "1": "Mega"
+    },
+    "80": {
+        "1": "Mega"
+    },
+    "94": {
+        "1": "Mega"
+    },
+    "115": {
+        "1": "Mega"
+    },
+    "127": {
+        "1": "Mega"
+    },
+    "130": {
+        "1": "Mega"
+    },
+    "142": {
+        "1": "Mega"
+    },
+    "150": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "172": {
+        "1": "Spunzorek"
+    },
+    "181": {
+        "1": "Mega"
+    },
+    "201": {
+        "0": "A",
+        "1": "B",
+        "2": "C",
+        "3": "D",
+        "4": "E",
+        "5": "F",
+        "6": "G",
+        "7": "H",
+        "8": "I",
+        "9": "J",
+        "10": "K",
+        "11": "L",
+        "12": "M",
+        "13": "N",
+        "14": "O",
+        "15": "P",
+        "16": "Q",
+        "17": "R",
+        "18": "S",
+        "19": "T",
+        "20": "U",
+        "21": "V",
+        "22": "W",
+        "23": "X",
+        "24": "Y",
+        "25": "Z",
+        "26": "!",
+        "27": "?"
+    },
+    "208": {
+        "1": "Mega"
+    },
+    "212": {
+        "1": "Mega"
+    },
+    "214": {
+        "1": "Mega"
+    },
+    "229": {
+        "1": "Mega"
+    },
+    "248": {
+        "1": "Mega"
+    },
+    "254": {
+        "1": "Mega"
+    },
+    "257": {
+        "1": "Mega"
+    },
+    "260": {
+        "1": "Mega"
+    },
+    "282": {
+        "1": "Mega"
+    },
+    "302": {
+        "1": "Mega"
+    },
+    "303": {
+        "1": "Mega"
+    },
+    "306": {
+        "1": "Mega"
+    },
+    "308": {
+        "1": "Mega"
+    },
+    "310": {
+        "1": "Mega"
+    },
+    "319": {
+        "1": "Mega"
+    },
+    "323": {
+        "1": "Mega"
+    },
+    "334": {
+        "1": "Mega"
+    },
+    "351": {
+        "1": "Forma Sole",
+        "2": "Forma Pioggia",
+        "3": "Forma Nuvola di Neve"
+    },
+    "354": {
+        "1": "Mega"
+    },
+    "359": {
+        "1": "Mega"
+    },
+    "362": {
+        "1": "Mega"
+    },
+    "373": {
+        "1": "Mega"
+    },
+    "376": {
+        "1": "Mega"
+    },
+    "380": {
+        "1": "Mega"
+    },
+    "381": {
+        "1": "Mega"
+    },
+    "382": {
+        "1": "Archeo"
+    },
+    "383": {
+        "1": "Archeo"
+    },
+    "384": {
+        "1": "Mega"
+    },
+    "386": {
+        "0": "Forma Normale",
+        "1": "Forma Attacco",
+        "2": "Forma Difesa",
+        "3": "Forma Velocità"
+    },
+    "412": {
+        "0": "Manto Pianta",
+        "1": "Manto Sabbia",
+        "2": "Manto Scarti"
+    },
+    "413": {
+        "0": "Manto Pianta",
+        "1": "Manto Sabbia",
+        "2": "Manto Scarti"
+    },
+    "421": {
+        "0": "Forma Nuvola",
+        "1": "Forma Splendore"
+    },
+    "422": {
+        "0": "Mare Ovest",
+        "1": "Mare Est"
+    },
+    "423": {
+        "0": "Mare Ovest",
+        "1": "Mare Est"
+    },
+    "428": {
+        "1": "Mega"
+    },
+    "445": {
+        "1": "Mega"
+    },
+    "448": {
+        "1": "Mega"
+    },
+    "460": {
+        "1": "Mega"
+    },
+    "475": {
+        "1": "Mega"
+    },
+    "479": {
+        "1": "Calore",
+        "2": "Lavaggio",
+        "3": "Gelo",
+        "4": "Vortice",
+        "5": "Taglio"
+    },
+    "487": {
+        "0": "Forma Alterata",
+        "1": "Forma Originale"
+    },
+    "492": {
+        "0": "Forma Terra",
+        "1": "Forma Cielo"
+    },
+    "493": {
+        "0": "Normale",
+        "1": "Lotta",
+        "2": "Volante",
+        "3": "Veleno",
+        "4": "Terra",
+        "5": "Roccia",
+        "6": "Coleottero",
+        "7": "Spettro",
+        "8": "Acciaio",
+        "9": "Fuoco",
+        "10": "Acqua",
+        "11": "Erba",
+        "12": "Elettro",
+        "13": "Psico",
+        "14": "Ghiaccio",
+        "15": "Drago",
+        "16": "Buio",
+        "17": "Folletto"
+    },
+    "531": {
+        "1": "Mega"
+    },
+    "550": {
+        "0": "Forma Linearossa",
+        "1": "Forma Lineablu"
+    },
+    "555": {
+        "0": "Forma Normalità",
+        "1": "Stato Zen"
+    },
+    "585": {
+        "0": "Forma Primavera",
+        "1": "Forma Estate",
+        "2": "Forma Autunno",
+        "3": "Forma Inverno"
+    },
+    "586": {
+        "0": "Forma Primavera",
+        "1": "Forma Estate",
+        "2": "Forma Autunno",
+        "3": "Forma Inverno"
+    },
+    "641": {
+        "0": "Forma Incarnazione",
+        "1": "Forma Totem"
+    },
+    "642": {
+        "0": "Forma Incarnazione",
+        "1": "Forma Totem"
+    },
+    "645": {
+        "0": "Forma Incarnazione",
+        "1": "Forma Totem"
+    },
+    "646": {
+        "1": "Nero",
+        "2": "Bianco"
+    },
+    "647": {
+        "0": "Forma Normale",
+        "1": "Forma Risoluta"
+    },
+    "648": {
+        "0": "Forma Canto",
+        "1": "Forma Danza"
+    },
+    "649": {
+        "1": "Idromodulo",
+        "2": "Voltmodulo",
+        "3": "Piromodulo",
+        "4": "Gelomodulo"
+    },
+    "664": {
+        "0": "Motivo Nevi Perenni",
+        "1": "Motivo Nordico",
+        "2": "Motivo Manto di Neve",
+        "3": "Motivo Continentale",
+        "4": "Motivo Prato",
+        "5": "Motivo Eleganza",
+        "6": "Motivo Giardinfiore",
+        "7": "Motivo Trendy",
+        "8": "Motivo Marino",
+        "9": "Motivo Arcipelago",
+        "10": "Motivo Deserto",
+        "11": "Motivo Sabbia",
+        "12": "Motivo Fluviale",
+        "13": "Motivo Pluviale",
+        "14": "Motivo Savana",
+        "15": "Motivo Solare",
+        "16": "Motivo Oceanico",
+        "17": "Motivo Giungla",
+        "18": "Motivo Sbarazzino",
+        "19": "Motivo Poké Ball"
+    },
+    "665": {
+        "0": "Motivo Nevi Perenni",
+        "1": "Motivo Nordico",
+        "2": "Motivo Manto di Neve",
+        "3": "Motivo Continentale",
+        "4": "Motivo Prato",
+        "5": "Motivo Eleganza",
+        "6": "Motivo Giardinfiore",
+        "7": "Motivo Trendy",
+        "8": "Motivo Marino",
+        "9": "Motivo Arcipelago",
+        "10": "Motivo Deserto",
+        "11": "Motivo Sabbia",
+        "12": "Motivo Fluviale",
+        "13": "Motivo Pluviale",
+        "14": "Motivo Savana",
+        "15": "Motivo Solare",
+        "16": "Motivo Oceanico",
+        "17": "Motivo Giungla",
+        "18": "Motivo Sbarazzino",
+        "19": "Motivo Poké Ball"
+    },
+    "666": {
+        "0": "Motivo Nevi Perenni",
+        "1": "Motivo Nordico",
+        "2": "Motivo Manto di Neve",
+        "3": "Motivo Continentale",
+        "4": "Motivo Prato",
+        "5": "Motivo Eleganza",
+        "6": "Motivo Giardinfiore",
+        "7": "Motivo Trendy",
+        "8": "Motivo Marino",
+        "9": "Motivo Arcipelago",
+        "10": "Motivo Deserto",
+        "11": "Motivo Sabbia",
+        "12": "Motivo Fluviale",
+        "13": "Motivo Pluviale",
+        "14": "Motivo Savana",
+        "15": "Motivo Solare",
+        "16": "Motivo Oceanico",
+        "17": "Motivo Giungla",
+        "18": "Motivo Sbarazzino",
+        "19": "Motivo Poké Ball"
+    },
+    "669": {
+        "0": "Fiore Rosso",
+        "1": "Fiore Giallo",
+        "2": "Fiore Arancione",
+        "3": "Fiore Blu",
+        "4": "Fiore Bianco"
+    },
+    "670": {
+        "0": "Fiore Rosso",
+        "1": "Fiore Giallo",
+        "2": "Fiore Arancione",
+        "3": "Fiore Blu",
+        "4": "Fiore Bianco",
+        "5": "Fiore Eterno"
+    },
+    "671": {
+        "0": "Fiore Rosso",
+        "1": "Fiore Giallo",
+        "2": "Fiore Arancione",
+        "3": "Fiore Blu",
+        "4": "Fiore Bianco"
+    },
+    "676": {
+        "0": "Forma Selvatica",
+        "1": "Taglio Cuore",
+        "2": "Taglio Stella",
+        "3": "Taglio Diamante",
+        "4": "Taglio Regina",
+        "5": "Taglio Kabuki",
+        "6": "Taglio Faraone",
+        "7": "Taglio Signorina",
+        "8": "Taglio Gentildonna",
+        "9": "Taglio Gentiluomo"
+    },
+    "678": {
+        "0": "Maschio",
+        "1": "Femmina"
+    },
+    "681": {
+        "0": "Forma Scudo",
+        "1": "Forma Spada"
+    },
+    "710": {
+        "0": "Mini",
+        "1": "Normale",
+        "2": "Grande",
+        "3": "Maxi"
+    },
+    "711": {
+        "0": "Mini",
+        "1": "Normale",
+        "2": "Grande",
+        "3": "Maxi"
+    },
+    "716": {
+        "0": "Modo Relax",
+        "1": "Modo Attivo"
+    },
+    "719": {
+        "1": "Mega"
+    },
+    "720": {
+        "1": "Libero"
+    }
+}

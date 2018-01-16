@@ -1,0 +1,590 @@
+{
+    "3": {
+        "1": "Mega"
+    },
+    "6": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "9": {
+        "1": "Mega"
+    },
+    "15": {
+        "1": "Mega"
+    },
+    "18": {
+        "1": "Mega"
+    },
+    "19": {
+        "1": "Alola"
+    },
+    "20": {
+        "1": "Alola",
+        "2": "Alola Grande"
+    },
+    "25": {
+        "1": "Kanto",
+        "2": "Hoenn",
+        "3": "Sinnoh",
+        "4": "Teselia",
+        "5": "Kalos",
+        "6": "Alola",
+        "7": "Gorra Compañero"
+    },
+    "26": {
+        "1": "Alola"
+    },
+    "27": {
+        "1": "Alola"
+    },
+    "28": {
+        "1": "Alola"
+    },
+    "37": {
+        "1": "Alola"
+    },
+    "38": {
+        "1": "Alola"
+    },
+    "50": {
+        "1": "Alola"
+    },
+    "51": {
+        "1": "Alola"
+    },
+    "52": {
+        "1": "Alola"
+    },
+    "53": {
+        "1": "Mega"
+    },
+    "65": {
+        "1": "Mega"
+    },
+    "74": {
+        "1": "Alola"
+    },
+    "75": {
+        "1": "Alola"
+    },
+    "76": {
+        "1": "Alola"
+    },
+    "80": {
+        "1": "Mega"
+    },
+    "88": {
+        "1": "Alola"
+    },
+    "89": {
+        "1": "Alola"
+    },
+    "94": {
+        "1": "Mega"
+    },
+    "103": {
+        "1": "Alola"
+    },
+    "105": {
+        "1": "Alola",
+        "2": "Alola Grande"
+    },
+    "115": {
+        "1": "Mega"
+    },
+    "127": {
+        "1": "Mega"
+    },
+    "130": {
+        "1": "Mega"
+    },
+    "142": {
+        "1": "Mega"
+    },
+    "150": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "181": {
+        "1": "Mega"
+    },
+    "201": {
+        "0": "A",
+        "1": "B",
+        "2": "C",
+        "3": "D",
+        "4": "E",
+        "5": "F",
+        "6": "G",
+        "7": "H",
+        "8": "I",
+        "9": "J",
+        "10": "K",
+        "11": "L",
+        "12": "M",
+        "13": "N",
+        "14": "O",
+        "15": "P",
+        "16": "Q",
+        "17": "R",
+        "18": "S",
+        "19": "T",
+        "20": "U",
+        "21": "V",
+        "22": "W",
+        "23": "X",
+        "24": "Y",
+        "25": "Z",
+        "26": "!",
+        "27": "?"
+    },
+    "208": {
+        "1": "Mega"
+    },
+    "212": {
+        "1": "Mega"
+    },
+    "214": {
+        "1": "Mega"
+    },
+    "229": {
+        "1": "Mega"
+    },
+    "248": {
+        "1": "Mega"
+    },
+    "254": {
+        "1": "Mega"
+    },
+    "257": {
+        "1": "Mega"
+    },
+    "260": {
+        "1": "Mega"
+    },
+    "282": {
+        "1": "Mega"
+    },
+    "302": {
+        "1": "Mega"
+    },
+    "303": {
+        "1": "Mega"
+    },
+    "306": {
+        "1": "Mega"
+    },
+    "308": {
+        "1": "Mega"
+    },
+    "310": {
+        "1": "Mega"
+    },
+    "319": {
+        "1": "Mega"
+    },
+    "323": {
+        "1": "Mega"
+    },
+    "334": {
+        "1": "Mega"
+    },
+    "351": {
+        "1": "Forma Sol",
+        "2": "Forma Lluvia",
+        "3": "Forma Nieve"
+    },
+    "354": {
+        "1": "Mega"
+    },
+    "359": {
+        "1": "Mega"
+    },
+    "362": {
+        "1": "Mega"
+    },
+    "373": {
+        "1": "Mega"
+    },
+    "376": {
+        "1": "Mega"
+    },
+    "380": {
+        "1": "Mega"
+    },
+    "381": {
+        "1": "Mega"
+    },
+    "382": {
+        "1": "Primigenio"
+    },
+    "383": {
+        "1": "Primigenio"
+    },
+    "384": {
+        "1": "Mega"
+    },
+    "386": {
+        "0": "Forma Normal",
+        "1": "Forma Ataque",
+        "2": "Forma Defensa",
+        "3": "Forma Velocidad"
+    },
+    "412": {
+        "0": "Tronco Planta",
+        "1": "Tronco Arena",
+        "2": "Tronco Basura"
+    },
+    "413": {
+        "0": "Tronco Planta",
+        "1": "Tronco Arena",
+        "2": "Tronco Basura"
+    },
+    "421": {
+        "0": "Forma Encapotado",
+        "1": "Forma Soleado"
+    },
+    "422": {
+        "0": "Mar Oeste",
+        "1": "Mar Este"
+    },
+    "423": {
+        "0": "Mar Oeste",
+        "1": "Mar Este"
+    },
+    "428": {
+        "1": "Mega"
+    },
+    "445": {
+        "1": "Mega"
+    },
+    "448": {
+        "1": "Mega"
+    },
+    "460": {
+        "1": "Mega"
+    },
+    "475": {
+        "1": "Mega"
+    },
+    "479": {
+        "1": "Calor",
+        "2": "Lavado",
+        "3": "Frío",
+        "4": "Ventilador",
+        "5": "Corte"
+    },
+    "487": {
+        "0": "Forma Modificada",
+        "1": "Forma Origen"
+    },
+    "492": {
+        "0": "Forma Tierra",
+        "1": "Forma Cielo"
+    },
+    "493": {
+        "0": "Normal",
+        "1": "Lucha",
+        "2": "Volador",
+        "3": "Veneno",
+        "4": "Tierra",
+        "5": "Roca",
+        "6": "Bicho",
+        "7": "Fantasma",
+        "8": "Acero",
+        "9": "Fuego",
+        "10": "Agua",
+        "11": "Planta",
+        "12": "Eléctrico",
+        "13": "Psíquico",
+        "14": "Hielo",
+        "15": "Dragón",
+        "16": "Siniestro",
+        "17": "Hada"
+    },
+    "531": {
+        "1": "Mega"
+    },
+    "550": {
+        "0": "Forma Raya Roja",
+        "1": "Forma Raya Azul"
+    },
+    "555": {
+        "0": "Modo Normal",
+        "1": "Modo Daruma"
+    },
+    "585": {
+        "0": "Forma Primavera",
+        "1": "Forma Verano",
+        "2": "Forma Otoño",
+        "3": "Forma Invierno"
+    },
+    "586": {
+        "0": "Forma Primavera",
+        "1": "Forma Verano",
+        "2": "Forma Otoño",
+        "3": "Forma Invierno"
+    },
+    "641": {
+        "0": "Forma Avatar",
+        "1": "Forma Tótem"
+    },
+    "642": {
+        "0": "Forma Avatar",
+        "1": "Forma Tótem"
+    },
+    "645": {
+        "0": "Forma Avatar",
+        "1": "Forma Tótem"
+    },
+    "646": {
+        "1": "Kyurem Negro",
+        "2": "Kyurem Blanco"
+    },
+    "647": {
+        "0": "Forma Habitual",
+        "1": "Forma Brío"
+    },
+    "648": {
+        "0": "Forma Lírica",
+        "1": "Forma Danza"
+    },
+    "649": {
+        "1": "HidroROM",
+        "2": "FulgoROM",
+        "3": "PiroROM",
+        "4": "CrioROM"
+    },
+    "658": {
+        "1": "Ash",
+        "2": "Activo"
+    },
+    "664": {
+        "0": "Motivo Polar",
+        "1": "Motivo Taiga",
+        "2": "Motivo Tundra",
+        "3": "Motivo Continental",
+        "4": "Motivo Vergel",
+        "5": "Motivo Oriental",
+        "6": "Motivo Floral",
+        "7": "Motivo Moderno",
+        "8": "Motivo Marino",
+        "9": "Motivo Isleño",
+        "10": "Motivo Estepa",
+        "11": "Motivo Desierto",
+        "12": "Motivo Oasis",
+        "13": "Motivo Monzón",
+        "14": "Motivo Pantano",
+        "15": "Motivo Solar",
+        "16": "Motivo Océano",
+        "17": "Motivo Jungla",
+        "18": "Motivo Fantasía",
+        "19": "Motivo Poké Ball"
+    },
+    "665": {
+        "0": "Motivo Polar",
+        "1": "Motivo Taiga",
+        "2": "Motivo Tundra",
+        "3": "Motivo Continental",
+        "4": "Motivo Vergel",
+        "5": "Motivo Oriental",
+        "6": "Motivo Floral",
+        "7": "Motivo Moderno",
+        "8": "Motivo Marino",
+        "9": "Motivo Isleño",
+        "10": "Motivo Estepa",
+        "11": "Motivo Desierto",
+        "12": "Motivo Oasis",
+        "13": "Motivo Monzón",
+        "14": "Motivo Pantano",
+        "15": "Motivo Solar",
+        "16": "Motivo Océano",
+        "17": "Motivo Jungla",
+        "18": "Motivo Fantasía",
+        "19": "Motivo Poké Ball"
+    },
+    "666": {
+        "0": "Motivo Polar",
+        "1": "Motivo Taiga",
+        "2": "Motivo Tundra",
+        "3": "Motivo Continental",
+        "4": "Motivo Vergel",
+        "5": "Motivo Oriental",
+        "6": "Motivo Floral",
+        "7": "Motivo Moderno",
+        "8": "Motivo Marino",
+        "9": "Motivo Isleño",
+        "10": "Motivo Estepa",
+        "11": "Motivo Desierto",
+        "12": "Motivo Oasis",
+        "13": "Motivo Monzón",
+        "14": "Motivo Pantano",
+        "15": "Motivo Solar",
+        "16": "Motivo Océano",
+        "17": "Motivo Jungla",
+        "18": "Motivo Fantasía",
+        "19": "Motivo Poké Ball"
+    },
+    "669": {
+        "0": "Flor Roja",
+        "1": "Flor Amarilla",
+        "2": "Flor Naranja",
+        "3": "Flor Azul",
+        "4": "Flor Blanca"
+    },
+    "670": {
+        "0": "Flor Roja",
+        "1": "Flor Amarilla",
+        "2": "Flor Naranja",
+        "3": "Flor Azul",
+        "4": "Flor Blanca",
+        "5": "Flor Eterna"
+    },
+    "671": {
+        "0": "Flor Roja",
+        "1": "Flor Amarilla",
+        "2": "Flor Naranja",
+        "3": "Flor Azul",
+        "4": "Flor Blanca"
+    },
+    "676": {
+        "0": "Forma Salvaje",
+        "1": "Corte Corazón",
+        "2": "Corte Estrella",
+        "3": "Corte Rombo",
+        "4": "Corte Aristocrático",
+        "5": "Corte Kabuki",
+        "6": "Corte Faraónico",
+        "7": "Corte Señorita",
+        "8": "Corte Dama",
+        "9": "Corte Caballero"
+    },
+    "678": {
+        "0": "Macho",
+        "1": "Hembra"
+    },
+    "681": {
+        "0": "Forma Escudo",
+        "1": "Forma Filo"
+    },
+    "710": {
+        "0": "Tamaño Pequeño",
+        "1": "Tamaño Normal",
+        "2": "Tamaño Grande",
+        "3": "Tamaño Extragrande"
+    },
+    "711": {
+        "0": "Tamaño Pequeño",
+        "1": "Tamaño Normal",
+        "2": "Tamaño Grande",
+        "3": "Tamaño Extragrande"
+    },
+    "716": {
+        "0": "Modo Relajado",
+        "1": "Modo Activo"
+    },
+    "718": {
+        "0": "50%",
+        "1": "10%",
+        "2": "10%-C",
+        "3": "50%-C",
+        "4": "100%-C"
+    },
+    "719": {
+        "1": "Mega"
+    },
+    "720": {
+        "1": "Desatado"
+    },
+    "735": {
+        "1": "Grande"
+    },
+    "738": {
+        "1": "Grande"
+    },
+    "741": {
+        "0": "Apasionado",
+        "1": "Animado",
+        "2": "Plácido",
+        "3": "Refinado"
+    },
+    "743": {
+        "1": "Grande"
+    },
+    "744": {
+        "1": "Forma Crepuscular"
+    },
+    "745": {
+        "0": "Diurna",
+        "1": "Nocturna",
+        "2": "Forma Crepuscular"
+    },
+    "746": {
+        "1": "Grande"
+    },
+    "752": {
+        "1": "Grande"
+    },
+    "754": {
+        "1": "Grande"
+    },
+    "758": {
+        "1": "Grande"
+    },
+    "773": {
+        "0": "Normal",
+        "1": "Lucha",
+        "2": "Volador",
+        "3": "Veneno",
+        "4": "Tierra",
+        "5": "Roca",
+        "6": "Bicho",
+        "7": "Fantasma",
+        "8": "Acero",
+        "9": "Fuego",
+        "10": "Agua",
+        "11": "Planta",
+        "12": "Eléctrico",
+        "13": "Psíquico",
+        "14": "Hielo",
+        "15": "Dragón",
+        "16": "Siniestro",
+        "17": "Hada"
+    },
+    "774": {
+        "0": "M-Rojo",
+        "1": "M-Naranja",
+        "2": "M-Amarillo",
+        "3": "M-Verde",
+        "4": "M-Azul",
+        "5": "M-Añil",
+        "6": "M-Violeta",
+        "7": "N-Rojo",
+        "8": "N-Naranja",
+        "9": "N-Amarillo",
+        "10": "N-Verde",
+        "11": "N-Azul",
+        "12": "N-Añil",
+        "13": "N-Violeta"
+    },
+    "777": {
+        "1": "Grande"
+    },
+    "778": {
+        "0": "Encubierta",
+        "1": "Descubierta",
+        "2": "Encubierta Grande",
+        "3": "Descubierta Grande"
+    },
+    "784": {
+        "1": "Grande"
+    },
+    "800": {
+        "1": "Melena Crepuscular",
+        "2": "Alas del Alba",
+        "3": "Ultra"
+    },
+    "801": {
+        "1": "Vetusto"
+    }
+}

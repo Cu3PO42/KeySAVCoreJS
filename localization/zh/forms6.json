@@ -1,0 +1,434 @@
+{
+    "3": {
+        "1": "Mega"
+    },
+    "6": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "9": {
+        "1": "Mega"
+    },
+    "15": {
+        "1": "Mega"
+    },
+    "18": {
+        "1": "Mega"
+    },
+    "25": {
+        "1": "Rock Star",
+        "2": "Belle",
+        "3": "Pop Star",
+        "4": "Ph.D.",
+        "5": "Libre",
+        "6": "Cosplay"
+    },
+    "65": {
+        "1": "Mega"
+    },
+    "80": {
+        "1": "Mega"
+    },
+    "94": {
+        "1": "Mega"
+    },
+    "115": {
+        "1": "Mega"
+    },
+    "127": {
+        "1": "Mega"
+    },
+    "130": {
+        "1": "Mega"
+    },
+    "142": {
+        "1": "Mega"
+    },
+    "150": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "172": {
+        "1": "Spiky-eared"
+    },
+    "181": {
+        "1": "Mega"
+    },
+    "201": {
+        "0": "A",
+        "1": "B",
+        "2": "C",
+        "3": "D",
+        "4": "E",
+        "5": "F",
+        "6": "G",
+        "7": "H",
+        "8": "I",
+        "9": "J",
+        "10": "K",
+        "11": "L",
+        "12": "M",
+        "13": "N",
+        "14": "O",
+        "15": "P",
+        "16": "Q",
+        "17": "R",
+        "18": "S",
+        "19": "T",
+        "20": "U",
+        "21": "V",
+        "22": "W",
+        "23": "X",
+        "24": "Y",
+        "25": "Z",
+        "26": "!",
+        "27": "?"
+    },
+    "208": {
+        "1": "Mega"
+    },
+    "212": {
+        "1": "Mega"
+    },
+    "214": {
+        "1": "Mega"
+    },
+    "229": {
+        "1": "Mega"
+    },
+    "248": {
+        "1": "Mega"
+    },
+    "254": {
+        "1": "Mega"
+    },
+    "257": {
+        "1": "Mega"
+    },
+    "260": {
+        "1": "Mega"
+    },
+    "282": {
+        "1": "Mega"
+    },
+    "302": {
+        "1": "Mega"
+    },
+    "303": {
+        "1": "Mega"
+    },
+    "306": {
+        "1": "Mega"
+    },
+    "308": {
+        "1": "Mega"
+    },
+    "310": {
+        "1": "Mega"
+    },
+    "319": {
+        "1": "Mega"
+    },
+    "323": {
+        "1": "Mega"
+    },
+    "334": {
+        "1": "Mega"
+    },
+    "351": {
+        "1": "Sunny Form",
+        "2": "Rainy Form",
+        "3": "Snowy Form"
+    },
+    "354": {
+        "1": "Mega"
+    },
+    "359": {
+        "1": "Mega"
+    },
+    "362": {
+        "1": "Mega"
+    },
+    "373": {
+        "1": "Mega"
+    },
+    "376": {
+        "1": "Mega"
+    },
+    "380": {
+        "1": "Mega"
+    },
+    "381": {
+        "1": "Mega"
+    },
+    "382": {
+        "1": "Primal"
+    },
+    "383": {
+        "1": "Primal"
+    },
+    "384": {
+        "1": "Mega"
+    },
+    "386": {
+        "0": "Normal Forme",
+        "1": "Attack Forme",
+        "2": "Defense Forme",
+        "3": "Speed Forme"
+    },
+    "412": {
+        "0": "Plant Cloak",
+        "1": "Sandy Cloak",
+        "2": "Trash Cloak"
+    },
+    "413": {
+        "0": "Plant Cloak",
+        "1": "Sandy Cloak",
+        "2": "Trash Cloak"
+    },
+    "421": {
+        "0": "Overcast Form",
+        "1": "Sunshine Form"
+    },
+    "422": {
+        "0": "West Sea",
+        "1": "East Sea"
+    },
+    "423": {
+        "0": "West Sea",
+        "1": "East Sea"
+    },
+    "428": {
+        "1": "Mega"
+    },
+    "445": {
+        "1": "Mega"
+    },
+    "448": {
+        "1": "Mega"
+    },
+    "460": {
+        "1": "Mega"
+    },
+    "475": {
+        "1": "Mega"
+    },
+    "479": {
+        "1": "Heat",
+        "2": "Wash",
+        "3": "Frost",
+        "4": "Fan",
+        "5": "Mow"
+    },
+    "487": {
+        "0": "Altered Forme",
+        "1": "Origin Forme"
+    },
+    "492": {
+        "0": "Land Forme",
+        "1": "Sky Forme"
+    },
+    "493": {
+        "0": "Normal",
+        "1": "Fighting",
+        "2": "Flying",
+        "3": "Poison",
+        "4": "Ground",
+        "5": "Rock",
+        "6": "Bug",
+        "7": "Ghost",
+        "8": "Steel",
+        "9": "Fire",
+        "10": "Water",
+        "11": "Grass",
+        "12": "Electric",
+        "13": "Psychic",
+        "14": "Ice",
+        "15": "Dragon",
+        "16": "Dark",
+        "17": "Fairy"
+    },
+    "531": {
+        "1": "Mega"
+    },
+    "550": {
+        "0": "Red-Striped Form",
+        "1": "Blue-Striped Form"
+    },
+    "555": {
+        "0": "Standard Mode",
+        "1": "Zen Mode"
+    },
+    "585": {
+        "0": "Spring Form",
+        "1": "Summer Form",
+        "2": "Autumn Form",
+        "3": "Winter Form"
+    },
+    "586": {
+        "0": "Spring Form",
+        "1": "Summer Form",
+        "2": "Autumn Form",
+        "3": "Winter Form"
+    },
+    "641": {
+        "0": "Incarnate Forme",
+        "1": "Therian Forme"
+    },
+    "642": {
+        "0": "Incarnate Forme",
+        "1": "Therian Forme"
+    },
+    "645": {
+        "0": "Incarnate Forme",
+        "1": "Therian Forme"
+    },
+    "646": {
+        "1": "Black",
+        "2": "White"
+    },
+    "647": {
+        "0": "Ordinary Form",
+        "1": "Resolute Form"
+    },
+    "648": {
+        "0": "Aria Forme",
+        "1": "Pirouette Forme"
+    },
+    "649": {
+        "1": "Douse Drive",
+        "2": "Shock Drive",
+        "3": "Burn Drive",
+        "4": "Chill Drive"
+    },
+    "664": {
+        "0": "Icy Snow Pattern",
+        "1": "Polar Pattern",
+        "2": "Tundra Pattern",
+        "3": "Continental Pattern",
+        "4": "Garden Pattern",
+        "5": "Elegant Pattern",
+        "6": "Meadow Pattern",
+        "7": "Modern Pattern",
+        "8": "Marine Pattern",
+        "9": "Archipelago Pattern",
+        "10": "High Plains Pattern",
+        "11": "Sandstorm Pattern",
+        "12": "River Pattern",
+        "13": "Monsoon Pattern",
+        "14": "Savanna Pattern",
+        "15": "Sun Pattern",
+        "16": "Ocean Pattern",
+        "17": "Jungle Pattern",
+        "18": "Fancy Pattern",
+        "19": "Poké Ball Pattern"
+    },
+    "665": {
+        "0": "Icy Snow Pattern",
+        "1": "Polar Pattern",
+        "2": "Tundra Pattern",
+        "3": "Continental Pattern",
+        "4": "Garden Pattern",
+        "5": "Elegant Pattern",
+        "6": "Meadow Pattern",
+        "7": "Modern Pattern",
+        "8": "Marine Pattern",
+        "9": "Archipelago Pattern",
+        "10": "High Plains Pattern",
+        "11": "Sandstorm Pattern",
+        "12": "River Pattern",
+        "13": "Monsoon Pattern",
+        "14": "Savanna Pattern",
+        "15": "Sun Pattern",
+        "16": "Ocean Pattern",
+        "17": "Jungle Pattern",
+        "18": "Fancy Pattern",
+        "19": "Poké Ball Pattern"
+    },
+    "666": {
+        "0": "Icy Snow Pattern",
+        "1": "Polar Pattern",
+        "2": "Tundra Pattern",
+        "3": "Continental Pattern",
+        "4": "Garden Pattern",
+        "5": "Elegant Pattern",
+        "6": "Meadow Pattern",
+        "7": "Modern Pattern",
+        "8": "Marine Pattern",
+        "9": "Archipelago Pattern",
+        "10": "High Plains Pattern",
+        "11": "Sandstorm Pattern",
+        "12": "River Pattern",
+        "13": "Monsoon Pattern",
+        "14": "Savanna Pattern",
+        "15": "Sun Pattern",
+        "16": "Ocean Pattern",
+        "17": "Jungle Pattern",
+        "18": "Fancy Pattern",
+        "19": "Poké Ball Pattern"
+    },
+    "669": {
+        "0": "Red Flower",
+        "1": "Yellow Flower",
+        "2": "Orange Flower",
+        "3": "Blue Flower",
+        "4": "White Flower"
+    },
+    "670": {
+        "0": "Red Flower",
+        "1": "Yellow Flower",
+        "2": "Orange Flower",
+        "3": "Blue Flower",
+        "4": "White Flower",
+        "5": "Eternal Flower"
+    },
+    "671": {
+        "0": "Red Flower",
+        "1": "Yellow Flower",
+        "2": "Orange Flower",
+        "3": "Blue Flower",
+        "4": "White Flower"
+    },
+    "676": {
+        "0": "Natural Form",
+        "1": "Heart Trim",
+        "2": "Star Trim",
+        "3": "Diamond Trim",
+        "4": "La Reine Trim",
+        "5": "Kabuki Trim",
+        "6": "Pharaoh Trim",
+        "7": "Debutante Trim",
+        "8": "Matron Trim",
+        "9": "Dandy Trim"
+    },
+    "678": {
+        "0": "Male",
+        "1": "Female"
+    },
+    "681": {
+        "0": "Shield Forme",
+        "1": "Blade Forme"
+    },
+    "710": {
+        "0": "Small Size",
+        "1": "Average Size",
+        "2": "Large Size",
+        "3": "Super Size"
+    },
+    "711": {
+        "0": "Small Size",
+        "1": "Average Size",
+        "2": "Large Size",
+        "3": "Super Size"
+    },
+    "716": {
+        "0": "Neutral Mode",
+        "1": "Active Mode"
+    },
+    "719": {
+        "1": "Mega"
+    },
+    "720": {
+        "1": "Unbound"
+    }
+}

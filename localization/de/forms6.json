@@ -1,0 +1,434 @@
+{
+    "3": {
+        "1": "Mega"
+    },
+    "6": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "9": {
+        "1": "Mega"
+    },
+    "15": {
+        "1": "Mega"
+    },
+    "18": {
+        "1": "Mega"
+    },
+    "25": {
+        "1": "Rocker",
+        "2": "Damen",
+        "3": "Star",
+        "4": "Professor",
+        "5": "Wrestler",
+        "6": "Cosplay"
+    },
+    "65": {
+        "1": "Mega"
+    },
+    "80": {
+        "1": "Mega"
+    },
+    "94": {
+        "1": "Mega"
+    },
+    "115": {
+        "1": "Mega"
+    },
+    "127": {
+        "1": "Mega"
+    },
+    "130": {
+        "1": "Mega"
+    },
+    "142": {
+        "1": "Mega"
+    },
+    "150": {
+        "1": "Mega X",
+        "2": "Mega Y"
+    },
+    "172": {
+        "1": "Strubbelohr"
+    },
+    "181": {
+        "1": "Mega"
+    },
+    "201": {
+        "0": "A",
+        "1": "B",
+        "2": "C",
+        "3": "D",
+        "4": "E",
+        "5": "F",
+        "6": "G",
+        "7": "H",
+        "8": "I",
+        "9": "J",
+        "10": "K",
+        "11": "L",
+        "12": "M",
+        "13": "N",
+        "14": "O",
+        "15": "P",
+        "16": "Q",
+        "17": "R",
+        "18": "S",
+        "19": "T",
+        "20": "U",
+        "21": "V",
+        "22": "W",
+        "23": "X",
+        "24": "Y",
+        "25": "Z",
+        "26": "!",
+        "27": "?"
+    },
+    "208": {
+        "1": "Mega"
+    },
+    "212": {
+        "1": "Mega"
+    },
+    "214": {
+        "1": "Mega"
+    },
+    "229": {
+        "1": "Mega"
+    },
+    "248": {
+        "1": "Mega"
+    },
+    "254": {
+        "1": "Mega"
+    },
+    "257": {
+        "1": "Mega"
+    },
+    "260": {
+        "1": "Mega"
+    },
+    "282": {
+        "1": "Mega"
+    },
+    "302": {
+        "1": "Mega"
+    },
+    "303": {
+        "1": "Mega"
+    },
+    "306": {
+        "1": "Mega"
+    },
+    "308": {
+        "1": "Mega"
+    },
+    "310": {
+        "1": "Mega"
+    },
+    "319": {
+        "1": "Mega"
+    },
+    "323": {
+        "1": "Mega"
+    },
+    "334": {
+        "1": "Mega"
+    },
+    "351": {
+        "1": "Sonnenform",
+        "2": "Regenform",
+        "3": "Schneeform"
+    },
+    "354": {
+        "1": "Mega"
+    },
+    "359": {
+        "1": "Mega"
+    },
+    "362": {
+        "1": "Mega"
+    },
+    "373": {
+        "1": "Mega"
+    },
+    "376": {
+        "1": "Mega"
+    },
+    "380": {
+        "1": "Mega"
+    },
+    "381": {
+        "1": "Mega"
+    },
+    "382": {
+        "1": "Proto"
+    },
+    "383": {
+        "1": "Proto"
+    },
+    "384": {
+        "1": "Mega"
+    },
+    "386": {
+        "0": "Normalform",
+        "1": "Angriffsform",
+        "2": "Verteidigungsform",
+        "3": "Initiativeform"
+    },
+    "412": {
+        "0": "Pflanzenumhang",
+        "1": "Sandumhang",
+        "2": "Lumpenumhang"
+    },
+    "413": {
+        "0": "Pflanzenumhang",
+        "1": "Sandumhang",
+        "2": "Lumpenumhang"
+    },
+    "421": {
+        "0": "Wolkenform",
+        "1": "Sonnenform"
+    },
+    "422": {
+        "0": "Westliches Meer",
+        "1": "Östliches Meer"
+    },
+    "423": {
+        "0": "Westliches Meer",
+        "1": "Östliches Meer"
+    },
+    "428": {
+        "1": "Mega"
+    },
+    "445": {
+        "1": "Mega"
+    },
+    "448": {
+        "1": "Mega"
+    },
+    "460": {
+        "1": "Mega"
+    },
+    "475": {
+        "1": "Mega"
+    },
+    "479": {
+        "1": "Hitze",
+        "2": "Wasch",
+        "3": "Frost",
+        "4": "Wirbel",
+        "5": "Schneid"
+    },
+    "487": {
+        "0": "Wandelform",
+        "1": "Urform"
+    },
+    "492": {
+        "0": "Landform",
+        "1": "Zenitform"
+    },
+    "493": {
+        "0": "Normal",
+        "1": "Kampf",
+        "2": "Flug",
+        "3": "Gift",
+        "4": "Boden",
+        "5": "Gestein",
+        "6": "Käfer",
+        "7": "Geist",
+        "8": "Stahl",
+        "9": "Feuer",
+        "10": "Wasser",
+        "11": "Pflanze",
+        "12": "Elektro",
+        "13": "Psycho",
+        "14": "Eis",
+        "15": "Drache",
+        "16": "Unlicht",
+        "17": "Fee"
+    },
+    "531": {
+        "1": "Mega"
+    },
+    "550": {
+        "0": "Rotlinige Form",
+        "1": "Blaulinige Form"
+    },
+    "555": {
+        "0": "Normalmodus",
+        "1": "Trance-Modus"
+    },
+    "585": {
+        "0": "Frühlingsform",
+        "1": "Sommerform",
+        "2": "Herbstform",
+        "3": "Winterform"
+    },
+    "586": {
+        "0": "Frühlingsform",
+        "1": "Sommerform",
+        "2": "Herbstform",
+        "3": "Winterform"
+    },
+    "641": {
+        "0": "Inkarnationsform",
+        "1": "Tiergeistform"
+    },
+    "642": {
+        "0": "Inkarnationsform",
+        "1": "Tiergeistform"
+    },
+    "645": {
+        "0": "Inkarnationsform",
+        "1": "Tiergeistform"
+    },
+    "646": {
+        "1": "Schwarz",
+        "2": "Weiß"
+    },
+    "647": {
+        "0": "Standardform",
+        "1": "Resolutform"
+    },
+    "648": {
+        "0": "Gesangsform",
+        "1": "Tanzform"
+    },
+    "649": {
+        "1": "Aquamodul",
+        "2": "Blitzmodul",
+        "3": "Flammenmodul",
+        "4": "Gefriermodul"
+    },
+    "664": {
+        "0": "Frostmuster",
+        "1": "Schneefeldmuster",
+        "2": "Flockenmuster",
+        "3": "Kontinentalmuster",
+        "4": "Ziergartenmuster",
+        "5": "Prunkmuster",
+        "6": "Blumenmeermuster",
+        "7": "Innovationsmuster",
+        "8": "Aquamarinmuster",
+        "9": "Archipelmuster",
+        "10": "Dürremuster",
+        "11": "Sandmuster",
+        "12": "Flussdeltamuster",
+        "13": "Monsunmuster",
+        "14": "Savannenmuster",
+        "15": "Sonnenmuster",
+        "16": "Ozeanmuster",
+        "17": "Dschungelmuster",
+        "18": "Fantasiemuster",
+        "19": "Pokéball-Muster"
+    },
+    "665": {
+        "0": "Frostmuster",
+        "1": "Schneefeldmuster",
+        "2": "Flockenmuster",
+        "3": "Kontinentalmuster",
+        "4": "Ziergartenmuster",
+        "5": "Prunkmuster",
+        "6": "Blumenmeermuster",
+        "7": "Innovationsmuster",
+        "8": "Aquamarinmuster",
+        "9": "Archipelmuster",
+        "10": "Dürremuster",
+        "11": "Sandmuster",
+        "12": "Flussdeltamuster",
+        "13": "Monsunmuster",
+        "14": "Savannenmuster",
+        "15": "Sonnenmuster",
+        "16": "Ozeanmuster",
+        "17": "Dschungelmuster",
+        "18": "Fantasiemuster",
+        "19": "Pokéball-Muster"
+    },
+    "666": {
+        "0": "Frostmuster",
+        "1": "Schneefeldmuster",
+        "2": "Flockenmuster",
+        "3": "Kontinentalmuster",
+        "4": "Ziergartenmuster",
+        "5": "Prunkmuster",
+        "6": "Blumenmeermuster",
+        "7": "Innovationsmuster",
+        "8": "Aquamarinmuster",
+        "9": "Archipelmuster",
+        "10": "Dürremuster",
+        "11": "Sandmuster",
+        "12": "Flussdeltamuster",
+        "13": "Monsunmuster",
+        "14": "Savannenmuster",
+        "15": "Sonnenmuster",
+        "16": "Ozeanmuster",
+        "17": "Dschungelmuster",
+        "18": "Fantasiemuster",
+        "19": "Pokéball-Muster"
+    },
+    "669": {
+        "0": "Rotblütler",
+        "1": "Gelbblütler",
+        "2": "Orangeblütler",
+        "3": "Blaublütler",
+        "4": "Weißblütler"
+    },
+    "670": {
+        "0": "Rotblütler",
+        "1": "Gelbblütler",
+        "2": "Orangeblütler",
+        "3": "Blaublütler",
+        "4": "Weißblütler",
+        "5": "Ewigblütler"
+    },
+    "671": {
+        "0": "Rotblütler",
+        "1": "Gelbblütler",
+        "2": "Orangeblütler",
+        "3": "Blaublütler",
+        "4": "Weißblütler"
+    },
+    "676": {
+        "0": "Zottelform",
+        "1": "Herzchenschnitt",
+        "2": "Sternchenschnitt",
+        "3": "Diamantenschnitt",
+        "4": "Königinnenschnitt",
+        "5": "Kabuki-Schnitt",
+        "6": "Herrscherschnitt",
+        "7": "Fräuleinschnitt",
+        "8": "Damenschnitt",
+        "9": "Kavaliersschnitt"
+    },
+    "678": {
+        "0": "Männlich",
+        "1": "Weiblich"
+    },
+    "681": {
+        "0": "Schildform",
+        "1": "Klingenform"
+    },
+    "710": {
+        "0": "Größe S",
+        "1": "Größe M",
+        "2": "Größe L",
+        "3": "Größe XL"
+    },
+    "711": {
+        "0": "Größe S",
+        "1": "Größe M",
+        "2": "Größe L",
+        "3": "Größe XL"
+    },
+    "716": {
+        "0": "Ruhe-Modus",
+        "1": "Aktiv-Modus"
+    },
+    "719": {
+        "1": "Mega"
+    },
+    "720": {
+        "1": "Entfesselt"
+    }
+}
