@@ -7,18 +7,21 @@
   "scripts": {
     "test": "mocha",
     "build": "tsc --pretty && tsc --pretty -p tsconfig.module.json",
-    "generate-documentation":
-      "typedoc --mode file --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --theme minimal --name KeySAVCore --out doc *.ts",
+    "generate-documentation": "typedoc --mode file --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --theme minimal --name KeySAVCore --out doc *.ts",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/*.{ts}": ["prettier --write", "git add"]
+    "src/*.{ts}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "author": "Cu3PO42",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^9.3.0",
+    "fake-indexeddb": "^2.0.3",
     "fs-extra": "^5.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",

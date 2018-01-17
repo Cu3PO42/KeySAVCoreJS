@@ -361,8 +361,9 @@ export default class SaveKey {
   /**
    * Persist this key to the key store. This should be called everytime the key is updated.
    */
-  public persist() {
+  public persist(): Promise<void> {
     if (this.keyStore)
-      this.keyStore.persistSaveKey(this);
+      return this.keyStore.persistSaveKey(this);
+    return Promise.resolve();
   }
 }

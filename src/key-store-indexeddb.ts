@@ -7,8 +7,8 @@ export default class KeyStoreIndexedDB implements KeyStore {
   private dbErr: Event;
   private waiter: Promise<void>;
 
-  private openSavKeys: { [stamp: string]: SaveKey };
-  private openBvKeys: { [stamp: string]: BattleVideoKey };
+  private openSavKeys: { [stamp: string]: SaveKey } = {};
+  private openBvKeys: { [stamp: string]: BattleVideoKey } = {};
   
   constructor() {
       const openRequest = indexedDB.open("keysave-keys", 1);
@@ -81,7 +81,7 @@ export default class KeyStoreIndexedDB implements KeyStore {
     const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;    
     const keyStore: KeyStore = this;
 
-    const transaction = this.db.transaction(storeName, 'readonly');
+    const transaction = this.db.transaction(storeName, 'readwrite');
     const store = transaction.objectStore(storeName);
     const request = store.put(key.keyData, key.stamp);
     return new Promise((resolve, reject) => {
@@ -137,7 +137,7 @@ export default class KeyStoreIndexedDB implements KeyStore {
     if (storedKey !== key)
       throw createNotStoredKeyError(key.stamp, !kind);
 
-    const transaction = this.db.transaction(storeName, 'readonly');
+    const transaction = this.db.transaction(storeName, 'readwrite');
     const store = transaction.objectStore(storeName);
     const request = store.put(key.keyData, key.stamp);
     return new Promise((resolve, reject) => {
