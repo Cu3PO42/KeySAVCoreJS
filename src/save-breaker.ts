@@ -91,6 +91,7 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     reader1.scanSlots();
     reader2 = new SaveReaderEncrypted(break2, key);
     reader2.scanSlots();
+    key.persist();
     // We already have a key.
     return { result: 0 };
   }
@@ -106,6 +107,7 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
     reader1.scanSlots();
     reader2 = new SaveReaderEncrypted(break2, key);
     reader2.scanSlots();
+    key.persist();
     // The saves are seperated by more than one save. Couldn't upgrade to a new style key.
     return {
       result: 1,
@@ -128,6 +130,7 @@ function upgradeKey(key: SaveKey, break1: Uint8Array, break2: Uint8Array): { res
   reader1.scanSlots();
   reader2 = new SaveReaderEncrypted(break2, key);
   reader2.scanSlots();
+  key.persist();
 
   // Successfully upgraded to a new style key.
   return {

@@ -141,6 +141,7 @@ export async function breakKey(
 
   const unlockedBefore = key.workingKeys;
   key.mergeKey(newKey);
+  key.persist();
   const unlockedAfter = key.workingKeys;
   return { upgraded: unlockedBefore.some((e, i) => !e && unlockedAfter[i]), workingKeys: unlockedAfter };
 }
