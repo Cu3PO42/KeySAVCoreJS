@@ -132,6 +132,7 @@ export default class BattleVideoKey {
    * Persist this key to the key store. This should be called everytime the key is updated.
    */
   public persist() {
-    this.keyStore.persistBvKey(this);
+    if (this.keyStore)
+      this.keyStore.persistBvKey(this);
   }
 }

@@ -362,6 +362,7 @@ export default class SaveKey {
    * Persist this key to the key store. This should be called everytime the key is updated.
    */
   public persist() {
-    this.keyStore.persistSaveKey(this);
+    if (this.keyStore)
+      this.keyStore.persistSaveKey(this);
   }
 }
