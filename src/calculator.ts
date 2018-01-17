@@ -10,7 +10,7 @@ export type Stats = {
     spAtk: number;
     spDef: number;
     spe: number;
-  },
+  };
   expGrowth: number;
 }[][];
 
@@ -24,21 +24,20 @@ export interface StatsMap {
 export class Calculator {
   /**
    * Create a new Calculator for the given generations with the given stat base data.
-   * 
+   *
    * @param stats The base stats for all Pokémon in the supported generations.
    */
   constructor(private stats: StatsMap) {}
 
   /**
    * Get the base stat date for a given Pokémon if its generation is supported. Throw an error otherwise.
-   * 
-   * @param pkm The Pokémon to get stats for 
+   *
+   * @param pkm The Pokémon to get stats for
    */
   private getStats(pkm: PkBase) {
     const genStats = this.stats[pkm.version];
-    if (!genStats)
-      throw new Error("This calculator is for a different generation of Pokémon.");
-    const speciesStats = genStats[pkm.species-1];
+    if (!genStats) throw new Error("This calculator is for a different generation of Pokémon.");
+    const speciesStats = genStats[pkm.species - 1];
     return speciesStats[Math.min(speciesStats.length - 1, pkm.form)];
   }
 
@@ -60,7 +59,7 @@ export class Calculator {
    */
   hp(pkm: PkBase) {
     const stats = this.getStats(pkm).baseStats;
-    return stats.hp === 1 
+    return stats.hp === 1
       ? 1
       : Math.floor((pkm.ivHp + 2 * stats.hp + Math.floor(pkm.evHp / 4) + 100) * this.level(pkm) / 100) + 10;
   }
@@ -132,19 +131,19 @@ export class Calculator {
 }
 
 export function loadGen6Stats() {
-  return import("../stats/stats6.json").then(function (stats) {
+  return import("../stats/stats6.json").then(function(stats) {
     return new Calculator({ 6: stats });
   });
 }
 
 export function loadGen7Stats() {
-  return import("../stats/stats7.json").then(function (stats) {
+  return import("../stats/stats7.json").then(function(stats) {
     return new Calculator({ 6: stats });
   });
 }
 
 export function loadAllStats() {
-  return Promise.all([import("../stats/stats6.json"), import("../stats/stats7.json")]).then(function ([stats6, stats7]) {
+  return Promise.all([import("../stats/stats6.json"), import("../stats/stats7.json")]).then(function([stats6, stats7]) {
     return new Calculator({ 6: stats6, 7: stats7 });
-  })
+  });
 }

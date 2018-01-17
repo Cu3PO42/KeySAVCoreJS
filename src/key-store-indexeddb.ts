@@ -9,27 +9,27 @@ export default class KeyStoreIndexedDB implements KeyStore {
 
   private openSavKeys: { [stamp: string]: SaveKey } = {};
   private openBvKeys: { [stamp: string]: BattleVideoKey } = {};
-  
+
   constructor() {
-      const openRequest = indexedDB.open("keysave-keys", 1);
-      this.waiter = new Promise((resolve, reject) => {
-        openRequest.onerror = openRequest.onblocked = (err) => {
-          console.log('Could not open key DB');
-          this.dbErr = err;
-          this.waiter = undefined;
-          resolve();
-        };
-        openRequest.onsuccess = (e) => {
-          this.db = (e.target as any).result;
-          this.waiter = undefined;
-          resolve();
-        };
-        openRequest.onupgradeneeded = (e) => {
-          const db = (e.target as any).result as IDBDatabase;
-          db.createObjectStore("save-keys", {});
-          db.createObjectStore("bv-keys", {});
-        };
-      });
+    const openRequest = indexedDB.open("keysave-keys", 1);
+    this.waiter = new Promise((resolve, reject) => {
+      openRequest.onerror = openRequest.onblocked = err => {
+        console.log("Could not open key DB");
+        this.dbErr = err;
+        this.waiter = undefined;
+        resolve();
+      };
+      openRequest.onsuccess = e => {
+        this.db = (e.target as any).result;
+        this.waiter = undefined;
+        resolve();
+      };
+      openRequest.onupgradeneeded = e => {
+        const db = (e.target as any).result as IDBDatabase;
+        db.createObjectStore("save-keys", {});
+        db.createObjectStore("bv-keys", {});
+      };
+    });
   }
 
   private async waitForOpen() {
@@ -40,27 +40,25 @@ export default class KeyStoreIndexedDB implements KeyStore {
   private async getKey(stamp: string, kind: number) {
     await this.waitForOpen();
 
-    const storeName = kind === 0 ? 'save-keys' : 'bv-keys';
-    const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;    
+    const storeName = kind === 0 ? "save-keys" : "bv-keys";
+    const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;
     const keyStore: KeyStore = this;
 
-    if (openKeys[stamp])
-      return openKeys[stamp];
+    if (openKeys[stamp]) return openKeys[stamp];
 
-    const transaction = this.db.transaction(storeName, 'readonly');
+    const transaction = this.db.transaction(storeName, "readonly");
     const store = transaction.objectStore(storeName);
     const request = store.get(stamp);
     return new Promise((resolve, reject) => {
-      request.onsuccess = (e) => {
+      request.onsuccess = e => {
         const keyData = request.result as Uint8Array;
-        if (keyData === undefined)
-          reject(createNoKeyError(stamp, !kind));
+        if (keyData === undefined) reject(createNoKeyError(stamp, !kind));
         const key = kind === 0 ? new SaveKey(keyData) : new BattleVideoKey(keyData);
-        key.setKeyStore(keyStore)
+        key.setKeyStore(keyStore);
         openKeys[stamp] = key;
         resolve(key);
       };
-      request.onerror = (e) => {
+      request.onerror = e => {
         reject(e);
       };
     }) as Promise<BattleVideoKey | SaveKey>;
@@ -77,20 +75,20 @@ export default class KeyStoreIndexedDB implements KeyStore {
   private async setKey(key: SaveKey | BattleVideoKey, kind: number) {
     await this.waitForOpen();
 
-    const storeName = kind === 0 ? 'save-keys' : 'bv-keys';
-    const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;    
+    const storeName = kind === 0 ? "save-keys" : "bv-keys";
+    const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;
     const keyStore: KeyStore = this;
 
-    const transaction = this.db.transaction(storeName, 'readwrite');
+    const transaction = this.db.transaction(storeName, "readwrite");
     const store = transaction.objectStore(storeName);
     const request = store.put(key.keyData, key.stamp);
     return new Promise((resolve, reject) => {
-      request.onsuccess = (e) => {
+      request.onsuccess = e => {
         openKeys[key.stamp] = key;
         key.setKeyStore(keyStore);
         resolve();
       };
-      request.onerror = (e) => {
+      request.onerror = e => {
         reject(e);
       };
     }) as Promise<void>;
@@ -112,8 +110,7 @@ export default class KeyStoreIndexedDB implements KeyStore {
       (storedKey as any).mergeKey(key);
       storedKey.persist();
     } catch (e) {
-      if (e.name !== 'NoKeyError')
-        throw e;
+      if (e.name !== "NoKeyError") throw e;
       return;
     }
     this.setKey(key, kind);
@@ -130,21 +127,20 @@ export default class KeyStoreIndexedDB implements KeyStore {
   private async persistKey(key: BattleVideoKey | SaveKey, kind: number) {
     await this.waitForOpen();
 
-    const storeName = kind === 0 ? 'save-keys' : 'bv-keys';
-    const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;    
+    const storeName = kind === 0 ? "save-keys" : "bv-keys";
+    const openKeys = kind === 0 ? this.openSavKeys : this.openBvKeys;
 
     const storedKey = await this.getKey(key.stamp, kind);
-    if (storedKey !== key)
-      throw createNotStoredKeyError(key.stamp, !kind);
+    if (storedKey !== key) throw createNotStoredKeyError(key.stamp, !kind);
 
-    const transaction = this.db.transaction(storeName, 'readwrite');
+    const transaction = this.db.transaction(storeName, "readwrite");
     const store = transaction.objectStore(storeName);
     const request = store.put(key.keyData, key.stamp);
     return new Promise((resolve, reject) => {
-      request.onsuccess = (e) => {
+      request.onsuccess = e => {
         resolve();
       };
-      request.onerror = (e) => {
+      request.onerror = e => {
         reject(e);
       };
     }) as Promise<void>;

@@ -23,10 +23,8 @@ export default class KeyStoreMemory implements KeyStore {
   }
 
   setOrMergeSaveKey(key: SaveKey) {
-    if (this.saveKeys[key.stamp])
-      this.saveKeys[key.stamp].mergeKey(key);
-    else
-      this.setSaveKey(key);
+    if (this.saveKeys[key.stamp]) this.saveKeys[key.stamp].mergeKey(key);
+    else this.setSaveKey(key);
     return Promise.resolve();
   }
 
@@ -37,24 +35,20 @@ export default class KeyStoreMemory implements KeyStore {
   }
 
   setOrMergeBvKey(key: BattleVideoKey) {
-    if (this.bvKeys[key.stamp])
-      this.bvKeys[key.stamp].mergeKey(key);
-    else
-      this.setBvKey(key);
+    if (this.bvKeys[key.stamp]) this.bvKeys[key.stamp].mergeKey(key);
+    else this.setBvKey(key);
     return Promise.resolve();
   }
 
   persistSaveKey(key: SaveKey) {
     return this.getSaveKey(key.stamp).then(storedKey => {
-      if (key !== storedKey)
-        throw createNotStoredKeyError(key.stamp, true);
+      if (key !== storedKey) throw createNotStoredKeyError(key.stamp, true);
     });
   }
 
   persistBvKey(key: BattleVideoKey) {
     return this.getBvKey(key.stamp).then(storedKey => {
-      if (key !== storedKey)
-        throw createNotStoredKeyError(key.stamp, false);
+      if (key !== storedKey) throw createNotStoredKeyError(key.stamp, false);
     });
   }
 }

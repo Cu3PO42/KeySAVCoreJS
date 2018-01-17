@@ -237,17 +237,13 @@ export default class KeyStoreFileSystem implements KeyStore {
 
   private async persist(key: SaveKey | BattleVideoKey, kind: number) {
     const storedKey = this.keys[key.stamp];
-    if ( storedKey === undefined)
-      throw createNoKeyError(key.stamp, !kind);
+    if (storedKey === undefined) throw createNoKeyError(key.stamp, !kind);
 
-    if (storedKey.kind !== kind)
-      throw createNoKeyError(key.stamp, !kind);
+    if (storedKey.kind !== kind) throw createNoKeyError(key.stamp, !kind);
 
-    if (!storedKey.key.isInitialized)
-      throw createNotStoredKeyError(key.stamp, !kind);
+    if (!storedKey.key.isInitialized) throw createNotStoredKeyError(key.stamp, !kind);
 
-    if ((await storedKey.key.get()).key !== key)
-      throw createNotStoredKeyError(key.stamp, !kind);
+    if ((await storedKey.key.get()).key !== key) throw createNotStoredKeyError(key.stamp, !kind);
 
     const buf = createBuffer(key.keyData);
     const hash = createHash("sha256")

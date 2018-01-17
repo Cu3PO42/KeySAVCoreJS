@@ -113,7 +113,7 @@ export class LocalizationLanguage {
   /**
    * The names of all locations in the games, accessible by generation and IDs.
    */
-  locations: { bw2: string[], xy: string[], sm: string[] };
+  locations: { bw2: string[]; xy: string[]; sm: string[] };
 
   /**
    * The names of all ribbons in Gen 6 and 7 games by set and flag position.
@@ -230,9 +230,8 @@ export class LocalizationLanguage {
 }
 
 export default function loadLocalization(language: string) {
-  if (langs.indexOf(language) === -1)
-    return Promise.reject(new Error('Language not supported.'));
-  return import('../localization/' + language + '/').then(function (local) {
+  if (langs.indexOf(language) === -1) return Promise.reject(new Error("Language not supported."));
+  return import("../localization/" + language + "/").then(function(local) {
     return new LocalizationLanguage(language, local);
   });
 }

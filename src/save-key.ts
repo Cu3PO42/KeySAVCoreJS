@@ -351,7 +351,7 @@ export default class SaveKey {
 
   /**
    * Set the key store that manages this key. This method is called by the store and should not be used manually.
-   * 
+   *
    * @param store The owning key store
    */
   public setKeyStore(store: KeyStore) {
@@ -362,8 +362,7 @@ export default class SaveKey {
    * Persist this key to the key store. This should be called everytime the key is updated.
    */
   public persist(): Promise<void> {
-    if (this.keyStore)
-      return this.keyStore.persistSaveKey(this);
+    if (this.keyStore) return this.keyStore.persistSaveKey(this);
     return Promise.resolve();
   }
 }
