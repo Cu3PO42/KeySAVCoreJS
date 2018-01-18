@@ -1,4 +1,4 @@
-import PkBase, { registerPkmImpl } from "./pkbase";
+import PkBase, { registerPkmImpl } from "./pkbase_";
 import * as util from "./util";
 
 /**

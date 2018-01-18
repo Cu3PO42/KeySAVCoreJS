@@ -1,5 +1,5 @@
 import * as util from "./util";
-import PkBase, { registerPkmImpl } from "./pkbase";
+import PkBase, { registerPkmImpl } from "./pkbase_";
 
 /**2yj
  * The generation 6 specialization of a Pokémon.
