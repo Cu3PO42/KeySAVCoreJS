@@ -1,15 +1,77 @@
-import * as fs from "fs";
-import { createHash } from "crypto";
 import KeyStore, { getStampAndKindFromKey, createNoKeyError, createNotStoredKeyError } from "./key-store";
-import { join } from "path";
 import SaveKey from "./save-key";
 import { createUint8Array, createBuffer, promisify } from "./util";
 import BattleVideoKey from "./battle-video-key";
+import { Hash } from "crypto";
 
-var readdirAsync = promisify(fs.readdir),
-  statAsync = promisify(fs.stat),
-  openAsync = promisify(fs.open),
-  readAsync = promisify(fs.read),
+let fs: any;
+try {
+  fs = require("fs");
+} catch (e) {
+  fs = {};
+}
+let createHash: (algorithm: string) => Hash;
+try {
+  createHash = require("crypto").createHash;
+} catch (e) {
+  createHash = () => undefined;
+}
+let join: (...paths: string[]) => string;
+try {
+  join = require("path").join;
+} catch (e) {
+  join = (...args) => args.join("/");
+}
+
+interface Stats {
+  isFile(): boolean;
+  isDirectory(): boolean;
+  isBlockDevice(): boolean;
+  isCharacterDevice(): boolean;
+  isSymbolicLink(): boolean;
+  isFIFO(): boolean;
+  isSocket(): boolean;
+  dev: number;
+  ino: number;
+  mode: number;
+  nlink: number;
+  uid: number;
+  gid: number;
+  rdev: number;
+  size: number;
+  blksize: number;
+  blocks: number;
+  atimeMs: number;
+  mtimeMs: number;
+  ctimeMs: number;
+  birthtimeMs: number;
+  atime: Date;
+  mtime: Date;
+  ctime: Date;
+  birthtime: Date;
+}
+
+var readdirAsync = promisify(fs.readdir as (
+    path: string,
+    callback: (err: NodeJS.ErrnoException, files: string[]) => void
+  ) => void),
+  statAsync = promisify(fs.stat as (
+    path: string,
+    callback: (err: NodeJS.ErrnoException, stats: Stats) => void
+  ) => void),
+  openAsync = promisify(fs.open as (
+    path: string,
+    mode: string | number | undefined | null,
+    callback: (err: NodeJS.ErrnoException, fd: number) => void
+  ) => void),
+  readAsync = promisify(fs.read as <TBuffer extends Buffer | Uint8Array>(
+    fd: number,
+    buffer: TBuffer,
+    offset: number,
+    length: number,
+    position: number | null,
+    callback?: (err: NodeJS.ErrnoException, bytesRead: number, buffer: TBuffer) => void
+  ) => void),
   writeAsync = promisify(fs.write as (
     fd: number,
     buf: Buffer,
@@ -18,8 +80,8 @@ var readdirAsync = promisify(fs.readdir),
     position: number,
     callback: (err: Error) => void
   ) => void),
-  closeAsync = promisify(fs.close),
-  unlinkAsync = promisify(fs.unlink);
+  closeAsync = promisify(fs.close as (fd: number, callback: (err: NodeJS.ErrnoException) => void) => void),
+  unlinkAsync = promisify(fs.unlink as (path: string, callback: (err: NodeJS.ErrnoException) => void) => void);
 
 class LazyValue<T> {
   private evaluated = false;
