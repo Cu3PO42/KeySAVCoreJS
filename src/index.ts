@@ -5,6 +5,7 @@ export { loadGen6Stats, loadGen7Stats, loadAllStats } from "./calculator";
 export { default as KeyStore, setKeyStore } from "./key-store";
 export { default as KeyStoreFilesystem } from "./key-store-filesystem";
 export { default as KeyStoreMemory } from "./key-store-memory";
+export { default as KeyStoreIndexedDB } from "./key-store-indexeddb";
 export { default as loadLocalization } from "./localization";
 export { default as PkBase } from "./pkbase";
 export { default as Pk6 } from "./pk6";
