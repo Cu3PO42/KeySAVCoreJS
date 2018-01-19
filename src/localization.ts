@@ -1,18 +1,3 @@
-import * as forms6 from "../localization/forms6.json";
-import * as forms7 from "../localization/forms7.json";
-import * as locations from "../localization/locations.json";
-import * as characteristics from "../localization/characteristics.json";
-import * as ribbons from "../localization/ribbons.json";
-import * as abilities from "../localization/abilities.json";
-import * as items from "../localization/items.json";
-import * as species from "../localization/species.json";
-import * as moves from "../localization/moves.json";
-import * as games from "../localization/games.json";
-import * as types from "../localization/types.json";
-import * as natures from "../localization/natures.json";
-import * as countries from "../localization/countries.json";
-import * as languageTags from "../localization/languageTags.json";
-import * as regions from "../localization/regions.json";
 import PkBase from "./pkbase";
 
 const langs = ["de", "en", "es", "fr", "it", "ja", "ko", "zh"];

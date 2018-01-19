@@ -7,7 +7,7 @@
   "scripts": {
     "test": "mocha",
     "build": "tsc --pretty && tsc --pretty -p tsconfig.module.json",
-    "generate-documentation": "typedoc --mode file --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --theme minimal --name KeySAVCore --out doc *.ts",
+    "generate-documentation": "typedoc --mode file --tsconfig tsconfig.json --excludePrivate --excludeNotExported --excludeExternals --theme minimal --name KeySAVCore --out doc --ignoreCompilerErrors src/*.ts",
     "precommit": "lint-staged"
   },
   "lint-staged": {
