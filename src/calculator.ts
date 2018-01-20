@@ -143,10 +143,7 @@ export function loadGen7Stats() {
 }
 
 export function loadAllStats() {
-  return Promise.all([
-    import(/* webpackChunkName: "pkm-stats/gen-6" */ "../stats/stats6.json" /* webpackChunkName: "pkm-stats/gen-7" */),
-    import("../stats/stats7.json"),
-  ]).then(function([stats6, stats7]) {
+  return Promise.all([import("../stats/stats6.json"), import("../stats/stats7.json")]).then(function([stats6, stats7]) {
     return new Calculator({ 6: stats6, 7: stats7 });
   });
 }
