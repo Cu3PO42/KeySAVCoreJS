@@ -265,9 +265,10 @@ export default class KeyStoreFileSystem implements KeyStore {
       };
       key.setKeyStore(this);
     } catch (e) {
-      var e = new Error("There was an error saving the key.") as any;
-      e.name = "KeySavingError";
-      throw e;
+      let error = new Error("There was an error saving the key.") as any;
+      error.name = "KeySavingError";
+      error.context = e;
+      throw error;
     }
   }
 
