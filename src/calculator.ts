@@ -131,19 +131,22 @@ export class Calculator {
 }
 
 export function loadGen6Stats() {
-  return import("../stats/stats6.json").then(function(stats) {
+  return import(/* webpackChunkName: "pkm-stats/gen-6" */ "../stats/stats6.json").then(function(stats) {
     return new Calculator({ 6: stats });
   });
 }
 
 export function loadGen7Stats() {
-  return import("../stats/stats7.json").then(function(stats) {
+  return import(/* webpackChunkName: "pkm-stats/gen-7" */ "../stats/stats7.json").then(function(stats) {
     return new Calculator({ 6: stats });
   });
 }
 
 export function loadAllStats() {
-  return Promise.all([import("../stats/stats6.json"), import("../stats/stats7.json")]).then(function([stats6, stats7]) {
+  return Promise.all([
+    import(/* webpackChunkName: "pkm-stats/gen-6" */ "../stats/stats6.json" /* webpackChunkName: "pkm-stats/gen-7" */),
+    import("../stats/stats7.json"),
+  ]).then(function([stats6, stats7]) {
     return new Calculator({ 6: stats6, 7: stats7 });
   });
 }

@@ -216,7 +216,9 @@ export class LocalizationLanguage {
 
 export default function loadLocalization(language: string) {
   if (langs.indexOf(language) === -1) return Promise.reject(new Error("Language not supported."));
-  return import("../localization/" + language + "/").then(function(local) {
+  return import(/* webpackChunkName: "pkm-local/[request]" */ "../localization/" + language + "/").then(function(
+    local
+  ) {
     return new LocalizationLanguage(language, local);
   });
 }
