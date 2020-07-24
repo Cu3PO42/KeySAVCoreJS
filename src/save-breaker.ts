@@ -5,6 +5,7 @@ import SaveReaderDecrypted from "./save-reader-decrypted";
 import { getKeyStore } from "./key-store";
 import PkBase from "./pkbase";
 import * as util from "./util";
+import { init as loadUnlevel } from "../unlevel";
 
 const magic = 0x42454546;
 export const eggnames: string[] = ["タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알", "蛋", "蛋"];
@@ -24,17 +25,20 @@ function createNotASaveError() {
  */
 export async function load(input: Uint8Array): Promise<SaveReader> {
   var view = util.createDataView(input);
+  const { unlevel } = await loadUnlevel();
   switch (input.length) {
     case 0x10009c:
     case 0x10019a:
       input = input.subarray(input.length - 0x100000);
     case 0x100000:
+      input = unlevel(input);
       var key = await getKeyStore().getSaveKey(util.getStampSav(input, 0x10));
       return new SaveReaderEncrypted(input, key);
     case 0x0fe09c:
     case 0x0fe19a:
       input = input.subarray(input.length - 0x0fe000);
     case 0xfe000:
+      input = unlevel(input);
       var key = await getKeyStore().getSaveKey(util.getStampSav(input, 0x10));
       return new SaveReaderEncrypted(input, key);
     case 0x76000:
@@ -164,21 +168,27 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
   var boxes1: Uint8Array, boxes2: Uint8Array;
   var boxesDataView1: DataView, boxesDataView2: DataView;
 
-  const generation1 = SaveReaderEncrypted.getGeneration(break1);
+  const { unlevel } = await loadUnlevel();
+
+  let generation1 = SaveReaderEncrypted.getGeneration(break1);
   if (generation1 === -1) {
     let e = new Error("File 1 is not a valid save file.") as any;
     e.name = "NotASaveError";
     e.file = 1;
     throw e;
   }
+  break1 = unlevel(break1.subarray(break1.length & 0xfff));
+  generation1 = SaveReaderEncrypted.getGeneration(break1);
 
-  const generation2 = SaveReaderEncrypted.getGeneration(break2);
+  let generation2 = SaveReaderEncrypted.getGeneration(break2);
   if (generation2 === -1) {
     let e = new Error("File 2 is not a valid save file.") as any;
     e.name = "NotASaveError";
     e.file = 2;
     throw e;
   }
+  break2 = unlevel(break2.subarray(break2.length & 0xfff));
+  generation2 = SaveReaderEncrypted.getGeneration(break2);
 
   if (generation1 !== generation2) {
     let e = new Error("Saves are not from the same generation.") as any;
@@ -187,9 +197,6 @@ export async function breakKey(break1: Uint8Array, break2: Uint8Array): Promise<
   }
 
   const offsets = SaveReaderEncrypted.getOffsets(generation1);
-
-  break1 = break1.subarray(break1.length % offsets.fileSize);
-  break2 = break2.subarray(break2.length % offsets.fileSize);
 
   if (!util.sequenceEqual(break1, 16, break2, 16, 8)) {
     let e = new Error("The saves are not from the same game!");
